@@ -17,11 +17,43 @@ function working(btn, on, label) {
   btn.innerHTML = on ? '<span class="spin"></span> working…' : label;
 }
 
-/* ---------- boot ---------- */
+/* ---------- boot ----------
+   Anything that fails here must say so on screen. A silent failure leaves the
+   page looking empty, because every screen starts hidden. */
+function bootFail(msg, detail) {
+  const e = $('bootErr');
+  e.innerHTML = msg + (detail ? '<br><span style="opacity:.7;font-size:11.5px">' + C.esc(detail) + '</span>' : '');
+  e.classList.add('on');
+  show('startScreen');                       // always leave the buttons reachable
+}
+window.addEventListener('error', ev => {
+  if (!$('bootErr').classList.contains('on'))
+    bootFail('Something failed to load. Try a hard refresh.', ev.message);
+});
+
 (async function () {
-  C.init();
+  if (typeof firebase === 'undefined' || !firebase.initializeApp) {
+    return bootFail('Could not load Firebase.',
+      'The three firebase scripts in index.html did not load — check your connection or an ad blocker.');
+  }
+  if (!firebase.auth) {
+    return bootFail('Firebase auth script is missing.',
+      'index.html needs firebase-auth-compat.js as well as app and database.');
+  }
+  try { C.init(); }
+  catch (e) { return bootFail('Could not start Firebase.', e && e.message); }
+
   try { await C.signIn(); }
-  catch (e) { fail('bootErr', "Couldn't reach the server. Check your connection and reload."); return; }
+  catch (e) {
+    const m = String(e && (e.code || e.message) || '');
+    return bootFail(
+      m.includes('operation-not-allowed')
+        ? 'Anonymous sign-in is switched off in Firebase.'
+        : "Couldn't reach the server.",
+      m.includes('operation-not-allowed')
+        ? 'Firebase console → Authentication → Sign-in method → Anonymous → Enable.'
+        : m);
+  }
 
   const inv = C.groupFromUrl();
   const cur = C.currentGroup();
