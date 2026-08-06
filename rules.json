@@ -1,0 +1,98 @@
+{
+  "rules": {
+    "moshpin": {
+
+      "library": {
+        ".read": true,
+        "$slug": {
+          ".write": "auth != null",
+          ".validate": "newData.hasChildren(['name','year'])"
+        }
+      },
+
+      "groups": {
+        "$gid": {
+
+          "meta": {
+            ".read": true,
+            ".write": "auth != null && (!data.exists() || root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists())"
+          },
+
+          "join": {
+            ".read": false,
+            ".write": "auth != null && !data.exists()"
+          },
+
+          "admins": {
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists()",
+            "$uid": {
+              ".write": "auth != null && (!root.child('moshpin/groups/'+$gid+'/admins').exists() || root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists())"
+            }
+          },
+
+          "members": {
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists()",
+            "$uid": {
+              ".write": "auth != null && ($uid === auth.uid || root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists())",
+              ".validate": "newData.hasChild('name') && (root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists() || root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists() || root.child('moshpin/groups/'+$gid+'/join/'+newData.child('t').val()).exists())"
+            }
+          },
+
+          "photos": {
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists()",
+            "$uid": {
+              ".write": "auth != null && ($uid === auth.uid || root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists())"
+            }
+          },
+
+          "festival": {
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists()",
+            ".write": "auth != null && root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists()"
+          },
+
+          "config": {
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists()",
+            ".write": "auth != null && root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists()"
+          },
+
+          "checkins": {
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists()",
+            "$uid": {
+              ".write": "auth != null && ($uid === auth.uid || root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists())"
+            }
+          },
+
+          "chat": {
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists()",
+            "$msg": {
+              ".write": "auth != null && root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists() && (!data.exists() || data.child('u').val() === auth.uid || root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists())",
+              ".validate": "!newData.exists() || (newData.hasChildren(['u','n','ts']) && newData.child('u').val() === auth.uid)"
+            }
+          },
+
+          "reactions": {
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists()",
+            "$msg": { "$uid": { ".write": "auth != null && $uid === auth.uid" } }
+          },
+
+          "notevotes": {
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists()",
+            "$act": { "$author": { "$voter": { ".write": "auth != null && $voter === auth.uid" } } }
+          },
+
+          "tally": {
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists()",
+            "$uid": { ".write": "auth != null && $uid === auth.uid" }
+          },
+
+          "feedback": {
+            ".read": false,
+            "$id": { ".write": "auth != null" }
+          }
+        }
+      }
+    },
+
+    "$other": { ".read": false, ".write": false }
+  }
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MoshPin — find your people at a festival</title>
+<meta name="description" content="Plan a festival with your friends. Tag the sets you want, see where everyone is, rate what you heard.">
+<meta name="theme-color" content="#1c1d1c">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📍</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand">
+    <h1>Crew <span class="at">@</span> <span class="sheep">📍</span></h1>
+    <p>Find your people at a festival. Tag the sets, see where everyone is, rate what you heard.</p>
+  </div>
+
+  <div class="err" id="bootErr"></div>
+
+  <!-- already in a crew -->
+  <section class="screen" id="backScreen" hidden>
+    <div class="card">
+      <h2>Welcome back</h2>
+      <p class="hint">You're in <b id="backName">your crew</b>.</p>
+      <div style="margin-top:16px"><button class="btn primary lg wide" id="backGo">Open it</button></div>
+      <div style="margin-top:10px"><button class="btn wide" id="backOther">Join or create another</button></div>
+    </div>
+  </section>
+
+  <!-- choose -->
+  <section class="screen" id="startScreen" hidden>
+    <div class="card">
+      <h2>Start a crew</h2>
+      <p class="hint">One person sets it up for a festival, then invites everyone else with a link or a QR code.</p>
+      <div style="margin-top:16px"><button class="btn primary lg wide" id="goCreate">Create a crew</button></div>
+    </div>
+    <div class="split">or</div>
+    <div class="card">
+      <h2>Someone invited you?</h2>
+      <p class="hint">You'll need the link or code, and the passcode they were given.</p>
+      <div style="margin-top:16px"><button class="btn lg wide" id="goJoin">Join a crew</button></div>
+    </div>
+  </section>
+
+  <!-- create -->
+  <section class="screen" id="createScreen" hidden>
+    <div class="card">
+      <h2>Create a crew</h2>
+      <p class="hint">You'll be its admin — you can add other admins later.</p>
+
+      <label for="cGroup">Crew name</label>
+      <input type="text" id="cGroup" maxlength="40" placeholder="e.g. Bos Crew" autocomplete="off">
+
+      <label for="cFest">Festival</label>
+      <input type="text" id="cFest" maxlength="60" placeholder="e.g. Dekmantel" autocomplete="off">
+
+      <label for="cYear">Year</label>
+      <input type="text" id="cYear" maxlength="4" inputmode="numeric" placeholder="2027" autocomplete="off">
+
+      <label for="cName">Your name</label>
+      <input type="text" id="cName" maxlength="24" placeholder="How the crew sees you" autocomplete="off">
+
+      <div class="err" id="createErr"></div>
+      <div class="row" style="margin-top:18px">
+        <button class="btn" id="createBack" style="flex:0 0 auto">Back</button>
+        <button class="btn primary lg" id="createGo">Create the crew</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- invite -->
+  <section class="screen" id="inviteScreen" hidden>
+    <div class="card">
+      <h2 id="invTitle">Your crew</h2>
+      <p class="hint" id="invSub"></p>
+
+      <p class="hint" style="margin-top:18px">Show this to anyone standing next to you:</p>
+      <div class="qrbox" id="qrHolder" style="margin-top:10px"></div>
+
+      <label>Passcode</label>
+      <div class="code" id="invPin">----</div>
+      <p class="hint" style="text-align:center;margin-top:6px">
+        The QR code carries this already. Share it separately if you send the link.
+      </p>
+
+      <label for="invLink">Invite link</label>
+      <input type="text" id="invLink" readonly>
+      <div class="row" style="margin-top:10px">
+        <button class="btn" id="copyLink">Copy link</button>
+        <button class="btn" id="shareLink">Share</button>
+      </div>
+
+      <div style="margin-top:18px"><button class="btn primary lg wide" id="invGo">Open the planner</button></div>
+    </div>
+  </section>
+
+  <!-- join -->
+  <section class="screen" id="joinScreen" hidden>
+    <div class="card">
+      <h2>Join a crew</h2>
+
+      <div id="joinPreview" hidden style="margin-top:12px;padding:12px;background:var(--panel-2);border-radius:10px">
+        <div style="font-weight:600" id="joinWho"></div>
+        <div class="hint" id="joinWhat"></div>
+      </div>
+
+      <label for="joinGid">Invite link or code</label>
+      <input type="text" id="joinGid" placeholder="paste the whole link" autocomplete="off" spellcheck="false">
+
+      <label for="joinPin">Passcode</label>
+      <input type="text" id="joinPin" class="code" maxlength="4" placeholder="----"
+             autocomplete="off" autocapitalize="characters" spellcheck="false">
+
+      <label for="joinName">Your name</label>
+      <input type="text" id="joinName" maxlength="24" placeholder="How the crew sees you" autocomplete="off">
+
+      <div class="err" id="joinErr"></div>
+      <div class="row" style="margin-top:18px">
+        <button class="btn" id="joinBack" style="flex:0 0 auto">Back</button>
+        <button class="btn primary lg" id="joinGo">Join the crew</button>
+      </div>
+    </div>
+  </section>
+
+  <p class="hint" style="text-align:center;margin-top:26px">
+    Works in the browser — no app to install. Add it to your home screen for quick access.
+  </p>
+</div>
+
+<script type="module" src="landing.js"></script>
+</body>
+</html>
