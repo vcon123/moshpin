@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Load festivals — MoshPin</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><h1>Mosh<span class="pin">Pin</span></h1><p>Festival loader</p></div>
+
+  <div class="card">
+    <h2>Load the festival library</h2>
+    <p class="hint">This writes the seeded festivals into the right place in your
+      database. It only touches <b>library</b> and <b>library_index</b> — your crews
+      are never affected. Safe to run more than once.</p>
+
+    <div id="status" class="hint" style="margin-top:14px">Checking…</div>
+
+    <button class="btn primary wide lg" id="go" style="margin-top:16px" disabled>Load festivals</button>
+    <div style="margin-top:10px"><a class="btn wide" href="index.html">Back</a></div>
+  </div>
+
+  <div class="card">
+    <h2>What's in there now</h2>
+    <div id="current" class="hint">…</div>
+  </div>
+</div>
+
+<script type="module">
+import * as C from './core.js';
+
+const $ = id => document.getElementById(id);
+const say = (el, html) => { $(el).innerHTML = html; };
+
+async function refresh() {
+  try {
+    const s = await C.ref('library_index').get();
+    const v = s.val() || {};
+    const keys = Object.keys(v);
+    say('current', keys.length
+      ? keys.map(k => `✓ <b>${C.esc(v[k].name)} ${v[k].year}</b> — ${v[k].days} days · ${v[k].stages} stages · ${v[k].acts} sets`).join('<br>')
+      : 'Nothing loaded yet.');
+    return keys.length;
+  } catch (e) {
+    say('current', 'Could not read the library — ' + C.esc(e.message || ''));
+    return -1;
+  }
+}
+
+(async function () {
+  if (typeof firebase === 'undefined') return say('status', 'Firebase did not load.');
+  try { C.init(); await C.signIn(); }
+  catch (e) { return say('status', 'Could not sign in — ' + C.esc(e.code || e.message || '')); }
+  say('status', 'Ready.');
+  $('go').disabled = false;
+  await refresh();
+})();
+
+$('go').onclick = async () => {
+  $('go').disabled = true;
+  say('status', '<span class="spin"></span> Loading…');
+  try {
+    const res = await fetch('seed-library.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('seed-library.json not found (' + res.status + ')');
+    const seed = await res.json();
+
+    let n = 0;
+    for (const [slug, fest] of Object.entries(seed.library || {})) {
+      await C.ref('library/' + slug).set(fest); n++;
+    }
+    for (const [slug, entry] of Object.entries(seed.library_index || {})) {
+      await C.ref('library_index/' + slug).set(entry);
+    }
+    say('status', `Done — ${n} festival(s) loaded. Go and create a crew.`);
+    await refresh();
+  } catch (e) {
+    say('status', 'Failed — ' + C.esc(e.message || 'unknown error'));
+    $('go').disabled = false;
+  }
+};
+</script>
+</body>
+</html>
