@@ -3,6 +3,7 @@
    The festival timetable arrives in Phase 3. */
 import * as C from './core.js';
 import { svg as qrSvg } from './qr.js';
+import * as F from './festival.js';
 
 const $ = id => document.getElementById(id);
 const esc = C.esc;
@@ -62,7 +63,26 @@ window.addEventListener('error', ev => {
   aref.on('child_removed', s => { delete admins[s.key]; paint(); });
 
   $('app').hidden = false;
+  describeFestival();
 })();
+
+/* a one-line summary of the timetable, and the way in for admins */
+async function describeFestival() {
+  let fest = null;
+  try { fest = await F.load(crew.gid); } catch (e) {}
+  const el = $('festState');
+  if (!fest || (!fest.days.length && !fest.venues.length)) {
+    el.textContent = isAdmin()
+      ? 'Nothing set up yet. Add the days, stages and sets — or start from another crew\u2019s version if someone has already done this festival.'
+      : 'No timetable yet. An admin needs to set it up.';
+  } else {
+    const st = F.stages(fest).length, sp = F.spots(fest).length;
+    el.textContent = `${fest.days.length} day(s) · ${st} stage(s)`
+      + (sp ? ` · ${sp} spot(s)` : '') + ` · ${Object.keys(fest.acts).length} set(s)`;
+  }
+  $('setupLink').hidden = !isAdmin();
+  $('setupLink').textContent = (fest && fest.days.length) ? 'Edit the festival' : 'Set up the festival';
+}
 
 /* removed by an admin while we were looking at it */
 function checkStillIn() {

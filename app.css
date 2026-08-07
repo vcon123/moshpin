@@ -85,3 +85,10 @@ label{display:block;font-size:12.5px;color:var(--dim);margin:14px 0 6px}
   max-height:88vh;overflow-y:auto}
 .phead{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;font-size:15px}
 @media (min-width:520px){.sheet{align-items:center}.sheet .panel{border-radius:16px;padding-bottom:20px}}
+
+/* ---- festival setup ---- */
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.vtype{font-size:9.5px;text-transform:uppercase;letter-spacing:.6px;border-radius:99px;
+  padding:2px 8px;border:1px solid var(--line);color:var(--dim);flex:0 0 auto}
+.vtype.stage{color:var(--edge);border-color:var(--edge)}
+.err div{margin:3px 0}
