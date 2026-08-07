@@ -2,6 +2,11 @@
   "rules": {
     "moshpin": {
 
+      "library_index": {
+        ".read": true,
+        "$slug": { ".write": "auth != null" }
+      },
+
       "library": {
         ".read": true,
         "$slug": {
@@ -12,6 +17,7 @@
 
       "groups": {
         "$gid": {
+          ".write": "auth != null && !data.exists() && newData.child('admins').child(auth.uid).val() === true && newData.child('members').child(auth.uid).exists()",
 
           "meta": {
             ".read": true,
@@ -33,8 +39,8 @@
           "members": {
             ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists()",
             "$uid": {
-              ".write": "auth != null && ($uid === auth.uid || root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists())",
-              ".validate": "newData.hasChild('name') && (root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists() || root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists() || root.child('moshpin/groups/'+$gid+'/join/'+newData.child('t').val()).exists())"
+              ".write": "auth != null && ($uid === auth.uid || root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists()) && (root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists() || root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists() || root.child('moshpin/groups/'+$gid+'/join/'+newData.child('t').val()).exists())",
+              ".validate": "!newData.exists() || newData.hasChild('name')"
             }
           },
 

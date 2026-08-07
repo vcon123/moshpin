@@ -73,7 +73,36 @@ window.addEventListener('error', ev => {
 })();
 
 /* ---------- create ---------- */
-$('goCreate').onclick = () => { show('createScreen'); $('cGroup').focus(); };
+/* The library lists festivals someone has already built. Picking one copies it
+   into your crew, so you never start from an empty timetable. */
+let libIndex = {};
+async function loadLibrary() {
+  const sel = $('cPick');
+  try {
+    const s = await C.ref('library_index').get();
+    libIndex = s.val() || {};
+  } catch (e) { libIndex = {}; }
+  const keys = Object.keys(libIndex).sort((a, b) =>
+    (libIndex[b].year - libIndex[a].year) || String(libIndex[a].name).localeCompare(libIndex[b].name));
+  sel.innerHTML = keys.map(k =>
+    `<option value="${k}">${C.esc(libIndex[k].name)} ${libIndex[k].year}</option>`).join('')
+    + '<option value="__own">Something else — I\'ll add it myself</option>';
+  onPick();
+}
+function onPick() {
+  const v = $('cPick').value;
+  const own = v === '__own';
+  $('cManual').hidden = !own;
+  const e = libIndex[v];
+  $('cPickNote').innerHTML = own
+    ? "You'll build the timetable yourself after this. Your festival not in the list? "
+      + "Request it — we can only add one once the official timetable has been published."
+    : e ? `${e.days} days · ${e.stages} stages · ${e.acts} sets${e.place ? ' · ' + C.esc(e.place) : ''}`
+        : '';
+}
+$('cPick').onchange = onPick;
+
+$('goCreate').onclick = () => { show('createScreen'); loadLibrary(); $('cGroup').focus(); };
 $('goJoin').onclick = () => { show('joinScreen'); $('joinGid').focus(); };
 $('createBack').onclick = () => show('startScreen');
 $('joinBack').onclick = () => show('startScreen');
@@ -84,8 +113,10 @@ $('createGo').onclick = async () => {
   if (busy) return;
   clearErr('createErr');
   const gname = $('cGroup').value.trim();
-  const fest  = $('cFest').value.trim();
-  const year  = ($('cYear').value || '').trim();
+  const pick  = $('cPick').value;
+  const fromLib = pick && pick !== '__own' ? libIndex[pick] : null;
+  const fest  = fromLib ? fromLib.name : $('cFest').value.trim();
+  const year  = String(fromLib ? fromLib.year : ($('cYear').value || '').trim());
   const me    = $('cName').value.trim();
   if (!gname) return fail('createErr', 'Give your crew a name.');
   if (!fest)  return fail('createErr', 'Which festival is this for?');
@@ -109,6 +140,13 @@ $('createGo').onclick = async () => {
       admins: { [uid]: true },
       members: { [uid]: { name: me, joined: Date.now() } }
     });
+
+    if (fromLib) {
+      try {
+        const s = await C.ref('library/' + pick).get();
+        if (s.val()) await C.ref('groups/' + gid + '/festival').set(s.val());
+      } catch (e) { /* they can still set it up by hand */ }
+    }
 
     C.setCurrentGroup({ gid, name: gname, token });
     C.setMyProfile({ name: me, photo: null });

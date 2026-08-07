@@ -57,11 +57,16 @@
       <label for="cGroup">Crew name</label>
       <input type="text" id="cGroup" maxlength="40" placeholder="e.g. Bos Crew" autocomplete="off">
 
-      <label for="cFest">Festival</label>
-      <input type="text" id="cFest" maxlength="60" placeholder="e.g. Dekmantel" autocomplete="off">
+      <label for="cPick">Festival</label>
+      <select id="cPick"><option value="">Loading…</option></select>
+      <p class="hint" id="cPickNote" style="margin-top:7px"></p>
 
-      <label for="cYear">Year</label>
-      <input type="text" id="cYear" maxlength="4" inputmode="numeric" placeholder="2027" autocomplete="off">
+      <div id="cManual" hidden>
+        <label for="cFest">Festival name</label>
+        <input type="text" id="cFest" maxlength="60" placeholder="e.g. Draaimolen" autocomplete="off">
+        <label for="cYear">Year</label>
+        <input type="text" id="cYear" maxlength="4" inputmode="numeric" placeholder="2027" autocomplete="off">
+      </div>
 
       <label for="cName">Your name</label>
       <input type="text" id="cName" maxlength="24" placeholder="How the crew sees you" autocomplete="off">
