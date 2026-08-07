@@ -2,7 +2,13 @@
    Firebase, anonymous auth, group context, festival-local time, cache, utils.
    Loaded by every page. Keeps no festival-specific knowledge. */
 
+/* The database alone needs only the URL, but Authentication also needs the API
+   key. None of this is secret — Google publishes it in every web app; access is
+   controlled by the security rules, not by hiding these values. */
 export const CFG = {
+  apiKey:      "AIzaSyBd-nc_nKkjko1unYUBtxKf2BFabYUpiqU",
+  authDomain:  "moshpin-43eef.firebaseapp.com",
+  projectId:   "moshpin-43eef",
   databaseURL: "https://moshpin-43eef-default-rtdb.europe-west1.firebasedatabase.app"
 };
 /* everything lives under one root so old data elsewhere in the database is untouched */
