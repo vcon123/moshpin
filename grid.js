@@ -5,6 +5,7 @@
    why none of this uses position:sticky for the panes themselves. */
 import * as C from './core.js';
 import * as F from './festival.js';
+import * as CI from './checkin.js';
 
 const $ = id => document.getElementById(id);
 const esc = C.esc;
@@ -64,11 +65,40 @@ window.addEventListener('error', e => {
   const cur = F.currentDay(fest);
   dayIdx = cur ? cur.idx : 0;
 
+  CI.init({
+    gid: crew.gid, uid, fest,
+    members: () => members, photos: () => photos,
+    onChange: () => { drawCI(); draw(); }
+  });
+
   $('app').hidden = false;
+  $('dock').hidden = false;
   drawTabs();
   draw();
-  setInterval(() => { if (!document.hidden) drawNow(); }, 60000);
+  drawCI();
+  setInterval(() => { if (!document.hidden) { drawNow(); drawCI(); } }, 60000);
 })();
+
+/* ---------- check-in dock ---------- */
+let ciOpen = false;
+function drawCI() {
+  const n = CI.active().length;
+  const c = $('ciCount');
+  c.textContent = n > 9 ? '9+' : n;
+  c.classList.toggle('show', n > 0);
+  $('ciFab').classList.toggle('live', !!CI.mine());
+  if (ciOpen) {
+    CI.render($('ciHead'), $('ciBody'), $('ciFoot'));
+    const x = $('ciHead').querySelector('#ciX');
+    if (x) x.onclick = () => toggleCI(false);
+  }
+}
+function toggleCI(open) {
+  ciOpen = open === undefined ? !ciOpen : open;
+  $('ciPanel').classList.toggle('open', ciOpen);
+  if (ciOpen) { CI.reset(); drawCI(); }
+}
+$('ciFab').onclick = () => toggleCI();
 
 function takeMember(u, v) {
   members[u] = v || {};
@@ -163,6 +193,7 @@ function draw() {
               `<span class="bu" style="background:${C.colorFor(p.name)}" title="${esc(p.name)}">${esc(C.initials(p.name))}</span>`
             ).join('')}${pk.length > 3 ? `<span class="bu more">+${pk.length - 3}</span>` : ''}</div>` : ''}
           ${pk.some(p => p.note) ? '<div class="nd">✎</div>' : ''}
+          ${liveHere(a) ? `<div class="here">📍 ${liveHere(a)}</div>` : ''}
         </div>`;
     }
   });
@@ -171,6 +202,8 @@ function draw() {
   drawNow();
   $('picked').textContent = Object.keys(myPicks).length + ' tagged';
 }
+
+const liveHere = a => CI.active().filter(c => c.a === a.id).length;
 
 /* the line showing where we are, in festival-local time */
 function drawNow() {
@@ -203,6 +236,7 @@ function openAct(id) {
     <div class="phead"><b>${esc(a.n)}</b><button class="btn sm" id="acClose">✕</button></div>
     <p class="hint">${esc(v ? v.name : '')} · ${esc(F.dayLabel(fest.days[a.d]))} · ${esc(a.s)}–${esc(a.e)}</p>
     ${a.u ? `<div class="row" style="margin-top:12px"><a class="btn wide" href="${esc(a.u)}" target="_blank" rel="noopener">Listen ↗</a></div>` : ''}
+    ${F.currentDay(fest) ? `<button class="btn wide" id="acHere" style="margin-top:10px">📍 Check in here</button>` : ''}
     <button class="btn ${mine ? 'danger' : 'primary'} wide" id="acTog" style="margin-top:12px">
       ${mine ? 'Remove from my lineup' : '★ Add to my lineup'}</button>
     ${mine ? `<label for="acNote">Your note (everyone sees it)</label>
@@ -218,6 +252,12 @@ function openAct(id) {
   $('acTog').onclick = () => {
     if (myPicks[id]) delete myPicks[id]; else myPicks[id] = 1;
     saveSoon(); draw(); openAct(id);
+  };
+  const hb = $('acHere');
+  if (hb) hb.onclick = () => {
+    $('actSheet').classList.remove('on');
+    CI.goFloor(a.v, id);
+    ciOpen = true; $('ciPanel').classList.add('open'); drawCI();
   };
   const ns = $('acNoteSave');
   if (ns) ns.onclick = () => {
