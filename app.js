@@ -80,6 +80,7 @@ async function describeFestival() {
     el.textContent = `${fest.days.length} day(s) · ${st} stage(s)`
       + (sp ? ` · ${sp} spot(s)` : '') + ` · ${Object.keys(fest.acts).length} set(s)`;
   }
+  $('gridLink').hidden = !(fest && fest.days.length && F.stages(fest).length);
   $('setupLink').hidden = !isAdmin();
   $('setupLink').textContent = (fest && fest.days.length) ? 'Edit the festival' : 'Set up the festival';
 }
