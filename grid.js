@@ -6,6 +6,7 @@
 import * as C from './core.js';
 import * as F from './festival.js';
 import * as CI from './checkin.js';
+import * as S from './social.js';
 
 const $ = id => document.getElementById(id);
 const esc = C.esc;
@@ -70,9 +71,16 @@ window.addEventListener('error', e => {
     members: () => members, photos: () => photos,
     onChange: () => { drawCI(); draw(); }
   });
+  S.init({
+    gid: crew.gid, uid, fest,
+    members: () => members, photos: () => photos,
+    onChange: () => drawChat()
+  });
 
   $('app').hidden = false;
   $('dock').hidden = false;
+  $('boardBtn').hidden = !F.hasStarted(fest);
+  $('wrapBtn').hidden = !F.isOver(fest);
   drawTabs();
   draw();
   drawCI();
@@ -100,9 +108,94 @@ function toggleCI(open) {
 }
 $('ciFab').onclick = () => toggleCI();
 
+/* ---------- chat ---------- */
+let chOpen = false;
+function drawChat() {
+  const n = S.unreadCount();
+  const c = $('chCount');
+  c.textContent = n > 9 ? '9+' : n;
+  c.classList.toggle('show', n > 0 && !chOpen);
+  if (chOpen) {
+    S.renderChat($('chLog'));
+    $('chLog').querySelectorAll('[data-r]').forEach(b =>
+      b.onclick = () => S.react(b.dataset.r, b.dataset.e));
+    $('chLog').querySelectorAll('[data-add]').forEach(b =>
+      b.onclick = e => openRx(b.dataset.add, b, e));
+  }
+}
+function toggleChat(open) {
+  chOpen = open === undefined ? !chOpen : open;
+  $('chPanel').classList.toggle('open', chOpen);
+  S.setOpen(chOpen);
+  if (chOpen) { $('ciPanel').classList.remove('open'); drawChat(); setTimeout(() => { $('chLog').scrollTop = $('chLog').scrollHeight; }, 30); }
+  else closeRx();
+}
+$('chFab').onclick = () => toggleChat();
+$('chX').onclick = () => toggleChat(false);
+$('chSend').onclick = doSend;
+$('chInput').addEventListener('keydown', e => { if (e.key === 'Enter') doSend(); });
+async function doSend() {
+  const v = $('chInput').value;
+  if (!v.trim()) return;
+  $('chInput').value = '';
+  closeEmoji();
+  if (!(await S.send(v))) $('chInput').value = v;
+}
+
+/* emoji for the message box */
+let emojiBuilt = false;
+function buildEmoji(el, pick) {
+  el.innerHTML = '';
+  for (const e of S.EMOJI) {
+    const b = document.createElement('button');
+    b.type = 'button'; b.textContent = e;
+    b.onclick = () => pick(e);
+    el.appendChild(b);
+  }
+}
+function closeEmoji() { $('chEmoji').classList.remove('open'); $('chEmojiBtn').classList.remove('on'); }
+$('chEmojiBtn').onclick = () => {
+  const p = $('chEmoji');
+  const show = !p.classList.contains('open');
+  if (show && !emojiBuilt) {
+    emojiBuilt = true;
+    buildEmoji(p, e => {
+      const i = $('chInput');
+      const s = i.selectionStart ?? i.value.length, t = i.selectionEnd ?? i.value.length;
+      i.value = i.value.slice(0, s) + e + i.value.slice(t);
+      i.focus(); try { i.setSelectionRange(s + e.length, s + e.length); } catch (err) {}
+    });
+  }
+  p.classList.toggle('open', show);
+  $('chEmojiBtn').classList.toggle('on', show);
+};
+
+/* emoji for reacting to a message */
+let rxBuilt = false;
+function openRx(msgId, anchor, ev) {
+  if (ev) { ev.preventDefault(); ev.stopPropagation(); }
+  const p = $('rxPick');
+  if (!rxBuilt) { rxBuilt = true; buildEmoji(p, e => { S.react(p.dataset.m, e); closeRx(); }); }
+  p.dataset.m = msgId;
+  p.classList.add('open');
+  const r = anchor.getBoundingClientRect();
+  const vw = window.innerWidth, vh = window.innerHeight;
+  const pw = Math.min(300, vw - 24), ph = p.offsetHeight || 200;
+  p.style.left = Math.round(Math.min(Math.max(8, r.left - 40), vw - pw - 8)) + 'px';
+  p.style.top = Math.round(r.top - ph - 8 < 8 ? Math.min(r.bottom + 8, vh - ph - 8) : r.top - ph - 8) + 'px';
+}
+function closeRx() { $('rxPick').classList.remove('open'); }
+document.addEventListener('click', e => {
+  const p = $('rxPick');
+  if (p.classList.contains('open') && !p.contains(e.target) && !(e.target.dataset && e.target.dataset.add)) closeRx();
+}, true);
+
 function takeMember(u, v) {
   members[u] = v || {};
-  if (u === uid) myPicks = decPicks(v && v.picks);
+  if (u === uid) {
+    myPicks = decPicks(v && v.picks);
+    myRatings = S.decRatings(v && v.ratings);
+  }
 }
 
 /* ---------- saving picks ----------
@@ -194,6 +287,7 @@ function draw() {
             ).join('')}${pk.length > 3 ? `<span class="bu more">+${pk.length - 3}</span>` : ''}</div>` : ''}
           ${pk.some(p => p.note) ? '<div class="nd">✎</div>' : ''}
           ${liveHere(a) ? `<div class="here">📍 ${liveHere(a)}</div>` : ''}
+          ${(() => { const s = S.scoreOf(a.id); return s.votes ? `<div class="score">★ ${s.avg.toFixed(1)}</div>` : ''; })()}
         </div>`;
     }
   });
@@ -242,6 +336,7 @@ function openAct(id) {
     ${mine ? `<label for="acNote">Your note (everyone sees it)</label>
       <textarea id="acNote" rows="2" maxlength="200" placeholder="e.g. must see for me">${esc(pickNote(myPicks[id]))}</textarea>
       <button class="btn wide" id="acNoteSave" style="margin-top:8px">Save note</button>` : ''}
+    ${ratingBlock(id)}
     ${others.length ? `<p class="hint" style="margin-top:14px">Also going:</p>` +
       others.map(p => `<div class="mrow"><span class="bu" style="background:${C.colorFor(p.name)}">${esc(C.initials(p.name))}</span>
         <div class="mname">${esc(p.name)}${p.note ? ` <span class="hint">— ${esc(p.note)}</span>` : ''}</div></div>`).join('')
@@ -259,6 +354,7 @@ function openAct(id) {
     CI.goFloor(a.v, id);
     ciOpen = true; $('ciPanel').classList.add('open'); drawCI();
   };
+  wireStars(id);
   const ns = $('acNoteSave');
   if (ns) ns.onclick = () => {
     const t = $('acNote').value.trim();
@@ -267,6 +363,111 @@ function openAct(id) {
   };
 }
 $('actSheet').onclick = e => { if (e.target.id === 'actSheet') $('actSheet').classList.remove('on'); };
+
+/* ---------- ratings ---------- */
+let myRatings = {};
+function ratingBlock(id) {
+  if (!S.ratingOpen(id)) return '';
+  const mineR = myRatings[id] || 0;
+  const agg = S.scoreOf(id);
+  return `<p class="hint" style="margin-top:14px">Rate this set:</p>
+    <div class="stars" id="acStars">
+      ${[1,2,3,4,5].map(n => `<button class="star${n <= mineR ? ' on' : ''}" data-s="${n}">★</button>`).join('')}
+      ${mineR ? `<button class="btn sm" id="acClear" style="margin-left:8px">clear</button>` : ''}
+    </div>
+    ${agg.n ? `<p class="hint">Crew average <b style="color:var(--edge)">${agg.avg.toFixed(1)}</b> from ${agg.n} — ${
+      S.ratersOf(id).map(r => esc(r.name) + ' ' + r.r + '★').join(', ')}</p>`
+      : '<p class="hint">No ratings yet — be the first.</p>'}`;
+}
+function wireStars(id) {
+  const box = $('acStars');
+  if (!box) return;
+  box.querySelectorAll('.star').forEach(b => b.onclick = () => {
+    myRatings[id] = +b.dataset.s; saveRatings(); draw(); openAct(id);
+  });
+  const c = $('acClear');
+  if (c) c.onclick = () => { delete myRatings[id]; saveRatings(); draw(); openAct(id); };
+}
+let rTimer = null;
+function saveRatings() {
+  if (rTimer) clearTimeout(rTimer);
+  rTimer = setTimeout(async () => {
+    rTimer = null;
+    try { await C.ref('groups/' + crew.gid + '/members/' + uid).update({ ratings: S.encRatings(myRatings) }); }
+    catch (e) { C.toast("Couldn't save that rating"); }
+  }, 500);
+}
+
+/* ---------- leaderboard ---------- */
+function showBoard() {
+  const list = S.ranked();
+  const dv = S.mostDivisive();
+  const medal = ['🥇','🥈','🥉'];
+  $('boardBody').innerHTML = `
+    <div class="phead"><b>🏆 Best sets</b><button class="btn sm" id="bdClose">✕</button></div>
+    ${list.length ? list.slice(0, 20).map((x, i) => {
+      const v = F.venue(fest, x.v);
+      return `<div class="lbrow"><div class="lbrank">${i < 3 ? medal[i] : i + 1}</div>
+        <div class="lbmain"><div class="lbname">${esc(x.n)}</div>
+          <div class="hint">${esc(F.dayLabel(fest.days[x.d]))} · ${esc(v ? v.name : '')} · ${x.votes} vote${x.votes === 1 ? '' : 's'}</div></div>
+        <div class="lbscore">${x.avg.toFixed(1)}</div></div>`;
+    }).join('') : '<p class="hint">Nothing rated yet. Sets can be rated once they are halfway through.</p>'}
+    ${dv ? `<div class="lbrow"><div class="lbrank">💥</div>
+      <div class="lbmain"><div class="lbname">${esc(dv.n)}</div>
+        <div class="hint">Most divisive — scores ${dv.spread} apart</div></div>
+      <div class="lbscore">${dv.avg.toFixed(1)}</div></div>` : ''}`;
+  $('boardSheet').classList.add('on');
+  $('bdClose').onclick = () => $('boardSheet').classList.remove('on');
+}
+$('boardBtn').onclick = showBoard;
+$('boardSheet').onclick = e => { if (e.target.id === 'boardSheet') $('boardSheet').classList.remove('on'); };
+
+/* ---------- the wrap ---------- */
+async function showWrap() {
+  let tallies = {};
+  try { tallies = (await C.ref('groups/' + crew.gid + '/tally').get()).val() || {}; } catch (e) {}
+  const D = S.wrapData(tallies);
+  const note = S.bestNote();
+  const medal = ['🥇','🥈','🥉'];
+  const k = n => n > 999 ? (n / 1000).toFixed(1) + 'k' : n;
+  $('wrapBody').innerHTML = `
+    <div class="phead"><b>🎁 The wrap</b><button class="btn sm" id="wpClose">✕</button></div>
+    <div style="text-align:center;padding:6px 0 2px">
+      <div style="font-size:19px;font-weight:700">${esc(fest.name)} ${fest.year}</div>
+      <div class="hint">${D.rows.length} in the crew</div></div>
+    <div class="wstats">
+      <div class="wstat"><b>${k(D.totals.picks)}</b><span>TAGGED</span></div>
+      <div class="wstat"><b>${k(D.totals.rated)}</b><span>RATINGS</span></div>
+      <div class="wstat"><b>${k(D.totals.checkins)}</b><span>CHECK-INS</span></div>
+      <div class="wstat"><b>${k(D.totals.msgs)}</b><span>MESSAGES</span></div>
+    </div>
+    <p class="wsec">The awards</p>
+    ${D.awards.map(a => `<div class="wcard${a.hero ? ' hero' : ''}">
+      <div class="wico">${a.i}</div>
+      <div style="flex:1;min-width:0"><div class="hint">${esc(a.t)}</div>
+        <div class="wn">${esc(a.w.r.p.name)}</div></div>
+      <div class="wv">${esc(String(a.f(a.w.v)))}</div></div>`).join('')}
+    ${D.top.length ? `<p class="wsec">Sets of the weekend</p>` + D.top.map((x, i) =>
+      `<div class="lbrow"><div class="lbrank">${medal[i]}</div>
+        <div class="lbmain"><div class="lbname">${esc(x.n)}</div>
+        <div class="hint">${esc(F.dayLabel(fest.days[x.d]))} · ${x.votes} votes</div></div>
+        <div class="lbscore">${x.avg.toFixed(1)}</div></div>`).join('') : ''}
+    ${note ? `<p class="wsec">Best tip</p><div class="wquote">${esc(note.text)}
+      <div class="hint" style="margin-top:6px">${esc(note.who)}, on ${esc(note.act.n)}</div></div>` : ''}
+    <button class="btn primary wide" id="wpCopy" style="margin-top:18px">Copy as text</button>`;
+  $('wrapSheet').classList.add('on');
+  $('wpClose').onclick = () => $('wrapSheet').classList.remove('on');
+  $('wpCopy').onclick = async () => {
+    const L = [`${fest.name} ${fest.year} — THE WRAP`, '',
+      `${D.totals.picks} tagged · ${D.totals.rated} ratings · ${D.totals.checkins} check-ins · ${D.totals.msgs} messages`, '', 'AWARDS'];
+    D.awards.forEach(a => L.push(`${a.i} ${a.t.split(' — ')[0]}: ${a.w.r.p.name} (${a.f(a.w.v)})`));
+    if (D.top.length) { L.push('', 'BEST SETS'); D.top.forEach((x, i) => L.push(`${medal[i]} ${x.n} — ${x.avg.toFixed(1)}`)); }
+    if (note) L.push('', `BEST TIP — ${note.who} on ${note.act.n}:`, `"${note.text}"`);
+    try { await navigator.clipboard.writeText(L.join('\n')); C.toast('Copied'); } catch (e) {}
+  };
+}
+$('wrapBtn').onclick = showWrap;
+$('wrapSheet').onclick = e => { if (e.target.id === 'wrapSheet') $('wrapSheet').classList.remove('on'); };
 
 /* ---------- my lineup ---------- */
 $('mineBtn').onclick = () => {

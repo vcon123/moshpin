@@ -186,3 +186,60 @@ body.gridpage{padding:0}
 .lockmsg{font-size:12px;color:var(--dim);border-left:2px solid var(--line);padding-left:8px;margin-bottom:10px}
 .act .here{position:absolute;bottom:3px;left:6px;font-size:9px;font-weight:700;color:var(--edge)}
 @media (max-width:700px){.dock{right:16px}.dockpanel{width:min(320px,calc(100vw - 88px))}}
+
+/* ---- chat ---- */
+.fabs{display:flex;flex-direction:column;gap:12px;flex:none}
+.fab .cnt.warn{background:var(--danger);color:#fff}
+.chatlog{padding:12px;overflow-y:auto;flex:1;min-height:180px;display:flex;flex-direction:column;gap:11px}
+.msg{display:flex;gap:9px;align-items:flex-start}
+.msg .mb{flex:1;min-width:0}
+.msg .mn{font-weight:700;font-size:12.5px}
+.msg .mt{font-size:10px;color:var(--dim);font-weight:400;margin-left:6px}
+.msg .mx{font-size:13.5px;white-space:pre-wrap;word-break:break-word;margin-top:1px}
+.msg .mx a{color:var(--edge)}
+.chatbar{display:flex;gap:6px;padding:10px;border-top:1px solid var(--line);align-items:center}
+.chatbar input{flex:1;min-width:0;font-size:13px;padding:9px 13px;border-radius:99px}
+.chatbar .btn.sm{padding:8px 11px}
+#chEmojiBtn.on{border-color:var(--edge);background:var(--green)}
+.rxrow{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.rx{background:var(--panel-2);border:1px solid var(--line);border-radius:99px;padding:1px 8px;
+  font-size:12px;color:var(--ink);line-height:1.6;display:inline-flex;gap:4px;align-items:center}
+.rx.mine{background:var(--green);border-color:var(--edge)}
+.rx span{font-size:10.5px;color:var(--dim);font-weight:700}
+.rx.mine span{color:#cfe9d6}
+.rx.add{opacity:.5;font-size:11px}
+.msg:hover .rx.add{opacity:1}
+.emojipanel,.rxpick{display:none;grid-template-columns:repeat(8,minmax(0,1fr));gap:2px;padding:8px 10px}
+.emojipanel{border-top:1px solid var(--line);max-height:150px;overflow-y:auto}
+.emojipanel.open,.rxpick.open{display:grid}
+.rxpick{position:fixed;z-index:80;background:var(--panel);border:1px solid var(--line);
+  border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.55);width:min(300px,calc(100vw - 24px));
+  max-height:200px;overflow-y:auto}
+.emojipanel button,.rxpick button{background:none;border:0;font-size:19px;line-height:1;padding:6px 0;
+  border-radius:6px;cursor:pointer}
+.emojipanel button:active,.rxpick button:active{background:var(--panel-2)}
+
+/* ---- ratings ---- */
+.stars{display:flex;gap:5px;margin:6px 0;align-items:center}
+.star{font-size:26px;line-height:1;background:none;border:0;padding:0;color:#4a504b;cursor:pointer}
+.star.on{color:var(--edge)}
+.act .score{position:absolute;bottom:3px;right:6px;font-size:9px;font-weight:700;color:var(--edge)}
+
+/* ---- leaderboard & wrap ---- */
+.lbrow{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:1px solid var(--line)}
+.lbrank{font-size:17px;width:30px;flex:none;text-align:center;color:var(--edge);font-weight:700}
+.lbmain{flex:1;min-width:0}
+.lbname{font-size:14px;font-weight:600}
+.lbscore{font-size:17px;font-weight:700;color:var(--edge);flex:none}
+.wsec{font-size:11px;letter-spacing:1.1px;color:var(--edge);text-transform:uppercase;font-weight:700;margin:20px 0 8px}
+.wstats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:14px}
+.wstat{background:var(--panel-2);border:1px solid var(--line);border-radius:9px;padding:9px 4px;text-align:center}
+.wstat b{display:block;font-size:16px;color:var(--edge)}
+.wstat span{font-size:9px;color:var(--dim)}
+.wcard{background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:9px 11px;
+  display:flex;gap:10px;align-items:center;margin-bottom:7px}
+.wcard.hero{border-color:var(--edge);background:linear-gradient(90deg,rgba(143,217,119,.10),var(--panel-2))}
+.wico{font-size:19px;flex:none;width:24px;text-align:center}
+.wn{font-size:13.5px;font-weight:700;margin-top:1px}
+.wv{font-size:12px;color:var(--edge);font-weight:700;flex:none}
+.wquote{background:var(--panel-2);border-left:3px solid var(--edge);border-radius:8px;padding:11px 13px;font-size:13.5px}

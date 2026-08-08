@@ -18,6 +18,8 @@
   <header class="ghead">
     <a class="btn sm" href="app.html">‹ Crew</a>
     <div class="gtitle" id="festName"></div>
+    <button class="btn sm" id="boardBtn" hidden>🏆</button>
+    <button class="btn sm" id="wrapBtn" hidden>🎁</button>
     <button class="btn sm" id="mineBtn"><span id="picked">0 tagged</span></button>
   </header>
 
@@ -41,8 +43,27 @@
     <div class="cibody" id="ciBody"></div>
     <div class="cifoot" id="ciFoot"></div>
   </div>
-  <button class="fab" id="ciFab">📍<span class="cnt" id="ciCount"></span></button>
+  <div class="dockpanel" id="chPanel">
+    <div class="chead2"><b>💬 Chat</b><button class="btn sm" id="chX" style="margin-left:auto">✕</button></div>
+    <div class="chatlog" id="chLog"></div>
+    <div class="emojipanel" id="chEmoji"></div>
+    <div class="chatbar">
+      <button class="btn sm" id="chEmojiBtn">🙂</button>
+      <input type="text" id="chInput" maxlength="300" placeholder="Say something…">
+      <button class="btn primary sm" id="chSend">Send</button>
+    </div>
+  </div>
+
+  <div class="fabs">
+    <button class="fab" id="ciFab">📍<span class="cnt" id="ciCount"></span></button>
+    <button class="fab" id="chFab">💬<span class="cnt warn" id="chCount"></span></button>
+  </div>
 </div>
+
+<div class="rxpick" id="rxPick"></div>
+
+<div class="sheet" id="boardSheet"><div class="panel" id="boardBody"></div></div>
+<div class="sheet" id="wrapSheet"><div class="panel" id="wrapBody"></div></div>
 
 <div class="sheet" id="actSheet"><div class="panel" id="actBody"></div></div>
 <div class="sheet" id="mineSheet"><div class="panel" id="mineBody"></div></div>
