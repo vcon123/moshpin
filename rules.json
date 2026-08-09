@@ -102,6 +102,12 @@
             }
           }
         }
+      },
+      "requests": {
+        ".read": false,
+        "$id": {
+          ".write": "auth != null"
+        }
       }
     },
     "$other": {

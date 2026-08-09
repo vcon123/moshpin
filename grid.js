@@ -8,6 +8,7 @@ import * as F from './festival.js';
 import * as CI from './checkin.js';
 import * as S from './social.js';
 import * as T from './transport.js';
+import { svg as qrSvg } from './qr.js';
 
 const $ = id => document.getElementById(id);
 const esc = C.esc;
@@ -20,7 +21,6 @@ let members = {}, photos = {}, admins = {};
 let myPicks = {};               // actId -> 1 or {note}
 let dayIdx = 0;
 let saveTimer = null;
-let hidden = {};            // venueId -> true, for the stage filter
 let meta = null;
 const isAdmin = () => !!admins[uid];
 
@@ -62,7 +62,6 @@ window.addEventListener('error', e => {
     /* title bar: the crew's own name, then the festival */
 
   try { meta = (await C.ref('groups/' + crew.gid + '/meta').get()).val(); } catch (e) {}
-  try { hidden = JSON.parse(localStorage.getItem('mp_hide_' + crew.gid) || '{}'); } catch (e) {}
   C.ref('groups/' + crew.gid + '/admins').on('child_added', s => { admins[s.key] = true; drawTop(); });
   C.ref('groups/' + crew.gid + '/admins').on('child_removed', s => { delete admins[s.key]; drawTop(); });
 
@@ -98,7 +97,6 @@ window.addEventListener('error', e => {
   $('dock').hidden = false;
   drawTop();
   drawTabs();
-  drawStageTabs();
   draw();
   drawCI();
   setInterval(() => { if (!document.hidden) { drawNow(); drawCI(); } }, 60000);
@@ -257,25 +255,6 @@ function drawTop() {
   $('crewN').textContent = Object.keys(members).length;
 }
 
-/* stage filter — hide the stages you're never going to */
-function drawStageTabs() {
-  const st = F.stages(fest);
-  $('stageTabs').innerHTML =
-    `<button class="chip${Object.keys(hidden).length ? '' : ' on'}" data-all="1">All stages</button>`
-    + st.map(v => `<button class="chip${hidden[v.id] ? '' : ' on'}" data-v="${v.id}">${esc(v.name)}</button>`).join('');
-  $('stageTabs').querySelector('[data-all]').onclick = () => {
-    hidden = {}; saveHidden(); drawStageTabs(); draw();
-  };
-  $('stageTabs').querySelectorAll('[data-v]').forEach(b => b.onclick = () => {
-    const id = b.dataset.v;
-    if (hidden[id]) delete hidden[id]; else hidden[id] = 1;
-    if (F.stages(fest).every(v => hidden[v.id])) hidden = {};   // never hide everything
-    saveHidden(); drawStageTabs(); draw();
-  });
-}
-const saveHidden = () => { try { localStorage.setItem('mp_hide_' + crew.gid, JSON.stringify(hidden)); } catch (e) {} };
-const shownStages = () => F.stages(fest).filter(v => !hidden[v.id]);
-
 /* ---------- day tabs ---------- */
 function drawTabs() {
   $('dayTabs').innerHTML = fest.days.map((d, i) =>
@@ -289,7 +268,7 @@ function drawTabs() {
 function draw() {
   const day = fest.days[dayIdx];
   if (!day) return;
-  const stages = shownStages();
+  const stages = F.stages(fest);
   const rows = Math.ceil(day.hours * 60 / SLOT);
 
   /* header pane */
@@ -302,10 +281,17 @@ function draw() {
   const totalW = cols * colW + (cols - 1) * GAP;
   const track = `repeat(${cols}, ${colW}px)`;
 
+  const tb = document.querySelector('.topbar');
+  document.querySelector('.ttop').style.top = ((tb ? tb.offsetHeight : 0) - 1) + 'px';
   $('gHead').style.gridTemplateColumns = track;
   $('gHead').style.width = totalW + 'px';
-  $('gHead').innerHTML = stages.map(v => `<div class="sh">${esc(v.name)}</div>`).join('')
+  $('gHead').innerHTML = stages.map(v =>
+      `<div class="sh">${esc(v.name)}${(v.open && isAdmin())
+        ? `<button class="del" data-delv="${v.id}" title="Remove this stage">✕</button>` : ''}</div>`).join('')
     + (isAdmin() ? '<div class="sh" style="color:var(--dim)">add</div>' : '');
+  $('gHead').querySelectorAll('[data-delv]').forEach(b => b.onclick = e => {
+    e.stopPropagation(); removeStage(b.dataset.delv);
+  });
 
   /* time column */
   let tc = '';
@@ -367,7 +353,7 @@ function draw() {
   });
   if (isAdmin())
     html += `<div class="addcol" style="grid-column:${stages.length + 1};grid-row:1 / 6">
-      <button id="addStage">+ add a stage</button></div>`;
+      <button id="addStage">+ add stage<br>or hangout</button></div>`;
   g.innerHTML = html;
   const as = $('addStage');
   if (as) as.onclick = addStage;
@@ -388,9 +374,19 @@ async function addStage() {
      shows hourly slots people can pin ("I'll be here then") and check in to. */
   const v = F.addVenue(fest, name.trim(), 'stage');
   v.open = true;
-  try { await F.save(crew.gid, fest); C.toast(v.name + ' added'); }
+  try { await F.save(crew.gid, fest); }
   catch (e) { return C.toast("Couldn't add it — " + (e.message || '')); }
-  drawStageTabs(); draw();
+  draw();
+}
+
+/* only stages someone added by hand can be removed — never the real lineup */
+async function removeStage(vid) {
+  const v = F.venue(fest, vid);
+  if (!v || !v.open) return;
+  if (!confirm(`Remove ${v.name}? Anything pinned there goes with it.`)) return;
+  F.removeVenue(fest, vid);
+  try { await F.save(crew.gid, fest); } catch (e) { return C.toast("Couldn't remove it"); }
+  draw();
 }
 
 /* ---------- pinnable slots on a stage with no lineup ----------
@@ -648,9 +644,20 @@ function showCrew(inviteFirst) {
     <div class="row" style="margin-top:10px">
       <button class="btn" id="cwCopy">Copy link</button>
       <button class="btn" id="cwShare">Share</button>
+    </div>
+    <button class="btn wide" id="cwQrBtn" style="margin-top:8px">Show QR code</button>
+    <div id="cwQr" hidden style="margin-top:12px">
+      <div class="qrbox" style="margin:0 auto">${qrSvg(link, 200)}</div>
+      <p class="hint" style="text-align:center;margin-top:8px">
+        Point a camera at this. They still need the passcode.</p>
     </div>`;
   $('crewSheet').classList.add('on');
   $('cwClose').onclick = () => closeSheet('crewSheet');
+  $('cwQrBtn').onclick = () => {
+    const q = $('cwQr');
+    q.hidden = !q.hidden;
+    $('cwQrBtn').textContent = q.hidden ? 'Show QR code' : 'Hide QR code';
+  };
   $('cwCopy').onclick = async () => {
     try { await navigator.clipboard.writeText(link); C.toast('Link copied'); } catch (e) { $('cwLink').select(); }
   };

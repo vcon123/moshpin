@@ -100,11 +100,11 @@ body.gridpage{padding:0}
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .gridpage .tabs{padding:0 14px 10px;margin:0}
 .tt{border-top:1px solid var(--line)}
-.ttop{display:flex}
+.ttop{display:flex;position:-webkit-sticky;position:sticky;z-index:30;background:var(--bg)}
 .tcorner{width:46px;flex:none;border-bottom:2px solid var(--line);border-right:1px solid var(--line)}
 .theadwrap{flex:1;min-width:0;overflow:hidden}
 .thead{display:grid;gap:0 6px}
-.sh{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--edge);
+.sh{position:relative;font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--edge);
   text-align:center;padding:8px 3px;border-bottom:2px solid var(--line);
   display:flex;align-items:flex-end;justify-content:center;min-height:34px;line-height:1.25}
 .tbody{display:flex}
@@ -247,24 +247,27 @@ body.gridpage{padding:0}
 
 /* ---- one-page shell ---- */
 .topbar{position:sticky;top:0;z-index:40;background:var(--bg);
-  border-bottom:1px solid var(--line);padding:8px 12px calc(8px + env(safe-area-inset-top,0px))}
+  border-bottom:1px solid var(--line);padding:10px 14px 10px;
+  padding-top:calc(10px + env(safe-area-inset-top,0px))}
 .tb1{display:flex;align-items:center;gap:8px}
 .brandmark{display:flex;align-items:center;gap:7px;flex:0 0 auto}
-.brandmark img{width:28px;height:28px;border-radius:7px;display:block}
-.brandmark b{font-size:15px;font-weight:700;letter-spacing:-.2px}
+.brandmark img{width:38px;height:38px;border-radius:10px;display:block}
+.brandmark{text-decoration:none;color:var(--ink)}
+.brandmark b{font-size:18px;font-weight:700;letter-spacing:-.3px}
 .brandmark b span{color:var(--edge)}
-.evname{flex:1;min-width:0;text-align:center;font-size:13px;color:var(--dim);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 4px}
-.evname b{color:var(--ink);font-weight:600;display:block;font-size:14.5px;line-height:1.2}
+.evname{flex:1;min-width:0;text-align:center;font-size:12.5px;color:var(--dim);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 6px}
+.evname b{color:var(--ink);font-weight:600;display:block;font-size:17px;line-height:1.15}
 .iconbtn{background:var(--panel-2);border:1px solid var(--line);color:var(--ink);
-  border-radius:9px;padding:7px 10px;font-size:13px;flex:0 0 auto;display:flex;align-items:center;gap:5px}
+  border-radius:11px;padding:10px 13px;font-size:16px;flex:0 0 auto;
+  display:flex;align-items:center;gap:6px;min-height:44px}
 .iconbtn:hover{border-color:var(--edge)}
-.iconbtn .n{font-size:11.5px;font-weight:700;color:var(--edge)}
+.iconbtn .n{font-size:13px;font-weight:700;color:var(--edge)}
 .tb2{display:flex;gap:6px;margin-top:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;
   padding-bottom:2px;scrollbar-width:none}
 .tb2::-webkit-scrollbar{display:none}
 .chip{background:var(--panel-2);border:1px solid var(--line);color:var(--ink);border-radius:99px;
-  padding:6px 12px;font-size:12.5px;white-space:nowrap;flex:0 0 auto}
+  padding:9px 16px;font-size:13.5px;white-space:nowrap;flex:0 0 auto}
 .chip.on{background:var(--green);border-color:var(--edge)}
 .chip.day{font-weight:600}
 .menugrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
@@ -297,3 +300,7 @@ body.gridpage{padding:0}
 .act.slot.b1,.act.slot.b2,.act.slot.b3{border-style:solid;border-color:var(--line);
   flex-direction:column;align-items:flex-start;padding:6px 7px}
 .act.slot.b1 .t,.act.slot.b2 .t,.act.slot.b3 .t{font-size:11.5px;font-weight:600;color:var(--ink)}
+
+.sh .del{position:absolute;top:2px;right:3px;font-size:11px;color:var(--dim);
+  background:none;border:0;padding:2px 4px;line-height:1}
+.sh .del:hover{color:var(--danger)}

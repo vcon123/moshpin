@@ -61,11 +61,14 @@
       <select id="cPick"><option value="">Loading…</option></select>
       <p class="hint" id="cPickNote" style="margin-top:7px"></p>
 
-      <div id="cManual" hidden>
-        <label for="cFest">Festival name</label>
-        <input type="text" id="cFest" maxlength="60" placeholder="e.g. Draaimolen" autocomplete="off">
-        <label for="cYear">Year</label>
-        <input type="text" id="cYear" maxlength="4" inputmode="numeric" placeholder="2027" autocomplete="off">
+      <div id="cRequest" hidden>
+        <label for="rqFest">Which festival, and which year?</label>
+        <input type="text" id="rqFest" maxlength="80" placeholder="e.g. Draaimolen 2027" autocomplete="off">
+        <label for="rqNote">Anything else? (a link to the timetable helps)</label>
+        <textarea id="rqNote" rows="3" maxlength="400" placeholder="https://…"></textarea>
+        <button class="btn wide" id="rqSend" style="margin-top:10px">Send the request</button>
+        <p class="hint" style="margin-top:8px">We can only add a festival once its official
+          timetable has been published.</p>
       </div>
 
       <label for="cName">Your name</label>

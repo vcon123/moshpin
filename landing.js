@@ -86,20 +86,39 @@ async function loadLibrary() {
     (libIndex[b].year - libIndex[a].year) || String(libIndex[a].name).localeCompare(libIndex[b].name));
   sel.innerHTML = keys.map(k =>
     `<option value="${k}">${C.esc(libIndex[k].name)} ${libIndex[k].year}</option>`).join('')
-    + '<option value="__own">Something else — I\'ll add it myself</option>';
+    + '<option value="__ask">My festival isn\'t here — request it</option>';
   onPick();
 }
 function onPick() {
   const v = $('cPick').value;
-  const own = v === '__own';
-  $('cManual').hidden = !own;
+  const ask = v === '__ask';
+  $('cRequest').hidden = !ask;
+  $('createGo').hidden = ask;
   const e = libIndex[v];
-  $('cPickNote').innerHTML = own
-    ? "You'll build the timetable yourself after this. Your festival not in the list? "
-      + "Request it — we can only add one once the official timetable has been published."
-    : e ? `${e.days} days · ${e.stages} stages · ${e.acts} sets${e.place ? ' · ' + C.esc(e.place) : ''}`
+  $('cPickNote').textContent = ask
+    ? "Tell us which one and we'll add it."
+    : e ? `${e.days} days · ${e.stages} stages · ${e.acts} sets${e.place ? ' · ' + e.place : ''}`
         : '';
 }
+$('rqSend') && ($('rqSend').onclick = async () => {
+  const what = $('rqFest').value.trim();
+  if (!what) return C.toast('Which festival?');
+  const btn = $('rqSend');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  try {
+    await C.ref('requests').push({
+      festival: what.slice(0, 80),
+      note: $('rqNote').value.trim().slice(0, 400),
+      uid: C.myUid(), ts: Date.now(),
+      ua: navigator.userAgent.slice(0, 120)
+    });
+    $('cRequest').innerHTML = '<p class="hint">Thanks — that reached us. '
+      + "We'll add it once the official timetable is out.</p>";
+  } catch (e) {
+    btn.disabled = false; btn.textContent = 'Send the request';
+    C.toast("Couldn't send that — try again");
+  }
+});
 $('cPick').onchange = onPick;
 
 $('goCreate').onclick = () => { show('createScreen'); loadLibrary(); $('cGroup').focus(); };
@@ -114,9 +133,10 @@ $('createGo').onclick = async () => {
   clearErr('createErr');
   const gname = $('cGroup').value.trim();
   const pick  = $('cPick').value;
-  const fromLib = pick && pick !== '__own' ? libIndex[pick] : null;
-  const fest  = fromLib ? fromLib.name : $('cFest').value.trim();
-  const year  = String(fromLib ? fromLib.year : ($('cYear').value || '').trim());
+  const fromLib = libIndex[pick] || null;
+  if (!fromLib) return fail('createErr', 'Pick a festival from the list.');
+  const fest  = fromLib.name;
+  const year  = String(fromLib.year);
   const me    = $('cName').value.trim();
   if (!gname) return fail('createErr', 'Give your crew a name.');
   if (!fest)  return fail('createErr', 'Which festival is this for?');
