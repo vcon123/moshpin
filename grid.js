@@ -12,6 +12,7 @@ import * as T from './transport.js';
 const $ = id => document.getElementById(id);
 const esc = C.esc;
 const ROW = 13;                 // pixels per 15 minutes
+const GAP = 6;                  // must match the CSS column gap
 const SLOT = 15;
 
 let crew = null, uid = null, fest = null;
@@ -293,7 +294,16 @@ function draw() {
 
   /* header pane */
   const cols = stages.length + (isAdmin() ? 1 : 0);
-  $('gHead').style.gridTemplateColumns = `repeat(${cols}, minmax(118px,1fr))`;
+  /* Pin both panes to one identical pixel width. Left to `1fr` they resolve
+     differently — the header has no blocks in it — and the header ends up with
+     no scroll range, so it sits still while the grid moves underneath. */
+  const avail = Math.max(240, $('gWrap').clientWidth || 320);
+  const colW = Math.max(118, Math.floor((avail - (cols - 1) * GAP) / cols));
+  const totalW = cols * colW + (cols - 1) * GAP;
+  const track = `repeat(${cols}, ${colW}px)`;
+
+  $('gHead').style.gridTemplateColumns = track;
+  $('gHead').style.width = totalW + 'px';
   $('gHead').innerHTML = stages.map(v => `<div class="sh">${esc(v.name)}</div>`).join('')
     + (isAdmin() ? '<div class="sh" style="color:var(--dim)">add</div>' : '');
 
@@ -308,7 +318,8 @@ function draw() {
 
   /* grid */
   const g = $('gGrid');
-  g.style.gridTemplateColumns = `repeat(${cols}, minmax(118px,1fr))`;
+  g.style.gridTemplateColumns = track;
+  g.style.width = totalW + 'px';
   g.style.gridAutoRows = ROW + 'px';
   g.style.height = (rows * ROW) + 'px';
 
@@ -317,7 +328,26 @@ function draw() {
     html += `<div class="hl" style="top:${(m / SLOT) * ROW}px"></div>`;
 
   stages.forEach((v, col) => {
-    for (const a of F.actsOf(fest, dayIdx, v.id)) {
+    const acts = F.actsOf(fest, dayIdx, v.id);
+    if (!acts.length) {                       // a stage with no lineup: hourly slots
+      for (let h = 0; h < day.hours; h++) {
+        const hhmm = C.minToHhmm(day.start * 60 + h * 60);
+        const id = synId(v.id, dayIdx, hhmm);
+        const r1 = Math.round(h * 60 / SLOT) + 1;
+        const pk = pickers(id);
+        const mine = !!myPicks[id];
+        html += `<div class="act slot${mine ? ' mine' : ''}${pk.length ? ' b' + Math.min(3, pk.length) : ''}"
+            data-a="${id}" style="grid-column:${col + 1};grid-row:${r1} / ${r1 + 4}">
+            <div class="t">${pk.length ? esc(hhmm) : '+'}</div>
+            ${pk.length ? `<div class="tm">${esc(hhmm)}</div>` : ''}
+            ${pk.length ? `<div class="bb">${pk.slice(0, 3).map(p =>
+                `<span class="bu" style="background:${C.colorFor(p.name)}" title="${esc(p.name)}">${esc(C.initials(p.name))}</span>`
+              ).join('')}${pk.length > 3 ? `<span class="bu more">+${pk.length - 3}</span>` : ''}</div>` : ''}
+          </div>`;
+      }
+      return;
+    }
+    for (const a of acts) {
       const o = F.offset(fest, a), e = F.endOffset(fest, a);
       const r1 = Math.round(o / SLOT) + 1, r2 = Math.max(r1 + 1, Math.round(e / SLOT) + 1);
       const mine = !!myPicks[a.id];
@@ -354,14 +384,31 @@ const liveHere = a => CI.active().filter(c => c.a === a.id).length;
 async function addStage() {
   const name = prompt('Name of the stage or area');
   if (!name || !name.trim()) return;
+  /* No acts — inventing a lineup would be wrong. The column stays empty and
+     shows hourly slots people can pin ("I'll be here then") and check in to. */
   const v = F.addVenue(fest, name.trim(), 'stage');
-  fest.days.forEach((d, i) => {
-    F.addAct(fest, { d: i, v: v.id, s: C.minToHhmm(d.start * 60),
-      e: C.minToHhmm((d.start + d.hours) * 60), n: v.name });
-  });
+  v.open = true;
   try { await F.save(crew.gid, fest); C.toast(v.name + ' added'); }
   catch (e) { return C.toast("Couldn't add it — " + (e.message || '')); }
   drawStageTabs(); draw();
+}
+
+/* ---------- pinnable slots on a stage with no lineup ----------
+   A pin is stored like any other favourite, under a synthetic id that encodes
+   the venue, the day and the hour — so notes, bubbles and the crew list all
+   work unchanged. */
+const SYN = /^s\|([^|]+)\|(\d+)\|(\d{2}:\d{2})$/;
+const synId = (v, d, hhmm) => `s|${v}|${d}|${hhmm}`;
+function actInfo(id) {
+  const m = SYN.exec(id);
+  if (m) {
+    const v = F.venue(fest, m[1]);
+    const endM = C.hhmmToMin(m[3]) + 60;
+    return { id, syn: true, v: m[1], d: +m[2], s: m[3], e: C.minToHhmm(endM),
+             n: (v ? v.name : 'Stage') + ' · ' + m[3] };
+  }
+  const a = fest.acts[id];
+  return a ? Object.assign({ id }, a) : null;
 }
 
 /* the line showing where we are, in festival-local time */
@@ -381,12 +428,17 @@ function drawNow() {
 $('gWrap').addEventListener('scroll', () => {
   $('gHeadWrap').scrollLeft = $('gWrap').scrollLeft;
 }, { passive: true });
+let rz = null;
+window.addEventListener('resize', () => {
+  clearTimeout(rz);
+  rz = setTimeout(() => { if (fest) draw(); }, 150);
+});
 
 /* ---------- one set ---------- */
 let openId = null;
 function openAct(id) {
-  const a = Object.assign({ id }, fest.acts[id]);
-  if (!a.n) return;
+  const a = actInfo(id);
+  if (!a || !a.n) return;
   openId = id;
   const v = F.venue(fest, a.v);
   const mine = !!myPicks[id];
@@ -394,14 +446,15 @@ function openAct(id) {
   $('actBody').innerHTML = `
     <div class="phead"><b>${esc(a.n)}</b><button class="btn sm" id="acClose">✕</button></div>
     <p class="hint">${esc(v ? v.name : '')} · ${esc(F.dayLabel(fest.days[a.d]))} · ${esc(a.s)}–${esc(a.e)}</p>
+    ${a.syn ? '<p class="hint" style="margin-top:8px">No lineup here — pin the hours you plan to be around.</p>' : ''}
     ${a.u ? `<div class="row" style="margin-top:12px"><a class="btn wide" href="${esc(a.u)}" target="_blank" rel="noopener">Listen ↗</a></div>` : ''}
     ${F.currentDay(fest) ? `<button class="btn wide" id="acHere" style="margin-top:10px">📍 Check in here</button>` : ''}
     <button class="btn ${mine ? 'danger' : 'primary'} wide" id="acTog" style="margin-top:12px">
-      ${mine ? 'Remove from my lineup' : '★ Add to my lineup'}</button>
+      ${mine ? (a.syn ? 'Unpin this hour' : 'Remove from my lineup') : (a.syn ? '📌 I\'ll be here' : '★ Add to my lineup')}</button>
     ${mine ? `<label for="acNote">Your note (everyone sees it)</label>
       <textarea id="acNote" rows="2" maxlength="200" placeholder="e.g. must see for me">${esc(pickNote(myPicks[id]))}</textarea>
       <button class="btn wide" id="acNoteSave" style="margin-top:8px">Save note</button>` : ''}
-    ${ratingBlock(id)}
+    ${a.syn ? '' : ratingBlock(id)}
     ${others.length ? `<p class="hint" style="margin-top:14px">Also going:</p>` +
       others.map(p => `<div class="mrow"><span class="bu" style="background:${C.colorFor(p.name)}">${esc(C.initials(p.name))}</span>
         <div class="mname">${esc(p.name)}${p.note ? ` <span class="hint">— ${esc(p.note)}</span>` : ''}</div></div>`).join('')
@@ -419,7 +472,7 @@ function openAct(id) {
     CI.goFloor(a.v, id);
     ciOpen = true; $('ciPanel').classList.add('open'); drawCI();
   };
-  wireStars(id);
+  if (!a.syn) wireStars(id);
   const ns = $('acNoteSave');
   if (ns) ns.onclick = () => {
     const t = $('acNote').value.trim();
@@ -702,8 +755,8 @@ function openTravel(forUid) {
 /* ---------- my lineup ---------- */
 function showMine() {
   const list = Object.keys(myPicks)
-    .map(id => Object.assign({ id }, fest.acts[id]))
-    .filter(a => a.n)
+    .map(actInfo)
+    .filter(a => a && a.n)
     .sort((x, y) => x.d - y.d || F.offset(fest, x) - F.offset(fest, y));
   $('mineBody').innerHTML = `
     <div class="phead"><b>My lineup</b><button class="btn sm" id="mnClose">✕</button></div>
