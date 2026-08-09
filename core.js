@@ -147,8 +147,28 @@ export function groupFromUrl() {
   const p = q.get('p');            // quick-join links carry the passcode
   return g ? { gid: g, pin: p || null } : null;
 }
-export const currentGroup = () => LS.get('mp_crew', null);      // {gid,name,token}
-export const setCurrentGroup = g => LS.set('mp_crew', g);
+/* A phone can belong to several crews — one per festival. We remember them all
+   and which one is showing, so switching is instant and signing in on a second
+   device with the same name + passcode picks everything back up. */
+export const allGroups = () => LS.get('mp_crews', []);          // [{gid,name,token,fest}]
+export const currentGroup = () => {
+  const cur = LS.get('mp_crew', null);
+  if (cur) return cur;
+  const all = allGroups();
+  return all.length ? all[0] : null;
+};
+export function setCurrentGroup(g) {
+  LS.set('mp_crew', g);
+  if (!g) return;
+  const all = allGroups().filter(x => x.gid !== g.gid);
+  all.unshift(g);
+  LS.set('mp_crews', all.slice(0, 12));
+}
+export function forgetGroup(gid) {
+  LS.set('mp_crews', allGroups().filter(x => x.gid !== gid));
+  const cur = LS.get('mp_crew', null);
+  if (cur && cur.gid === gid) LS.set('mp_crew', allGroups()[0] || null);
+}
 export const myProfile = () => LS.get('mp_me', null);            // {name,photo}
 export const setMyProfile = p => LS.set('mp_me', p);
 

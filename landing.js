@@ -107,7 +107,7 @@ $('goJoin').onclick = () => { show('joinScreen'); $('joinGid').focus(); };
 $('createBack').onclick = () => show('startScreen');
 $('joinBack').onclick = () => show('startScreen');
 $('backOther').onclick = () => show('startScreen');
-$('backGo').onclick = () => { location.href = 'app.html'; };
+$('backGo').onclick = () => { location.href = 'grid.html'; };
 
 $('createGo').onclick = async () => {
   if (busy) return;
@@ -184,7 +184,7 @@ $('shareLink').onclick = async () => {
   if (navigator.share) { try { await navigator.share({ text: t }); } catch (e) {} }
   else { try { await navigator.clipboard.writeText(t); C.toast('Invite copied'); } catch (e) {} }
 };
-$('invGo').onclick = () => { location.href = 'app.html'; };
+$('invGo').onclick = () => { location.href = 'grid.html'; };
 
 /* ---------- join ---------- */
 let previewed = null;
@@ -232,7 +232,7 @@ $('joinGo').onclick = async () => {
 
     C.setCurrentGroup({ gid, name: previewed.name, token });
     C.setMyProfile({ name: me, photo: null });
-    location.href = 'app.html';
+    location.href = 'grid.html';
   } catch (e) {
     working(btn, false, 'Join the crew');
     const msg = String(e && e.message || '');

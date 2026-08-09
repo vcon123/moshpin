@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Timetable — MoshPin</title>
+<title>MoshPin</title>
 <meta name="theme-color" content="#1c1d1c">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📍</text></svg>">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="app.css">
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
@@ -15,15 +17,16 @@
 <body class="gridpage">
 <div id="app" hidden>
 
-  <header class="ghead">
-    <a class="btn sm" href="app.html">‹ Crew</a>
-    <div class="gtitle" id="festName"></div>
-    <button class="btn sm" id="boardBtn" hidden>🏆</button>
-    <button class="btn sm" id="wrapBtn" hidden>🎁</button>
-    <button class="btn sm" id="mineBtn"><span id="picked">0 tagged</span></button>
+  <header class="topbar">
+    <div class="tb1">
+      <span class="brandmark"><img src="logo.png" alt=""><b>Mosh<span>Pin</span></b></span>
+      <div class="evname"><b id="evTitle"></b><span id="evSub"></span></div>
+      <button class="iconbtn" id="crewBtn">👥<span class="n" id="crewN">0</span></button>
+      <button class="iconbtn" id="menuBtn">☰</button>
+    </div>
+    <nav class="tb2" id="dayTabs"></nav>
+    <nav class="tb2" id="stageTabs"></nav>
   </header>
-
-  <nav class="tabs" id="dayTabs"></nav>
 
   <div class="tt">
     <div class="ttop">
@@ -43,6 +46,7 @@
     <div class="cibody" id="ciBody"></div>
     <div class="cifoot" id="ciFoot"></div>
   </div>
+
   <div class="dockpanel" id="chPanel">
     <div class="chead2"><b>💬 Chat</b><button class="btn sm" id="chX" style="margin-left:auto">✕</button></div>
     <div class="chatlog" id="chLog"></div>
@@ -62,11 +66,14 @@
 
 <div class="rxpick" id="rxPick"></div>
 
+<div class="sheet" id="menuSheet"><div class="panel" id="menuBody"></div></div>
+<div class="sheet" id="crewSheet"><div class="panel" id="crewBody"></div></div>
+<div class="sheet" id="trSheet"><div class="panel" id="trBody"></div></div>
 <div class="sheet" id="boardSheet"><div class="panel" id="boardBody"></div></div>
 <div class="sheet" id="wrapSheet"><div class="panel" id="wrapBody"></div></div>
-
 <div class="sheet" id="actSheet"><div class="panel" id="actBody"></div></div>
 <div class="sheet" id="mineSheet"><div class="panel" id="mineBody"></div></div>
+<div class="sheet" id="profSheet"><div class="panel" id="profBody"></div></div>
 
 <script type="module" src="grid.js"></script>
 </body>

@@ -1,0 +1,11 @@
+{
+  "name": "MoshPin",
+  "short_name": "MoshPin",
+  "start_url": "./grid.html",
+  "display": "standalone",
+  "background_color": "#1c1d1c",
+  "theme_color": "#1c1d1c",
+  "icons": [
+    { "src": "logo.png", "sizes": "1254x1254", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

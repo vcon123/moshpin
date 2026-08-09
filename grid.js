@@ -7,6 +7,7 @@ import * as C from './core.js';
 import * as F from './festival.js';
 import * as CI from './checkin.js';
 import * as S from './social.js';
+import * as T from './transport.js';
 
 const $ = id => document.getElementById(id);
 const esc = C.esc;
@@ -18,6 +19,9 @@ let members = {}, photos = {}, admins = {};
 let myPicks = {};               // actId -> 1 or {note}
 let dayIdx = 0;
 let saveTimer = null;
+let hidden = {};            // venueId -> true, for the stage filter
+let meta = null;
+const isAdmin = () => !!admins[uid];
 
 const pickNote = v => (v && typeof v === 'object' && v.note) ? v.note : '';
 const encPicks = o => Object.keys(o || {}).join(' ');
@@ -54,7 +58,12 @@ window.addEventListener('error', e => {
     return boom('This crew has no timetable yet.',
       'An admin needs to set up the festival first.');
   }
-  $('festName').textContent = `${fest.name} ${fest.year}`;
+    /* title bar: the crew's own name, then the festival */
+
+  try { meta = (await C.ref('groups/' + crew.gid + '/meta').get()).val(); } catch (e) {}
+  try { hidden = JSON.parse(localStorage.getItem('mp_hide_' + crew.gid) || '{}'); } catch (e) {}
+  C.ref('groups/' + crew.gid + '/admins').on('child_added', s => { admins[s.key] = true; drawTop(); });
+  C.ref('groups/' + crew.gid + '/admins').on('child_removed', s => { delete admins[s.key]; drawTop(); });
 
   const mref = C.ref('groups/' + crew.gid + '/members');
   mref.on('child_added',   s => { takeMember(s.key, s.val()); draw(); });
@@ -76,12 +85,19 @@ window.addEventListener('error', e => {
     members: () => members, photos: () => photos,
     onChange: () => drawChat()
   });
+  T.init({
+    gid: crew.gid, uid,
+    members: () => members, photos: () => photos,
+    onChange: () => { if ($('trSheet').classList.contains('on')) showTransport(); }
+  });
+  if ('serviceWorker' in navigator)
+    navigator.serviceWorker.register('sw.js').catch(() => {});
 
   $('app').hidden = false;
   $('dock').hidden = false;
-  $('boardBtn').hidden = !F.hasStarted(fest);
-  $('wrapBtn').hidden = !F.isOver(fest);
+  drawTop();
   drawTabs();
+  drawStageTabs();
   draw();
   drawCI();
   setInterval(() => { if (!document.hidden) { drawNow(); drawCI(); } }, 60000);
@@ -233,10 +249,36 @@ function pickers(actId) {
   return out;
 }
 
+/* ---------- top bar ---------- */
+function drawTop() {
+  $('evTitle').textContent = (meta && meta.name) || (crew && crew.name) || 'My crew';
+  $('evSub').textContent = `${fest.name} ${fest.year}`;
+  $('crewN').textContent = Object.keys(members).length;
+}
+
+/* stage filter — hide the stages you're never going to */
+function drawStageTabs() {
+  const st = F.stages(fest);
+  $('stageTabs').innerHTML =
+    `<button class="chip${Object.keys(hidden).length ? '' : ' on'}" data-all="1">All stages</button>`
+    + st.map(v => `<button class="chip${hidden[v.id] ? '' : ' on'}" data-v="${v.id}">${esc(v.name)}</button>`).join('');
+  $('stageTabs').querySelector('[data-all]').onclick = () => {
+    hidden = {}; saveHidden(); drawStageTabs(); draw();
+  };
+  $('stageTabs').querySelectorAll('[data-v]').forEach(b => b.onclick = () => {
+    const id = b.dataset.v;
+    if (hidden[id]) delete hidden[id]; else hidden[id] = 1;
+    if (F.stages(fest).every(v => hidden[v.id])) hidden = {};   // never hide everything
+    saveHidden(); drawStageTabs(); draw();
+  });
+}
+const saveHidden = () => { try { localStorage.setItem('mp_hide_' + crew.gid, JSON.stringify(hidden)); } catch (e) {} };
+const shownStages = () => F.stages(fest).filter(v => !hidden[v.id]);
+
 /* ---------- day tabs ---------- */
 function drawTabs() {
   $('dayTabs').innerHTML = fest.days.map((d, i) =>
-    `<button class="btn sm ${i === dayIdx ? 'primary' : ''}" data-d="${i}">${esc(F.dayLabel(d))}</button>`
+    `<button class="chip day${i === dayIdx ? ' on' : ''}" data-d="${i}">${esc(F.dayLabel(d))}</button>`
   ).join('');
   $('dayTabs').querySelectorAll('[data-d]').forEach(b =>
     b.onclick = () => { dayIdx = +b.dataset.d; drawTabs(); draw(); });
@@ -246,12 +288,14 @@ function drawTabs() {
 function draw() {
   const day = fest.days[dayIdx];
   if (!day) return;
-  const stages = F.stages(fest);
+  const stages = shownStages();
   const rows = Math.ceil(day.hours * 60 / SLOT);
 
   /* header pane */
-  $('gHead').style.gridTemplateColumns = `repeat(${stages.length}, minmax(118px,1fr))`;
-  $('gHead').innerHTML = stages.map(v => `<div class="sh">${esc(v.name)}</div>`).join('');
+  const cols = stages.length + (isAdmin() ? 1 : 0);
+  $('gHead').style.gridTemplateColumns = `repeat(${cols}, minmax(118px,1fr))`;
+  $('gHead').innerHTML = stages.map(v => `<div class="sh">${esc(v.name)}</div>`).join('')
+    + (isAdmin() ? '<div class="sh" style="color:var(--dim)">add</div>' : '');
 
   /* time column */
   let tc = '';
@@ -264,7 +308,7 @@ function draw() {
 
   /* grid */
   const g = $('gGrid');
-  g.style.gridTemplateColumns = `repeat(${stages.length}, minmax(118px,1fr))`;
+  g.style.gridTemplateColumns = `repeat(${cols}, minmax(118px,1fr))`;
   g.style.gridAutoRows = ROW + 'px';
   g.style.height = (rows * ROW) + 'px';
 
@@ -291,13 +335,34 @@ function draw() {
         </div>`;
     }
   });
+  if (isAdmin())
+    html += `<div class="addcol" style="grid-column:${stages.length + 1};grid-row:1 / 6">
+      <button id="addStage">+ add a stage</button></div>`;
   g.innerHTML = html;
+  const as = $('addStage');
+  if (as) as.onclick = addStage;
   g.querySelectorAll('.act').forEach(el => el.onclick = () => openAct(el.dataset.a));
   drawNow();
-  $('picked').textContent = Object.keys(myPicks).length + ' tagged';
+  
 }
 
 const liveHere = a => CI.active().filter(c => c.a === a.id).length;
+
+/* An admin can add a stage the official lineup missed. It gets one all-day
+   block per day so people can favourite it and check in — deliberately no act
+   editing, because nobody wants to type a lineup. */
+async function addStage() {
+  const name = prompt('Name of the stage or area');
+  if (!name || !name.trim()) return;
+  const v = F.addVenue(fest, name.trim(), 'stage');
+  fest.days.forEach((d, i) => {
+    F.addAct(fest, { d: i, v: v.id, s: C.minToHhmm(d.start * 60),
+      e: C.minToHhmm((d.start + d.hours) * 60), n: v.name });
+  });
+  try { await F.save(crew.gid, fest); C.toast(v.name + ' added'); }
+  catch (e) { return C.toast("Couldn't add it — " + (e.message || '')); }
+  drawStageTabs(); draw();
+}
 
 /* the line showing where we are, in festival-local time */
 function drawNow() {
@@ -362,7 +427,7 @@ function openAct(id) {
     saveSoon(); draw(); C.toast('Saved');
   };
 }
-$('actSheet').onclick = e => { if (e.target.id === 'actSheet') $('actSheet').classList.remove('on'); };
+
 
 /* ---------- ratings ---------- */
 let myRatings = {};
@@ -419,8 +484,7 @@ function showBoard() {
   $('boardSheet').classList.add('on');
   $('bdClose').onclick = () => $('boardSheet').classList.remove('on');
 }
-$('boardBtn').onclick = showBoard;
-$('boardSheet').onclick = e => { if (e.target.id === 'boardSheet') $('boardSheet').classList.remove('on'); };
+
 
 /* ---------- the wrap ---------- */
 async function showWrap() {
@@ -466,11 +530,177 @@ async function showWrap() {
     try { await navigator.clipboard.writeText(L.join('\n')); C.toast('Copied'); } catch (e) {}
   };
 }
-$('wrapBtn').onclick = showWrap;
-$('wrapSheet').onclick = e => { if (e.target.id === 'wrapSheet') $('wrapSheet').classList.remove('on'); };
+
+
+/* ---------- menu ---------- */
+const closeSheet = id => $(id).classList.remove('on');
+['menuSheet','crewSheet','trSheet','boardSheet','wrapSheet','actSheet','mineSheet','profSheet']
+  .forEach(id => $(id).onclick = e => { if (e.target.id === id) closeSheet(id); });
+
+$('menuBtn').onclick = () => {
+  const others = C.allGroups().filter(g => g.gid !== crew.gid);
+  $('menuBody').innerHTML = `
+    <div class="phead"><b>Menu</b><button class="btn sm" id="mxClose">✕</button></div>
+    <div class="menugrid">
+      <button class="btn" id="mProfile">🙂 My profile</button>
+      <button class="btn" id="mMine">★ My lineup</button>
+      <button class="btn" id="mTransport">🚗 Getting there</button>
+      <button class="btn" id="mInvite">✉ Invite someone</button>
+      ${F.hasStarted(fest) ? '<button class="btn" id="mBoard">🏆 Best sets</button>' : ''}
+      ${F.isOver(fest) ? '<button class="btn" id="mWrap">🎁 The wrap</button>' : ''}
+    </div>
+    ${others.length ? `<div class="tgroup">Switch crew</div>` + others.map(g =>
+      `<button class="btn wide" style="margin-bottom:6px" data-sw="${esc(g.gid)}">${esc(g.name)}</button>`).join('') : ''}
+    <div class="tgroup">This crew</div>
+    <button class="btn wide" id="mNew" style="margin-bottom:6px">Join or create another crew</button>
+    <button class="btn danger wide" id="mLeave">Leave ${esc((meta && meta.name) || 'this crew')}</button>`;
+  $('menuSheet').classList.add('on');
+  $('mxClose').onclick = () => closeSheet('menuSheet');
+  $('mProfile').onclick = () => { closeSheet('menuSheet'); showProfile(); };
+  $('mMine').onclick = () => { closeSheet('menuSheet'); showMine(); };
+  $('mTransport').onclick = () => { closeSheet('menuSheet'); showTransport(); };
+  $('mInvite').onclick = () => { closeSheet('menuSheet'); showCrew(true); };
+  const bb = $('mBoard'); if (bb) bb.onclick = () => { closeSheet('menuSheet'); showBoard(); };
+  const wb = $('mWrap'); if (wb) wb.onclick = () => { closeSheet('menuSheet'); showWrap(); };
+  $('mNew').onclick = () => { location.href = 'index.html?add=1'; };
+  $('mLeave').onclick = async () => {
+    if (!confirm(`Leave ${(meta && meta.name) || 'this crew'}? You'll need the invite and passcode to come back.`)) return;
+    try { await C.ref('groups/' + crew.gid + '/members/' + uid).remove(); } catch (e) {}
+    C.forgetGroup(crew.gid);
+    location.href = 'index.html';
+  };
+  $('menuBody').querySelectorAll('[data-sw]').forEach(b => b.onclick = () => {
+    const g = C.allGroups().find(x => x.gid === b.dataset.sw);
+    if (g) { C.setCurrentGroup(g); location.reload(); }
+  });
+};
+
+/* ---------- the crew ---------- */
+$('crewBtn').onclick = () => showCrew(false);
+function showCrew(inviteFirst) {
+  const link = location.origin + location.pathname.replace(/[^/]*$/, '') + 'index.html?g=' + crew.gid;
+  const order = Object.keys(members).sort((a, b) =>
+    a === uid ? -1 : b === uid ? 1 : String(members[a].name || '').localeCompare(String(members[b].name || '')));
+  $('crewBody').innerHTML = `
+    <div class="phead"><b>👥 ${esc((meta && meta.name) || 'The crew')}</b><button class="btn sm" id="cwClose">✕</button></div>
+    <div class="mlist">${order.map(u => `<div class="mrow">${avatarFor(u)}
+      <div class="mname">${esc(members[u].name || '?')}
+        ${u === uid ? '<span class="tag">you</span>' : ''}${admins[u] ? '<span class="tag adm">admin</span>' : ''}</div>
+      ${isAdmin() && u !== uid ? `<button class="mini" data-adm="${u}">${admins[u] ? 'Unadmin' : 'Make admin'}</button>
+        <button class="mini danger" data-kick="${u}">Remove</button>` : ''}
+    </div>`).join('')}</div>
+    <label for="cwLink">Invite link</label>
+    <input type="text" id="cwLink" readonly value="${esc(link)}">
+    <p class="hint" style="margin-top:6px">They'll need the passcode too — send that separately.</p>
+    <div class="row" style="margin-top:10px">
+      <button class="btn" id="cwCopy">Copy link</button>
+      <button class="btn" id="cwShare">Share</button>
+    </div>`;
+  $('crewSheet').classList.add('on');
+  $('cwClose').onclick = () => closeSheet('crewSheet');
+  $('cwCopy').onclick = async () => {
+    try { await navigator.clipboard.writeText(link); C.toast('Link copied'); } catch (e) { $('cwLink').select(); }
+  };
+  $('cwShare').onclick = async () => {
+    const t = `Join ${(meta && meta.name) || 'my crew'} on MoshPin\n${link}`;
+    if (navigator.share) { try { await navigator.share({ text: t }); } catch (e) {} }
+    else { try { await navigator.clipboard.writeText(t); C.toast('Copied'); } catch (e) {} }
+  };
+  $('crewBody').querySelectorAll('[data-adm]').forEach(b => b.onclick = async () => {
+    const u = b.dataset.adm;
+    try {
+      if (admins[u]) {
+        if (Object.keys(admins).length < 2) return C.toast('A crew needs one admin');
+        await C.ref('groups/' + crew.gid + '/admins/' + u).remove();
+      } else await C.ref('groups/' + crew.gid + '/admins/' + u).set(true);
+      setTimeout(() => showCrew(false), 150);
+    } catch (e) { C.toast("Couldn't change that"); }
+  });
+  $('crewBody').querySelectorAll('[data-kick]').forEach(b => b.onclick = async () => {
+    const u = b.dataset.kick;
+    if (!confirm(`Remove ${members[u].name}?`)) return;
+    try {
+      await C.ref('groups/' + crew.gid + '/members/' + u).remove();
+      await C.ref('groups/' + crew.gid + '/admins/' + u).remove().catch(() => {});
+    } catch (e) {}
+    setTimeout(() => showCrew(false), 150);
+  });
+  if (inviteFirst) setTimeout(() => $('cwLink').select(), 60);
+}
+function avatarFor(u, size) {
+  const s = size || 32, nm = (members[u] || {}).name || '?';
+  return photos[u]
+    ? `<img class="av" src="${photos[u]}" alt="" style="width:${s}px;height:${s}px">`
+    : `<span class="av fb" style="width:${s}px;height:${s}px;background:${C.colorFor(nm)};font-size:${Math.round(s / 2.6)}px">${esc(C.initials(nm))}</span>`;
+}
+
+/* ---------- profile ---------- */
+let pendingPhoto = null;
+function showProfile() {
+  $('profBody').innerHTML = `
+    <div class="phead"><b>My profile</b><button class="btn sm" id="pfClose">✕</button></div>
+    <div style="text-align:center;margin:8px 0" id="pfPrev">${avatarFor(uid, 76)}</div>
+    <label for="pfFile">Photo</label><input type="file" id="pfFile" accept="image/*">
+    <label for="pfName">Name</label>
+    <input type="text" id="pfName" maxlength="24" value="${esc((members[uid] || {}).name || '')}">
+    <button class="btn primary wide" id="pfSave" style="margin-top:14px">Save</button>`;
+  $('profSheet').classList.add('on');
+  $('pfClose').onclick = () => closeSheet('profSheet');
+  $('pfFile').onchange = e => {
+    const f = e.target.files && e.target.files[0]; e.target.value = '';
+    if (!f) return;
+    shrink(f, 96, 0.7).then(dd => {
+      if (!dd) return C.toast("Couldn't read that image");
+      pendingPhoto = dd;
+      $('pfPrev').innerHTML = `<img class="av" src="${dd}" alt="" style="width:76px;height:76px">`;
+    });
+  };
+  $('pfSave').onclick = async () => {
+    const nm = $('pfName').value.trim();
+    if (!nm) return C.toast('Enter a name');
+    try {
+      await C.ref('groups/' + crew.gid + '/members/' + uid).update({ name: nm, t: crew.token });
+      if (pendingPhoto) {
+        await C.ref('groups/' + crew.gid + '/photos/' + uid).set(pendingPhoto);
+        photos[uid] = pendingPhoto;
+        try { localStorage.setItem('mp_photos_' + crew.gid, JSON.stringify(photos)); } catch (e) {}
+        pendingPhoto = null;
+      }
+      C.setMyProfile({ name: nm, photo: null });
+      closeSheet('profSheet'); draw(); C.toast('Saved');
+    } catch (e) { C.toast("Couldn't save — " + (e.message || '')); }
+  };
+}
+function shrink(file, px, q) {
+  return new Promise(res => {
+    const img = new Image();
+    img.onload = () => {
+      const s = Math.min(img.width, img.height);
+      const c = document.createElement('canvas'); c.width = c.height = px;
+      try { c.getContext('2d').drawImage(img, (img.width - s) / 2, (img.height - s) / 2, s, s, 0, 0, px, px);
+            res(c.toDataURL('image/jpeg', q)); } catch (e) { res(null); }
+      URL.revokeObjectURL(img.src);
+    };
+    img.onerror = () => res(null);
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+/* ---------- transport ---------- */
+function showTransport() {
+  T.render($('trBody'), isAdmin());
+  $('trSheet').classList.add('on');
+  $('trX').onclick = () => closeSheet('trSheet');
+  $('trMine').onclick = () => openTravel(uid);
+  $('trBody').querySelectorAll('[data-ed]').forEach(b => b.onclick = () => openTravel(b.dataset.ed));
+}
+function openTravel(forUid) {
+  T.renderForm($('trBody'), forUid, () => showTransport());
+  $('trX').onclick = () => closeSheet('trSheet');
+}
 
 /* ---------- my lineup ---------- */
-$('mineBtn').onclick = () => {
+function showMine() {
   const list = Object.keys(myPicks)
     .map(id => Object.assign({ id }, fest.acts[id]))
     .filter(a => a.n)
@@ -483,6 +713,6 @@ $('mineBtn').onclick = () => {
         <div class="hint">${esc(F.dayLabel(fest.days[a.d]))} · ${esc(v ? v.name : '')} · ${esc(a.s)}–${esc(a.e)}</div></div></div>`;
     }).join('') : '<p class="hint">Nothing tagged yet. Tap any set on the timetable.</p>'}`;
   $('mineSheet').classList.add('on');
-  $('mnClose').onclick = () => $('mineSheet').classList.remove('on');
-};
-$('mineSheet').onclick = e => { if (e.target.id === 'mineSheet') $('mineSheet').classList.remove('on'); };
+  $('mnClose').onclick = () => closeSheet('mineSheet');
+}
+
