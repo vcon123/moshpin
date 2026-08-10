@@ -286,7 +286,7 @@ function draw() {
   $('gHead').style.gridTemplateColumns = track;
   $('gHead').style.width = totalW + 'px';
   $('gHead').innerHTML = stages.map(v =>
-      `<div class="sh">${esc(v.name)}${(v.open && isAdmin())
+      `<div class="sh">${esc(v.name)}${(v.added && isAdmin())
         ? `<button class="del" data-delv="${v.id}" title="Remove this stage">✕</button>` : ''}</div>`).join('')
     + (isAdmin() ? '<div class="sh" style="color:var(--dim)">add</div>' : '');
   $('gHead').querySelectorAll('[data-delv]').forEach(b => b.onclick = e => {
@@ -373,7 +373,8 @@ async function addStage() {
   /* No acts — inventing a lineup would be wrong. The column stays empty and
      shows hourly slots people can pin ("I'll be here then") and check in to. */
   const v = F.addVenue(fest, name.trim(), 'stage');
-  v.open = true;
+  v.open = true;                       // no lineup — show pinnable hours
+  v.added = true;                      // and it can be removed again
   try { await F.save(crew.gid, fest); }
   catch (e) { return C.toast("Couldn't add it — " + (e.message || '')); }
   draw();
@@ -382,7 +383,7 @@ async function addStage() {
 /* only stages someone added by hand can be removed — never the real lineup */
 async function removeStage(vid) {
   const v = F.venue(fest, vid);
-  if (!v || !v.open) return;
+  if (!v || !v.added) return;          // never the official lineup, never Armadillow
   if (!confirm(`Remove ${v.name}? Anything pinned there goes with it.`)) return;
   F.removeVenue(fest, vid);
   try { await F.save(crew.gid, fest); } catch (e) { return C.toast("Couldn't remove it"); }

@@ -7,6 +7,11 @@
    "tz": "Europe/Amsterdam",
    "days": [
     {
+     "date": "2026-08-20",
+     "start": 12,
+     "hours": 17
+    },
+    {
      "date": "2026-08-21",
      "start": 9,
      "hours": 20
@@ -104,1631 +109,1631 @@
    ],
    "acts": {
     "a1": {
-     "d": 0,
+     "d": 1,
      "v": "alpha",
      "s": "14:00",
      "e": "16:00",
      "n": "Amyl and the Sniffers"
     },
     "a2": {
-     "d": 0,
+     "d": 1,
      "v": "alpha",
      "s": "16:00",
      "e": "18:15",
      "n": "Antoon"
     },
     "a3": {
-     "d": 0,
+     "d": 1,
      "v": "alpha",
      "s": "18:15",
      "e": "20:15",
      "n": "Kneecap"
     },
     "a4": {
-     "d": 0,
+     "d": 1,
      "v": "alpha",
      "s": "20:15",
      "e": "22:40",
      "n": "Parcels"
     },
     "a5": {
-     "d": 0,
+     "d": 1,
      "v": "alpha",
      "s": "22:40",
      "e": "00:10",
      "n": "New Wave"
     },
     "a6": {
-     "d": 0,
+     "d": 1,
      "v": "bravo",
      "s": "13:00",
      "e": "15:00",
      "n": "Nusantara Beat"
     },
     "a7": {
-     "d": 0,
+     "d": 1,
      "v": "bravo",
      "s": "15:00",
      "e": "17:00",
      "n": "Ad\u00e9la"
     },
     "a8": {
-     "d": 0,
+     "d": 1,
      "v": "bravo",
      "s": "17:00",
      "e": "19:15",
      "n": "Nu Genea Live Band"
     },
     "a9": {
-     "d": 0,
+     "d": 1,
      "v": "bravo",
      "s": "19:15",
      "e": "21:30",
      "n": "Willem"
     },
     "a10": {
-     "d": 0,
+     "d": 1,
      "v": "bravo",
      "s": "21:30",
      "e": "23:00",
      "n": "Viagra Boys"
     },
     "a11": {
-     "d": 0,
+     "d": 1,
      "v": "bravo",
      "s": "23:00",
      "e": "00:30",
      "n": "S-Candalo"
     },
     "a12": {
-     "d": 0,
+     "d": 1,
      "v": "bravo",
      "s": "00:30",
      "e": "02:00",
      "n": "Chlo\u00e9 Caillet"
     },
     "a13": {
-     "d": 0,
+     "d": 1,
      "v": "bravo",
      "s": "02:00",
      "e": "03:30",
      "n": "Ben UFO"
     },
     "a14": {
-     "d": 0,
+     "d": 1,
      "v": "bravo",
      "s": "03:30",
      "e": "05:00",
      "n": "Identified Patient"
     },
     "a15": {
-     "d": 0,
+     "d": 1,
      "v": "heineken",
      "s": "13:15",
      "e": "15:15",
      "n": "Skye Newman"
     },
     "a16": {
-     "d": 0,
+     "d": 1,
      "v": "heineken",
      "s": "15:15",
      "e": "17:15",
      "n": "Leisure"
     },
     "a17": {
-     "d": 0,
+     "d": 1,
      "v": "heineken",
      "s": "17:15",
      "e": "19:30",
      "n": "JPEGMAFIA"
     },
     "a18": {
-     "d": 0,
+     "d": 1,
      "v": "heineken",
      "s": "19:30",
      "e": "21:30",
      "n": "Blood Orange"
     },
     "a19": {
-     "d": 0,
+     "d": 1,
      "v": "heineken",
      "s": "21:30",
      "e": "00:00",
      "n": "Richie Hawtin DEX EFX X0X"
     },
     "a20": {
-     "d": 0,
+     "d": 1,
      "v": "heineken",
      "s": "00:00",
      "e": "01:30",
      "n": "Basshall: Kybba, Tribal Kush & Nems"
     },
     "a21": {
-     "d": 0,
+     "d": 1,
      "v": "lima",
      "s": "12:15",
      "e": "14:15",
      "n": "Romy Liz Rose"
     },
     "a22": {
-     "d": 0,
+     "d": 1,
      "v": "lima",
      "s": "14:15",
      "e": "16:15",
      "n": "Susobrino"
     },
     "a23": {
-     "d": 0,
+     "d": 1,
      "v": "lima",
      "s": "16:15",
      "e": "18:30",
      "n": "Dove Ellis"
     },
     "a24": {
-     "d": 0,
+     "d": 1,
      "v": "lima",
      "s": "18:30",
      "e": "20:30",
      "n": "Ana Frango El\u00e9trico"
     },
     "a25": {
-     "d": 0,
+     "d": 1,
      "v": "lima",
      "s": "20:30",
      "e": "22:30",
      "n": "Zeyne"
     },
     "a26": {
-     "d": 0,
+     "d": 1,
      "v": "lima",
      "s": "22:30",
      "e": "00:00",
      "n": "Fulu Miziki"
     },
     "a27": {
-     "d": 0,
+     "d": 1,
      "v": "lima",
      "s": "00:00",
      "e": "01:30",
      "n": "Het Alternatief"
     },
     "a28": {
-     "d": 0,
+     "d": 1,
      "v": "india",
      "s": "11:30",
      "e": "14:00",
      "n": "Yoga"
     },
     "a29": {
-     "d": 0,
+     "d": 1,
      "v": "india",
      "s": "14:00",
      "e": "16:00",
      "n": "Jet van der Steen"
     },
     "a30": {
-     "d": 0,
+     "d": 1,
      "v": "india",
      "s": "16:00",
      "e": "18:15",
      "n": "Joy (Anonymous)"
     },
     "a31": {
-     "d": 0,
+     "d": 1,
      "v": "india",
      "s": "18:15",
      "e": "20:30",
      "n": "Cobrah"
     },
     "a32": {
-     "d": 0,
+     "d": 1,
      "v": "india",
      "s": "20:30",
      "e": "22:30",
      "n": "President"
     },
     "a33": {
-     "d": 0,
+     "d": 1,
      "v": "india",
      "s": "22:30",
      "e": "00:00",
      "n": "FCUKERS"
     },
     "a34": {
-     "d": 0,
+     "d": 1,
      "v": "india",
      "s": "00:00",
      "e": "01:30",
      "n": "Mary Lake"
     },
     "a35": {
-     "d": 0,
+     "d": 1,
      "v": "india",
      "s": "01:30",
      "e": "03:00",
      "n": "Freddy K"
     },
     "a36": {
-     "d": 0,
+     "d": 1,
      "v": "india",
      "s": "03:00",
      "e": "04:30",
      "n": "Marr\u00f8n"
     },
     "a37": {
-     "d": 0,
+     "d": 1,
      "v": "xray",
      "s": "12:30",
      "e": "14:30",
      "n": "Chalk"
     },
     "a38": {
-     "d": 0,
+     "d": 1,
      "v": "xray",
      "s": "14:30",
      "e": "16:15",
      "n": "Radio Z"
     },
     "a39": {
-     "d": 0,
+     "d": 1,
      "v": "xray",
      "s": "16:15",
      "e": "18:00",
      "n": "Rose Gray"
     },
     "a40": {
-     "d": 0,
+     "d": 1,
      "v": "xray",
      "s": "18:00",
      "e": "19:50",
      "n": "Sons"
     },
     "a41": {
-     "d": 0,
+     "d": 1,
      "v": "xray",
      "s": "19:50",
      "e": "21:45",
      "n": "Gurriers"
     },
     "a42": {
-     "d": 0,
+     "d": 1,
      "v": "xray",
      "s": "21:45",
      "e": "23:00",
      "n": "James K"
     },
     "a43": {
-     "d": 0,
+     "d": 1,
      "v": "xray",
      "s": "23:00",
      "e": "00:30",
      "n": "Bassvictim"
     },
     "a44": {
-     "d": 0,
+     "d": 1,
      "v": "xray",
      "s": "00:30",
      "e": "02:00",
      "n": "Violent Magic Orchestra"
     },
     "a45": {
-     "d": 0,
+     "d": 1,
      "v": "xray",
      "s": "02:00",
      "e": "03:00",
      "n": "Kaboutertje Putlucht"
     },
     "a46": {
-     "d": 0,
+     "d": 1,
      "v": "xray",
      "s": "03:00",
      "e": "04:30",
      "n": "Gys\u00e8le"
     },
     "a47": {
-     "d": 0,
+     "d": 1,
      "v": "hacienda",
      "s": "12:30",
      "e": "16:30",
      "n": "Kim Josefine"
     },
     "a48": {
-     "d": 0,
+     "d": 1,
      "v": "hacienda",
      "s": "16:30",
      "e": "18:30",
      "n": "Charmaine"
     },
     "a49": {
-     "d": 0,
+     "d": 1,
      "v": "hacienda",
      "s": "18:30",
      "e": "20:30",
      "n": "Lashanti"
     },
     "a50": {
-     "d": 0,
+     "d": 1,
      "v": "hacienda",
      "s": "20:30",
      "e": "22:00",
      "n": "Jea"
     },
     "a51": {
-     "d": 0,
+     "d": 1,
      "v": "hacienda",
      "s": "22:00",
      "e": "23:30",
      "n": "Tins"
     },
     "a52": {
-     "d": 0,
+     "d": 1,
      "v": "hacienda",
      "s": "23:30",
      "e": "01:00",
      "n": "Tienson"
     },
     "a53": {
-     "d": 0,
+     "d": 1,
      "v": "hacienda",
      "s": "01:00",
      "e": "03:00",
      "n": "Dam Swindle"
     },
     "a54": {
-     "d": 0,
+     "d": 1,
      "v": "hacienda",
      "s": "03:00",
      "e": "04:30",
      "n": "Laura Meester"
     },
     "a55": {
-     "d": 0,
+     "d": 1,
      "v": "juliet",
      "s": "14:00",
      "e": "17:15",
      "n": "Orkater"
     },
     "a56": {
-     "d": 0,
+     "d": 1,
      "v": "juliet",
      "s": "17:15",
      "e": "19:00",
      "n": "Boys Won't Be Boys"
     },
     "a57": {
-     "d": 0,
+     "d": 1,
      "v": "juliet",
      "s": "19:00",
      "e": "21:00",
      "n": "Dieheleding"
     },
     "a58": {
-     "d": 0,
+     "d": 1,
      "v": "juliet",
      "s": "21:00",
      "e": "22:45",
      "n": "David Linszen"
     },
     "a59": {
-     "d": 0,
+     "d": 1,
      "v": "juliet",
      "s": "22:45",
      "e": "00:30",
      "n": "Marcel van Roosmalen"
     },
     "a60": {
-     "d": 0,
+     "d": 1,
      "v": "juliet",
      "s": "00:30",
      "e": "02:00",
      "n": "Comedytrain"
     },
     "a61": {
-     "d": 0,
+     "d": 1,
      "v": "echo",
      "s": "12:30",
      "e": "14:00",
      "n": "We moeten het hebben over: Femicide"
     },
     "a62": {
-     "d": 0,
+     "d": 1,
      "v": "echo",
      "s": "14:00",
      "e": "15:15",
      "n": "VPRO Tegenlicht"
     },
     "a63": {
-     "d": 0,
+     "d": 1,
      "v": "echo",
      "s": "15:15",
      "e": "16:45",
      "n": "Hoe ziek is de geopolitiek: Soedan"
     },
     "a64": {
-     "d": 0,
+     "d": 1,
      "v": "echo",
      "s": "16:45",
      "e": "18:00",
      "n": "New Scientist Live"
     },
     "a65": {
-     "d": 0,
+     "d": 1,
      "v": "echo",
      "s": "18:00",
      "e": "19:00",
      "n": "NWQ"
     },
     "a66": {
-     "d": 0,
+     "d": 1,
      "v": "echo",
      "s": "19:00",
      "e": "21:15",
      "n": "The Making of De Jeugd van Tegenwoordig \u2013 Live"
     },
     "a67": {
-     "d": 0,
+     "d": 1,
      "v": "echo",
      "s": "21:15",
      "e": "23:30",
      "n": "Billie Eilish: Hit Me Hard and Soft"
     },
     "a68": {
-     "d": 0,
+     "d": 1,
      "v": "echo",
      "s": "23:30",
      "e": "01:05",
      "n": "Fantastic Planet"
     },
     "a69": {
-     "d": 0,
+     "d": 1,
      "v": "echo",
      "s": "01:05",
      "e": "02:35",
      "n": "Teenage Sex and Death at Camp Miasma"
     },
     "a70": {
-     "d": 0,
+     "d": 1,
      "v": "adonis",
      "s": "10:45",
      "e": "12:00",
      "n": "Bakkie Llit"
     },
     "a71": {
-     "d": 0,
+     "d": 1,
      "v": "adonis",
      "s": "12:00",
      "e": "13:30",
      "n": "Flip the Script!"
     },
     "a72": {
-     "d": 0,
+     "d": 1,
      "v": "adonis",
      "s": "13:30",
      "e": "15:00",
      "n": "Wat Nu? Verzet!"
     },
     "a73": {
-     "d": 0,
+     "d": 1,
      "v": "adonis",
      "s": "15:00",
      "e": "16:30",
      "n": "Mensen Zeggen Dingen"
     },
     "a74": {
-     "d": 0,
+     "d": 1,
      "v": "adonis",
      "s": "16:30",
      "e": "17:30",
      "n": "Ayoub Kharkhach"
     },
     "a75": {
-     "d": 0,
+     "d": 1,
      "v": "adonis",
      "s": "17:30",
      "e": "18:30",
      "n": "Janneke de Bijl"
     },
     "a76": {
-     "d": 0,
+     "d": 1,
      "v": "adonis",
      "s": "18:30",
      "e": "19:30",
      "n": "Mark Waumans"
     },
     "a77": {
-     "d": 0,
+     "d": 1,
      "v": "adonis",
      "s": "19:30",
      "e": "22:00",
      "n": "Marie Koet"
     },
     "a78": {
-     "d": 0,
+     "d": 1,
      "v": "adonis",
      "s": "22:00",
      "e": "23:30",
      "n": "Adonis"
     },
     "a79": {
-     "d": 1,
+     "d": 2,
      "v": "alpha",
      "s": "14:00",
      "e": "16:00",
      "n": "Kelis"
     },
     "a80": {
-     "d": 1,
+     "d": 2,
      "v": "alpha",
      "s": "16:00",
      "e": "18:15",
      "n": "S10"
     },
     "a81": {
-     "d": 1,
+     "d": 2,
      "v": "alpha",
      "s": "18:15",
      "e": "20:30",
      "n": "Major Lazer"
     },
     "a82": {
-     "d": 1,
+     "d": 2,
      "v": "alpha",
      "s": "20:30",
      "e": "22:30",
      "n": "Sombr"
     },
     "a83": {
-     "d": 1,
+     "d": 2,
      "v": "alpha",
      "s": "22:30",
      "e": "00:00",
      "n": "Tyler, The Creator"
     },
     "a84": {
-     "d": 1,
+     "d": 2,
      "v": "bravo",
      "s": "13:00",
      "e": "15:00",
      "n": "Jos\u00e9 Gonz\u00e1lez"
     },
     "a85": {
-     "d": 1,
+     "d": 2,
      "v": "bravo",
      "s": "15:00",
      "e": "17:00",
      "n": "Zimmer90"
     },
     "a86": {
-     "d": 1,
+     "d": 2,
      "v": "bravo",
      "s": "17:00",
      "e": "19:15",
      "n": "IJsland"
     },
     "a87": {
-     "d": 1,
+     "d": 2,
      "v": "bravo",
      "s": "19:15",
      "e": "21:15",
      "n": "Geese"
     },
     "a88": {
-     "d": 1,
+     "d": 2,
      "v": "bravo",
      "s": "21:15",
      "e": "23:00",
      "n": "Eefje de Visser"
     },
     "a89": {
-     "d": 1,
+     "d": 2,
      "v": "bravo",
      "s": "23:00",
      "e": "00:30",
      "n": "Afra"
     },
     "a90": {
-     "d": 1,
+     "d": 2,
      "v": "bravo",
      "s": "00:30",
      "e": "02:00",
      "n": "Helena Hauff"
     },
     "a91": {
-     "d": 1,
+     "d": 2,
      "v": "bravo",
      "s": "02:00",
      "e": "03:30",
      "n": "H\u00e9ctor Oaks"
     },
     "a92": {
-     "d": 1,
+     "d": 2,
      "v": "bravo",
      "s": "03:30",
      "e": "05:00",
      "n": "Boys Noize"
     },
     "a93": {
-     "d": 1,
+     "d": 2,
      "v": "heineken",
      "s": "11:30",
      "e": "13:15",
      "n": "Soul Linedance Workshop door Summer Dance Forever"
     },
     "a94": {
-     "d": 1,
+     "d": 2,
      "v": "heineken",
      "s": "13:15",
      "e": "15:15",
      "n": "Milolaathetlukken"
     },
     "a95": {
-     "d": 1,
+     "d": 2,
      "v": "heineken",
      "s": "15:15",
      "e": "17:15",
      "n": "Ravyn Lenae"
     },
     "a96": {
-     "d": 1,
+     "d": 2,
      "v": "heineken",
      "s": "17:15",
      "e": "19:30",
      "n": "Pale Jay"
     },
     "a97": {
-     "d": 1,
+     "d": 2,
      "v": "heineken",
      "s": "19:30",
      "e": "21:45",
      "n": "Nia Archives"
     },
     "a98": {
-     "d": 1,
+     "d": 2,
      "v": "heineken",
      "s": "21:45",
      "e": "00:00",
      "n": "Royal Blood"
     },
     "a99": {
-     "d": 1,
+     "d": 2,
      "v": "heineken",
      "s": "00:00",
      "e": "01:30",
      "n": "Lambrini Girls"
     },
     "a100": {
-     "d": 1,
+     "d": 2,
      "v": "heineken",
      "s": "01:30",
      "e": "03:00",
      "n": "TLM"
     },
     "a101": {
-     "d": 1,
+     "d": 2,
      "v": "lima",
      "s": "12:15",
      "e": "14:15",
      "n": "Latanya Alberto"
     },
     "a102": {
-     "d": 1,
+     "d": 2,
      "v": "lima",
      "s": "14:15",
      "e": "16:15",
      "n": "Ko Shin Moon"
     },
     "a103": {
-     "d": 1,
+     "d": 2,
      "v": "lima",
      "s": "16:15",
      "e": "18:25",
      "n": "Il Mago del Gelato"
     },
     "a104": {
-     "d": 1,
+     "d": 2,
      "v": "lima",
      "s": "18:25",
      "e": "20:40",
      "n": "Tyler Ballgame"
     },
     "a105": {
-     "d": 1,
+     "d": 2,
      "v": "lima",
      "s": "20:40",
      "e": "22:30",
      "n": "Fauna"
     },
     "a106": {
-     "d": 1,
+     "d": 2,
      "v": "lima",
      "s": "22:30",
      "e": "00:00",
      "n": "\u00c1cido Pantera"
     },
     "a107": {
-     "d": 1,
+     "d": 2,
      "v": "lima",
      "s": "00:00",
      "e": "01:30",
      "n": "Ol\u00e1 Brazil!"
     },
     "a108": {
-     "d": 1,
+     "d": 2,
      "v": "india",
      "s": "11:30",
      "e": "14:15",
      "n": "Yoga"
     },
     "a109": {
-     "d": 1,
+     "d": 2,
      "v": "india",
      "s": "14:15",
      "e": "16:15",
      "n": "Violet Grohl"
     },
     "a110": {
-     "d": 1,
+     "d": 2,
      "v": "india",
      "s": "16:15",
      "e": "18:20",
      "n": "KEO"
     },
     "a111": {
-     "d": 1,
+     "d": 2,
      "v": "india",
      "s": "18:20",
      "e": "20:30",
      "n": "Chloe Qisha"
     },
     "a112": {
-     "d": 1,
+     "d": 2,
      "v": "india",
      "s": "20:30",
      "e": "22:30",
      "n": "Zep"
     },
     "a113": {
-     "d": 1,
+     "d": 2,
      "v": "india",
      "s": "22:30",
      "e": "00:00",
      "n": "Maey"
     },
     "a114": {
-     "d": 1,
+     "d": 2,
      "v": "india",
      "s": "00:00",
      "e": "01:00",
      "n": "SMIB"
     },
     "a115": {
-     "d": 1,
+     "d": 2,
      "v": "india",
      "s": "01:00",
      "e": "02:15",
      "n": "S!rene"
     },
     "a116": {
-     "d": 1,
+     "d": 2,
      "v": "india",
      "s": "02:15",
      "e": "03:30",
      "n": "Waxfiend"
     },
     "a117": {
-     "d": 1,
+     "d": 2,
      "v": "india",
      "s": "03:30",
      "e": "05:00",
      "n": "Nala"
     },
     "a118": {
-     "d": 1,
+     "d": 2,
      "v": "xray",
      "s": "14:00",
      "e": "15:40",
      "n": "Terzij de Horde"
     },
     "a119": {
-     "d": 1,
+     "d": 2,
      "v": "xray",
      "s": "15:40",
      "e": "17:10",
      "n": "Guilt Trip"
     },
     "a120": {
-     "d": 1,
+     "d": 2,
      "v": "xray",
      "s": "17:10",
      "e": "18:45",
      "n": "Sophia Stel"
     },
     "a121": {
-     "d": 1,
+     "d": 2,
      "v": "xray",
      "s": "18:45",
      "e": "20:30",
      "n": "Tracey"
     },
     "a122": {
-     "d": 1,
+     "d": 2,
      "v": "xray",
      "s": "20:30",
      "e": "22:00",
      "n": "Speed"
     },
     "a123": {
-     "d": 1,
+     "d": 2,
      "v": "xray",
      "s": "22:00",
      "e": "23:30",
      "n": "Voices From The Lake"
     },
     "a124": {
-     "d": 1,
+     "d": 2,
      "v": "xray",
      "s": "23:30",
      "e": "01:30",
      "n": "Skee Mask"
     },
     "a125": {
-     "d": 1,
+     "d": 2,
      "v": "xray",
      "s": "01:30",
      "e": "03:15",
      "n": "DJRUM"
     },
     "a126": {
-     "d": 1,
+     "d": 2,
      "v": "xray",
      "s": "03:15",
      "e": "04:45",
      "n": "upsammy"
     },
     "a127": {
-     "d": 1,
+     "d": 2,
      "v": "hacienda",
      "s": "12:30",
      "e": "16:30",
      "n": "Ketama Man"
     },
     "a128": {
-     "d": 1,
+     "d": 2,
      "v": "hacienda",
      "s": "16:30",
      "e": "18:30",
      "n": "Folake"
     },
     "a129": {
-     "d": 1,
+     "d": 2,
      "v": "hacienda",
      "s": "18:30",
      "e": "21:00",
      "n": "Y\u016fsu"
     },
     "a130": {
-     "d": 1,
+     "d": 2,
      "v": "hacienda",
      "s": "21:00",
      "e": "23:30",
      "n": "Fiesta Macumba Soundsystem"
     },
     "a131": {
-     "d": 1,
+     "d": 2,
      "v": "hacienda",
      "s": "23:30",
      "e": "01:30",
      "n": "Rockefellababe"
     },
     "a132": {
-     "d": 1,
+     "d": 2,
      "v": "hacienda",
      "s": "01:30",
      "e": "03:00",
      "n": "Tera K\u00f2r\u00e1"
     },
     "a133": {
-     "d": 1,
+     "d": 2,
      "v": "hacienda",
      "s": "03:00",
      "e": "04:30",
      "n": "Lamsi"
     },
     "a134": {
-     "d": 1,
+     "d": 2,
      "v": "juliet",
      "s": "14:00",
      "e": "17:00",
      "n": "Nasrdin Dchar"
     },
     "a135": {
-     "d": 1,
+     "d": 2,
      "v": "juliet",
      "s": "17:00",
      "e": "19:00",
      "n": "Aqueerius"
     },
     "a136": {
-     "d": 1,
+     "d": 2,
      "v": "juliet",
      "s": "19:00",
      "e": "21:00",
      "n": "IRC"
     },
     "a137": {
-     "d": 1,
+     "d": 2,
      "v": "juliet",
      "s": "21:00",
      "e": "22:45",
      "n": "Isabelle Kafando"
     },
     "a138": {
-     "d": 1,
+     "d": 2,
      "v": "juliet",
      "s": "22:45",
      "e": "00:30",
      "n": "Ron van Zalmsaus"
     },
     "a139": {
-     "d": 1,
+     "d": 2,
      "v": "juliet",
      "s": "00:30",
      "e": "02:00",
      "n": "Comedy Club Haug"
     },
     "a140": {
-     "d": 1,
+     "d": 2,
      "v": "echo",
      "s": "12:30",
      "e": "14:00",
      "n": "We moeten het hebben over: de rechtsstaat"
     },
     "a141": {
-     "d": 1,
+     "d": 2,
      "v": "echo",
      "s": "14:00",
      "e": "15:15",
      "n": "VPRO Tegenlicht"
     },
     "a142": {
-     "d": 1,
+     "d": 2,
      "v": "echo",
      "s": "15:15",
      "e": "16:45",
      "n": "Hoe ziek is de geopolitiek: Iran"
     },
     "a143": {
-     "d": 1,
+     "d": 2,
      "v": "echo",
      "s": "16:45",
      "e": "18:00",
      "n": "New Scientist Live"
     },
     "a144": {
-     "d": 1,
+     "d": 2,
      "v": "echo",
      "s": "18:00",
      "e": "19:00",
      "n": "NWQ"
     },
     "a145": {
-     "d": 1,
+     "d": 2,
      "v": "echo",
      "s": "19:00",
      "e": "20:30",
      "n": "Fantastic Shorts"
     },
     "a146": {
-     "d": 1,
+     "d": 2,
      "v": "echo",
      "s": "20:30",
      "e": "22:45",
      "n": "The Rocky Horror Picture Show Sing-Along"
     },
     "a147": {
-     "d": 1,
+     "d": 2,
      "v": "echo",
      "s": "22:45",
      "e": "00:50",
      "n": "The Drama"
     },
     "a148": {
-     "d": 1,
+     "d": 2,
      "v": "echo",
      "s": "00:50",
      "e": "02:20",
      "n": "Akira"
     },
     "a149": {
-     "d": 1,
+     "d": 2,
      "v": "adonis",
      "s": "10:45",
      "e": "12:00",
      "n": "Bakkie Llit"
     },
     "a150": {
-     "d": 1,
+     "d": 2,
      "v": "adonis",
      "s": "12:00",
      "e": "13:30",
      "n": "Rocking Books: Giphart x Goldbach"
     },
     "a151": {
-     "d": 1,
+     "d": 2,
      "v": "adonis",
      "s": "13:30",
      "e": "15:00",
      "n": "Wat Nu? Mystiek!"
     },
     "a152": {
-     "d": 1,
+     "d": 2,
      "v": "adonis",
      "s": "15:00",
      "e": "16:30",
      "n": "VPRO Club Lees"
     },
     "a153": {
-     "d": 1,
+     "d": 2,
      "v": "adonis",
      "s": "16:30",
      "e": "17:30",
      "n": "Alina Sharipova"
     },
     "a154": {
-     "d": 1,
+     "d": 2,
      "v": "adonis",
      "s": "17:30",
      "e": "18:30",
      "n": "Teun de Vries"
     },
     "a155": {
-     "d": 1,
+     "d": 2,
      "v": "adonis",
      "s": "18:30",
      "e": "19:30",
      "n": "Kees van Amstel"
     },
     "a156": {
-     "d": 1,
+     "d": 2,
      "v": "adonis",
      "s": "19:30",
      "e": "22:00",
      "n": "Chicks in Dialogue"
     },
     "a157": {
-     "d": 1,
+     "d": 2,
      "v": "adonis",
      "s": "22:00",
      "e": "23:30",
      "n": "Adonis"
     },
     "a158": {
-     "d": 2,
+     "d": 3,
      "v": "alpha",
      "s": "13:30",
      "e": "15:30",
      "n": "Noord Nederlands Orkest"
     },
     "a159": {
-     "d": 2,
+     "d": 3,
      "v": "alpha",
      "s": "15:30",
      "e": "17:30",
      "n": "Hermanos Guti\u00e9rrez"
     },
     "a160": {
-     "d": 2,
+     "d": 3,
      "v": "alpha",
      "s": "17:30",
      "e": "19:30",
      "n": "Maribou State"
     },
     "a161": {
-     "d": 2,
+     "d": 3,
      "v": "alpha",
      "s": "19:30",
      "e": "21:30",
      "n": "Turnstile"
     },
     "a162": {
-     "d": 2,
+     "d": 3,
      "v": "alpha",
      "s": "21:30",
      "e": "23:00",
      "n": "Lorde"
     },
     "a163": {
-     "d": 2,
+     "d": 3,
      "v": "bravo",
      "s": "12:30",
      "e": "14:30",
      "n": "Steel Pulse"
     },
     "a164": {
-     "d": 2,
+     "d": 3,
      "v": "bravo",
      "s": "14:30",
      "e": "16:30",
      "n": "Sophie Straat"
     },
     "a165": {
-     "d": 2,
+     "d": 3,
      "v": "bravo",
      "s": "16:30",
      "e": "18:30",
      "n": "Celeste"
     },
     "a166": {
-     "d": 2,
+     "d": 3,
      "v": "bravo",
      "s": "18:30",
      "e": "20:30",
      "n": "2hollis"
     },
     "a167": {
-     "d": 2,
+     "d": 3,
      "v": "bravo",
      "s": "20:30",
      "e": "22:30",
      "n": "Clipse"
     },
     "a168": {
-     "d": 2,
+     "d": 3,
      "v": "bravo",
      "s": "22:30",
      "e": "00:30",
      "n": "Saidah"
     },
     "a169": {
-     "d": 2,
+     "d": 3,
      "v": "bravo",
      "s": "00:30",
      "e": "02:00",
      "n": "Benny Rodrigues"
     },
     "a170": {
-     "d": 2,
+     "d": 3,
      "v": "bravo",
      "s": "02:00",
      "e": "03:30",
      "n": "Kettama"
     },
     "a171": {
-     "d": 2,
+     "d": 3,
      "v": "bravo",
      "s": "03:30",
      "e": "05:00",
      "n": "Nene H"
     },
     "a172": {
-     "d": 2,
+     "d": 3,
      "v": "heineken",
      "s": "12:45",
      "e": "14:45",
      "n": "Merijn Scholten"
     },
     "a173": {
-     "d": 2,
+     "d": 3,
      "v": "heineken",
      "s": "14:45",
      "e": "16:45",
      "n": "Buraka Som Sistema"
     },
     "a174": {
-     "d": 2,
+     "d": 3,
      "v": "heineken",
      "s": "16:45",
      "e": "18:45",
      "n": "Wunderhorse"
     },
     "a175": {
-     "d": 2,
+     "d": 3,
      "v": "heineken",
      "s": "18:45",
      "e": "20:45",
      "n": "Dijon"
     },
     "a176": {
-     "d": 2,
+     "d": 3,
      "v": "heineken",
      "s": "20:45",
      "e": "23:00",
      "n": "Floating Points (live)"
     },
     "a177": {
-     "d": 2,
+     "d": 3,
      "v": "heineken",
      "s": "23:00",
      "e": "00:30",
      "n": "Iconic"
     },
     "a178": {
-     "d": 2,
+     "d": 3,
      "v": "lima",
      "s": "12:00",
      "e": "13:45",
      "n": "Politie Warnsveld"
     },
     "a179": {
-     "d": 2,
+     "d": 3,
      "v": "lima",
      "s": "13:45",
      "e": "15:50",
      "n": "Anaiis"
     },
     "a180": {
-     "d": 2,
+     "d": 3,
      "v": "lima",
      "s": "15:50",
      "e": "17:45",
      "n": "Erin LeCount"
     },
     "a181": {
-     "d": 2,
+     "d": 3,
      "v": "lima",
      "s": "17:45",
      "e": "19:45",
      "n": "El Pony Pisador"
     },
     "a182": {
-     "d": 2,
+     "d": 3,
      "v": "lima",
      "s": "19:45",
      "e": "21:45",
      "n": "Bassolino"
     },
     "a183": {
-     "d": 2,
+     "d": 3,
      "v": "lima",
      "s": "21:45",
      "e": "23:15",
      "n": "Compagnia la Giostra"
     },
     "a184": {
-     "d": 2,
+     "d": 3,
      "v": "lima",
      "s": "23:15",
      "e": "00:45",
      "n": "Vlooiencircus"
     },
     "a185": {
-     "d": 2,
+     "d": 3,
      "v": "india",
      "s": "11:30",
      "e": "13:30",
      "n": "Yoga"
     },
     "a186": {
-     "d": 2,
+     "d": 3,
      "v": "india",
      "s": "13:30",
      "e": "15:30",
      "n": "Brother Wallace"
     },
     "a187": {
-     "d": 2,
+     "d": 3,
      "v": "india",
      "s": "15:30",
      "e": "17:30",
      "n": "Dikke"
     },
     "a188": {
-     "d": 2,
+     "d": 3,
      "v": "india",
      "s": "17:30",
      "e": "19:30",
      "n": "Maruja"
     },
     "a189": {
-     "d": 2,
+     "d": 3,
      "v": "india",
      "s": "19:30",
      "e": "21:45",
      "n": "Naomi Sharon"
     },
     "a190": {
-     "d": 2,
+     "d": 3,
      "v": "india",
      "s": "21:45",
      "e": "23:15",
      "n": "SOR"
     },
     "a191": {
-     "d": 2,
+     "d": 3,
      "v": "india",
      "s": "23:15",
      "e": "00:30",
      "n": "Flava D"
     },
     "a192": {
-     "d": 2,
+     "d": 3,
      "v": "india",
      "s": "00:30",
      "e": "02:00",
      "n": "Skream & Benga"
     },
     "a193": {
-     "d": 2,
+     "d": 3,
      "v": "india",
      "s": "02:00",
      "e": "03:30",
      "n": "Andromedik"
     },
     "a194": {
-     "d": 2,
+     "d": 3,
      "v": "india",
      "s": "03:30",
      "e": "05:00",
      "n": "Tantu Beats"
     },
     "a195": {
-     "d": 2,
+     "d": 3,
      "v": "xray",
      "s": "12:45",
      "e": "14:45",
      "n": "Teen Mortgage"
     },
     "a196": {
-     "d": 2,
+     "d": 3,
      "v": "xray",
      "s": "14:45",
      "e": "15:20",
      "n": "Worldpeace DMT"
     },
     "a197": {
-     "d": 2,
+     "d": 3,
      "v": "xray",
      "s": "15:20",
      "e": "16:45",
      "n": "The Femcels"
     },
     "a198": {
-     "d": 2,
+     "d": 3,
      "v": "xray",
      "s": "16:45",
      "e": "18:30",
      "n": "Jane Remover"
     },
     "a199": {
-     "d": 2,
+     "d": 3,
      "v": "xray",
      "s": "18:30",
      "e": "20:15",
      "n": "Teen Jesus and the Jean Teasers"
     },
     "a200": {
-     "d": 2,
+     "d": 3,
      "v": "xray",
      "s": "20:15",
      "e": "22:00",
      "n": "Ninajirachi"
     },
     "a201": {
-     "d": 2,
+     "d": 3,
      "v": "xray",
      "s": "22:00",
      "e": "23:15",
      "n": "Geordie Greep"
     },
     "a202": {
-     "d": 2,
+     "d": 3,
      "v": "xray",
      "s": "23:15",
      "e": "00:45",
      "n": "This Must Be The Pace with Theo Parrish"
     },
     "a203": {
-     "d": 2,
+     "d": 3,
      "v": "hacienda",
      "s": "12:30",
      "e": "16:30",
      "n": "Abiba Sokoto b2b Pelanoir"
     },
     "a204": {
-     "d": 2,
+     "d": 3,
      "v": "hacienda",
      "s": "16:30",
      "e": "18:30",
      "n": "Eileen"
     },
     "a205": {
-     "d": 2,
+     "d": 3,
      "v": "hacienda",
      "s": "18:30",
      "e": "20:30",
      "n": "Shady Lady"
     },
     "a206": {
-     "d": 2,
+     "d": 3,
      "v": "hacienda",
      "s": "20:30",
      "e": "22:30",
      "n": "Kingdom Sound"
     },
     "a207": {
-     "d": 2,
+     "d": 3,
      "v": "hacienda",
      "s": "22:30",
      "e": "00:30",
      "n": "AK Soundsystem"
     },
     "a208": {
-     "d": 2,
+     "d": 3,
      "v": "hacienda",
      "s": "00:30",
      "e": "02:30",
      "n": "Deejay Abstract"
     },
     "a209": {
-     "d": 2,
+     "d": 3,
      "v": "hacienda",
      "s": "02:30",
      "e": "04:00",
      "n": "Yucky"
     },
     "a210": {
-     "d": 2,
+     "d": 3,
      "v": "juliet",
      "s": "14:30",
      "e": "17:00",
      "n": "Sarah Janneh, NITE, Theater Utrecht, Musicalmakers"
     },
     "a211": {
-     "d": 2,
+     "d": 3,
      "v": "juliet",
      "s": "17:00",
      "e": "19:00",
      "n": "Ita, June Yanez, Leila Sahir, Zephyr Br\u00fcggen"
     },
     "a212": {
-     "d": 2,
+     "d": 3,
      "v": "juliet",
      "s": "19:00",
      "e": "21:00",
      "n": "Circumstances"
     },
     "a213": {
-     "d": 2,
+     "d": 3,
      "v": "juliet",
      "s": "21:00",
      "e": "22:45",
      "n": "Daan van der Hoeven"
     },
     "a214": {
-     "d": 2,
+     "d": 3,
      "v": "juliet",
      "s": "22:45",
      "e": "00:30",
      "n": "De Nationale Avond van de Woordgrap"
     },
     "a215": {
-     "d": 2,
+     "d": 3,
      "v": "juliet",
      "s": "00:30",
      "e": "02:00",
      "n": "De Lowlands Grote* Talentenshow"
     },
     "a216": {
-     "d": 2,
+     "d": 3,
      "v": "echo",
      "s": "12:30",
      "e": "14:00",
      "n": "We moeten het hebben over: Generatie Gaza"
     },
     "a217": {
-     "d": 2,
+     "d": 3,
      "v": "echo",
      "s": "14:00",
      "e": "15:15",
      "n": "VPRO Tegenlicht"
     },
     "a218": {
-     "d": 2,
+     "d": 3,
      "v": "echo",
      "s": "15:15",
      "e": "16:45",
      "n": "Hoe ziek is de geopolitiek: Europa"
     },
     "a219": {
-     "d": 2,
+     "d": 3,
      "v": "echo",
      "s": "16:45",
      "e": "18:00",
      "n": "New Scientist Live"
     },
     "a220": {
-     "d": 2,
+     "d": 3,
      "v": "echo",
      "s": "18:00",
      "e": "19:00",
      "n": "NWQ"
     },
     "a221": {
-     "d": 2,
+     "d": 3,
      "v": "echo",
      "s": "19:00",
      "e": "21:10",
      "n": "Sugar + Q&A"
     },
     "a222": {
-     "d": 2,
+     "d": 3,
      "v": "echo",
      "s": "21:10",
      "e": "23:15",
      "n": "Hundreds of Beavers"
     },
     "a223": {
-     "d": 2,
+     "d": 3,
      "v": "echo",
      "s": "23:15",
      "e": "01:10",
      "n": "Truly Naked"
     },
     "a224": {
-     "d": 2,
+     "d": 3,
      "v": "echo",
      "s": "01:10",
      "e": "02:40",
      "n": "Obsession"
     },
     "a225": {
-     "d": 2,
+     "d": 3,
      "v": "adonis",
      "s": "10:45",
      "e": "12:00",
      "n": "Bakkie Llit"
     },
     "a226": {
-     "d": 2,
+     "d": 3,
      "v": "adonis",
      "s": "12:00",
      "e": "13:30",
      "n": "Darling, Dearest, Dead"
     },
     "a227": {
-     "d": 2,
+     "d": 3,
      "v": "adonis",
      "s": "13:30",
      "e": "15:00",
      "n": "Wat Nu? Fantasy!"
     },
     "a228": {
-     "d": 2,
+     "d": 3,
      "v": "adonis",
      "s": "15:00",
      "e": "16:30",
      "n": "Eindeloos Vertier"
     },
     "a229": {
-     "d": 2,
+     "d": 3,
      "v": "adonis",
      "s": "16:30",
      "e": "17:30",
      "n": "David van Rosmalen"
     },
     "a230": {
-     "d": 2,
+     "d": 3,
      "v": "adonis",
      "s": "17:30",
      "e": "18:30",
      "n": "Martijn Crins"
     },
     "a231": {
-     "d": 2,
+     "d": 3,
      "v": "adonis",
      "s": "18:30",
      "e": "19:30",
      "n": "Davine Perik"
     },
     "a232": {
-     "d": 2,
+     "d": 3,
      "v": "adonis",
      "s": "19:30",
      "e": "22:00",
      "n": "Jasper van der Veen"
     },
     "a233": {
-     "d": 2,
+     "d": 3,
      "v": "adonis",
      "s": "22:00",
      "e": "23:30",
@@ -1747,7 +1752,7 @@
    "name": "Lowlands",
    "year": 2026,
    "place": "Walibi Holland, Biddinghuizen",
-   "days": 3,
+   "days": 4,
    "stages": 11,
    "acts": 233,
    "official": true

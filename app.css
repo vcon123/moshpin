@@ -322,3 +322,11 @@ body.gridpage{padding:0}
   border-radius:99px;min-width:18px;height:18px;line-height:18px;font-size:11px;padding:0 5px}
 .mappin .mpl{font-size:9px;font-weight:400;color:#cfe9d6;max-width:96px;overflow:hidden;text-overflow:ellipsis}
 @media (max-width:700px){.mappin{padding:4px 6px;font-size:10px}.mappin .mpn{font-size:9.5px}.mappin .mpl{display:none}}
+
+/* ---- required photo ---- */
+.photopick{display:flex;align-items:center;gap:12px;margin-top:2px}
+.ppprev{width:60px;height:60px;border-radius:50%;flex:none;background:var(--panel-2);
+  border:1px dashed var(--line);color:var(--dim);display:flex;align-items:center;
+  justify-content:center;font-size:22px;overflow:hidden}
+.ppprev img{width:100%;height:100%;object-fit:cover;display:block}
+.photopick input{flex:1;min-width:0;font-size:12.5px;padding:9px}

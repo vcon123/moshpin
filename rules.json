@@ -100,6 +100,10 @@
             "$uid": {
               ".write": "auth != null && ($uid === auth.uid || root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists())"
             }
+          },
+          "festv": {
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists()",
+            ".write": "auth != null && root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists()"
           }
         }
       },

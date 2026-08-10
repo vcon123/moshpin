@@ -27,21 +27,37 @@ export function blank(name, year) {
 export const newId = () => C.randomCode(6).toLowerCase();
 
 /* ---------- load & save ---------- */
+/* A timetable is ~20 KB and almost never changes, so we keep a version stamp
+   beside it. Loading reads the stamp (a few bytes) and only pulls the document
+   when it has actually moved on. A returning phone downloads nothing at all. */
 export async function load(gid) {
   const cached = C.cacheGet('fest:' + gid);
+  const cachedV = C.cacheGet('festv:' + gid);
   let fest = null;
   if (cached) { try { fest = JSON.parse(cached); } catch (e) {} }
+
+  let liveV = null;
+  try { liveV = (await C.ref('groups/' + gid + '/festv').get()).val(); } catch (e) { return fest; }
+
+  if (fest && liveV != null && String(liveV) === String(cachedV)) return fest;   // unchanged
+
   try {
-    const s = await C.ref('groups/' + gid + '/festival').get();
-    const live = s.val();
-    if (live) { fest = normalise(live); C.cacheSet('fest:' + gid, JSON.stringify(fest)); }
+    const live = (await C.ref('groups/' + gid + '/festival').get()).val();
+    if (live) {
+      fest = normalise(live);
+      C.cacheSet('fest:' + gid, JSON.stringify(fest));
+      C.cacheSet('festv:' + gid, String(liveV == null ? Date.now() : liveV));
+    }
   } catch (e) { /* offline — the cached copy stands */ }
   return fest;
 }
 export async function save(gid, fest) {
   const clean = normalise(fest);
+  const v = Date.now();
   await C.ref('groups/' + gid + '/festival').set(clean);
+  try { await C.ref('groups/' + gid + '/festv').set(v); } catch (e) {}
   C.cacheSet('fest:' + gid, JSON.stringify(clean));
+  C.cacheSet('festv:' + gid, String(v));
   return clean;
 }
 

@@ -11,6 +11,41 @@ const fail = (id, msg) => { const e = $(id); e.textContent = msg; e.classList.ad
 const clearErr = id => $(id).classList.remove('on');
 
 let busy = false;
+let myPhoto = null;
+
+/* shrink on the phone before it ever goes near the network */
+function shrink(file, px, q) {
+  return new Promise(res => {
+    const img = new Image();
+    img.onload = () => {
+      const s = Math.min(img.width, img.height);
+      const c = document.createElement('canvas');
+      c.width = c.height = px;
+      try {
+        c.getContext('2d').drawImage(img, (img.width - s) / 2, (img.height - s) / 2, s, s, 0, 0, px, px);
+        res(c.toDataURL('image/jpeg', q));
+      } catch (e) { res(null); }
+      URL.revokeObjectURL(img.src);
+    };
+    img.onerror = () => res(null);
+    img.src = URL.createObjectURL(file);
+  });
+}
+function wirePhoto(inputId, prevId) {
+  const inp = $(inputId); if (!inp) return;
+  inp.onchange = e => {
+    const f = e.target.files && e.target.files[0];
+    e.target.value = '';
+    if (!f) return;
+    shrink(f, 96, 0.7).then(d => {
+      if (!d) return C.toast("Couldn't read that photo");
+      myPhoto = d;
+      $(prevId).innerHTML = `<img src="${d}" alt="">`;
+    });
+  };
+}
+wirePhoto('cPhoto', 'cPhotoPrev');
+wirePhoto('jPhoto', 'jPhotoPrev');
 function working(btn, on, label) {
   busy = on;
   btn.disabled = on;
@@ -142,6 +177,7 @@ $('createGo').onclick = async () => {
   if (!fest)  return fail('createErr', 'Which festival is this for?');
   if (!/^\d{4}$/.test(year)) return fail('createErr', 'Enter a four-digit year.');
   if (!me)    return fail('createErr', 'Enter your own name so the crew knows who you are.');
+  if (!myPhoto) return fail('createErr', 'Add a photo — it is how people find you in a field.');
 
   const btn = $('createGo');
   working(btn, true);
@@ -158,13 +194,17 @@ $('createGo').onclick = async () => {
       meta: { name: gname, festName: fest, year: +year, slug, created: Date.now(), owner: uid },
       join: { [token]: true },
       admins: { [uid]: true },
-      members: { [uid]: { name: me, joined: Date.now() } }
+      members: { [uid]: { name: me, joined: Date.now() } },
+      photos: { [uid]: myPhoto }
     });
 
     if (fromLib) {
       try {
         const s = await C.ref('library/' + pick).get();
-        if (s.val()) await C.ref('groups/' + gid + '/festival').set(s.val());
+        if (s.val()) {
+          await C.ref('groups/' + gid + '/festival').set(s.val());
+          await C.ref('groups/' + gid + '/festv').set(Date.now());
+        }
       } catch (e) { /* they can still set it up by hand */ }
     }
 
@@ -237,6 +277,7 @@ $('joinGo').onclick = async () => {
   if (!gid) return fail('joinErr', 'Paste the invite link or code.');
   if (!pin) return fail('joinErr', 'Enter the passcode.');
   if (!me)  return fail('joinErr', 'Enter your name.');
+  if (!myPhoto) return fail('joinErr', 'Add a photo — it is how people find you in a field.');
 
   const btn = $('joinGo');
   working(btn, true);
@@ -249,6 +290,7 @@ $('joinGo').onclick = async () => {
        passcode fails here rather than letting anyone in. */
     await C.ref('groups/' + gid + '/members/' + uid)
       .set({ name: me, joined: Date.now(), t: token });
+    try { await C.ref('groups/' + gid + '/photos/' + uid).set(myPhoto); } catch (e) {}
 
     C.setCurrentGroup({ gid, name: previewed.name, token });
     C.setMyProfile({ name: me, photo: null });
