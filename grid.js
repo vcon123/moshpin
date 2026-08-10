@@ -54,6 +54,12 @@ window.addEventListener('error', e => {
   /* identity inside a crew is name + personal pin, not the device */
   uid = crew.key;
   if (!uid) { C.setCurrentGroup(null); location.href = 'index.html'; return; }
+  /* make sure this device is registered against the person — devices that
+     joined before this existed, and any second phone, land here */
+  try {
+    const dev = C.ref('groups/' + crew.gid + '/uidmap/' + C.myUid());
+    if (!(await dev.get()).val() && crew.token) await dev.set({ k: uid, t: crew.token });
+  } catch (e) {}
 
   try { photos = JSON.parse(localStorage.getItem('mp_photos_' + crew.gid) || '{}'); } catch (e) {}
 

@@ -10,103 +10,111 @@
       "library": {
         ".read": true,
         "$slug": {
-          ".write": "auth != null",
+          ".write": "auth != null && !data.exists()",
           ".validate": "newData.hasChildren(['name','year'])"
         }
       },
       "groups": {
         "$gid": {
-          ".write": "auth != null && !data.exists() && newData.hasChildren(['meta','join','admins','members'])",
+          ".write": "auth != null && !data.exists() && newData.hasChildren(['meta','join','admins','members','uidmap'])",
           "meta": {
             ".read": true,
-            ".write": "auth != null && data.exists()"
+            ".write": "auth != null && data.exists() && root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists()"
           },
           "join": {
             ".read": false,
-            ".write": "auth != null"
+            ".write": "auth != null && root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists()"
           },
           "admins": {
-            ".read": "auth != null",
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
             "$k": {
-              ".write": "auth != null"
+              ".write": "auth != null && root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists()"
             }
           },
           "members": {
-            ".read": "auth != null",
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
             "$k": {
-              ".write": "auth != null && (data.exists() || root.child('moshpin/groups/'+$gid+'/join/'+newData.child('t').val()).exists())",
+              ".write": "auth != null && (($k === root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()) || root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists() || (!data.exists() && root.child('moshpin/groups/'+$gid+'/join/'+newData.child('t').val()).exists()))",
               ".validate": "!newData.exists() || newData.hasChild('name')"
             }
           },
           "photos": {
-            ".read": "auth != null",
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
             "$k": {
-              ".write": "auth != null"
+              ".write": "auth != null && ($k === root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val() || root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists())"
             }
           },
           "festival": {
-            ".read": "auth != null",
-            ".write": "auth != null"
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
+            ".write": "auth != null && root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists()"
           },
           "config": {
-            ".read": "auth != null",
-            ".write": "auth != null"
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
+            ".write": "auth != null && root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists()"
           },
           "checkins": {
-            ".read": "auth != null",
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
             "$k": {
-              ".write": "auth != null"
+              ".write": "auth != null && ($k === root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val() || root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists())"
             }
           },
           "chat": {
-            ".read": "auth != null",
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
             "$msg": {
-              ".write": "auth != null"
+              ".write": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists() && (!data.exists() || root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists())",
+              ".validate": "!newData.exists() || newData.child('u').val() === root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()"
             }
           },
           "reactions": {
-            ".read": "auth != null",
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
             "$msg": {
               "$k": {
-                ".write": "auth != null"
+                ".write": "auth != null && $k === root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()"
               }
             }
           },
           "notevotes": {
-            ".read": "auth != null",
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
             "$a": {
               "$author": {
                 "$voter": {
-                  ".write": "auth != null"
+                  ".write": "auth != null && $voter === root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()"
                 }
               }
             }
           },
           "tally": {
-            ".read": "auth != null",
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
             "$k": {
-              ".write": "auth != null"
+              ".write": "auth != null && ($k === root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val() || root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists())"
             }
           },
           "feedback": {
             ".read": false,
             "$id": {
-              ".write": "auth != null"
+              ".write": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()"
             }
           },
           "transport": {
-            ".read": "auth != null",
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
             "$k": {
-              ".write": "auth != null"
+              ".write": "auth != null && ($k === root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val() || root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists())"
             }
           },
           "festv": {
-            ".read": "auth != null",
-            ".write": "auth != null"
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
+            ".write": "auth != null && root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists()"
           },
           "code": {
-            ".read": "auth != null",
-            ".write": "auth != null"
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
+            ".write": "auth != null && root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists()"
+          },
+          "uidmap": {
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
+            "$uid": {
+              ".write": "auth != null && $uid === auth.uid && root.child('moshpin/groups/'+$gid+'/join/'+newData.child('t').val()).exists()",
+              ".validate": "newData.hasChildren(['k','t'])"
+            }
           }
         }
       },

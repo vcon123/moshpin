@@ -221,7 +221,8 @@ $('createGo').onclick = async () => {
       code: pin,                       // members can see it so they can pass it on
       admins: { [mkey]: true },
       members: { [mkey]: { name: me, joined: Date.now() } },
-      photos: { [mkey]: myPhoto }
+      photos: { [mkey]: myPhoto },
+      uidmap: { [uid]: { k: mkey, t: token } }
     }));
 
     if (fromLib) {
@@ -326,6 +327,11 @@ $('joinGo').onclick = async () => {
       working(btn, false, 'Join the crew');
       return fail('joinErr', 'Add a photo — it is how people find you in a field.');
     }
+    /* claim this device for that person — the passcode proves you may be here,
+       the key itself proves which member you are */
+    await step('registering this device', () =>
+      C.ref('groups/' + gid + '/uidmap/' + C.myUid()).set({ k: mkey, t: token }));
+
     if (existing) {
       await step('signing you back in', () =>
         C.ref('groups/' + gid + '/members/' + mkey).update({ t: token, seen: Date.now() }));
