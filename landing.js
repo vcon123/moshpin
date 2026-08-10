@@ -119,11 +119,21 @@ window.addEventListener('error', ev => {
     $('joinGid').value = inv.gid;
     if (inv.pin) $('joinPin').value = inv.pin;
     await previewGroup(inv.gid);
+    if (new URLSearchParams(location.search).get('again'))
+      $('joinKnown').innerHTML = 'Sign back in with the same name and pin you used before — '
+        + 'your picks, ratings and photo are still there.';
     show('joinScreen');
     if (inv.pin) $('joinName').focus();
-  } else if (cur) {                // already a member of something
+  } else if (cur && cur.key) {     // already signed in to something
     $('backName').textContent = cur.name || 'your crew';
     show('backScreen');
+  } else if (cur) {                // known crew, but this device isn't signed in
+    $('joinGid').value = cur.gid;
+    await previewGroup(cur.gid);
+    $('joinKnown').innerHTML = 'Sign back in with the same name and pin you used before — '
+      + 'your picks, ratings and photo are still there.';
+    show('joinScreen');
+    $('joinName').focus();
   } else {
     show('startScreen');
   }

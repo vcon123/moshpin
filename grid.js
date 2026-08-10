@@ -54,13 +54,16 @@ window.addEventListener('error', e => {
   catch (e) { return boom("Couldn't sign in.", e && (e.code || e.message)); }
   /* identity inside a crew is name + personal pin, not the device */
   uid = crew.key;
-  if (!uid) { C.setCurrentGroup(null); location.href = 'index.html'; return; }
+  /* Crews joined before accounts were keyed by name+pin have no key stored.
+     Send them to sign in again rather than bouncing silently — that looked
+     like the app was broken. */
+  if (!uid) { location.href = 'index.html?g=' + encodeURIComponent(crew.gid) + '&again=1'; return; }
   /* make sure this device is registered against the person — devices that
      joined before this existed, and any second phone, land here */
-  try {
-    const dev = C.ref('groups/' + crew.gid + '/uidmap/' + C.myUid());
-    if (!(await dev.get()).val() && crew.token) await dev.set({ k: uid, t: crew.token });
-  } catch (e) {}
+  if (crew.token) {
+    try { await C.ref('groups/' + crew.gid + '/uidmap/' + C.myUid())
+            .set({ k: uid, t: crew.token }); } catch (e) {}
+  }
 
   try { photos = JSON.parse(localStorage.getItem('mp_photos_' + crew.gid) || '{}'); } catch (e) {}
 
@@ -746,10 +749,11 @@ $('crewBtn').onclick = () => showCrew();
 $('trBtn').onclick = () => showTransport();
 $('invBtn').onclick = () => showInvite();
 let crewCode = null;
+let codeErr = '';
 async function loadCode() {
   if (crewCode !== null) return crewCode;
-  try { crewCode = (await C.ref('groups/' + crew.gid + '/code').get()).val() || ''; }
-  catch (e) { crewCode = ''; }
+  try { crewCode = (await C.ref('groups/' + crew.gid + '/code').get()).val() || ''; codeErr = ''; }
+  catch (e) { crewCode = ''; codeErr = String(e && e.message || ''); }
   return crewCode;
 }
 
@@ -855,8 +859,10 @@ function showInvite() {
     $('ivCodeNote').textContent = code
       ? (locked ? 'Locked: only admins can see this. Anyone you give it to can still join.'
                 : 'Send this along with the link — it is asked for when they join.')
-      : (isAdmin() ? 'Made before passcodes were shown here. Set a new one to share it.'
-                   : 'Ask an admin for the passcode.');
+      : codeErr.includes('PERMISSION')
+        ? 'Reload the page once — this device is still being registered with the crew.'
+        : (isAdmin() ? 'Made before passcodes were shown here. Set a new one to share it.'
+                     : 'Ask an admin for the passcode.');
   });
   $('ivCodeCopy').onclick = async () => {
     try { await navigator.clipboard.writeText($('ivCode').textContent); C.toast('Passcode copied'); } catch (e) {}
@@ -865,12 +871,23 @@ function showInvite() {
   const lk = $('ivLock');
   if (lk) lk.onclick = async () => {
     const on = !cfg.lock;
+    if (on && !confirm('Lock the crew?\n\nThe passcode changes to a new one and only '
+        + 'admins can see it, so any code already passed around stops working.')) return;
     try {
+      if (on) {
+        /* a code that has spread cannot be un-spread — replace it */
+        const nu = String(Math.floor(Math.random() * 9000) + 1000);
+        const token = await C.joinToken(crew.gid, nu);
+        await C.ref('groups/' + crew.gid + '/join').set({ [token]: true });
+        await C.ref('groups/' + crew.gid + '/code').set(nu);
+        crewCode = nu; crew.token = token; C.setCurrentGroup(crew);
+        await C.ref('groups/' + crew.gid + '/uidmap/' + C.myUid()).set({ k: uid, t: token });
+      }
       await C.ref('groups/' + crew.gid + '/config/lock').set(on ? true : null);
       cfg.lock = on;
-      C.toast(on ? 'Locked — only admins can see the passcode' : 'Unlocked');
+      C.toast(on ? 'Locked — new passcode set, admins only' : 'Unlocked');
       showInvite();
-    } catch (e) { C.toast("Couldn't change that"); }
+    } catch (e) { C.toast("Couldn't change that — " + (e.message || '')); }
   };
   $('ivCopy').onclick = async () => {
     try { await navigator.clipboard.writeText(link); C.toast('Link copied'); } catch (e) { $('ivLink').select(); }
