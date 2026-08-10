@@ -56,6 +56,12 @@ export function randomCode(n) {
   return Array.from(a, x => ALPHA[x % ALPHA.length]).join('');
 }
 export const randomId = () => randomCode(10).toLowerCase();
+/* Passcodes are four digits: read aloud in a field, typed on a number pad. */
+export function randomPin() {
+  const a = new Uint8Array(4);
+  crypto.getRandomValues(a);
+  return Array.from(a, x => String(x % 10)).join('');
+}
 
 export async function sha256(s) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));

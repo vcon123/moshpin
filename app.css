@@ -336,3 +336,6 @@ body.gridpage{padding:0}
   border:1px solid var(--edge);border-radius:10px;padding:9px 12px;margin-top:2px}
 .codebox span{flex:1;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
   font-size:24px;letter-spacing:7px;color:var(--edge);font-weight:700}
+
+.photopick .btn{flex:1;min-width:0}
+.ppprev{font-size:26px}

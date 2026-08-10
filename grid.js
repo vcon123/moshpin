@@ -670,9 +670,9 @@ async function loadCode() {
 /* Changing it writes a new hash and drops the old one, so a leaked invite stops
    working. */
 async function changeCode() {
-  const nu = (prompt('New passcode (3-8 letters or numbers)') || '').trim().toUpperCase();
+  const nu = (prompt('New passcode — four numbers') || '').trim().replace(/\D/g, '');
   if (!nu) return;
-  if (!/^[A-Z0-9]{3,8}$/.test(nu)) return C.toast('3-8 letters or numbers');
+  if (!/^\d{4}$/.test(nu)) return C.toast('Four numbers, e.g. 4821');
   try {
     const token = await C.joinToken(crew.gid, nu);
     await C.ref('groups/' + crew.gid + '/join').set({ [token]: true });

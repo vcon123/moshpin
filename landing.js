@@ -41,11 +41,15 @@ function wirePhoto(inputId, prevId) {
       if (!d) return C.toast("Couldn't read that photo");
       myPhoto = d;
       $(prevId).innerHTML = `<img src="${d}" alt="">`;
+      const btn = $(inputId + 'Btn'); if (btn) btn.textContent = 'Change photo';
     });
   };
 }
 wirePhoto('cPhoto', 'cPhotoPrev');
 wirePhoto('jPhoto', 'jPhotoPrev');
+[['cPhotoBtn','cPhoto'],['jPhotoBtn','jPhoto']].forEach(([b, f]) => {
+  const btn = $(b); if (btn) btn.onclick = () => $(f).click();
+});
 function working(btn, on, label) {
   busy = on;
   btn.disabled = on;
@@ -183,7 +187,7 @@ $('createGo').onclick = async () => {
   working(btn, true);
   try {
     const gid = C.randomId();
-    const pin = C.randomCode(4);
+    const pin = C.randomPin();
     const token = await C.joinToken(gid, pin);
     const uid = C.myUid();
     const slug = C.slugify(fest) + '-' + year;
@@ -273,7 +277,7 @@ $('joinGo').onclick = async () => {
   if (busy) return;
   clearErr('joinErr');
   const gid = $('joinGid').value.trim();
-  const pin = $('joinPin').value.trim().toUpperCase();
+  const pin = $('joinPin').value.trim().replace(/\D/g, '');
   const me  = $('joinName').value.trim();
   if (!gid) return fail('joinErr', 'Paste the invite link or code.');
   if (!pin) return fail('joinErr', 'Enter the passcode.');
@@ -312,7 +316,7 @@ $('joinGid').addEventListener('input', () => {
   if (m) {
     $('joinGid').value = m[1];
     const p = /[?&]p=([A-Za-z0-9]+)/.exec(v);
-    if (p && !$('joinPin').value) $('joinPin').value = p[1].toUpperCase();
+    if (p && !$('joinPin').value) $('joinPin').value = p[1].replace(/\D/g, '');
     previewGroup(m[1]);
   }
 });
