@@ -664,7 +664,7 @@ $('mapFab').onclick = showMap;
 
 /* ---------- menu ---------- */
 const closeSheet = id => $(id).classList.remove('on');
-['menuSheet','crewSheet','trSheet','boardSheet','wrapSheet','actSheet','mineSheet','profSheet','mapSheet','personSheet']
+['menuSheet','crewSheet','trSheet','boardSheet','wrapSheet','actSheet','mineSheet','profSheet','mapSheet','personSheet','inviteSheet']
   .forEach(id => $(id).onclick = e => { if (e.target.id === id) closeSheet(id); });
 
 $('menuBtn').onclick = () => {
@@ -704,9 +704,9 @@ $('menuBtn').onclick = () => {
 };
 
 /* ---------- the crew ---------- */
-$('crewBtn').onclick = () => showCrew(false);
+$('crewBtn').onclick = () => showCrew();
 $('trBtn').onclick = () => showTransport();
-$('invBtn').onclick = () => showCrew(true);
+$('invBtn').onclick = () => showInvite();
 let crewCode = null;
 async function loadCode() {
   if (crewCode !== null) return crewCode;
@@ -728,72 +728,34 @@ async function changeCode() {
     crewCode = nu;
     crew.token = token; C.setCurrentGroup(crew);
     C.toast('Passcode changed');
-    showCrew(false);
+    showCrew();
   } catch (e) { C.toast("Couldn't change it - " + (e.message || '')); }
 }
 
-function showCrew(inviteFirst) {
-  const link = location.origin + location.pathname.replace(/[^/]*$/, '') + 'index.html?g=' + crew.gid;
-  const order = Object.keys(members).sort((a, b) =>
-    a === uid ? -1 : b === uid ? 1 : String(members[a].name || '').localeCompare(String(members[b].name || '')));
+/* ---------- who is in the crew ---------- */
+function showCrew() {
+  const order = Object.keys(members).sort((x, y) =>
+    x === uid ? -1 : y === uid ? 1 : String(members[x].name || '').localeCompare(String(members[y].name || '')));
   $('crewBody').innerHTML = `
-    <div class="phead"><b>👥 ${esc((meta && meta.name) || 'The crew')}</b><button class="btn sm" id="cwClose">✕</button></div>
-    <div class="mlist">${order.map(u => `<div class="mrow" data-who="${u}" style="cursor:pointer">${avatarFor(u)}
-      <div class="mname">${esc(members[u].name || '?')}
-        ${u === uid ? '<span class="tag">you</span>' : ''}${admins[u] ? '<span class="tag adm">admin</span>' : ''}</div>
-      ${isAdmin() && u !== uid ? `<button class="mini" data-adm="${u}">${admins[u] ? 'Unadmin' : 'Make admin'}</button>
-        <button class="mini danger" data-kick="${u}">Remove</button>` : ''}
-    </div>`).join('')}</div>
-    <label>Passcode</label>
-    <div class="codebox"><span id="cwCode">…</span>
-      <button class="btn sm" id="cwCodeCopy">Copy</button></div>
-    <p class="hint" id="cwCodeNote" style="margin-top:6px"></p>
-    ${isAdmin() ? '<button class="btn sm" id="cwSetCode" style="margin-top:8px">Change passcode</button>' : ''}
-
-    <label for="cwLink">Invite link</label>
-    <input type="text" id="cwLink" readonly value="${esc(link)}">
-    <div class="row" style="margin-top:10px">
-      <button class="btn" id="cwCopy">Copy link</button>
-      <button class="btn" id="cwShare">Share</button>
-    </div>
-    <button class="btn wide" id="cwQrBtn" style="margin-top:8px">Show QR code</button>
-    <div id="cwQr" hidden style="margin-top:12px">
-      <div class="qrbox" style="margin:0 auto">${qrSvg(link, 200)}</div>
-      <p class="hint" style="text-align:center;margin-top:8px">
-        Point a camera at this, then enter <b style="color:var(--edge)" id="cwQrCode">…</b></p>
-    </div>`;
+    <div class="phead"><b>👥 ${esc((meta && meta.name) || 'The crew')}</b>
+      <span class="hint">${order.length} ${order.length === 1 ? 'person' : 'people'}</span>
+      <button class="btn sm" id="cwClose" style="margin-left:auto">✕</button></div>
+    <p class="hint">Tap someone to see where they are, how they're travelling and what they've tagged.</p>
+    <div class="mlist" style="margin-top:8px">${order.map(u => `
+      <div class="mrow" data-who="${u}" style="cursor:pointer">${avatarFor(u)}
+        <div class="mname">${esc(members[u].name || '?')}
+          ${u === uid ? '<span class="tag">you</span>' : ''}${admins[u] ? '<span class="tag adm">admin</span>' : ''}
+        </div>
+        ${isAdmin() && u !== uid ? `<button class="mini" data-adm="${u}">${admins[u] ? 'Unadmin' : 'Make admin'}</button>
+          <button class="mini danger" data-kick="${u}">Remove</button>` : ''}
+        <span style="color:var(--edge)">›</span>
+      </div>`).join('')}</div>
+    <button class="btn wide" id="cwToShare" style="margin-top:14px">✉ Invite someone</button>`;
   $('crewSheet').classList.add('on');
   $('cwClose').onclick = () => closeSheet('crewSheet');
-  loadCode().then(code => {
-    const shown = code || '—';
-    $('cwCode').textContent = shown;
-    const qc = $('cwQrCode'); if (qc) qc.textContent = shown;
-    $('cwCodeNote').textContent = code
-      ? 'Send this along with the link — it is asked for when they join.'
-      : (isAdmin() ? 'Made before passcodes were shown here. Set a new one to share it.'
-                   : 'Ask an admin for the passcode.');
-  });
-  $('cwCodeCopy').onclick = async () => {
-    try { await navigator.clipboard.writeText($('cwCode').textContent); C.toast('Passcode copied'); } catch (e) {}
-  };
-  const sc = $('cwSetCode'); if (sc) sc.onclick = changeCode;
-  $('cwQrBtn').onclick = () => {
-    const q = $('cwQr');
-    q.hidden = !q.hidden;
-    $('cwQrBtn').textContent = q.hidden ? 'Show QR code' : 'Hide QR code';
-  };
-  $('cwCopy').onclick = async () => {
-    try { await navigator.clipboard.writeText(link); C.toast('Link copied'); } catch (e) { $('cwLink').select(); }
-  };
-  $('cwShare').onclick = async () => {
-    const code = await loadCode();
-    const t = `Join ${(meta && meta.name) || 'my crew'} on MoshPin\n${link}`
-      + (code ? `\nPasscode: ${code}` : '');
-    if (navigator.share) { try { await navigator.share({ text: t }); } catch (e) {} }
-    else { try { await navigator.clipboard.writeText(t); C.toast('Copied'); } catch (e) {} }
-  };
+  $('cwToShare').onclick = () => { closeSheet('crewSheet'); showInvite(); };
   $('crewBody').querySelectorAll('[data-who]').forEach(row => row.onclick = e => {
-    if (e.target.closest('button')) return;        // admin controls take priority
+    if (e.target.closest('button')) return;
     showPerson(row.dataset.who);
   });
   $('crewBody').querySelectorAll('[data-adm]').forEach(b => b.onclick = async () => {
@@ -803,7 +765,7 @@ function showCrew(inviteFirst) {
         if (Object.keys(admins).length < 2) return C.toast('A crew needs one admin');
         await C.ref('groups/' + crew.gid + '/admins/' + u).remove();
       } else await C.ref('groups/' + crew.gid + '/admins/' + u).set(true);
-      setTimeout(() => showCrew(false), 150);
+      setTimeout(showCrew, 150);
     } catch (e) { C.toast("Couldn't change that"); }
   });
   $('crewBody').querySelectorAll('[data-kick]').forEach(b => b.onclick = async () => {
@@ -813,10 +775,56 @@ function showCrew(inviteFirst) {
       await C.ref('groups/' + crew.gid + '/members/' + u).remove();
       await C.ref('groups/' + crew.gid + '/admins/' + u).remove().catch(() => {});
     } catch (e) {}
-    setTimeout(() => showCrew(false), 150);
+    setTimeout(showCrew, 150);
   });
-  if (inviteFirst) setTimeout(() => $('cwLink').select(), 60);
 }
+
+/* ---------- inviting people ---------- */
+function showInvite() {
+  const link = location.origin + location.pathname.replace(/[^/]*$/, '') + 'index.html?g=' + crew.gid;
+  $('invBody').innerHTML = `
+    <div class="phead"><b>✉ Invite someone</b><button class="btn sm" id="ivClose">✕</button></div>
+    <p class="hint">They need both the link and the passcode.</p>
+
+    <label>Passcode</label>
+    <div class="codebox"><span id="ivCode">…</span><button class="btn sm" id="ivCodeCopy">Copy</button></div>
+    <p class="hint" id="ivCodeNote" style="margin-top:6px"></p>
+    ${isAdmin() ? '<button class="btn sm" id="ivSetCode" style="margin-top:8px">Change passcode</button>' : ''}
+
+    <label style="margin-top:18px">Scan this</label>
+    <div class="qrbox" style="margin:6px auto 0">${qrSvg(link, 200)}</div>
+
+    <label for="ivLink">Or send the link</label>
+    <input type="text" id="ivLink" readonly value="${esc(link)}">
+    <div class="row" style="margin-top:10px">
+      <button class="btn" id="ivCopy">Copy link</button>
+      <button class="btn primary" id="ivShare">Share</button>
+    </div>`;
+  $('inviteSheet').classList.add('on');
+  $('ivClose').onclick = () => closeSheet('inviteSheet');
+  loadCode().then(code => {
+    $('ivCode').textContent = code || '—';
+    $('ivCodeNote').textContent = code
+      ? 'Send this along with the link — it is asked for when they join.'
+      : (isAdmin() ? 'Made before passcodes were shown here. Set a new one to share it.'
+                   : 'Ask an admin for the passcode.');
+  });
+  $('ivCodeCopy').onclick = async () => {
+    try { await navigator.clipboard.writeText($('ivCode').textContent); C.toast('Passcode copied'); } catch (e) {}
+  };
+  const sc = $('ivSetCode'); if (sc) sc.onclick = changeCode;
+  $('ivCopy').onclick = async () => {
+    try { await navigator.clipboard.writeText(link); C.toast('Link copied'); } catch (e) { $('ivLink').select(); }
+  };
+  $('ivShare').onclick = async () => {
+    const code = await loadCode();
+    const t = `Join ${(meta && meta.name) || 'my crew'} on MoshPin\n${link}`
+      + (code ? `\nPasscode: ${code}` : '');
+    if (navigator.share) { try { await navigator.share({ text: t }); } catch (e) {} }
+    else { try { await navigator.clipboard.writeText(t); C.toast('Copied'); } catch (e) {} }
+  };
+}
+
 function avatarFor(u, size) {
   const s = size || 32, nm = (members[u] || {}).name || '?';
   return photos[u]
