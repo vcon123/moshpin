@@ -33,49 +33,105 @@
      "name": "Alpha",
      "type": "stage",
      "x": 79.3,
-     "y": 46.6
+     "y": 46.6,
+     "plan": {
+      "img": "stage-alpha.png",
+      "w": 560,
+      "h": 795,
+      "cols": 4,
+      "rows": 5,
+      "stage": "top"
+     }
     },
     {
      "id": "bravo",
      "name": "Bravo",
      "type": "stage",
      "x": 34.1,
-     "y": 89.7
+     "y": 89.7,
+     "plan": {
+      "img": "stage-bravo.png",
+      "w": 560,
+      "h": 1036,
+      "cols": 4,
+      "rows": 4,
+      "stage": "top"
+     }
     },
     {
      "id": "heineken",
      "name": "Heineken",
      "type": "stage",
      "x": 9.2,
-     "y": 19.0
+     "y": 19.0,
+     "plan": {
+      "img": "stage-heineken.png",
+      "w": 560,
+      "h": 791,
+      "cols": 3,
+      "rows": 4,
+      "stage": "top"
+     }
     },
     {
      "id": "lima",
      "name": "Lima",
      "type": "stage",
      "x": 40.0,
-     "y": 8.5
+     "y": 8.5,
+     "plan": {
+      "img": "stage-lima.png",
+      "w": 560,
+      "h": 834,
+      "cols": 3,
+      "rows": 3,
+      "stage": "top"
+     }
     },
     {
      "id": "india",
      "name": "India",
      "type": "stage",
      "x": 45.2,
-     "y": 71.8
+     "y": 71.8,
+     "plan": {
+      "img": "stage-india.png",
+      "w": 560,
+      "h": 489,
+      "cols": 3,
+      "rows": 3,
+      "stage": "top"
+     }
     },
     {
      "id": "xray",
      "name": "X-Ray",
      "type": "stage",
      "x": 42.4,
-     "y": 54.1
+     "y": 54.1,
+     "plan": {
+      "img": "stage-x-ray.png",
+      "w": 560,
+      "h": 895,
+      "cols": 3,
+      "rows": 3,
+      "stage": "top"
+     }
     },
     {
      "id": "hacienda",
      "name": "Hacienda",
      "type": "stage",
      "x": 25.5,
-     "y": 55.6
+     "y": 55.6,
+     "plan": {
+      "img": "stage-hacienda.png",
+      "w": 560,
+      "h": 945,
+      "cols": 3,
+      "rows": 3,
+      "stage": "top"
+     }
     },
     {
      "id": "juliet",
@@ -96,7 +152,15 @@
      "name": "Adonis",
      "type": "stage",
      "x": 46.6,
-     "y": 79.9
+     "y": 79.9,
+     "plan": {
+      "img": "stage-adonis.png",
+      "w": 560,
+      "h": 893,
+      "cols": 2,
+      "rows": 3,
+      "stage": "top"
+     }
     },
     {
      "id": "armadillow",
@@ -104,7 +168,15 @@
      "type": "stage",
      "open": true,
      "x": 33.7,
-     "y": 69.4
+     "y": 69.4,
+     "plan": {
+      "img": "stage-armadillow.png",
+      "w": 560,
+      "h": 509,
+      "cols": 4,
+      "rows": 3,
+      "stage": null
+     }
     }
    ],
    "acts": {

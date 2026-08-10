@@ -21,7 +21,12 @@ ZONES.forEach(([k, l]) => ZL[k] = l.replace('<br>', ' '));
 ZL.dj = 'in the booth 👑';
 ZL.here = 'here';
 
-export const zoneLabel = z => ZL[z] || z;
+export function zoneLabel(z, venue) {
+  if (ZL[z]) return ZL[z];
+  const m = /^p(\d)(\d)$/.exec(z || '');
+  if (m && venue && venue.plan) return planLabel(venue.plan, +m[1], +m[2]);
+  return z;
+}
 
 /* ---------- state ---------- */
 let gid = null, uid = null, fest = null, members = () => ({}), photos = () => ({});
@@ -148,7 +153,7 @@ function renderList(head, body, foot) {
         const dim = mins > 60 ? ' style="opacity:.5"' : mins > 40 ? ' style="opacity:.75"' : '';
         html += `<div class="cirow"${dim}>${avatar(c.n)}
           <div style="flex:1;min-width:0"><div class="nm">${esc(c.n)}</div>
-            <div class="pos${c.l ? ' custom' : ''}">${esc(c.l || zoneLabel(c.z))}</div>
+            <div class="pos${c.l ? ' custom' : ''}">${esc(c.l || zoneLabel(c.z, F.venue(fest, c.v)))}</div>
             ${c.t ? `<div class="cinote">${esc(c.t)}</div>` : ''}</div>
           <div class="ciago${mins < 20 ? ' fresh' : ''}">${mins < 20 ? '<span class="dot"></span>' : ''}${ago(c.ts)}</div></div>`;
       }
@@ -200,6 +205,67 @@ function renderVenues(head, body, foot) {
   head.querySelector('#ciBack').onclick = () => { mode = 'list'; onChange(); };
 }
 
+/* ---------- detailed per-stage plans ----------
+   A festival can ship a floor plan per stage. When it does we overlay a grid
+   sized to that stage — the big ones get more cells, so "front left" means
+   something at Alpha rather than covering a third of a field. Any stage
+   without a plan falls back to the standard 15-zone room, which is what every
+   other festival uses. */
+const COLS = {
+  2: ['left', 'right'],
+  3: ['left', 'centre', 'right'],
+  4: ['far left', 'left', 'right', 'far right'],
+  5: ['far left', 'left', 'centre', 'right', 'far right']
+};
+const ROWS = {
+  3: ['front', 'middle', 'back'],
+  4: ['front', 'mid front', 'mid back', 'back'],
+  5: ['front', 'mid front', 'middle', 'mid back', 'back']
+};
+/* an oval with no obvious front gets neutral compass names instead */
+const NEUTRAL_R = { 3: ['top', 'middle', 'bottom'], 4: ['top', 'upper', 'lower', 'bottom'] };
+
+export function planKey(r, c) { return 'p' + r + c; }
+export function planLabel(plan, r, c) {
+  const cols = COLS[plan.cols] || COLS[3];
+  const rows = (plan.stage ? ROWS[plan.rows] : NEUTRAL_R[plan.rows]) || ROWS[3];
+  return `${rows[r] || ''} ${cols[c] || ''}`.trim();
+}
+
+function renderPlan(head, body, foot, v, a, w, own) {
+  const plan = v.plan;
+  const at = {};
+  for (const c of active()) if (c.v === v.id) (at[c.z] = at[c.z] || []).push(c);
+
+  let cells = '';
+  for (let r = 0; r < plan.rows; r++) {
+    for (let c = 0; c < plan.cols; c++) {
+      const k = planKey(r, c);
+      const pp = at[k] || [];
+      const isMine = own && own.v === v.id && own.z === k;
+      cells += `<button class="pcell${pp.length ? ' taken' : ''}${isMine ? ' mine' : ''}${w.open ? '' : ' shut'}"
+        data-z="${k}" title="${esc(planLabel(plan, r, c))}"
+        style="left:${(c / plan.cols) * 100}%;top:${(r / plan.rows) * 100}%;
+               width:${100 / plan.cols}%;height:${100 / plan.rows}%">
+        ${pp.length ? `<span class="pfaces">${pp.slice(0, 4).map(x => avatar(x.n, 19)).join('')}${pp.length > 4 ? `<span class="pmore">+${pp.length - 4}</span>` : ''}</span>`
+                    : `<span class="plab">${esc(planLabel(plan, r, c))}</span>`}
+      </button>`;
+    }
+  }
+  let msg = '';
+  if (w.ended) msg = `<div class="lockmsg">⏱ This set has finished, so you can't check in anymore.</div>`;
+  else if (!w.open && w.why) msg = `<div class="lockmsg">${esc(w.why)}</div>`;
+
+  body.innerHTML = msg
+    + `<div class="planwrap" style="aspect-ratio:${plan.w} / ${plan.h}">
+         <img class="planimg" src="${esc(plan.img)}" alt="${esc(v.name)} floor plan">
+         <div class="pgrid">${cells}</div>
+       </div>
+       <p class="hint" style="text-align:center;margin-top:8px">
+         ${plan.stage ? 'left / right as you face the stage' : 'as drawn on the plan'}${w.open ? ' — tap where you are' : ''}</p>`;
+  return true;
+}
+
 function renderFloor(head, body, foot) {
   const v = F.venue(fest, target.venueId);
   const a = target.actId ? fest.acts[target.actId] : null;
@@ -214,6 +280,13 @@ function renderFloor(head, body, foot) {
 
   const at = {};
   for (const c of active()) if (c.v === target.venueId) (at[c.z] = at[c.z] || []).push(c);
+
+  if (v && v.plan && v.plan.img) {
+    renderPlan(head, body, foot, v, a, w, own);
+    wireFoot(body, foot, v, a, w, own, here);
+    head.querySelector('#ciBack').onclick = () => { mode = 'venues'; onChange(); };
+    return;
+  }
 
   const cell = ([key, label, cls]) => {
     const pp = at[key] || [];
@@ -234,6 +307,11 @@ function renderFloor(head, body, foot) {
     + `<div class="zgrid">${ZONES.slice(6).map(cell).join('')}</div>`
     + `<p class="hint" style="text-align:center;margin-top:8px">left / right as you face the booth${w.open ? ' — tap a spot' : ''}</p>`;
 
+  wireFoot(body, foot, v, a, w, own, here);
+  head.querySelector('#ciBack').onclick = () => { mode = 'venues'; onChange(); };
+}
+
+function wireFoot(body, foot, v, a, w, own, here) {
   foot.innerHTML = `<input type="text" id="ciLabel" maxlength="40" placeholder="own label — e.g. by the sound desk">
     <input type="text" id="ciNote" maxlength="60" placeholder="note — e.g. staying till the end">
     ${here ? '<button class="btn danger" id="ciOut">Leave</button>' : ''}`;
@@ -242,11 +320,11 @@ function renderFloor(head, body, foot) {
     if (own.t) foot.querySelector('#ciNote').value = own.t;
     foot.querySelector('#ciOut').onclick = () => { checkOut(); mode = 'list'; onChange(); };
   }
-  if (w.open) body.querySelectorAll('.zone').forEach(z => z.onclick = () => {
-    checkIn(target.venueId, target.actId, z.dataset.z,
-      foot.querySelector('#ciLabel').value.trim(), foot.querySelector('#ciNote').value.trim());
-  });
-  head.querySelector('#ciBack').onclick = () => { mode = 'venues'; onChange(); };
+  if (!w.open) return;
+  const tap = el => el.onclick = () => checkIn(target.venueId, target.actId, el.dataset.z,
+    foot.querySelector('#ciLabel').value.trim(), foot.querySelector('#ciNote').value.trim());
+  body.querySelectorAll('.zone').forEach(tap);
+  body.querySelectorAll('.pcell').forEach(tap);
 }
 
 export const reset = () => { mode = 'list'; target = null; };

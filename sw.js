@@ -7,7 +7,7 @@ const SHELL = [
   './', './index.html', './app.html', './grid.html',
   './app.css', './core.js', './landing.js', './grid.js',
   './festival.js', './checkin.js', './social.js', './transport.js',
-  './qr.js', './vendor-qrcode.mjs', './logo.png', './map.png'
+  './qr.js', './vendor-qrcode.mjs', './logo.png', './map.png', './stage-alpha.png', './stage-bravo.png', './stage-armadillow.png', './stage-heineken.png', './stage-hacienda.png', './stage-india.png', './stage-lima.png', './stage-x-ray.png', './stage-adonis.png'
 ];
 
 self.addEventListener('install', e => {
