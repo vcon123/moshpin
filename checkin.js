@@ -135,11 +135,12 @@ function renderList(head, body, foot) {
       const [vid, aid] = key.split('|');
       const v = F.venue(fest, vid);
       const a = aid ? fest.acts[aid] : null;
+      const elsewhere = vid === 'other';
       const ended = aid ? windowFor(vid, aid).ended : false;
       html += `<div class="cistage" data-v="${vid}" data-a="${aid}">
           <div style="flex:1;min-width:0">
-            <div class="ct">${esc((v ? v.name : 'Somewhere').toUpperCase())}</div>
-            <div class="cs">${a ? esc(a.n) : 'no set on'} · ${groups[key].length} here${v && v.type === 'stage' ? ' · tap for the floor' : ''}</div>
+            <div class="ct">${esc((v ? v.name : (elsewhere ? 'Elsewhere' : 'Somewhere')).toUpperCase())}</div>
+            <div class="cs">${a ? esc(a.n) : (elsewhere ? 'off the map' : 'no set on')} · ${groups[key].length} here${v && v.type === 'stage' ? ' · tap for the floor' : ''}</div>
             ${ended ? `<div class="cs" style="color:var(--danger)">⏱ that set has finished — they may have moved on</div>` : ''}
           </div>${v && v.type === 'stage' ? '<span style="color:var(--edge)">›</span>' : ''}</div>`;
       for (const c of groups[key]) {
@@ -171,16 +172,25 @@ function renderVenues(head, body, foot) {
     <div style="flex:1;min-width:0"><b>Where are you?</b><div class="hint">pick a stage or a spot</div></div>
     <button class="btn sm" id="ciX">✕</button>`;
   foot.innerHTML = '';
-  const rows = fest.venues.map(v => {
-    const live = v.type === 'stage' ? F.nowOn(fest, v.id) : null;
+  /* Only stages — real ones and any an admin added. Anywhere else is covered
+     by the free-text option at the bottom, which works at any festival. */
+  const rows = F.stages(fest).map(v => {
+    const live = F.nowOn(fest, v.id);
     const n = countAt(v.id);
     return `<div class="cistage" data-v="${v.id}" data-a="${live ? live.id : ''}">
       <div style="flex:1;min-width:0">
         <div class="ct">${esc(v.name.toUpperCase())}</div>
-        <div class="cs">${v.type === 'spot' ? 'anytime' : (live ? '♪ ' + esc(live.n) : 'nothing on right now')}${n ? ' · ' + n + ' here' : ''}</div>
+        <div class="cs">${live ? '♪ ' + esc(live.n) : 'nothing on right now'}${n ? ' · ' + n + ' here' : ''}</div>
       </div><span style="color:var(--edge)">›</span></div>`;
   }).join('');
-  body.innerHTML = rows;
+  body.innerHTML = rows
+    + `<button class="btn wide" id="ciElse" style="margin-top:12px">Check in somewhere else…</button>`;
+  body.querySelector('#ciElse').onclick = async () => {
+    const where = prompt('Where are you? (e.g. the campsite, the lake, food court)');
+    if (!where || !where.trim()) return;
+    await checkIn('other', null, 'here', where.trim().slice(0, 40));
+    mode = 'list'; onChange();
+  };
   body.querySelectorAll('.cistage').forEach(el => el.onclick = () => {
     target = { venueId: el.dataset.v, actId: el.dataset.a || null };
     const v = F.venue(fest, el.dataset.v);

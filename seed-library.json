@@ -27,104 +27,79 @@
      "id": "alpha",
      "name": "Alpha",
      "type": "stage",
-     "x": 81,
-     "y": 44
+     "x": 79.3,
+     "y": 46.6
     },
     {
      "id": "bravo",
      "name": "Bravo",
      "type": "stage",
-     "x": 48,
-     "y": 74
+     "x": 34.1,
+     "y": 89.7
     },
     {
      "id": "heineken",
      "name": "Heineken",
      "type": "stage",
-     "x": 29,
-     "y": 25
+     "x": 9.2,
+     "y": 19.0
     },
     {
      "id": "lima",
      "name": "Lima",
      "type": "stage",
-     "x": 52,
-     "y": 18
+     "x": 40.0,
+     "y": 8.5
     },
     {
      "id": "india",
      "name": "India",
      "type": "stage",
-     "x": 56,
-     "y": 61
+     "x": 45.2,
+     "y": 71.8
     },
     {
      "id": "xray",
      "name": "X-Ray",
      "type": "stage",
-     "x": 53,
-     "y": 49
+     "x": 42.4,
+     "y": 54.1
     },
     {
      "id": "hacienda",
      "name": "Hacienda",
      "type": "stage",
-     "x": 43,
-     "y": 50
+     "x": 25.5,
+     "y": 55.6
     },
     {
      "id": "juliet",
      "name": "Juliet",
      "type": "stage",
-     "x": 61,
-     "y": 34
+     "x": 53.1,
+     "y": 31.6
     },
     {
      "id": "echo",
      "name": "Echo",
      "type": "stage",
-     "x": 54,
-     "y": 32
+     "x": 43.0,
+     "y": 28.8
     },
     {
      "id": "adonis",
      "name": "Adonis",
-     "type": "stage"
+     "type": "stage",
+     "x": 46.6,
+     "y": 79.9
     },
     {
-     "id": "camping",
-     "name": "Camping",
-     "type": "spot",
-     "x": 13,
-     "y": 10
-    },
-    {
-     "id": "lake",
-     "name": "Lake Lowlands",
-     "type": "spot",
-     "x": 84,
-     "y": 22
-    },
-    {
-     "id": "foodcourt",
-     "name": "Llakeside Market",
-     "type": "spot",
-     "x": 69,
-     "y": 18
-    },
-    {
-     "id": "bar",
-     "name": "Wijnbar",
-     "type": "spot",
-     "x": 41,
-     "y": 35
-    },
-    {
-     "id": "entrance",
-     "name": "Entrance / K&R",
-     "type": "spot",
-     "x": 74,
-     "y": 92
+     "id": "armadillow",
+     "name": "Armadillow",
+     "type": "stage",
+     "open": true,
+     "x": 33.7,
+     "y": 69.4
     }
    ],
    "acts": {
@@ -175,7 +150,7 @@
      "v": "bravo",
      "s": "15:00",
      "e": "17:00",
-     "n": "Adéla"
+     "n": "Ad\u00e9la"
     },
     "a8": {
      "d": 0,
@@ -210,7 +185,7 @@
      "v": "bravo",
      "s": "00:30",
      "e": "02:00",
-     "n": "Chloé Caillet"
+     "n": "Chlo\u00e9 Caillet"
     },
     "a13": {
      "d": 0,
@@ -294,7 +269,7 @@
      "v": "lima",
      "s": "18:30",
      "e": "20:30",
-     "n": "Ana Frango Elétrico"
+     "n": "Ana Frango El\u00e9trico"
     },
     "a25": {
      "d": 0,
@@ -378,7 +353,7 @@
      "v": "india",
      "s": "03:00",
      "e": "04:30",
-     "n": "Marrøn"
+     "n": "Marr\u00f8n"
     },
     "a37": {
      "d": 0,
@@ -448,7 +423,7 @@
      "v": "xray",
      "s": "03:00",
      "e": "04:30",
-     "n": "Gysèle"
+     "n": "Gys\u00e8le"
     },
     "a47": {
      "d": 0,
@@ -588,7 +563,7 @@
      "v": "echo",
      "s": "19:00",
      "e": "21:15",
-     "n": "The Making of De Jeugd van Tegenwoordig – Live"
+     "n": "The Making of De Jeugd van Tegenwoordig \u2013 Live"
     },
     "a67": {
      "d": 0,
@@ -714,7 +689,7 @@
      "v": "bravo",
      "s": "13:00",
      "e": "15:00",
-     "n": "José González"
+     "n": "Jos\u00e9 Gonz\u00e1lez"
     },
     "a85": {
      "d": 1,
@@ -763,7 +738,7 @@
      "v": "bravo",
      "s": "02:00",
      "e": "03:30",
-     "n": "Héctor Oaks"
+     "n": "H\u00e9ctor Oaks"
     },
     "a92": {
      "d": 1,
@@ -868,14 +843,14 @@
      "v": "lima",
      "s": "22:30",
      "e": "00:00",
-     "n": "Ácido Pantera"
+     "n": "\u00c1cido Pantera"
     },
     "a107": {
      "d": 1,
      "v": "lima",
      "s": "00:00",
      "e": "01:30",
-     "n": "Olá Brazil!"
+     "n": "Ol\u00e1 Brazil!"
     },
     "a108": {
      "d": 1,
@@ -1029,7 +1004,7 @@
      "v": "hacienda",
      "s": "18:30",
      "e": "21:00",
-     "n": "Yůsu"
+     "n": "Y\u016fsu"
     },
     "a130": {
      "d": 1,
@@ -1050,7 +1025,7 @@
      "v": "hacienda",
      "s": "01:30",
      "e": "03:00",
-     "n": "Tera Kòrá"
+     "n": "Tera K\u00f2r\u00e1"
     },
     "a133": {
      "d": 1,
@@ -1239,7 +1214,7 @@
      "v": "alpha",
      "s": "15:30",
      "e": "17:30",
-     "n": "Hermanos Gutiérrez"
+     "n": "Hermanos Guti\u00e9rrez"
     },
     "a160": {
      "d": 2,
@@ -1603,7 +1578,7 @@
      "v": "juliet",
      "s": "17:00",
      "e": "19:00",
-     "n": "Ita, June Yanez, Leila Sahir, Zephyr Brüggen"
+     "n": "Ita, June Yanez, Leila Sahir, Zephyr Br\u00fcggen"
     },
     "a212": {
      "d": 2,
@@ -1761,8 +1736,9 @@
     }
    },
    "map": {
-    "img": null,
-    "note": "Pin positions are % of the official plattegrond."
+    "img": "map.png",
+    "w": 1000,
+    "h": 936
    }
   }
  },
@@ -1772,7 +1748,7 @@
    "year": 2026,
    "place": "Walibi Holland, Biddinghuizen",
    "days": 3,
-   "stages": 10,
+   "stages": 11,
    "acts": 233,
    "official": true
   }

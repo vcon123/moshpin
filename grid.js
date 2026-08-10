@@ -581,9 +581,41 @@ async function showWrap() {
 }
 
 
+/* ---------- the site map ----------
+   The festival's own plattegrond with a translucent tap target over each stage:
+   visibly pressable, but you can still read the map underneath. */
+function showMap() {
+  const m = fest.map || {};
+  const pinned = F.stages(fest).filter(v => v.x != null && v.y != null);
+  $('mapBody').innerHTML = `
+    <div class="phead"><b>🗺 The site</b><button class="btn sm" id="mpClose">✕</button></div>
+    ${m.img ? `<div class="mapwrap"><img class="mapimg" src="${esc(m.img)}" alt="Festival map">
+      ${pinned.map(v => {
+        const n = CI.active().filter(c => c.v === v.id).length;
+        const live = F.nowOn(fest, v.id);
+        return `<button class="mappin${n ? ' busy' : ''}" data-v="${v.id}"
+          style="left:${v.x}%;top:${v.y}%" title="${esc(v.name)}">
+          <span class="mpn">${esc(v.name)}</span>
+          ${n ? `<span class="mpc">${n}</span>` : ''}
+          ${live ? `<span class="mpl">${esc(live.n.length > 18 ? live.n.slice(0, 17) + '…' : live.n)}</span>` : ''}
+        </button>`;
+      }).join('')}</div>
+      <p class="hint" style="margin-top:10px">Tap a stage to see who's there and check in.</p>`
+    : '<p class="hint">No map for this festival yet.</p>'}`;
+  $('mapSheet').classList.add('on');
+  $('mpClose').onclick = () => closeSheet('mapSheet');
+  $('mapBody').querySelectorAll('[data-v]').forEach(b => b.onclick = () => {
+    const vid = b.dataset.v, live = F.nowOn(fest, vid);
+    closeSheet('mapSheet');
+    CI.goFloor(vid, live ? live.id : null);
+    ciOpen = true; $('ciPanel').classList.add('open'); drawCI();
+  });
+}
+$('mapFab').onclick = showMap;
+
 /* ---------- menu ---------- */
 const closeSheet = id => $(id).classList.remove('on');
-['menuSheet','crewSheet','trSheet','boardSheet','wrapSheet','actSheet','mineSheet','profSheet']
+['menuSheet','crewSheet','trSheet','boardSheet','wrapSheet','actSheet','mineSheet','profSheet','mapSheet']
   .forEach(id => $(id).onclick = e => { if (e.target.id === id) closeSheet(id); });
 
 $('menuBtn').onclick = () => {

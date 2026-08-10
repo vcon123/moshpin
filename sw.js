@@ -7,7 +7,7 @@ const SHELL = [
   './', './index.html', './app.html', './grid.html',
   './app.css', './core.js', './landing.js', './grid.js',
   './festival.js', './checkin.js', './social.js', './transport.js',
-  './qr.js', './vendor-qrcode.mjs', './logo.png'
+  './qr.js', './vendor-qrcode.mjs', './logo.png', './map.png'
 ];
 
 self.addEventListener('install', e => {

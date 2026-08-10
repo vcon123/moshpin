@@ -304,3 +304,21 @@ body.gridpage{padding:0}
 .sh .del{position:absolute;top:2px;right:3px;font-size:11px;color:var(--dim);
   background:none;border:0;padding:2px 4px;line-height:1}
 .sh .del:hover{color:var(--danger)}
+
+/* ---- site map ---- */
+.sheet .panel.wide{max-width:640px}
+.mapwrap{position:relative;width:100%;margin-top:10px;background:#0f120f;border-radius:12px;overflow:hidden}
+.mapimg{display:block;width:100%;height:auto}
+.mappin{position:absolute;transform:translate(-50%,-50%);background:rgba(20,24,20,.42);
+  border:1.5px solid rgba(143,217,119,.85);border-radius:10px;padding:5px 9px;
+  color:#fff;font:inherit;font-size:11px;font-weight:700;letter-spacing:.3px;
+  backdrop-filter:blur(1.5px);-webkit-backdrop-filter:blur(1.5px);
+  display:flex;flex-direction:column;align-items:center;gap:1px;line-height:1.15;
+  text-shadow:0 1px 3px rgba(0,0,0,.9);cursor:pointer;white-space:nowrap;min-width:34px}
+.mappin:hover,.mappin:active{background:rgba(46,93,67,.75);border-color:var(--edge)}
+.mappin.busy{border-color:var(--edge);background:rgba(46,93,67,.6)}
+.mappin .mpn{font-size:10.5px}
+.mappin .mpc{position:absolute;top:-8px;right:-8px;background:var(--edge);color:#161711;
+  border-radius:99px;min-width:18px;height:18px;line-height:18px;font-size:11px;padding:0 5px}
+.mappin .mpl{font-size:9px;font-weight:400;color:#cfe9d6;max-width:96px;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:700px){.mappin{padding:4px 6px;font-size:10px}.mappin .mpn{font-size:9.5px}.mappin .mpl{display:none}}
