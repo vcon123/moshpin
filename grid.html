@@ -19,12 +19,18 @@
 
   <header class="topbar">
     <div class="tb1">
+      <button class="iconbtn" id="menuBtn" title="Menu">☰</button>
       <a class="brandmark" href="grid.html"><img src="logo.png" alt=""><b>Mosh<span>Pin</span></b></a>
       <div class="evname"><b id="evTitle"></b><span id="evSub"></span></div>
-      <button class="iconbtn" id="crewBtn">👥<span class="n" id="crewN">0</span></button>
-      <button class="iconbtn" id="menuBtn">☰</button>
     </div>
-    <nav class="tb2" id="dayTabs"></nav>
+    <div class="tb2row">
+      <nav class="tb2" id="dayTabs"></nav>
+      <div class="tbacts">
+        <button class="iconbtn" id="crewBtn" title="The crew">👥<span class="n" id="crewN">0</span></button>
+        <button class="iconbtn" id="trBtn" title="Transport">🚗</button>
+        <button class="iconbtn" id="invBtn" title="Invite someone">✉</button>
+      </div>
+    </div>
   </header>
 
   <div class="tt">
@@ -67,6 +73,7 @@
 <div class="rxpick" id="rxPick"></div>
 
 <div class="sheet" id="mapSheet"><div class="panel wide" id="mapBody"></div></div>
+<div class="sheet" id="personSheet"><div class="panel" id="personBody"></div></div>
 <div class="sheet" id="menuSheet"><div class="panel" id="menuBody"></div></div>
 <div class="sheet" id="crewSheet"><div class="panel" id="crewBody"></div></div>
 <div class="sheet" id="trSheet"><div class="panel" id="trBody"></div></div>

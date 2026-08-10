@@ -263,8 +263,11 @@ body.gridpage{padding:0}
   display:flex;align-items:center;gap:6px;min-height:44px}
 .iconbtn:hover{border-color:var(--edge)}
 .iconbtn .n{font-size:13px;font-weight:700;color:var(--edge)}
-.tb2{display:flex;gap:6px;margin-top:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;
-  padding-bottom:2px;scrollbar-width:none}
+.tb2row{display:flex;align-items:center;gap:10px;margin-top:9px}
+.tb2{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  padding-bottom:2px;scrollbar-width:none;flex:1;min-width:0}
+.tbacts{display:flex;gap:6px;flex:0 0 auto}
+.tbacts .iconbtn{padding:9px 11px;min-height:40px;font-size:15px}
 .tb2::-webkit-scrollbar{display:none}
 .chip{background:var(--panel-2);border:1px solid var(--line);color:var(--ink);border-radius:99px;
   padding:9px 16px;font-size:13.5px;white-space:nowrap;flex:0 0 auto}
@@ -363,3 +366,17 @@ body.gridpage{padding:0}
   background:var(--green);border-bottom:1px solid var(--edge);
   padding:10px 14px;font-size:13px}
 .updbar span{flex:1;min-width:150px}
+
+/* ---- one person's details ---- */
+.pdet{display:flex;align-items:center;gap:13px;margin-bottom:4px}
+.pdet .who{font-size:18px;font-weight:700}
+.psec{font-size:10.5px;letter-spacing:1.1px;color:var(--edge);text-transform:uppercase;
+  font-weight:700;margin:18px 0 6px}
+.pitem{display:flex;gap:10px;padding:6px 0;border-top:1px solid var(--line);font-size:13px}
+.pitem:first-of-type{border-top:0}
+.pitem .t{flex:1;min-width:0}
+.pitem .m{font-size:11px;color:var(--dim)}
+.pitem .r{color:var(--edge);font-weight:700;flex:none}
+
+.actdesc{font-size:13.5px;line-height:1.5;color:var(--ink);background:var(--panel-2);
+  border-left:3px solid var(--edge);border-radius:8px;padding:10px 12px;margin-top:12px}

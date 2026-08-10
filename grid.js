@@ -491,6 +491,7 @@ function openAct(id) {
     <div class="phead"><b>${esc(a.n)}</b><button class="btn sm" id="acClose">✕</button></div>
     <p class="hint">${esc(v ? v.name : '')} · ${esc(F.dayLabel(fest.days[a.d]))} · ${esc(a.s)}–${esc(a.e)}</p>
     ${a.syn ? '<p class="hint" style="margin-top:8px">No lineup here — pin the hours you plan to be around.</p>' : ''}
+    ${a.d_ ? `<p class="actdesc">${esc(a.d_)}</p>` : ''}
     ${a.u ? `<div class="row" style="margin-top:12px"><a class="btn wide" href="${esc(a.u)}" target="_blank" rel="noopener">Listen ↗</a></div>` : ''}
     ${F.currentDay(fest) ? `<button class="btn wide" id="acHere" style="margin-top:10px">📍 Check in here</button>` : ''}
     <button class="btn ${mine ? 'danger' : 'primary'} wide" id="acTog" style="margin-top:12px">
@@ -663,7 +664,7 @@ $('mapFab').onclick = showMap;
 
 /* ---------- menu ---------- */
 const closeSheet = id => $(id).classList.remove('on');
-['menuSheet','crewSheet','trSheet','boardSheet','wrapSheet','actSheet','mineSheet','profSheet','mapSheet']
+['menuSheet','crewSheet','trSheet','boardSheet','wrapSheet','actSheet','mineSheet','profSheet','mapSheet','personSheet']
   .forEach(id => $(id).onclick = e => { if (e.target.id === id) closeSheet(id); });
 
 $('menuBtn').onclick = () => {
@@ -673,11 +674,9 @@ $('menuBtn').onclick = () => {
     <div class="menugrid">
       <button class="btn" id="mProfile">🙂 My profile</button>
       <button class="btn" id="mMine">★ My lineup</button>
-      <button class="btn" id="mTransport">🚗 Getting there</button>
-      <button class="btn" id="mInvite">✉ Invite someone</button>
-      <button class="btn" id="mFeedback">💡 Feedback</button>
       ${F.hasStarted(fest) ? '<button class="btn" id="mBoard">🏆 Best sets</button>' : ''}
       ${F.isOver(fest) ? '<button class="btn" id="mWrap">🎁 The wrap</button>' : ''}
+      <button class="btn" id="mFeedback">💡 Feedback</button>
     </div>
     ${others.length ? `<div class="tgroup">Switch crew</div>` + others.map(g =>
       `<button class="btn wide" style="margin-bottom:6px" data-sw="${esc(g.gid)}">${esc(g.name)}</button>`).join('') : ''}
@@ -688,8 +687,6 @@ $('menuBtn').onclick = () => {
   $('mxClose').onclick = () => closeSheet('menuSheet');
   $('mProfile').onclick = () => { closeSheet('menuSheet'); showProfile(); };
   $('mMine').onclick = () => { closeSheet('menuSheet'); showMine(); };
-  $('mTransport').onclick = () => { closeSheet('menuSheet'); showTransport(); };
-  $('mInvite').onclick = () => { closeSheet('menuSheet'); showCrew(true); };
   $('mFeedback').onclick = () => { closeSheet('menuSheet'); showFeedback(); };
   const bb = $('mBoard'); if (bb) bb.onclick = () => { closeSheet('menuSheet'); showBoard(); };
   const wb = $('mWrap'); if (wb) wb.onclick = () => { closeSheet('menuSheet'); showWrap(); };
@@ -708,6 +705,8 @@ $('menuBtn').onclick = () => {
 
 /* ---------- the crew ---------- */
 $('crewBtn').onclick = () => showCrew(false);
+$('trBtn').onclick = () => showTransport();
+$('invBtn').onclick = () => showCrew(true);
 let crewCode = null;
 async function loadCode() {
   if (crewCode !== null) return crewCode;
@@ -739,7 +738,7 @@ function showCrew(inviteFirst) {
     a === uid ? -1 : b === uid ? 1 : String(members[a].name || '').localeCompare(String(members[b].name || '')));
   $('crewBody').innerHTML = `
     <div class="phead"><b>👥 ${esc((meta && meta.name) || 'The crew')}</b><button class="btn sm" id="cwClose">✕</button></div>
-    <div class="mlist">${order.map(u => `<div class="mrow">${avatarFor(u)}
+    <div class="mlist">${order.map(u => `<div class="mrow" data-who="${u}" style="cursor:pointer">${avatarFor(u)}
       <div class="mname">${esc(members[u].name || '?')}
         ${u === uid ? '<span class="tag">you</span>' : ''}${admins[u] ? '<span class="tag adm">admin</span>' : ''}</div>
       ${isAdmin() && u !== uid ? `<button class="mini" data-adm="${u}">${admins[u] ? 'Unadmin' : 'Make admin'}</button>
@@ -793,6 +792,10 @@ function showCrew(inviteFirst) {
     if (navigator.share) { try { await navigator.share({ text: t }); } catch (e) {} }
     else { try { await navigator.clipboard.writeText(t); C.toast('Copied'); } catch (e) {} }
   };
+  $('crewBody').querySelectorAll('[data-who]').forEach(row => row.onclick = e => {
+    if (e.target.closest('button')) return;        // admin controls take priority
+    showPerson(row.dataset.who);
+  });
   $('crewBody').querySelectorAll('[data-adm]').forEach(b => b.onclick = async () => {
     const u = b.dataset.adm;
     try {
@@ -819,6 +822,51 @@ function avatarFor(u, size) {
   return photos[u]
     ? `<img class="av" src="${photos[u]}" alt="" style="width:${s}px;height:${s}px">`
     : `<span class="av fb" style="width:${s}px;height:${s}px;background:${C.colorFor(nm)};font-size:${Math.round(s / 2.6)}px">${esc(C.initials(nm))}</span>`;
+}
+
+/* ---------- one person ----------
+   Everything here is already synced for the timetable, so opening someone's
+   page costs nothing extra. */
+function showPerson(who) {
+  const m = members[who] || {};
+  const picks = decPicks(m.picks);
+  const rts = S.decRatings(m.ratings);
+  const list = Object.keys(picks).map(actInfo).filter(a => a && a.n)
+    .sort((x, y) => x.d - y.d || F.offset(fest, x) - F.offset(fest, y));
+  const rated = Object.entries(rts).map(([id, r]) => ({ a: actInfo(id), r }))
+    .filter(x => x.a && x.a.n).sort((x, y) => y.r - x.r);
+  const ride = T.forUser(who);
+  const pin = CI.active().find(c => c.uid === who);
+  const md = ride ? (T.MODES[ride.mode] || T.MODES.other) : null;
+
+  $('personBody').innerHTML = `
+    <div class="phead"><b>${esc(m.name || '?')}</b><button class="btn sm" id="pnClose">✕</button></div>
+    <div class="pdet">${avatarFor(who, 56)}
+      <div><div class="who">${esc(m.name || '?')}</div>
+        <div class="hint">${admins[who] ? 'admin · ' : ''}${list.length} tagged · ${rated.length} rated</div></div></div>
+
+    ${pin ? `<div class="psec">Right now</div>
+      <div class="pitem"><div class="t">📍 ${esc(pin.l || CI.zoneLabel(pin.z, F.venue(fest, pin.v)))}
+        <div class="m">${esc((F.venue(fest, pin.v) || {}).name || '')} · ${esc(CI.ago(pin.ts))}</div></div></div>` : ''}
+
+    ${ride ? `<div class="psec">Transport</div>
+      <div class="pitem"><div class="t">${md.i} ${esc(md.label)}
+        <div class="m">arrives ${esc(ride.inAt || '—')} · leaves ${esc(ride.outAt || '—')}${
+          (ride.seatsIn || ride.seatsOut) ? ` · ${ride.seatsIn || 0} seats there, ${ride.seatsOut || 0} back` : ''}</div>
+        ${ride.note ? `<div class="m" style="color:var(--edge)">${esc(ride.note)}</div>` : ''}</div></div>` : ''}
+
+    ${rated.length ? `<div class="psec">What they rated</div>` + rated.slice(0, 12).map(x =>
+      `<div class="pitem"><div class="t">${esc(x.a.n)}
+        <div class="m">${esc(F.dayLabel(fest.days[x.a.d]))} · ${esc((F.venue(fest, x.a.v) || {}).name || '')}</div></div>
+       <div class="r">${x.r}★</div></div>`).join('') : ''}
+
+    ${list.length ? `<div class="psec">Their lineup</div>` + list.map(a =>
+      `<div class="pitem"><div class="t">${esc(a.n)}
+        <div class="m">${esc(F.dayLabel(fest.days[a.d]))} · ${esc((F.venue(fest, a.v) || {}).name || '')} · ${esc(a.s)}–${esc(a.e)}</div></div>
+       ${myPicks[a.id] ? '<div class="r">you too</div>' : ''}</div>`).join('')
+      : '<p class="hint" style="margin-top:14px">Nothing tagged yet.</p>'}`;
+  $('personSheet').classList.add('on');
+  $('pnClose').onclick = () => closeSheet('personSheet');
 }
 
 /* ---------- profile ---------- */
