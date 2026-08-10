@@ -380,3 +380,4 @@ body.gridpage{padding:0}
 
 .actdesc{font-size:13.5px;line-height:1.5;color:var(--ink);background:var(--panel-2);
   border-left:3px solid var(--edge);border-radius:8px;padding:10px 12px;margin-top:12px}
+.updbar.err{background:var(--danger);border-bottom-color:#fff}

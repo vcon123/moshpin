@@ -113,8 +113,8 @@
             ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
             "$uid": {
               ".read": "auth != null && $uid === auth.uid",
-              ".write": "auth != null && $uid === auth.uid && root.child('moshpin/groups/'+$gid+'/join/'+newData.child('t').val()).exists()",
-              ".validate": "newData.hasChildren(['k','t'])"
+              ".write": "auth != null && $uid === auth.uid && (root.child('moshpin/groups/'+$gid+'/join/'+newData.child('t').val()).exists() || root.child('moshpin/groups/'+$gid+'/members/'+newData.child('k').val()).exists())",
+              ".validate": "newData.hasChild('k')"
             }
           },
           "pk": {

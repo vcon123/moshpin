@@ -60,10 +60,17 @@ window.addEventListener('error', e => {
   if (!uid) { location.href = 'index.html?g=' + encodeURIComponent(crew.gid) + '&again=1'; return; }
   /* make sure this device is registered against the person — devices that
      joined before this existed, and any second phone, land here */
-  if (crew.token) {
-    try { await C.ref('groups/' + crew.gid + '/uidmap/' + C.myUid())
-            .set({ k: uid, t: crew.token }); } catch (e) {}
-  }
+  /* Register this device against the person. Without it the rules treat you as
+     a stranger: the crew reads as empty and every edit is refused. Try with the
+     passcode if we have it, otherwise the person key alone — which only someone
+     who knows that member's name and pin can produce. */
+  let registered = false;
+  try {
+    const rec = { k: uid };
+    if (crew.token) rec.t = crew.token;
+    await C.ref('groups/' + crew.gid + '/uidmap/' + C.myUid()).set(rec);
+    registered = true;
+  } catch (e) {}
 
   try { photos = JSON.parse(localStorage.getItem('mp_photos_' + crew.gid) || '{}'); } catch (e) {}
 
@@ -83,8 +90,22 @@ window.addEventListener('error', e => {
      used to rebroadcast your name, join token, every rating and every note to
      the whole crew; now it sends just the picks string. */
   const mref = C.ref('groups/' + crew.gid + '/members');
-  mref.on('child_added',   s => { takeMember(s.key, s.val()); draw(); });
-  mref.on('child_changed', s => { takeMember(s.key, s.val()); draw(); });
+  /* A denied read used to fail silently, which is exactly what made a full crew
+     look empty. Say so instead. */
+  const denied = e => {
+    if (!String(e && e.message || '').includes('PERMISSION')) return;
+    if (document.querySelector('.updbar.err')) return;
+    const bar = document.createElement('div');
+    bar.className = 'updbar err';
+    bar.innerHTML = '<span>This device isn\'t recognised by the crew, so nothing will load or save. '
+      + 'Sign in again with your name and pin.</span>'
+      + '<button class="btn sm primary" id="reGo">Sign in again</button>';
+    document.querySelector('.topbar').after(bar);
+    bar.querySelector('#reGo').onclick = () =>
+      location.href = 'index.html?g=' + encodeURIComponent(crew.gid) + '&again=1';
+  };
+  mref.on('child_added',   s => { takeMember(s.key, s.val()); draw(); }, denied);
+  mref.on('child_changed', s => { takeMember(s.key, s.val()); draw(); }, denied);
   mref.on('child_removed', s => { delete members[s.key]; delete picksOf[s.key]; draw(); });
 
   for (const [node, bag] of [['pk', picksOf], ['rt', ratesOf], ['nt', notesOf]]) {
@@ -464,7 +485,13 @@ async function addStage() {
   v.open = true;                       // no lineup — show pinnable hours
   v.added = true;                      // and it can be removed again
   try { await F.save(crew.gid, fest); }
-  catch (e) { return C.toast("Couldn't add it — " + (e.message || '')); }
+  catch (e) {
+    F.removeVenue(fest, v.id);            // don't leave it on screen if it didn't save
+    draw();
+    return C.toast(String(e.message || '').includes('PERMISSION')
+      ? "Not saved — only admins can add stages, and this device may need signing in again."
+      : "Couldn't add it — " + (e.message || ''));
+  }
   draw();
 }
 
