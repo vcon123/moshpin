@@ -23,7 +23,7 @@
           },
           "join": {
             ".read": false,
-            ".write": "auth != null && !data.exists()"
+            ".write": "auth != null && (!data.exists() || root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists())"
           },
           "admins": {
             ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists()",
@@ -104,6 +104,10 @@
           "festv": {
             ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists()",
             ".write": "auth != null && root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists()"
+          },
+          "code": {
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/members/'+auth.uid).exists()",
+            ".write": "auth != null && (!data.exists() || root.child('moshpin/groups/'+$gid+'/admins/'+auth.uid).exists())"
           }
         }
       },

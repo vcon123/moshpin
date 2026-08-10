@@ -193,6 +193,7 @@ $('createGo').onclick = async () => {
     await C.ref('groups/' + gid).set({
       meta: { name: gname, festName: fest, year: +year, slug, created: Date.now(), owner: uid },
       join: { [token]: true },
+      code: pin,                       // members can see it so they can pass it on
       admins: { [uid]: true },
       members: { [uid]: { name: me, joined: Date.now() } },
       photos: { [uid]: myPhoto }

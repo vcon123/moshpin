@@ -659,6 +659,31 @@ $('menuBtn').onclick = () => {
 
 /* ---------- the crew ---------- */
 $('crewBtn').onclick = () => showCrew(false);
+let crewCode = null;
+async function loadCode() {
+  if (crewCode !== null) return crewCode;
+  try { crewCode = (await C.ref('groups/' + crew.gid + '/code').get()).val() || ''; }
+  catch (e) { crewCode = ''; }
+  return crewCode;
+}
+
+/* Changing it writes a new hash and drops the old one, so a leaked invite stops
+   working. */
+async function changeCode() {
+  const nu = (prompt('New passcode (3-8 letters or numbers)') || '').trim().toUpperCase();
+  if (!nu) return;
+  if (!/^[A-Z0-9]{3,8}$/.test(nu)) return C.toast('3-8 letters or numbers');
+  try {
+    const token = await C.joinToken(crew.gid, nu);
+    await C.ref('groups/' + crew.gid + '/join').set({ [token]: true });
+    await C.ref('groups/' + crew.gid + '/code').set(nu);
+    crewCode = nu;
+    crew.token = token; C.setCurrentGroup(crew);
+    C.toast('Passcode changed');
+    showCrew(false);
+  } catch (e) { C.toast("Couldn't change it - " + (e.message || '')); }
+}
+
 function showCrew(inviteFirst) {
   const link = location.origin + location.pathname.replace(/[^/]*$/, '') + 'index.html?g=' + crew.gid;
   const order = Object.keys(members).sort((a, b) =>
@@ -671,9 +696,14 @@ function showCrew(inviteFirst) {
       ${isAdmin() && u !== uid ? `<button class="mini" data-adm="${u}">${admins[u] ? 'Unadmin' : 'Make admin'}</button>
         <button class="mini danger" data-kick="${u}">Remove</button>` : ''}
     </div>`).join('')}</div>
+    <label>Passcode</label>
+    <div class="codebox"><span id="cwCode">…</span>
+      <button class="btn sm" id="cwCodeCopy">Copy</button></div>
+    <p class="hint" id="cwCodeNote" style="margin-top:6px"></p>
+    ${isAdmin() ? '<button class="btn sm" id="cwSetCode" style="margin-top:8px">Change passcode</button>' : ''}
+
     <label for="cwLink">Invite link</label>
     <input type="text" id="cwLink" readonly value="${esc(link)}">
-    <p class="hint" style="margin-top:6px">They'll need the passcode too — send that separately.</p>
     <div class="row" style="margin-top:10px">
       <button class="btn" id="cwCopy">Copy link</button>
       <button class="btn" id="cwShare">Share</button>
@@ -682,10 +712,23 @@ function showCrew(inviteFirst) {
     <div id="cwQr" hidden style="margin-top:12px">
       <div class="qrbox" style="margin:0 auto">${qrSvg(link, 200)}</div>
       <p class="hint" style="text-align:center;margin-top:8px">
-        Point a camera at this. They still need the passcode.</p>
+        Point a camera at this, then enter <b style="color:var(--edge)" id="cwQrCode">…</b></p>
     </div>`;
   $('crewSheet').classList.add('on');
   $('cwClose').onclick = () => closeSheet('crewSheet');
+  loadCode().then(code => {
+    const shown = code || '—';
+    $('cwCode').textContent = shown;
+    const qc = $('cwQrCode'); if (qc) qc.textContent = shown;
+    $('cwCodeNote').textContent = code
+      ? 'Send this along with the link — it is asked for when they join.'
+      : (isAdmin() ? 'Made before passcodes were shown here. Set a new one to share it.'
+                   : 'Ask an admin for the passcode.');
+  });
+  $('cwCodeCopy').onclick = async () => {
+    try { await navigator.clipboard.writeText($('cwCode').textContent); C.toast('Passcode copied'); } catch (e) {}
+  };
+  const sc = $('cwSetCode'); if (sc) sc.onclick = changeCode;
   $('cwQrBtn').onclick = () => {
     const q = $('cwQr');
     q.hidden = !q.hidden;
@@ -695,7 +738,9 @@ function showCrew(inviteFirst) {
     try { await navigator.clipboard.writeText(link); C.toast('Link copied'); } catch (e) { $('cwLink').select(); }
   };
   $('cwShare').onclick = async () => {
-    const t = `Join ${(meta && meta.name) || 'my crew'} on MoshPin\n${link}`;
+    const code = await loadCode();
+    const t = `Join ${(meta && meta.name) || 'my crew'} on MoshPin\n${link}`
+      + (code ? `\nPasscode: ${code}` : '');
     if (navigator.share) { try { await navigator.share({ text: t }); } catch (e) {} }
     else { try { await navigator.clipboard.writeText(t); C.toast('Copied'); } catch (e) {} }
   };
