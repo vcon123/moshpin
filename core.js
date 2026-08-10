@@ -71,6 +71,14 @@ export async function sha256(s) {
    stored or transmitted in a readable form */
 export const joinToken = (gid, pin) => sha256(ROOT + '|' + gid + '|' + String(pin).toUpperCase());
 
+/* Who you are inside a crew, derived from your name and your own 3-digit pin.
+   The same pair produces the same key on any device, so signing in on a laptop
+   lands on the record you already have — picks, photo and all. */
+export async function personKey(gid, name, pin) {
+  const h = await sha256(ROOT + '|p|' + gid + '|' + String(name).trim().toLowerCase() + '|' + String(pin));
+  return 'm' + h.slice(0, 12);
+}
+
 const PALETTE = ['#e2c044','#d96c5f','#7fb069','#6ca6c1','#b087c9','#e08e45',
                  '#5fc9b3','#c95f8f','#a3b18a','#e0d3af','#8fd977','#d98f6c'];
 const hash = s => { let h = 0; for (const c of String(s)) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; };

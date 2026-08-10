@@ -37,6 +37,18 @@ function shrink(file, px, q) {
     img.src = URL.createObjectURL(file);
   });
 }
+/* Report which step failed. A bare "permission denied" tells nobody anything;
+   naming the step points straight at the rule that needs publishing. */
+async function step(what, fn) {
+  try { return await fn(); }
+  catch (e) {
+    const m = String(e && e.message || '');
+    throw new Error(m.includes('PERMISSION_DENIED')
+      ? `Not allowed while ${what}. The database rules are out of date — republish rules.json in the Firebase console.`
+      : `Failed while ${what}: ${m}`);
+  }
+}
+
 function wirePhoto(inputId, prevId) {
   const inp = $(inputId); if (!inp) return;
   inp.onchange = e => {
@@ -183,10 +195,12 @@ $('createGo').onclick = async () => {
   const fest  = fromLib.name;
   const year  = String(fromLib.year);
   const me    = $('cName').value.trim();
+  const myPin = ($('cPin').value || '').replace(/\D/g, '');
   if (!gname) return fail('createErr', 'Give your crew a name.');
   if (!fest)  return fail('createErr', 'Which festival is this for?');
   if (!/^\d{4}$/.test(year)) return fail('createErr', 'Enter a four-digit year.');
   if (!me)    return fail('createErr', 'Enter your own name so the crew knows who you are.');
+  if (!/^\d{3}$/.test(myPin)) return fail('createErr', 'Pick your own 3-number pin.');
   if (!myPhoto) return fail('createErr', 'Add a photo — it is how people find you in a field.');
 
   const btn = $('createGo');
@@ -196,18 +210,19 @@ $('createGo').onclick = async () => {
     const pin = C.randomPin();
     const token = await C.joinToken(gid, pin);
     const uid = C.myUid();
+    const mkey = await C.personKey(gid, me, myPin);
     const slug = C.slugify(fest) + '-' + year;
 
     /* The join token lives where nobody can read it; the security rules check a
        joiner's submitted token against it, so the passcode is never exposed. */
-    await C.ref('groups/' + gid).set({
+    await step('creating the crew', () => C.ref('groups/' + gid).set({
       meta: { name: gname, festName: fest, year: +year, slug, created: Date.now(), owner: uid },
       join: { [token]: true },
       code: pin,                       // members can see it so they can pass it on
-      admins: { [uid]: true },
-      members: { [uid]: { name: me, joined: Date.now() } },
-      photos: { [uid]: myPhoto }
-    });
+      admins: { [mkey]: true },
+      members: { [mkey]: { name: me, joined: Date.now() } },
+      photos: { [mkey]: myPhoto }
+    }));
 
     if (fromLib) {
       try {
@@ -223,12 +238,12 @@ $('createGo').onclick = async () => {
 
     bump('crews'); bump('members');
 
-    C.setCurrentGroup({ gid, name: gname, token });
+    C.setCurrentGroup({ gid, name: gname, token, key: mkey });
     C.setMyProfile({ name: me, photo: null });
     showInvite(gid, pin, gname, fest, year);
   } catch (e) {
     working(btn, false, 'Create the crew');
-    fail('createErr', "Couldn't create it — " + (e && e.message ? e.message : 'try again') + '.');
+    fail('createErr', (e && e.message) || "Couldn't create it — try again.");
     return;
   }
   working(btn, false, 'Create the crew');
@@ -289,10 +304,11 @@ $('joinGo').onclick = async () => {
   const gid = $('joinGid').value.trim();
   const pin = $('joinPin').value.trim().replace(/\D/g, '');
   const me  = $('joinName').value.trim();
+  const myPin = ($('joinPin2').value || '').replace(/\D/g, '');
   if (!gid) return fail('joinErr', 'Paste the invite link or code.');
-  if (!pin) return fail('joinErr', 'Enter the passcode.');
+  if (!pin) return fail('joinErr', 'Enter the crew passcode.');
   if (!me)  return fail('joinErr', 'Enter your name.');
-  if (!myPhoto) return fail('joinErr', 'Add a photo — it is how people find you in a field.');
+  if (!/^\d{3}$/.test(myPin)) return fail('joinErr', 'Enter your own 3-number pin.');
 
   const btn = $('joinGo');
   working(btn, true);
@@ -300,23 +316,35 @@ $('joinGo').onclick = async () => {
     const ok = await previewGroup(gid);
     if (!ok) throw new Error('no such crew');
     const token = await C.joinToken(gid, pin);
-    const uid = C.myUid();
-    /* The rules reject this write unless the token matches, so a wrong
-       passcode fails here rather than letting anyone in. */
-    await C.ref('groups/' + gid + '/members/' + uid)
-      .set({ name: me, joined: Date.now(), t: token });
-    try { await C.ref('groups/' + gid + '/photos/' + uid).set(myPhoto); } catch (e) {}
+    const mkey = await C.personKey(gid, me, myPin);
 
-    bump('members');
-    C.setCurrentGroup({ gid, name: previewed.name, token });
+    /* Same name and pin gives the same key on any device, so a returning member
+       lands on the record they already have — picks, ratings, photo and all. */
+    let existing = null;
+    try { existing = (await C.ref('groups/' + gid + '/members/' + mkey).get()).val(); } catch (e) {}
+    if (!existing && !myPhoto) {
+      working(btn, false, 'Join the crew');
+      return fail('joinErr', 'Add a photo — it is how people find you in a field.');
+    }
+    if (existing) {
+      await step('signing you back in', () =>
+        C.ref('groups/' + gid + '/members/' + mkey).update({ t: token, seen: Date.now() }));
+    } else {
+      await step('joining the crew', () => C.ref('groups/' + gid + '/members/' + mkey)
+        .set({ name: me, joined: Date.now(), t: token }));
+      try { await C.ref('groups/' + gid + '/photos/' + mkey).set(myPhoto); } catch (e) {}
+      bump('members');
+    }
+    C.setCurrentGroup({ gid, name: previewed.name, token, key: mkey });
     C.setMyProfile({ name: me, photo: null });
     location.href = 'grid.html';
   } catch (e) {
     working(btn, false, 'Join the crew');
     const msg = String(e && e.message || '');
-    fail('joinErr', msg.includes('no such crew')
-      ? "No crew with that code — check the link."
-      : "That passcode doesn't match this crew.");
+    fail('joinErr',
+      msg.includes('no such crew') ? "No crew with that code — check the link."
+      : msg.includes('rules are out of date') ? msg
+      : "That crew passcode doesn't match.");
   }
 };
 

@@ -71,7 +71,7 @@
           timetable has been published.</p>
       </div>
 
-      <label>Your photo <span style="color:var(--edge)">· required</span></label>
+      <label id="photoLbl">Your photo <span style="color:var(--edge)">· required</span></label>
       <div class="photopick">
         <div class="ppprev" id="cPhotoPrev">👤</div>
         <button type="button" class="btn" id="cPhotoBtn">Add a photo</button>
@@ -81,6 +81,12 @@
 
       <label for="cName">Your name</label>
       <input type="text" id="cName" maxlength="24" placeholder="How the crew sees you" autocomplete="off">
+
+      <label for="cPin">Your own 3-number pin</label>
+      <input type="text" id="cPin" class="code" maxlength="3" placeholder="000"
+             inputmode="numeric" pattern="[0-9]*" autocomplete="off" spellcheck="false">
+      <p class="hint" style="margin-top:6px">Use the same name and pin on another device
+        and you'll pick up right where you left off.</p>
 
       <div class="err" id="createErr"></div>
       <div class="row" style="margin-top:18px">
@@ -133,7 +139,7 @@
       <input type="text" id="joinPin" class="code" maxlength="4" placeholder="0000"
              inputmode="numeric" pattern="[0-9]*" autocomplete="off" spellcheck="false">
 
-      <label>Your photo <span style="color:var(--edge)">· required</span></label>
+      <label id="photoLbl">Your photo <span style="color:var(--edge)">· required</span></label>
       <div class="photopick">
         <div class="ppprev" id="jPhotoPrev">👤</div>
         <button type="button" class="btn" id="jPhotoBtn">Add a photo</button>
@@ -143,6 +149,12 @@
 
       <label for="joinName">Your name</label>
       <input type="text" id="joinName" maxlength="24" placeholder="How the crew sees you" autocomplete="off">
+
+      <label for="joinPin2">Your own 3-number pin</label>
+      <input type="text" id="joinPin2" class="code" maxlength="3" placeholder="000"
+             inputmode="numeric" pattern="[0-9]*" autocomplete="off" spellcheck="false">
+      <p class="hint" id="joinKnown" style="margin-top:6px">Been here before on another device?
+        Same name and pin brings everything back.</p>
 
       <div class="err" id="joinErr"></div>
       <div class="row" style="margin-top:18px">

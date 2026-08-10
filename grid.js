@@ -49,8 +49,11 @@ window.addEventListener('error', e => {
   crew = C.currentGroup();
   if (!crew) { location.href = 'index.html'; return; }
   if (typeof firebase === 'undefined') return boom('Could not load Firebase.');
-  try { C.init(); uid = await C.signIn(); }
+  try { C.init(); await C.signIn(); }
   catch (e) { return boom("Couldn't sign in.", e && (e.code || e.message)); }
+  /* identity inside a crew is name + personal pin, not the device */
+  uid = crew.key;
+  if (!uid) { C.setCurrentGroup(null); location.href = 'index.html'; return; }
 
   try { photos = JSON.parse(localStorage.getItem('mp_photos_' + crew.gid) || '{}'); } catch (e) {}
 
