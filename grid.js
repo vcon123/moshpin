@@ -22,6 +22,7 @@ let myPicks = {};               // actId -> 1 or {note}
 let dayIdx = 0;
 let saveTimer = null;
 let meta = null;
+let cfg = {};                       // crew settings — currently just the lock
 const isAdmin = () => !!admins[uid];
 
 const pickNote = v => (v && typeof v === 'object' && v.note) ? v.note : '';
@@ -71,6 +72,7 @@ window.addEventListener('error', e => {
     /* title bar: the crew's own name, then the festival */
 
   try { meta = (await C.ref('groups/' + crew.gid + '/meta').get()).val(); } catch (e) {}
+  C.ref('groups/' + crew.gid + '/config').on('value', s => { cfg = s.val() || {}; }, () => {});
   C.ref('groups/' + crew.gid + '/admins').on('child_added', s => { admins[s.key] = true; drawTop(); });
   C.ref('groups/' + crew.gid + '/admins').on('child_removed', s => { delete admins[s.key]; drawTop(); });
 
@@ -774,7 +776,7 @@ function showCrew() {
     x === uid ? -1 : y === uid ? 1 : String(members[x].name || '').localeCompare(String(members[y].name || '')));
   $('crewBody').innerHTML = `
     <div class="phead"><b>👥 ${esc((meta && meta.name) || 'The crew')}</b>
-      <span class="hint">${order.length} ${order.length === 1 ? 'person' : 'people'}</span>
+      <span class="hint">${order.length} of 50${cfg.lock ? ' · 🔒 locked' : ''}</span>
       <button class="btn sm" id="cwClose" style="margin-left:auto">✕</button></div>
     <p class="hint">Tap someone to see where they are, how they're travelling and what they've tagged.</p>
     <div class="mlist" style="margin-top:8px">${order.map(u => `
@@ -786,6 +788,7 @@ function showCrew() {
           <button class="mini danger" data-kick="${u}">Remove</button>` : ''}
         <span style="color:var(--edge)">›</span>
       </div>`).join('')}</div>
+    ${order.length >= 50 ? '<p class="hint" style="margin-top:12px;color:var(--danger)">This crew is full. Start a second one and use the same festival — everyone still gets the same timetable.</p>' : ''}
     <button class="btn wide" id="cwToShare" style="margin-top:14px">✉ Invite someone</button>`;
   $('crewSheet').classList.add('on');
   $('cwClose').onclick = () => closeSheet('crewSheet');
@@ -825,7 +828,10 @@ function showInvite() {
     <label>Passcode</label>
     <div class="codebox"><span id="ivCode">…</span><button class="btn sm" id="ivCodeCopy">Copy</button></div>
     <p class="hint" id="ivCodeNote" style="margin-top:6px"></p>
-    ${isAdmin() ? '<button class="btn sm" id="ivSetCode" style="margin-top:8px">Change passcode</button>' : ''}
+    ${isAdmin() ? `<div class="row" style="margin-top:8px">
+        <button class="btn sm" id="ivSetCode">Change passcode</button>
+        <button class="btn sm" id="ivLock">${cfg.lock ? '🔓 Unlock crew' : '🔒 Lock crew'}</button>
+      </div>` : ''}
 
     <label style="margin-top:18px">Scan this</label>
     <div class="qrbox" style="margin:6px auto 0">${qrSvg(link, 200)}</div>
@@ -838,10 +844,17 @@ function showInvite() {
     </div>`;
   $('inviteSheet').classList.add('on');
   $('ivClose').onclick = () => closeSheet('inviteSheet');
+  const locked = !!cfg.lock;
   loadCode().then(code => {
+    if (locked && !isAdmin()) {
+      $('ivCode').textContent = '••••';
+      $('ivCodeNote').textContent = 'An admin has locked this crew — ask them to let someone in.';
+      return;
+    }
     $('ivCode').textContent = code || '—';
     $('ivCodeNote').textContent = code
-      ? 'Send this along with the link — it is asked for when they join.'
+      ? (locked ? 'Locked: only admins can see this. Anyone you give it to can still join.'
+                : 'Send this along with the link — it is asked for when they join.')
       : (isAdmin() ? 'Made before passcodes were shown here. Set a new one to share it.'
                    : 'Ask an admin for the passcode.');
   });
@@ -849,6 +862,16 @@ function showInvite() {
     try { await navigator.clipboard.writeText($('ivCode').textContent); C.toast('Passcode copied'); } catch (e) {}
   };
   const sc = $('ivSetCode'); if (sc) sc.onclick = changeCode;
+  const lk = $('ivLock');
+  if (lk) lk.onclick = async () => {
+    const on = !cfg.lock;
+    try {
+      await C.ref('groups/' + crew.gid + '/config/lock').set(on || null);
+      cfg.lock = on;
+      C.toast(on ? 'Locked — only admins can see the passcode' : 'Unlocked');
+      showInvite();
+    } catch (e) { C.toast("Couldn't change that"); }
+  };
   $('ivCopy').onclick = async () => {
     try { await navigator.clipboard.writeText(link); C.toast('Link copied'); } catch (e) { $('ivLink').select(); }
   };

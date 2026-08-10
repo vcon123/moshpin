@@ -316,13 +316,24 @@ $('joinGo').onclick = async () => {
   try {
     const ok = await previewGroup(gid);
     if (!ok) throw new Error('no such crew');
+
+    /* A crew's traffic grows with the square of its size, so 50 is where it
+       stops being cheap — and past that the check-in list stops being useful
+       anyway. Returning members are always let back in. */
+    const mkeyPre = await C.personKey(gid, me, myPin);
+    let already = null;
+    try { already = (await C.ref('groups/' + gid + '/members/' + mkeyPre).get()).val(); } catch (e) {}
+    if (!already) {
+      let count = 0;
+      try { count = (await C.ref('groups/' + gid + '/members').get()).numChildren(); } catch (e) {}
+      if (count >= 50) throw new Error('crew full');
+    }
     const token = await C.joinToken(gid, pin);
-    const mkey = await C.personKey(gid, me, myPin);
+    const mkey = mkeyPre;
 
     /* Same name and pin gives the same key on any device, so a returning member
        lands on the record they already have — picks, ratings, photo and all. */
-    let existing = null;
-    try { existing = (await C.ref('groups/' + gid + '/members/' + mkey).get()).val(); } catch (e) {}
+    const existing = already;
     if (!existing && !myPhoto) {
       working(btn, false, 'Join the crew');
       return fail('joinErr', 'Add a photo — it is how people find you in a field.');
@@ -348,7 +359,8 @@ $('joinGo').onclick = async () => {
     working(btn, false, 'Join the crew');
     const msg = String(e && e.message || '');
     fail('joinErr',
-      msg.includes('no such crew') ? "No crew with that code — check the link."
+      msg.includes('crew full') ? "That crew is full — 50 is the limit. Ask them to start a second one."
+      : msg.includes('no such crew') ? "No crew with that code — check the link."
       : msg.includes('rules are out of date') ? msg
       : "That crew passcode doesn't match.");
   }

@@ -34,7 +34,7 @@
           "members": {
             ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
             "$k": {
-              ".write": "auth != null && (($k === root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()) || root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists() || (!data.exists() && root.child('moshpin/groups/'+$gid+'/join/'+newData.child('t').val()).exists()))",
+              ".write": "auth != null && (($k === root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()) || root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists() || (!data.exists() && root.child('moshpin/groups/'+$gid+'/join/'+newData.child('t').val()).exists() && root.child('moshpin/groups/'+$gid+'/members').numChildren() < 50))",
               ".validate": "!newData.exists() || newData.hasChild('name')"
             }
           },
@@ -106,7 +106,7 @@
             ".write": "auth != null && root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists()"
           },
           "code": {
-            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists() && (!root.child('moshpin/groups/'+$gid+'/config/lock').val() || root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists())",
             ".write": "auth != null && root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists()"
           },
           "uidmap": {
