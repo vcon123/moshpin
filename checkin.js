@@ -215,15 +215,18 @@ const COLS = {
   2: ['left', 'right'],
   3: ['left', 'centre', 'right'],
   4: ['far left', 'left', 'right', 'far right'],
-  5: ['far left', 'left', 'centre', 'right', 'far right']
+  5: ['far left', 'left', 'centre', 'right', 'far right'],
+  6: ['far left', 'left', 'centre left', 'centre right', 'right', 'far right']
 };
 const ROWS = {
   3: ['front', 'middle', 'back'],
-  4: ['front', 'mid front', 'mid back', 'back'],
-  5: ['front', 'mid front', 'middle', 'mid back', 'back']
+  4: ['front', 'front middle', 'back middle', 'back'],
+  5: ['front', 'front middle', 'middle', 'back middle', 'back'],
+  6: ['front', 'front middle', 'middle', 'back middle', 'back', 'far back']
 };
-/* an oval with no obvious front gets neutral compass names instead */
-const NEUTRAL_R = { 3: ['top', 'middle', 'bottom'], 4: ['top', 'upper', 'lower', 'bottom'] };
+/* a shape with no obvious front gets neutral names instead of a guess */
+const NEUTRAL_R = { 3: ['top', 'middle', 'bottom'], 4: ['top', 'upper', 'lower', 'bottom'],
+                    5: ['top', 'upper', 'middle', 'lower', 'bottom'] };
 
 export function planKey(r, c) { return 'p' + r + c; }
 export function planLabel(plan, r, c) {
@@ -237,16 +240,21 @@ function renderPlan(head, body, foot, v, a, w, own) {
   const at = {};
   for (const c of active()) if (c.v === v.id) (at[c.z] = at[c.z] || []).push(c);
 
+  /* `box` is the floor area measured off the plan and `cells` the squares that
+     actually fall on it — so nothing is drawn over the stage or the margins. */
+  const B = plan.box || [0, 0, 100, 100];
+  const ok = plan.cells ? new Set(plan.cells) : null;
   let cells = '';
   for (let r = 0; r < plan.rows; r++) {
     for (let c = 0; c < plan.cols; c++) {
+      if (ok && !ok.has('' + r + c)) continue;
       const k = planKey(r, c);
       const pp = at[k] || [];
       const isMine = own && own.v === v.id && own.z === k;
       cells += `<button class="pcell${pp.length ? ' taken' : ''}${isMine ? ' mine' : ''}${w.open ? '' : ' shut'}"
         data-z="${k}" title="${esc(planLabel(plan, r, c))}"
-        style="left:${(c / plan.cols) * 100}%;top:${(r / plan.rows) * 100}%;
-               width:${100 / plan.cols}%;height:${100 / plan.rows}%">
+        style="left:${B[0] + B[2] * c / plan.cols}%;top:${B[1] + B[3] * r / plan.rows}%;
+               width:${B[2] / plan.cols}%;height:${B[3] / plan.rows}%">
         ${pp.length ? `<span class="pfaces">${pp.slice(0, 4).map(x => avatar(x.n, 19)).join('')}${pp.length > 4 ? `<span class="pmore">+${pp.length - 4}</span>` : ''}</span>`
                     : `<span class="plab">${esc(planLabel(plan, r, c))}</span>`}
       </button>`;
