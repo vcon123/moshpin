@@ -427,7 +427,7 @@
     }
    ],
    "acts": {
-    "a1": {
+    "cfdb5fc": {
      "d": 1,
      "v": "alpha",
      "s": "14:00",
@@ -435,7 +435,7 @@
      "n": "Amyl and the Sniffers",
      "u": "https://open.spotify.com/search/Amyl%20and%20the%20Sniffers"
     },
-    "a2": {
+    "43d1ebc": {
      "d": 1,
      "v": "alpha",
      "s": "16:00",
@@ -443,7 +443,7 @@
      "n": "Antoon",
      "u": "https://open.spotify.com/search/Antoon"
     },
-    "a3": {
+    "8af1cc5": {
      "d": 1,
      "v": "alpha",
      "s": "18:15",
@@ -451,15 +451,15 @@
      "n": "Kneecap",
      "u": "https://open.spotify.com/search/Kneecap"
     },
-    "a4": {
+    "8d584a7": {
      "d": 1,
      "v": "alpha",
-     "s": "20:15",
+     "s": "20:30",
      "e": "21:45",
      "n": "Parcels",
      "u": "https://open.spotify.com/search/Parcels"
     },
-    "a5": {
+    "fb5524d": {
      "d": 1,
      "v": "alpha",
      "s": "22:40",
@@ -467,591 +467,7 @@
      "n": "New Wave",
      "u": "https://open.spotify.com/search/New%20Wave"
     },
-    "a6": {
-     "d": 1,
-     "v": "bravo",
-     "s": "13:00",
-     "e": "14:00",
-     "n": "Nusantara Beat",
-     "u": "https://open.spotify.com/search/Nusantara%20Beat"
-    },
-    "a7": {
-     "d": 1,
-     "v": "bravo",
-     "s": "15:00",
-     "e": "15:45",
-     "n": "Ad\u00e9la",
-     "u": "https://open.spotify.com/search/Ad%C3%A9la"
-    },
-    "a8": {
-     "d": 1,
-     "v": "bravo",
-     "s": "17:00",
-     "e": "18:00",
-     "n": "Nu Genea Live Band",
-     "u": "https://open.spotify.com/search/Nu%20Genea%20Live%20Band"
-    },
-    "a9": {
-     "d": 1,
-     "v": "bravo",
-     "s": "19:15",
-     "e": "20:15",
-     "n": "Willem",
-     "u": "https://open.spotify.com/search/Willem"
-    },
-    "a10": {
-     "d": 1,
-     "v": "bravo",
-     "s": "21:30",
-     "e": "22:30",
-     "n": "Viagra Boys",
-     "u": "https://open.spotify.com/search/Viagra%20Boys"
-    },
-    "a11": {
-     "d": 1,
-     "v": "bravo",
-     "s": "23:00",
-     "e": "00:30",
-     "n": "S-Candalo",
-     "u": "https://open.spotify.com/search/S-Candalo"
-    },
-    "a12": {
-     "d": 1,
-     "v": "bravo",
-     "s": "00:30",
-     "e": "02:00",
-     "n": "Chlo\u00e9 Caillet",
-     "u": "https://open.spotify.com/search/Chlo%C3%A9%20Caillet"
-    },
-    "a13": {
-     "d": 1,
-     "v": "bravo",
-     "s": "02:00",
-     "e": "03:30",
-     "n": "Ben UFO",
-     "u": "https://open.spotify.com/search/Ben%20UFO"
-    },
-    "a14": {
-     "d": 1,
-     "v": "bravo",
-     "s": "03:30",
-     "e": "05:00",
-     "n": "Identified Patient",
-     "u": "https://open.spotify.com/search/Identified%20Patient"
-    },
-    "a15": {
-     "d": 1,
-     "v": "heineken",
-     "s": "13:15",
-     "e": "14:15",
-     "n": "Skye Newman",
-     "u": "https://open.spotify.com/search/Skye%20Newman"
-    },
-    "a16": {
-     "d": 1,
-     "v": "heineken",
-     "s": "15:15",
-     "e": "16:15",
-     "n": "Leisure",
-     "u": "https://open.spotify.com/search/Leisure"
-    },
-    "a17": {
-     "d": 1,
-     "v": "heineken",
-     "s": "17:15",
-     "e": "18:15",
-     "n": "JPEGMAFIA",
-     "u": "https://open.spotify.com/search/JPEGMAFIA"
-    },
-    "a18": {
-     "d": 1,
-     "v": "heineken",
-     "s": "19:30",
-     "e": "20:30",
-     "n": "Blood Orange",
-     "u": "https://open.spotify.com/search/Blood%20Orange"
-    },
-    "a19": {
-     "d": 1,
-     "v": "heineken",
-     "s": "21:30",
-     "e": "23:00",
-     "n": "Richie Hawtin DEX EFX X0X",
-     "u": "https://open.spotify.com/search/Richie%20Hawtin%20DEX%20EFX%20X0X"
-    },
-    "a20": {
-     "d": 1,
-     "v": "heineken",
-     "s": "00:00",
-     "e": "04:00",
-     "n": "Basshall: Kybba, Tribal Kush & Nems",
-     "u": "https://open.spotify.com/search/Basshall%3A%20Kybba%2C%20Tribal%20Kush%20%26%20Nems"
-    },
-    "a21": {
-     "d": 1,
-     "v": "lima",
-     "s": "12:15",
-     "e": "13:15",
-     "n": "Romy Liz Rose",
-     "u": "https://open.spotify.com/search/Romy%20Liz%20Rose"
-    },
-    "a22": {
-     "d": 1,
-     "v": "lima",
-     "s": "14:15",
-     "e": "15:15",
-     "n": "Susobrino",
-     "u": "https://open.spotify.com/search/Susobrino"
-    },
-    "a23": {
-     "d": 1,
-     "v": "lima",
-     "s": "16:15",
-     "e": "17:15",
-     "n": "Dove Ellis",
-     "u": "https://open.spotify.com/search/Dove%20Ellis"
-    },
-    "a24": {
-     "d": 1,
-     "v": "lima",
-     "s": "18:30",
-     "e": "19:20",
-     "n": "Ana Frango El\u00e9trico",
-     "u": "https://open.spotify.com/search/Ana%20Frango%20El%C3%A9trico"
-    },
-    "a25": {
-     "d": 1,
-     "v": "lima",
-     "s": "20:30",
-     "e": "21:30",
-     "n": "Zeyne",
-     "u": "https://open.spotify.com/search/Zeyne"
-    },
-    "a26": {
-     "d": 1,
-     "v": "lima",
-     "s": "22:30",
-     "e": "23:30",
-     "n": "Fulu Miziki",
-     "u": "https://open.spotify.com/search/Fulu%20Miziki"
-    },
-    "a27": {
-     "d": 1,
-     "v": "lima",
-     "s": "00:00",
-     "e": "03:00",
-     "n": "Het Alternatief",
-     "u": "https://open.spotify.com/search/Het%20Alternatief"
-    },
-    "a28": {
-     "d": 1,
-     "v": "india",
-     "s": "11:30",
-     "e": "12:30",
-     "n": "Yoga",
-     "u": null
-    },
-    "a29": {
-     "d": 1,
-     "v": "india",
-     "s": "14:00",
-     "e": "15:00",
-     "n": "Jet van der Steen",
-     "u": "https://open.spotify.com/search/Jet%20van%20der%20Steen"
-    },
-    "a30": {
-     "d": 1,
-     "v": "india",
-     "s": "16:00",
-     "e": "17:00",
-     "n": "Joy (Anonymous)",
-     "u": "https://open.spotify.com/search/Joy%20%28Anonymous%29"
-    },
-    "a31": {
-     "d": 1,
-     "v": "india",
-     "s": "18:15",
-     "e": "19:15",
-     "n": "Cobrah",
-     "u": "https://open.spotify.com/search/Cobrah"
-    },
-    "a32": {
-     "d": 1,
-     "v": "india",
-     "s": "20:30",
-     "e": "21:30",
-     "n": "President",
-     "u": "https://open.spotify.com/search/President"
-    },
-    "a33": {
-     "d": 1,
-     "v": "india",
-     "s": "22:30",
-     "e": "23:30",
-     "n": "FCUKERS",
-     "u": "https://open.spotify.com/search/FCUKERS"
-    },
-    "a34": {
-     "d": 1,
-     "v": "india",
-     "s": "00:00",
-     "e": "01:30",
-     "n": "Mary Lake",
-     "u": "https://open.spotify.com/search/Mary%20Lake"
-    },
-    "a35": {
-     "d": 1,
-     "v": "india",
-     "s": "01:30",
-     "e": "03:00",
-     "n": "Freddy K",
-     "u": "https://open.spotify.com/search/Freddy%20K"
-    },
-    "a36": {
-     "d": 1,
-     "v": "india",
-     "s": "03:00",
-     "e": "04:30",
-     "n": "Marr\u00f8n",
-     "u": "https://open.spotify.com/search/Marr%C3%B8n"
-    },
-    "a37": {
-     "d": 1,
-     "v": "xray",
-     "s": "12:30",
-     "e": "13:30",
-     "n": "Chalk",
-     "u": "https://open.spotify.com/search/Chalk"
-    },
-    "a38": {
-     "d": 1,
-     "v": "xray",
-     "s": "14:30",
-     "e": "15:20",
-     "n": "Radio Z",
-     "u": "https://open.spotify.com/search/Radio%20Z"
-    },
-    "a39": {
-     "d": 1,
-     "v": "xray",
-     "s": "16:15",
-     "e": "17:15",
-     "n": "Rose Gray",
-     "u": "https://open.spotify.com/search/Rose%20Gray"
-    },
-    "a40": {
-     "d": 1,
-     "v": "xray",
-     "s": "18:00",
-     "e": "19:00",
-     "n": "Sons",
-     "u": "https://open.spotify.com/search/Sons"
-    },
-    "a41": {
-     "d": 1,
-     "v": "xray",
-     "s": "19:50",
-     "e": "20:50",
-     "n": "Gurriers",
-     "u": "https://open.spotify.com/search/Gurriers"
-    },
-    "a42": {
-     "d": 1,
-     "v": "xray",
-     "s": "21:45",
-     "e": "22:35",
-     "n": "James K",
-     "u": "https://open.spotify.com/search/James%20K"
-    },
-    "a43": {
-     "d": 1,
-     "v": "xray",
-     "s": "23:00",
-     "e": "00:00",
-     "n": "Bassvictim",
-     "u": "https://open.spotify.com/search/Bassvictim"
-    },
-    "a44": {
-     "d": 1,
-     "v": "xray",
-     "s": "00:30",
-     "e": "01:30",
-     "n": "Violent Magic Orchestra",
-     "u": "https://open.spotify.com/search/Violent%20Magic%20Orchestra"
-    },
-    "a45": {
-     "d": 1,
-     "v": "xray",
-     "s": "02:00",
-     "e": "03:00",
-     "n": "Kaboutertje Putlucht",
-     "u": "https://open.spotify.com/search/Kaboutertje%20Putlucht"
-    },
-    "a46": {
-     "d": 1,
-     "v": "xray",
-     "s": "03:00",
-     "e": "04:30",
-     "n": "Gys\u00e8le",
-     "u": "https://open.spotify.com/search/Gys%C3%A8le"
-    },
-    "a47": {
-     "d": 1,
-     "v": "hacienda",
-     "s": "12:30",
-     "e": "16:30",
-     "n": "Kim Josefine",
-     "u": "https://open.spotify.com/search/Kim%20Josefine"
-    },
-    "a48": {
-     "d": 1,
-     "v": "hacienda",
-     "s": "16:30",
-     "e": "18:30",
-     "n": "Charmaine",
-     "u": "https://open.spotify.com/search/Charmaine"
-    },
-    "a49": {
-     "d": 1,
-     "v": "hacienda",
-     "s": "18:30",
-     "e": "20:30",
-     "n": "Lashanti",
-     "u": "https://open.spotify.com/search/Lashanti"
-    },
-    "a50": {
-     "d": 1,
-     "v": "hacienda",
-     "s": "20:30",
-     "e": "22:00",
-     "n": "Jea",
-     "u": "https://open.spotify.com/search/Jea"
-    },
-    "a51": {
-     "d": 1,
-     "v": "hacienda",
-     "s": "22:00",
-     "e": "23:30",
-     "n": "Tins",
-     "u": "https://open.spotify.com/search/Tins"
-    },
-    "a52": {
-     "d": 1,
-     "v": "hacienda",
-     "s": "23:30",
-     "e": "01:00",
-     "n": "Tienson",
-     "u": "https://open.spotify.com/search/Tienson"
-    },
-    "a53": {
-     "d": 1,
-     "v": "hacienda",
-     "s": "01:00",
-     "e": "03:00",
-     "n": "Dam Swindle",
-     "u": "https://open.spotify.com/search/Dam%20Swindle"
-    },
-    "a54": {
-     "d": 1,
-     "v": "hacienda",
-     "s": "03:00",
-     "e": "04:30",
-     "n": "Laura Meester",
-     "u": "https://open.spotify.com/search/Laura%20Meester"
-    },
-    "a55": {
-     "d": 1,
-     "v": "juliet",
-     "s": "14:00",
-     "e": "17:15",
-     "n": "Orkater",
-     "u": null
-    },
-    "a56": {
-     "d": 1,
-     "v": "juliet",
-     "s": "17:15",
-     "e": "19:00",
-     "n": "Boys Won't Be Boys",
-     "u": null
-    },
-    "a57": {
-     "d": 1,
-     "v": "juliet",
-     "s": "19:00",
-     "e": "21:00",
-     "n": "Dieheleding",
-     "u": null
-    },
-    "a58": {
-     "d": 1,
-     "v": "juliet",
-     "s": "21:00",
-     "e": "22:45",
-     "n": "David Linszen",
-     "u": null
-    },
-    "a59": {
-     "d": 1,
-     "v": "juliet",
-     "s": "22:45",
-     "e": "00:30",
-     "n": "Marcel van Roosmalen",
-     "u": null
-    },
-    "a60": {
-     "d": 1,
-     "v": "juliet",
-     "s": "00:30",
-     "e": "02:00",
-     "n": "Comedytrain",
-     "u": null
-    },
-    "a61": {
-     "d": 1,
-     "v": "echo",
-     "s": "12:30",
-     "e": "14:00",
-     "n": "We moeten het hebben over: Femicide",
-     "u": null
-    },
-    "a62": {
-     "d": 1,
-     "v": "echo",
-     "s": "14:00",
-     "e": "15:15",
-     "n": "VPRO Tegenlicht",
-     "u": null
-    },
-    "a63": {
-     "d": 1,
-     "v": "echo",
-     "s": "15:15",
-     "e": "16:45",
-     "n": "Hoe ziek is de geopolitiek: Soedan",
-     "u": null
-    },
-    "a64": {
-     "d": 1,
-     "v": "echo",
-     "s": "16:45",
-     "e": "18:00",
-     "n": "New Scientist Live",
-     "u": null
-    },
-    "a65": {
-     "d": 1,
-     "v": "echo",
-     "s": "18:00",
-     "e": "19:00",
-     "n": "NWQ",
-     "u": null
-    },
-    "a66": {
-     "d": 1,
-     "v": "echo",
-     "s": "19:00",
-     "e": "21:15",
-     "n": "The Making of De Jeugd van Tegenwoordig \u2013 Live",
-     "u": null
-    },
-    "a67": {
-     "d": 1,
-     "v": "echo",
-     "s": "21:15",
-     "e": "23:30",
-     "n": "Billie Eilish: Hit Me Hard and Soft",
-     "u": null
-    },
-    "a68": {
-     "d": 1,
-     "v": "echo",
-     "s": "23:30",
-     "e": "01:05",
-     "n": "Fantastic Planet",
-     "u": null
-    },
-    "a69": {
-     "d": 1,
-     "v": "echo",
-     "s": "01:05",
-     "e": "02:35",
-     "n": "Teenage Sex and Death at Camp Miasma",
-     "u": null
-    },
-    "a70": {
-     "d": 1,
-     "v": "adonis",
-     "s": "10:45",
-     "e": "12:00",
-     "n": "Bakkie Llit",
-     "u": null
-    },
-    "a71": {
-     "d": 1,
-     "v": "adonis",
-     "s": "12:00",
-     "e": "13:30",
-     "n": "Flip the Script!",
-     "u": null
-    },
-    "a72": {
-     "d": 1,
-     "v": "adonis",
-     "s": "13:30",
-     "e": "15:00",
-     "n": "Wat Nu? Verzet!",
-     "u": null
-    },
-    "a73": {
-     "d": 1,
-     "v": "adonis",
-     "s": "15:00",
-     "e": "16:30",
-     "n": "Mensen Zeggen Dingen",
-     "u": null
-    },
-    "a74": {
-     "d": 1,
-     "v": "adonis",
-     "s": "16:30",
-     "e": "17:30",
-     "n": "Ayoub Kharkhach",
-     "u": null
-    },
-    "a75": {
-     "d": 1,
-     "v": "adonis",
-     "s": "17:30",
-     "e": "18:30",
-     "n": "Janneke de Bijl",
-     "u": null
-    },
-    "a76": {
-     "d": 1,
-     "v": "adonis",
-     "s": "18:30",
-     "e": "19:30",
-     "n": "Mark Waumans",
-     "u": null
-    },
-    "a77": {
-     "d": 1,
-     "v": "adonis",
-     "s": "19:30",
-     "e": "22:00",
-     "n": "Marie Koet",
-     "u": null
-    },
-    "a78": {
-     "d": 1,
-     "v": "adonis",
-     "s": "22:00",
-     "e": "23:30",
-     "n": "Adonis",
-     "u": null
-    },
-    "a79": {
+    "f2576cb": {
      "d": 2,
      "v": "alpha",
      "s": "14:00",
@@ -1059,7 +475,7 @@
      "n": "Kelis",
      "u": "https://open.spotify.com/search/Kelis"
     },
-    "a80": {
+    "69bfcd9": {
      "d": 2,
      "v": "alpha",
      "s": "16:00",
@@ -1067,7 +483,7 @@
      "n": "S10",
      "u": "https://open.spotify.com/search/S10"
     },
-    "a81": {
+    "f352f4d": {
      "d": 2,
      "v": "alpha",
      "s": "18:15",
@@ -1075,7 +491,7 @@
      "n": "Major Lazer",
      "u": "https://open.spotify.com/search/Major%20Lazer"
     },
-    "a82": {
+    "8f8b401": {
      "d": 2,
      "v": "alpha",
      "s": "20:30",
@@ -1083,7 +499,7 @@
      "n": "Sombr",
      "u": "https://open.spotify.com/search/Sombr"
     },
-    "a83": {
+    "58e4928": {
      "d": 2,
      "v": "alpha",
      "s": "22:30",
@@ -1091,599 +507,7 @@
      "n": "Tyler, The Creator",
      "u": "https://open.spotify.com/search/Tyler%2C%20The%20Creator"
     },
-    "a84": {
-     "d": 2,
-     "v": "bravo",
-     "s": "13:00",
-     "e": "14:00",
-     "n": "Jos\u00e9 Gonz\u00e1lez",
-     "u": "https://open.spotify.com/search/Jos%C3%A9%20Gonz%C3%A1lez"
-    },
-    "a85": {
-     "d": 2,
-     "v": "bravo",
-     "s": "15:00",
-     "e": "16:00",
-     "n": "Zimmer90",
-     "u": "https://open.spotify.com/search/Zimmer90"
-    },
-    "a86": {
-     "d": 2,
-     "v": "bravo",
-     "s": "17:00",
-     "e": "18:00",
-     "n": "IJsland",
-     "u": "https://open.spotify.com/search/IJsland"
-    },
-    "a87": {
-     "d": 2,
-     "v": "bravo",
-     "s": "19:15",
-     "e": "20:15",
-     "n": "Geese",
-     "u": "https://open.spotify.com/search/Geese"
-    },
-    "a88": {
-     "d": 2,
-     "v": "bravo",
-     "s": "21:15",
-     "e": "22:30",
-     "n": "Eefje de Visser",
-     "u": "https://open.spotify.com/search/Eefje%20de%20Visser"
-    },
-    "a89": {
-     "d": 2,
-     "v": "bravo",
-     "s": "23:00",
-     "e": "00:30",
-     "n": "Afra",
-     "u": "https://open.spotify.com/search/Afra"
-    },
-    "a90": {
-     "d": 2,
-     "v": "bravo",
-     "s": "00:30",
-     "e": "02:00",
-     "n": "Helena Hauff",
-     "u": "https://open.spotify.com/search/Helena%20Hauff"
-    },
-    "a91": {
-     "d": 2,
-     "v": "bravo",
-     "s": "02:00",
-     "e": "03:30",
-     "n": "H\u00e9ctor Oaks",
-     "u": "https://open.spotify.com/search/H%C3%A9ctor%20Oaks"
-    },
-    "a92": {
-     "d": 2,
-     "v": "bravo",
-     "s": "03:30",
-     "e": "05:00",
-     "n": "Boys Noize",
-     "u": "https://open.spotify.com/search/Boys%20Noize"
-    },
-    "a93": {
-     "d": 2,
-     "v": "heineken",
-     "s": "11:30",
-     "e": "12:30",
-     "n": "Soul Linedance Workshop door Summer Dance Forever",
-     "u": null
-    },
-    "a94": {
-     "d": 2,
-     "v": "heineken",
-     "s": "13:15",
-     "e": "14:00",
-     "n": "Milolaathetlukken",
-     "u": "https://open.spotify.com/search/Milolaathetlukken"
-    },
-    "a95": {
-     "d": 2,
-     "v": "heineken",
-     "s": "15:15",
-     "e": "16:15",
-     "n": "Ravyn Lenae",
-     "u": "https://open.spotify.com/search/Ravyn%20Lenae"
-    },
-    "a96": {
-     "d": 2,
-     "v": "heineken",
-     "s": "17:15",
-     "e": "18:15",
-     "n": "Pale Jay",
-     "u": "https://open.spotify.com/search/Pale%20Jay"
-    },
-    "a97": {
-     "d": 2,
-     "v": "heineken",
-     "s": "19:30",
-     "e": "20:30",
-     "n": "Nia Archives",
-     "u": "https://open.spotify.com/search/Nia%20Archives"
-    },
-    "a98": {
-     "d": 2,
-     "v": "heineken",
-     "s": "21:45",
-     "e": "23:00",
-     "n": "Royal Blood",
-     "u": "https://open.spotify.com/search/Royal%20Blood"
-    },
-    "a99": {
-     "d": 2,
-     "v": "heineken",
-     "s": "00:00",
-     "e": "01:00",
-     "n": "Lambrini Girls",
-     "u": "https://open.spotify.com/search/Lambrini%20Girls"
-    },
-    "a100": {
-     "d": 2,
-     "v": "heineken",
-     "s": "01:30",
-     "e": "04:25",
-     "n": "TLM",
-     "u": "https://open.spotify.com/search/TLM"
-    },
-    "a101": {
-     "d": 2,
-     "v": "lima",
-     "s": "12:15",
-     "e": "13:15",
-     "n": "Latanya Alberto",
-     "u": "https://open.spotify.com/search/Latanya%20Alberto"
-    },
-    "a102": {
-     "d": 2,
-     "v": "lima",
-     "s": "14:15",
-     "e": "15:15",
-     "n": "Ko Shin Moon",
-     "u": "https://open.spotify.com/search/Ko%20Shin%20Moon"
-    },
-    "a103": {
-     "d": 2,
-     "v": "lima",
-     "s": "16:15",
-     "e": "17:15",
-     "n": "Il Mago del Gelato",
-     "u": "https://open.spotify.com/search/Il%20Mago%20del%20Gelato"
-    },
-    "a104": {
-     "d": 2,
-     "v": "lima",
-     "s": "18:25",
-     "e": "19:25",
-     "n": "Tyler Ballgame",
-     "u": "https://open.spotify.com/search/Tyler%20Ballgame"
-    },
-    "a105": {
-     "d": 2,
-     "v": "lima",
-     "s": "20:40",
-     "e": "21:40",
-     "n": "Fauna",
-     "u": "https://open.spotify.com/search/Fauna"
-    },
-    "a106": {
-     "d": 2,
-     "v": "lima",
-     "s": "22:30",
-     "e": "23:30",
-     "n": "\u00c1cido Pantera",
-     "u": "https://open.spotify.com/search/%C3%81cido%20Pantera"
-    },
-    "a107": {
-     "d": 2,
-     "v": "lima",
-     "s": "00:00",
-     "e": "03:00",
-     "n": "Ol\u00e1 Brazil!",
-     "u": "https://open.spotify.com/search/Ol%C3%A1%20Brazil%21"
-    },
-    "a108": {
-     "d": 2,
-     "v": "india",
-     "s": "11:30",
-     "e": "12:30",
-     "n": "Yoga",
-     "u": null
-    },
-    "a109": {
-     "d": 2,
-     "v": "india",
-     "s": "14:15",
-     "e": "15:00",
-     "n": "Violet Grohl",
-     "u": "https://open.spotify.com/search/Violet%20Grohl"
-    },
-    "a110": {
-     "d": 2,
-     "v": "india",
-     "s": "16:15",
-     "e": "17:00",
-     "n": "KEO",
-     "u": "https://open.spotify.com/search/KEO"
-    },
-    "a111": {
-     "d": 2,
-     "v": "india",
-     "s": "18:20",
-     "e": "19:10",
-     "n": "Chloe Qisha",
-     "u": "https://open.spotify.com/search/Chloe%20Qisha"
-    },
-    "a112": {
-     "d": 2,
-     "v": "india",
-     "s": "20:30",
-     "e": "21:20",
-     "n": "Zep",
-     "u": "https://open.spotify.com/search/Zep"
-    },
-    "a113": {
-     "d": 2,
-     "v": "india",
-     "s": "22:30",
-     "e": "00:00",
-     "n": "Maey",
-     "u": "https://open.spotify.com/search/Maey"
-    },
-    "a114": {
-     "d": 2,
-     "v": "india",
-     "s": "00:00",
-     "e": "01:00",
-     "n": "SMIB",
-     "u": "https://open.spotify.com/search/SMIB"
-    },
-    "a115": {
-     "d": 2,
-     "v": "india",
-     "s": "01:00",
-     "e": "02:15",
-     "n": "S!rene",
-     "u": "https://open.spotify.com/search/S%21rene"
-    },
-    "a116": {
-     "d": 2,
-     "v": "india",
-     "s": "02:15",
-     "e": "03:30",
-     "n": "Waxfiend",
-     "u": "https://open.spotify.com/search/Waxfiend"
-    },
-    "a117": {
-     "d": 2,
-     "v": "india",
-     "s": "03:30",
-     "e": "04:30",
-     "n": "Nala",
-     "u": "https://open.spotify.com/search/Nala"
-    },
-    "a118": {
-     "d": 2,
-     "v": "xray",
-     "s": "14:00",
-     "e": "14:50",
-     "n": "Terzij de Horde",
-     "u": "https://open.spotify.com/search/Terzij%20de%20Horde"
-    },
-    "a119": {
-     "d": 2,
-     "v": "xray",
-     "s": "15:40",
-     "e": "16:30",
-     "n": "Guilt Trip",
-     "u": "https://open.spotify.com/search/Guilt%20Trip"
-    },
-    "a120": {
-     "d": 2,
-     "v": "xray",
-     "s": "17:10",
-     "e": "18:00",
-     "n": "Sophia Stel",
-     "u": "https://open.spotify.com/search/Sophia%20Stel"
-    },
-    "a121": {
-     "d": 2,
-     "v": "xray",
-     "s": "18:45",
-     "e": "19:30",
-     "n": "Tracey",
-     "u": "https://open.spotify.com/search/Tracey"
-    },
-    "a122": {
-     "d": 2,
-     "v": "xray",
-     "s": "20:30",
-     "e": "21:10",
-     "n": "Speed",
-     "u": "https://open.spotify.com/search/Speed"
-    },
-    "a123": {
-     "d": 2,
-     "v": "xray",
-     "s": "22:00",
-     "e": "23:30",
-     "n": "Voices From The Lake",
-     "u": "https://open.spotify.com/search/Voices%20From%20The%20Lake"
-    },
-    "a124": {
-     "d": 2,
-     "v": "xray",
-     "s": "23:30",
-     "e": "01:30",
-     "n": "Skee Mask",
-     "u": "https://open.spotify.com/search/Skee%20Mask"
-    },
-    "a125": {
-     "d": 2,
-     "v": "xray",
-     "s": "01:30",
-     "e": "03:00",
-     "n": "DJRUM",
-     "u": "https://open.spotify.com/search/DJRUM"
-    },
-    "a126": {
-     "d": 2,
-     "v": "xray",
-     "s": "03:15",
-     "e": "04:45",
-     "n": "upsammy",
-     "u": "https://open.spotify.com/search/upsammy"
-    },
-    "a127": {
-     "d": 2,
-     "v": "hacienda",
-     "s": "12:30",
-     "e": "16:30",
-     "n": "Ketama Man",
-     "u": "https://open.spotify.com/search/Ketama%20Man"
-    },
-    "a128": {
-     "d": 2,
-     "v": "hacienda",
-     "s": "16:30",
-     "e": "18:30",
-     "n": "Folake",
-     "u": "https://open.spotify.com/search/Folake"
-    },
-    "a129": {
-     "d": 2,
-     "v": "hacienda",
-     "s": "18:30",
-     "e": "21:00",
-     "n": "Y\u016fsu",
-     "u": "https://open.spotify.com/search/Y%C5%AFsu"
-    },
-    "a130": {
-     "d": 2,
-     "v": "hacienda",
-     "s": "21:00",
-     "e": "23:30",
-     "n": "Fiesta Macumba Soundsystem",
-     "u": "https://open.spotify.com/search/Fiesta%20Macumba%20Soundsystem"
-    },
-    "a131": {
-     "d": 2,
-     "v": "hacienda",
-     "s": "23:30",
-     "e": "01:30",
-     "n": "Rockefellababe",
-     "u": "https://open.spotify.com/search/Rockefellababe"
-    },
-    "a132": {
-     "d": 2,
-     "v": "hacienda",
-     "s": "01:30",
-     "e": "03:00",
-     "n": "Tera K\u00f2r\u00e1",
-     "u": "https://open.spotify.com/search/Tera%20K%C3%B2r%C3%A1"
-    },
-    "a133": {
-     "d": 2,
-     "v": "hacienda",
-     "s": "03:00",
-     "e": "04:30",
-     "n": "Lamsi",
-     "u": "https://open.spotify.com/search/Lamsi"
-    },
-    "a134": {
-     "d": 2,
-     "v": "juliet",
-     "s": "14:00",
-     "e": "17:00",
-     "n": "Nasrdin Dchar",
-     "u": null
-    },
-    "a135": {
-     "d": 2,
-     "v": "juliet",
-     "s": "17:00",
-     "e": "19:00",
-     "n": "Aqueerius",
-     "u": null
-    },
-    "a136": {
-     "d": 2,
-     "v": "juliet",
-     "s": "19:00",
-     "e": "21:00",
-     "n": "IRC",
-     "u": null
-    },
-    "a137": {
-     "d": 2,
-     "v": "juliet",
-     "s": "21:00",
-     "e": "22:45",
-     "n": "Isabelle Kafando",
-     "u": null
-    },
-    "a138": {
-     "d": 2,
-     "v": "juliet",
-     "s": "22:45",
-     "e": "00:30",
-     "n": "Ron van Zalmsaus",
-     "u": null
-    },
-    "a139": {
-     "d": 2,
-     "v": "juliet",
-     "s": "00:30",
-     "e": "02:00",
-     "n": "Comedy Club Haug",
-     "u": null
-    },
-    "a140": {
-     "d": 2,
-     "v": "echo",
-     "s": "12:30",
-     "e": "14:00",
-     "n": "We moeten het hebben over: de rechtsstaat",
-     "u": null
-    },
-    "a141": {
-     "d": 2,
-     "v": "echo",
-     "s": "14:00",
-     "e": "15:15",
-     "n": "VPRO Tegenlicht",
-     "u": null
-    },
-    "a142": {
-     "d": 2,
-     "v": "echo",
-     "s": "15:15",
-     "e": "16:45",
-     "n": "Hoe ziek is de geopolitiek: Iran",
-     "u": null
-    },
-    "a143": {
-     "d": 2,
-     "v": "echo",
-     "s": "16:45",
-     "e": "18:00",
-     "n": "New Scientist Live",
-     "u": null
-    },
-    "a144": {
-     "d": 2,
-     "v": "echo",
-     "s": "18:00",
-     "e": "19:00",
-     "n": "NWQ",
-     "u": null
-    },
-    "a145": {
-     "d": 2,
-     "v": "echo",
-     "s": "19:00",
-     "e": "20:30",
-     "n": "Fantastic Shorts",
-     "u": null
-    },
-    "a146": {
-     "d": 2,
-     "v": "echo",
-     "s": "20:30",
-     "e": "22:45",
-     "n": "The Rocky Horror Picture Show Sing-Along",
-     "u": null
-    },
-    "a147": {
-     "d": 2,
-     "v": "echo",
-     "s": "22:45",
-     "e": "00:50",
-     "n": "The Drama",
-     "u": null
-    },
-    "a148": {
-     "d": 2,
-     "v": "echo",
-     "s": "00:50",
-     "e": "02:20",
-     "n": "Akira",
-     "u": null
-    },
-    "a149": {
-     "d": 2,
-     "v": "adonis",
-     "s": "10:45",
-     "e": "12:00",
-     "n": "Bakkie Llit",
-     "u": null
-    },
-    "a150": {
-     "d": 2,
-     "v": "adonis",
-     "s": "12:00",
-     "e": "13:30",
-     "n": "Rocking Books: Giphart x Goldbach",
-     "u": null
-    },
-    "a151": {
-     "d": 2,
-     "v": "adonis",
-     "s": "13:30",
-     "e": "15:00",
-     "n": "Wat Nu? Mystiek!",
-     "u": null
-    },
-    "a152": {
-     "d": 2,
-     "v": "adonis",
-     "s": "15:00",
-     "e": "16:30",
-     "n": "VPRO Club Lees",
-     "u": null
-    },
-    "a153": {
-     "d": 2,
-     "v": "adonis",
-     "s": "16:30",
-     "e": "17:30",
-     "n": "Alina Sharipova",
-     "u": null
-    },
-    "a154": {
-     "d": 2,
-     "v": "adonis",
-     "s": "17:30",
-     "e": "18:30",
-     "n": "Teun de Vries",
-     "u": null
-    },
-    "a155": {
-     "d": 2,
-     "v": "adonis",
-     "s": "18:30",
-     "e": "19:30",
-     "n": "Kees van Amstel",
-     "u": null
-    },
-    "a156": {
-     "d": 2,
-     "v": "adonis",
-     "s": "19:30",
-     "e": "22:00",
-     "n": "Chicks in Dialogue",
-     "u": null
-    },
-    "a157": {
-     "d": 2,
-     "v": "adonis",
-     "s": "22:00",
-     "e": "23:30",
-     "n": "Adonis",
-     "u": null
-    },
-    "a158": {
+    "c1666c1": {
      "d": 3,
      "v": "alpha",
      "s": "13:30",
@@ -1691,7 +515,7 @@
      "n": "Noord Nederlands Orkest",
      "u": "https://open.spotify.com/search/Noord%20Nederlands%20Orkest"
     },
-    "a159": {
+    "e4d22b0": {
      "d": 3,
      "v": "alpha",
      "s": "15:30",
@@ -1699,7 +523,7 @@
      "n": "Hermanos Guti\u00e9rrez",
      "u": "https://open.spotify.com/search/Hermanos%20Guti%C3%A9rrez"
     },
-    "a160": {
+    "d59dcd2": {
      "d": 3,
      "v": "alpha",
      "s": "17:30",
@@ -1707,7 +531,7 @@
      "n": "Maribou State",
      "u": "https://open.spotify.com/search/Maribou%20State"
     },
-    "a161": {
+    "545ec63": {
      "d": 3,
      "v": "alpha",
      "s": "19:30",
@@ -1715,7 +539,7 @@
      "n": "Turnstile",
      "u": "https://open.spotify.com/search/Turnstile"
     },
-    "a162": {
+    "3f65b8c": {
      "d": 3,
      "v": "alpha",
      "s": "21:30",
@@ -1723,7 +547,151 @@
      "n": "Lorde",
      "u": "https://open.spotify.com/search/Lorde"
     },
-    "a163": {
+    "c7c3c7e": {
+     "d": 1,
+     "v": "bravo",
+     "s": "13:00",
+     "e": "14:00",
+     "n": "Nusantara Beat",
+     "u": "https://open.spotify.com/search/Nusantara%20Beat"
+    },
+    "1b05917": {
+     "d": 1,
+     "v": "bravo",
+     "s": "15:00",
+     "e": "15:45",
+     "n": "Ad\u00e9la",
+     "u": "https://open.spotify.com/search/Ad%C3%A9la"
+    },
+    "727957b": {
+     "d": 1,
+     "v": "bravo",
+     "s": "17:00",
+     "e": "18:00",
+     "n": "Nu Genea Live Band",
+     "u": "https://open.spotify.com/search/Nu%20Genea%20Live%20Band"
+    },
+    "efdc259": {
+     "d": 1,
+     "v": "bravo",
+     "s": "19:15",
+     "e": "20:15",
+     "n": "Willem",
+     "u": "https://open.spotify.com/search/Willem"
+    },
+    "32ba32c": {
+     "d": 1,
+     "v": "bravo",
+     "s": "21:30",
+     "e": "22:30",
+     "n": "Viagra Boys",
+     "u": "https://open.spotify.com/search/Viagra%20Boys"
+    },
+    "57ed0d1": {
+     "d": 1,
+     "v": "bravo",
+     "s": "23:00",
+     "e": "00:30",
+     "n": "S-Candalo",
+     "u": "https://open.spotify.com/search/S-Candalo"
+    },
+    "d5bdc11": {
+     "d": 1,
+     "v": "bravo",
+     "s": "00:30",
+     "e": "02:00",
+     "n": "Chlo\u00e9 Caillet",
+     "u": "https://open.spotify.com/search/Chlo%C3%A9%20Caillet"
+    },
+    "04c0920": {
+     "d": 1,
+     "v": "bravo",
+     "s": "02:00",
+     "e": "03:30",
+     "n": "Ben UFO",
+     "u": "https://open.spotify.com/search/Ben%20UFO"
+    },
+    "68e10c6": {
+     "d": 1,
+     "v": "bravo",
+     "s": "03:30",
+     "e": "05:00",
+     "n": "Identified Patient",
+     "u": "https://open.spotify.com/search/Identified%20Patient"
+    },
+    "b022a6f": {
+     "d": 2,
+     "v": "bravo",
+     "s": "13:00",
+     "e": "14:00",
+     "n": "Jos\u00e9 Gonz\u00e1lez",
+     "u": "https://open.spotify.com/search/Jos%C3%A9%20Gonz%C3%A1lez"
+    },
+    "48f4664": {
+     "d": 2,
+     "v": "bravo",
+     "s": "15:00",
+     "e": "16:00",
+     "n": "Zimmer90",
+     "u": "https://open.spotify.com/search/Zimmer90"
+    },
+    "1d0cc90": {
+     "d": 2,
+     "v": "bravo",
+     "s": "17:00",
+     "e": "18:00",
+     "n": "IJsland",
+     "u": "https://open.spotify.com/search/IJsland"
+    },
+    "cd59569": {
+     "d": 2,
+     "v": "bravo",
+     "s": "19:15",
+     "e": "20:15",
+     "n": "Geese",
+     "u": "https://open.spotify.com/search/Geese"
+    },
+    "ed897a4": {
+     "d": 2,
+     "v": "bravo",
+     "s": "21:15",
+     "e": "22:30",
+     "n": "Eefje de Visser",
+     "u": "https://open.spotify.com/search/Eefje%20de%20Visser"
+    },
+    "9c9f16e": {
+     "d": 2,
+     "v": "bravo",
+     "s": "23:00",
+     "e": "00:30",
+     "n": "Afra",
+     "u": "https://open.spotify.com/search/Afra"
+    },
+    "a9e3d97": {
+     "d": 2,
+     "v": "bravo",
+     "s": "00:30",
+     "e": "02:00",
+     "n": "Helena Hauff",
+     "u": "https://open.spotify.com/search/Helena%20Hauff"
+    },
+    "fdf8249": {
+     "d": 2,
+     "v": "bravo",
+     "s": "02:00",
+     "e": "03:30",
+     "n": "H\u00e9ctor Oaks",
+     "u": "https://open.spotify.com/search/H%C3%A9ctor%20Oaks"
+    },
+    "bc689aa": {
+     "d": 2,
+     "v": "bravo",
+     "s": "03:30",
+     "e": "05:00",
+     "n": "Boys Noize",
+     "u": "https://open.spotify.com/search/Boys%20Noize"
+    },
+    "74899e5": {
      "d": 3,
      "v": "bravo",
      "s": "12:30",
@@ -1731,7 +699,7 @@
      "n": "Steel Pulse",
      "u": "https://open.spotify.com/search/Steel%20Pulse"
     },
-    "a164": {
+    "c6a5484": {
      "d": 3,
      "v": "bravo",
      "s": "14:30",
@@ -1739,7 +707,7 @@
      "n": "Sophie Straat",
      "u": "https://open.spotify.com/search/Sophie%20Straat"
     },
-    "a165": {
+    "a39cf5a": {
      "d": 3,
      "v": "bravo",
      "s": "16:30",
@@ -1747,7 +715,7 @@
      "n": "Celeste",
      "u": "https://open.spotify.com/search/Celeste"
     },
-    "a166": {
+    "4c179a0": {
      "d": 3,
      "v": "bravo",
      "s": "18:30",
@@ -1755,7 +723,7 @@
      "n": "2hollis",
      "u": "https://open.spotify.com/search/2hollis"
     },
-    "a167": {
+    "eef636c": {
      "d": 3,
      "v": "bravo",
      "s": "20:30",
@@ -1763,15 +731,15 @@
      "n": "Clipse",
      "u": "https://open.spotify.com/search/Clipse"
     },
-    "a168": {
+    "31c001b": {
      "d": 3,
      "v": "bravo",
-     "s": "22:30",
+     "s": "23:00",
      "e": "00:30",
      "n": "Saidah",
      "u": "https://open.spotify.com/search/Saidah"
     },
-    "a169": {
+    "701e563": {
      "d": 3,
      "v": "bravo",
      "s": "00:30",
@@ -1779,7 +747,7 @@
      "n": "Benny Rodrigues",
      "u": "https://open.spotify.com/search/Benny%20Rodrigues"
     },
-    "a170": {
+    "8890a82": {
      "d": 3,
      "v": "bravo",
      "s": "02:00",
@@ -1787,7 +755,7 @@
      "n": "Kettama",
      "u": "https://open.spotify.com/search/Kettama"
     },
-    "a171": {
+    "1a26339": {
      "d": 3,
      "v": "bravo",
      "s": "03:30",
@@ -1795,7 +763,119 @@
      "n": "Nene H",
      "u": "https://open.spotify.com/search/Nene%20H"
     },
-    "a172": {
+    "2525e9c": {
+     "d": 1,
+     "v": "heineken",
+     "s": "13:15",
+     "e": "14:15",
+     "n": "Skye Newman",
+     "u": "https://open.spotify.com/search/Skye%20Newman"
+    },
+    "3df4dc6": {
+     "d": 1,
+     "v": "heineken",
+     "s": "15:15",
+     "e": "16:15",
+     "n": "Leisure",
+     "u": "https://open.spotify.com/search/Leisure"
+    },
+    "fe637ca": {
+     "d": 1,
+     "v": "heineken",
+     "s": "17:15",
+     "e": "18:15",
+     "n": "JPEGMAFIA",
+     "u": "https://open.spotify.com/search/JPEGMAFIA"
+    },
+    "90acbd0": {
+     "d": 1,
+     "v": "heineken",
+     "s": "19:30",
+     "e": "20:30",
+     "n": "Blood Orange",
+     "u": "https://open.spotify.com/search/Blood%20Orange"
+    },
+    "ef46cfe": {
+     "d": 1,
+     "v": "heineken",
+     "s": "21:45",
+     "e": "23:00",
+     "n": "Richie Hawtin Dex EFX XOX",
+     "u": "https://open.spotify.com/search/Richie%20Hawtin%20Dex%20EFX%20XOX"
+    },
+    "89c6b75": {
+     "d": 1,
+     "v": "heineken",
+     "s": "00:00",
+     "e": "04:00",
+     "n": "Basshall: Kybba, Tribal Kush & NEMS",
+     "u": "https://open.spotify.com/search/Basshall%3A%20Kybba%2C%20Tribal%20Kush%20%26%20NEMS"
+    },
+    "5e526d0": {
+     "d": 2,
+     "v": "heineken",
+     "s": "11:30",
+     "e": "12:30",
+     "n": "Soul Linedance Workshop door Summer Dance Forever",
+     "u": null
+    },
+    "4980718": {
+     "d": 2,
+     "v": "heineken",
+     "s": "13:15",
+     "e": "14:00",
+     "n": "Milolaathetlukken",
+     "u": "https://open.spotify.com/search/Milolaathetlukken"
+    },
+    "77dcd7a": {
+     "d": 2,
+     "v": "heineken",
+     "s": "15:15",
+     "e": "16:15",
+     "n": "Ravyn Lenae",
+     "u": "https://open.spotify.com/search/Ravyn%20Lenae"
+    },
+    "a5a9fe3": {
+     "d": 2,
+     "v": "heineken",
+     "s": "17:15",
+     "e": "18:15",
+     "n": "Pale Jay",
+     "u": "https://open.spotify.com/search/Pale%20Jay"
+    },
+    "134a481": {
+     "d": 2,
+     "v": "heineken",
+     "s": "19:30",
+     "e": "20:30",
+     "n": "Nia Archives",
+     "u": "https://open.spotify.com/search/Nia%20Archives"
+    },
+    "1b8530e": {
+     "d": 2,
+     "v": "heineken",
+     "s": "21:45",
+     "e": "23:00",
+     "n": "Royal Blood",
+     "u": "https://open.spotify.com/search/Royal%20Blood"
+    },
+    "e10ebf9": {
+     "d": 2,
+     "v": "heineken",
+     "s": "00:00",
+     "e": "01:00",
+     "n": "Lambrini Girls",
+     "u": "https://open.spotify.com/search/Lambrini%20Girls"
+    },
+    "dbdcd74": {
+     "d": 2,
+     "v": "heineken",
+     "s": "01:30",
+     "e": "04:25",
+     "n": "TLM",
+     "u": "https://open.spotify.com/search/TLM"
+    },
+    "e0eaed9": {
      "d": 3,
      "v": "heineken",
      "s": "12:45",
@@ -1803,7 +883,7 @@
      "n": "Merijn Scholten",
      "u": "https://open.spotify.com/search/Merijn%20Scholten"
     },
-    "a173": {
+    "0c42128": {
      "d": 3,
      "v": "heineken",
      "s": "14:45",
@@ -1811,7 +891,7 @@
      "n": "Buraka Som Sistema",
      "u": "https://open.spotify.com/search/Buraka%20Som%20Sistema"
     },
-    "a174": {
+    "72957d0": {
      "d": 3,
      "v": "heineken",
      "s": "16:45",
@@ -1819,7 +899,7 @@
      "n": "Wunderhorse",
      "u": "https://open.spotify.com/search/Wunderhorse"
     },
-    "a175": {
+    "0826f77": {
      "d": 3,
      "v": "heineken",
      "s": "18:45",
@@ -1827,15 +907,15 @@
      "n": "Dijon",
      "u": "https://open.spotify.com/search/Dijon"
     },
-    "a176": {
+    "3ea2c86": {
      "d": 3,
      "v": "heineken",
      "s": "20:45",
      "e": "21:45",
-     "n": "Floating Points (live)",
-     "u": "https://open.spotify.com/search/Floating%20Points%20%28live%29"
+     "n": "Floating Points",
+     "u": "https://open.spotify.com/search/Floating%20Points"
     },
-    "a177": {
+    "73e1934": {
      "d": 3,
      "v": "heineken",
      "s": "23:00",
@@ -1843,63 +923,159 @@
      "n": "Iconic",
      "u": "https://open.spotify.com/search/Iconic"
     },
-    "a178": {
-     "d": 3,
-     "v": "lima",
-     "s": "12:00",
-     "e": "13:00",
-     "n": "Politie Warnsveld",
-     "u": "https://open.spotify.com/search/Politie%20Warnsveld"
+    "d1e3342": {
+     "d": 1,
+     "v": "india",
+     "s": "11:30",
+     "e": "12:30",
+     "n": "Yoga",
+     "u": null
     },
-    "a179": {
-     "d": 3,
-     "v": "lima",
-     "s": "13:45",
-     "e": "14:45",
-     "n": "Anaiis",
-     "u": "https://open.spotify.com/search/Anaiis"
+    "9ec4905": {
+     "d": 1,
+     "v": "india",
+     "s": "14:00",
+     "e": "15:00",
+     "n": "Jet van der Steen",
+     "u": "https://open.spotify.com/search/Jet%20van%20der%20Steen"
     },
-    "a180": {
-     "d": 3,
-     "v": "lima",
-     "s": "15:50",
-     "e": "16:40",
-     "n": "Erin LeCount",
-     "u": "https://open.spotify.com/search/Erin%20LeCount"
+    "8a93a94": {
+     "d": 1,
+     "v": "india",
+     "s": "16:00",
+     "e": "17:00",
+     "n": "Joy (Anonymous)",
+     "u": "https://open.spotify.com/search/Joy%20%28Anonymous%29"
     },
-    "a181": {
-     "d": 3,
-     "v": "lima",
-     "s": "17:45",
-     "e": "18:45",
-     "n": "El Pony Pisador",
-     "u": "https://open.spotify.com/search/El%20Pony%20Pisador"
+    "57eb83c": {
+     "d": 1,
+     "v": "india",
+     "s": "18:15",
+     "e": "19:15",
+     "n": "Cobrah",
+     "u": "https://open.spotify.com/search/Cobrah"
     },
-    "a182": {
-     "d": 3,
-     "v": "lima",
-     "s": "19:45",
-     "e": "20:45",
-     "n": "Bassolino",
-     "u": "https://open.spotify.com/search/Bassolino"
+    "d3ad62c": {
+     "d": 1,
+     "v": "india",
+     "s": "20:30",
+     "e": "21:30",
+     "n": "President",
+     "u": "https://open.spotify.com/search/President"
     },
-    "a183": {
-     "d": 3,
-     "v": "lima",
-     "s": "21:45",
-     "e": "22:45",
-     "n": "Compagnia la Giostra",
-     "u": "https://open.spotify.com/search/Compagnia%20la%20Giostra"
+    "c5fe079": {
+     "d": 1,
+     "v": "india",
+     "s": "22:30",
+     "e": "23:30",
+     "n": "FCUKERS",
+     "u": "https://open.spotify.com/search/FCUKERS"
     },
-    "a184": {
-     "d": 3,
-     "v": "lima",
-     "s": "23:15",
+    "e603583": {
+     "d": 1,
+     "v": "india",
+     "s": "00:00",
+     "e": "01:30",
+     "n": "Mary Lake",
+     "u": "https://open.spotify.com/search/Mary%20Lake"
+    },
+    "e59d94a": {
+     "d": 1,
+     "v": "india",
+     "s": "01:30",
      "e": "03:00",
-     "n": "Vlooiencircus",
-     "u": "https://open.spotify.com/search/Vlooiencircus"
+     "n": "Freddy K",
+     "u": "https://open.spotify.com/search/Freddy%20K"
     },
-    "a185": {
+    "8730cc5": {
+     "d": 1,
+     "v": "india",
+     "s": "03:00",
+     "e": "04:30",
+     "n": "Marr\u00f8n",
+     "u": "https://open.spotify.com/search/Marr%C3%B8n"
+    },
+    "055b617": {
+     "d": 2,
+     "v": "india",
+     "s": "11:30",
+     "e": "12:30",
+     "n": "Yoga",
+     "u": null
+    },
+    "7c985e9": {
+     "d": 2,
+     "v": "india",
+     "s": "14:15",
+     "e": "15:00",
+     "n": "Violet Grohl",
+     "u": "https://open.spotify.com/search/Violet%20Grohl"
+    },
+    "ec5c518": {
+     "d": 2,
+     "v": "india",
+     "s": "16:15",
+     "e": "17:00",
+     "n": "Keo",
+     "u": "https://open.spotify.com/search/Keo"
+    },
+    "f884d26": {
+     "d": 2,
+     "v": "india",
+     "s": "18:20",
+     "e": "19:10",
+     "n": "Chloe Qisha",
+     "u": "https://open.spotify.com/search/Chloe%20Qisha"
+    },
+    "fcf8d3c": {
+     "d": 2,
+     "v": "india",
+     "s": "20:30",
+     "e": "21:20",
+     "n": "Zep",
+     "u": "https://open.spotify.com/search/Zep"
+    },
+    "21bf07a": {
+     "d": 2,
+     "v": "india",
+     "s": "22:30",
+     "e": "00:00",
+     "n": "Maey",
+     "u": "https://open.spotify.com/search/Maey"
+    },
+    "b9b086b": {
+     "d": 2,
+     "v": "india",
+     "s": "00:00",
+     "e": "01:00",
+     "n": "SMIB",
+     "u": "https://open.spotify.com/search/SMIB"
+    },
+    "8a16aee": {
+     "d": 2,
+     "v": "india",
+     "s": "01:00",
+     "e": "02:15",
+     "n": "S!rene",
+     "u": "https://open.spotify.com/search/S%21rene"
+    },
+    "2d755cf": {
+     "d": 2,
+     "v": "india",
+     "s": "02:15",
+     "e": "03:30",
+     "n": "Waxfiend",
+     "u": "https://open.spotify.com/search/Waxfiend"
+    },
+    "7f7c590": {
+     "d": 2,
+     "v": "india",
+     "s": "03:30",
+     "e": "04:30",
+     "n": "Nala",
+     "u": "https://open.spotify.com/search/Nala"
+    },
+    "aa1dc1e": {
      "d": 3,
      "v": "india",
      "s": "11:30",
@@ -1907,7 +1083,7 @@
      "n": "Yoga",
      "u": null
     },
-    "a186": {
+    "4df85bf": {
      "d": 3,
      "v": "india",
      "s": "13:30",
@@ -1915,7 +1091,7 @@
      "n": "Brother Wallace",
      "u": "https://open.spotify.com/search/Brother%20Wallace"
     },
-    "a187": {
+    "5f4dde8": {
      "d": 3,
      "v": "india",
      "s": "15:30",
@@ -1923,7 +1099,7 @@
      "n": "Dikke",
      "u": "https://open.spotify.com/search/Dikke"
     },
-    "a188": {
+    "e235cc1": {
      "d": 3,
      "v": "india",
      "s": "17:30",
@@ -1931,7 +1107,7 @@
      "n": "Maruja",
      "u": "https://open.spotify.com/search/Maruja"
     },
-    "a189": {
+    "b61b99b": {
      "d": 3,
      "v": "india",
      "s": "19:30",
@@ -1939,7 +1115,7 @@
      "n": "Naomi Sharon",
      "u": "https://open.spotify.com/search/Naomi%20Sharon"
     },
-    "a190": {
+    "615c706": {
      "d": 3,
      "v": "india",
      "s": "21:45",
@@ -1947,7 +1123,7 @@
      "n": "SOR",
      "u": "https://open.spotify.com/search/SOR"
     },
-    "a191": {
+    "75c68bf": {
      "d": 3,
      "v": "india",
      "s": "23:15",
@@ -1955,7 +1131,7 @@
      "n": "Flava D",
      "u": "https://open.spotify.com/search/Flava%20D"
     },
-    "a192": {
+    "99a9d2c": {
      "d": 3,
      "v": "india",
      "s": "00:30",
@@ -1963,7 +1139,7 @@
      "n": "Skream & Benga",
      "u": "https://open.spotify.com/search/Skream%20%26%20Benga"
     },
-    "a193": {
+    "035d1e2": {
      "d": 3,
      "v": "india",
      "s": "02:00",
@@ -1971,7 +1147,7 @@
      "n": "Andromedik",
      "u": "https://open.spotify.com/search/Andromedik"
     },
-    "a194": {
+    "05aa32c": {
      "d": 3,
      "v": "india",
      "s": "03:30",
@@ -1979,7 +1155,327 @@
      "n": "Tantu Beats",
      "u": "https://open.spotify.com/search/Tantu%20Beats"
     },
-    "a195": {
+    "4081fca": {
+     "d": 1,
+     "v": "lima",
+     "s": "12:15",
+     "e": "13:15",
+     "n": "Romy Liz Rose",
+     "u": "https://open.spotify.com/search/Romy%20Liz%20Rose"
+    },
+    "2d9e9aa": {
+     "d": 1,
+     "v": "lima",
+     "s": "14:15",
+     "e": "15:15",
+     "n": "Susobrino",
+     "u": "https://open.spotify.com/search/Susobrino"
+    },
+    "fa82ddb": {
+     "d": 1,
+     "v": "lima",
+     "s": "16:15",
+     "e": "17:15",
+     "n": "Dove Ellis",
+     "u": "https://open.spotify.com/search/Dove%20Ellis"
+    },
+    "8a89dc2": {
+     "d": 1,
+     "v": "lima",
+     "s": "18:20",
+     "e": "19:20",
+     "n": "Ana Frango El\u00e9trico",
+     "u": "https://open.spotify.com/search/Ana%20Frango%20El%C3%A9trico"
+    },
+    "e94b836": {
+     "d": 1,
+     "v": "lima",
+     "s": "20:30",
+     "e": "21:30",
+     "n": "Zeyne",
+     "u": "https://open.spotify.com/search/Zeyne"
+    },
+    "04598bd": {
+     "d": 1,
+     "v": "lima",
+     "s": "22:30",
+     "e": "23:30",
+     "n": "Fulu Miziki",
+     "u": "https://open.spotify.com/search/Fulu%20Miziki"
+    },
+    "e0dba37": {
+     "d": 1,
+     "v": "lima",
+     "s": "00:00",
+     "e": "03:00",
+     "n": "Het Alternatief",
+     "u": "https://open.spotify.com/search/Het%20Alternatief"
+    },
+    "25cbe63": {
+     "d": 2,
+     "v": "lima",
+     "s": "12:15",
+     "e": "13:15",
+     "n": "Latanya Alberto",
+     "u": "https://open.spotify.com/search/Latanya%20Alberto"
+    },
+    "f929f47": {
+     "d": 2,
+     "v": "lima",
+     "s": "14:15",
+     "e": "15:15",
+     "n": "Ko Shin Moon",
+     "u": "https://open.spotify.com/search/Ko%20Shin%20Moon"
+    },
+    "6ba6920": {
+     "d": 2,
+     "v": "lima",
+     "s": "16:15",
+     "e": "17:15",
+     "n": "Il Mago del Gelato",
+     "u": "https://open.spotify.com/search/Il%20Mago%20del%20Gelato"
+    },
+    "7e463f0": {
+     "d": 2,
+     "v": "lima",
+     "s": "18:25",
+     "e": "19:25",
+     "n": "Tyler Ballgame",
+     "u": "https://open.spotify.com/search/Tyler%20Ballgame"
+    },
+    "61a7d84": {
+     "d": 2,
+     "v": "lima",
+     "s": "20:40",
+     "e": "21:40",
+     "n": "Fauna",
+     "u": "https://open.spotify.com/search/Fauna"
+    },
+    "4fe0cfc": {
+     "d": 2,
+     "v": "lima",
+     "s": "22:30",
+     "e": "23:30",
+     "n": "\u00c1cido Pantera",
+     "u": "https://open.spotify.com/search/%C3%81cido%20Pantera"
+    },
+    "faf6e45": {
+     "d": 2,
+     "v": "lima",
+     "s": "00:00",
+     "e": "03:00",
+     "n": "Ol\u00e1 Brazil!",
+     "u": "https://open.spotify.com/search/Ol%C3%A1%20Brazil%21"
+    },
+    "b9db494": {
+     "d": 3,
+     "v": "lima",
+     "s": "12:00",
+     "e": "13:00",
+     "n": "Politie Warnsveld",
+     "u": "https://open.spotify.com/search/Politie%20Warnsveld"
+    },
+    "74e59d3": {
+     "d": 3,
+     "v": "lima",
+     "s": "13:45",
+     "e": "14:45",
+     "n": "Anaiis",
+     "u": "https://open.spotify.com/search/Anaiis"
+    },
+    "6461f4b": {
+     "d": 3,
+     "v": "lima",
+     "s": "15:50",
+     "e": "16:40",
+     "n": "Erin LeCount",
+     "u": "https://open.spotify.com/search/Erin%20LeCount"
+    },
+    "f73b313": {
+     "d": 3,
+     "v": "lima",
+     "s": "17:45",
+     "e": "18:45",
+     "n": "El Pony Pisador",
+     "u": "https://open.spotify.com/search/El%20Pony%20Pisador"
+    },
+    "5c22f63": {
+     "d": 3,
+     "v": "lima",
+     "s": "19:45",
+     "e": "20:45",
+     "n": "Bassolino",
+     "u": "https://open.spotify.com/search/Bassolino"
+    },
+    "6ea48e2": {
+     "d": 3,
+     "v": "lima",
+     "s": "21:45",
+     "e": "22:45",
+     "n": "Compagnia la Giostra",
+     "u": "https://open.spotify.com/search/Compagnia%20la%20Giostra"
+    },
+    "79daa87": {
+     "d": 3,
+     "v": "lima",
+     "s": "23:15",
+     "e": "03:00",
+     "n": "Vlooiencircus",
+     "u": "https://open.spotify.com/search/Vlooiencircus"
+    },
+    "0cf1c75": {
+     "d": 1,
+     "v": "xray",
+     "s": "12:30",
+     "e": "13:30",
+     "n": "Chalk",
+     "u": "https://open.spotify.com/search/Chalk"
+    },
+    "f98cf82": {
+     "d": 1,
+     "v": "xray",
+     "s": "14:30",
+     "e": "15:20",
+     "n": "Radio Z",
+     "u": "https://open.spotify.com/search/Radio%20Z"
+    },
+    "a7e773e": {
+     "d": 1,
+     "v": "xray",
+     "s": "16:15",
+     "e": "17:15",
+     "n": "Rose Gray",
+     "u": "https://open.spotify.com/search/Rose%20Gray"
+    },
+    "ea193cb": {
+     "d": 1,
+     "v": "xray",
+     "s": "18:00",
+     "e": "19:00",
+     "n": "Sons",
+     "u": "https://open.spotify.com/search/Sons"
+    },
+    "bbea4ef": {
+     "d": 1,
+     "v": "xray",
+     "s": "19:50",
+     "e": "20:50",
+     "n": "Gurriers",
+     "u": "https://open.spotify.com/search/Gurriers"
+    },
+    "3eac3e6": {
+     "d": 1,
+     "v": "xray",
+     "s": "21:45",
+     "e": "22:35",
+     "n": "James K",
+     "u": "https://open.spotify.com/search/James%20K"
+    },
+    "8174b6e": {
+     "d": 1,
+     "v": "xray",
+     "s": "23:00",
+     "e": "00:00",
+     "n": "Bassvictim",
+     "u": "https://open.spotify.com/search/Bassvictim"
+    },
+    "823ca83": {
+     "d": 1,
+     "v": "xray",
+     "s": "00:30",
+     "e": "01:30",
+     "n": "Violent Magic Orchestra",
+     "u": "https://open.spotify.com/search/Violent%20Magic%20Orchestra"
+    },
+    "c672fb5": {
+     "d": 1,
+     "v": "xray",
+     "s": "02:00",
+     "e": "03:00",
+     "n": "Kaboutertje Putlucht",
+     "u": "https://open.spotify.com/search/Kaboutertje%20Putlucht"
+    },
+    "0a5fd72": {
+     "d": 1,
+     "v": "xray",
+     "s": "03:00",
+     "e": "04:30",
+     "n": "Gys\u00e8le",
+     "u": "https://open.spotify.com/search/Gys%C3%A8le"
+    },
+    "465760f": {
+     "d": 2,
+     "v": "xray",
+     "s": "14:00",
+     "e": "14:50",
+     "n": "Terzij de Horde",
+     "u": "https://open.spotify.com/search/Terzij%20de%20Horde"
+    },
+    "1ccb717": {
+     "d": 2,
+     "v": "xray",
+     "s": "15:40",
+     "e": "16:30",
+     "n": "Guilt Trip",
+     "u": "https://open.spotify.com/search/Guilt%20Trip"
+    },
+    "2d34ef3": {
+     "d": 2,
+     "v": "xray",
+     "s": "17:10",
+     "e": "18:00",
+     "n": "Sophia Stel",
+     "u": "https://open.spotify.com/search/Sophia%20Stel"
+    },
+    "bce5068": {
+     "d": 2,
+     "v": "xray",
+     "s": "18:45",
+     "e": "19:30",
+     "n": "Tracey",
+     "u": "https://open.spotify.com/search/Tracey"
+    },
+    "85c8165": {
+     "d": 2,
+     "v": "xray",
+     "s": "20:30",
+     "e": "21:10",
+     "n": "Speed",
+     "u": "https://open.spotify.com/search/Speed"
+    },
+    "f453e1a": {
+     "d": 2,
+     "v": "xray",
+     "s": "22:00",
+     "e": "23:30",
+     "n": "Voices From The Lake",
+     "u": "https://open.spotify.com/search/Voices%20From%20The%20Lake"
+    },
+    "59c80a7": {
+     "d": 2,
+     "v": "xray",
+     "s": "23:30",
+     "e": "01:30",
+     "n": "Skee Mask",
+     "u": "https://open.spotify.com/search/Skee%20Mask"
+    },
+    "4580589": {
+     "d": 2,
+     "v": "xray",
+     "s": "01:30",
+     "e": "03:00",
+     "n": "DJRUM",
+     "u": "https://open.spotify.com/search/DJRUM"
+    },
+    "8e6adb1": {
+     "d": 2,
+     "v": "xray",
+     "s": "03:00",
+     "e": "04:45",
+     "n": "upsammy",
+     "u": "https://open.spotify.com/search/upsammy"
+    },
+    "177bd60": {
      "d": 3,
      "v": "xray",
      "s": "12:45",
@@ -1987,7 +1483,7 @@
      "n": "Teen Mortgage",
      "u": "https://open.spotify.com/search/Teen%20Mortgage"
     },
-    "a196": {
+    "b419be1": {
      "d": 3,
      "v": "xray",
      "s": "14:45",
@@ -1995,7 +1491,7 @@
      "n": "Worldpeace DMT",
      "u": "https://open.spotify.com/search/Worldpeace%20DMT"
     },
-    "a197": {
+    "4b31c9b": {
      "d": 3,
      "v": "xray",
      "s": "15:20",
@@ -2003,7 +1499,7 @@
      "n": "The Femcels",
      "u": "https://open.spotify.com/search/The%20Femcels"
     },
-    "a198": {
+    "c27fe39": {
      "d": 3,
      "v": "xray",
      "s": "16:45",
@@ -2011,7 +1507,7 @@
      "n": "Jane Remover",
      "u": "https://open.spotify.com/search/Jane%20Remover"
     },
-    "a199": {
+    "8c18a49": {
      "d": 3,
      "v": "xray",
      "s": "18:30",
@@ -2019,7 +1515,7 @@
      "n": "Teen Jesus and the Jean Teasers",
      "u": "https://open.spotify.com/search/Teen%20Jesus%20and%20the%20Jean%20Teasers"
     },
-    "a200": {
+    "d9b31c1": {
      "d": 3,
      "v": "xray",
      "s": "20:15",
@@ -2027,7 +1523,7 @@
      "n": "Ninajirachi",
      "u": "https://open.spotify.com/search/Ninajirachi"
     },
-    "a201": {
+    "f798890": {
      "d": 3,
      "v": "xray",
      "s": "22:00",
@@ -2035,7 +1531,7 @@
      "n": "Geordie Greep",
      "u": "https://open.spotify.com/search/Geordie%20Greep"
     },
-    "a202": {
+    "574e402": {
      "d": 3,
      "v": "xray",
      "s": "23:15",
@@ -2043,7 +1539,727 @@
      "n": "This Must Be The Pace with Theo Parrish",
      "u": "https://open.spotify.com/search/This%20Must%20Be%20The%20Pace%20with%20Theo%20Parrish"
     },
-    "a203": {
+    "c9d7d80": {
+     "d": 1,
+     "v": "juliet",
+     "s": "14:00",
+     "e": "15:00",
+     "n": "Orkater",
+     "u": null
+    },
+    "2b1f88f": {
+     "d": 1,
+     "v": "juliet",
+     "s": "17:15",
+     "e": "18:00",
+     "n": "Boys Won't Be Boys",
+     "u": null
+    },
+    "af8c34b": {
+     "d": 1,
+     "v": "juliet",
+     "s": "19:00",
+     "e": "19:45",
+     "n": "Diehelding",
+     "u": null
+    },
+    "2745dae": {
+     "d": 1,
+     "v": "juliet",
+     "s": "21:00",
+     "e": "21:45",
+     "n": "David Linszen",
+     "u": null
+    },
+    "5261dce": {
+     "d": 1,
+     "v": "juliet",
+     "s": "22:45",
+     "e": "23:30",
+     "n": "Marcel van Roosmalen",
+     "u": null
+    },
+    "cea4ade": {
+     "d": 1,
+     "v": "juliet",
+     "s": "00:30",
+     "e": "01:30",
+     "n": "Comedytrain",
+     "u": null
+    },
+    "588f46f": {
+     "d": 2,
+     "v": "juliet",
+     "s": "14:00",
+     "e": "15:15",
+     "n": "Nasrdin Dchar",
+     "u": null
+    },
+    "2ec007c": {
+     "d": 2,
+     "v": "juliet",
+     "s": "17:00",
+     "e": "17:45",
+     "n": "Aqueerius \u2014 Big Fat Trojan Wedding",
+     "u": null
+    },
+    "c728c9f": {
+     "d": 2,
+     "v": "juliet",
+     "s": "19:00",
+     "e": "20:00",
+     "n": "IRC",
+     "u": null
+    },
+    "2719761": {
+     "d": 2,
+     "v": "juliet",
+     "s": "21:00",
+     "e": "21:50",
+     "n": "Isabelle Kafando",
+     "u": null
+    },
+    "a5be65c": {
+     "d": 2,
+     "v": "juliet",
+     "s": "22:45",
+     "e": "23:30",
+     "n": "Ron van Zalmsaus",
+     "u": null
+    },
+    "eacaf3b": {
+     "d": 2,
+     "v": "juliet",
+     "s": "00:30",
+     "e": "01:30",
+     "n": "Comedyclub Haug",
+     "u": null
+    },
+    "195fd62": {
+     "d": 3,
+     "v": "juliet",
+     "s": "14:30",
+     "e": "15:45",
+     "n": "Sarah Janneh, NITE, Theater Utrecht, Musicalmakers",
+     "u": null
+    },
+    "c95ac1e": {
+     "d": 3,
+     "v": "juliet",
+     "s": "17:00",
+     "e": "18:00",
+     "n": "Ita, June Yanez, Leila Sahir, Zephyr Br\u00fcggen",
+     "u": null
+    },
+    "c2d07a3": {
+     "d": 3,
+     "v": "juliet",
+     "s": "19:00",
+     "e": "19:45",
+     "n": "Circumstances \u2013 BEYOND",
+     "u": null
+    },
+    "0041b24": {
+     "d": 3,
+     "v": "juliet",
+     "s": "21:00",
+     "e": "21:45",
+     "n": "Daan van der Hoeven",
+     "u": null
+    },
+    "fb71eb3": {
+     "d": 3,
+     "v": "juliet",
+     "s": "22:45",
+     "e": "23:30",
+     "n": "De Nationale Avond van de Woordgrap",
+     "u": null
+    },
+    "ab41645": {
+     "d": 3,
+     "v": "juliet",
+     "s": "00:30",
+     "e": "01:30",
+     "n": "De Lowlands Grote* Talentenshow",
+     "u": null
+    },
+    "dbf71f6": {
+     "d": 1,
+     "v": "echo",
+     "s": "12:30",
+     "e": "13:30",
+     "n": "We moeten het hebben over: Femicide",
+     "u": null
+    },
+    "15d92cb": {
+     "d": 1,
+     "v": "echo",
+     "s": "14:00",
+     "e": "14:45",
+     "n": "VPRO Tegenlicht: Ik betaal helemaal nergens meer voor!",
+     "u": null
+    },
+    "ef73ff2": {
+     "d": 1,
+     "v": "echo",
+     "s": "15:15",
+     "e": "16:15",
+     "n": "Hoe ziek is de geopolitiek: Sudan",
+     "u": null
+    },
+    "055fbcf": {
+     "d": 1,
+     "v": "echo",
+     "s": "16:45",
+     "e": "17:30",
+     "n": "New Scientist Live: Buitenaards leven en ruimtereizen",
+     "u": null
+    },
+    "4387e7f": {
+     "d": 1,
+     "v": "echo",
+     "s": "18:00",
+     "e": "18:30",
+     "n": "De Nationale Wetenschapsquiz",
+     "u": null
+    },
+    "c453530": {
+     "d": 1,
+     "v": "echo",
+     "s": "19:45",
+     "e": "20:45",
+     "n": "The Making of De Jeugd van Tegenwoordig \u2013 Live",
+     "u": null
+    },
+    "712e88f": {
+     "d": 1,
+     "v": "echo",
+     "s": "21:15",
+     "e": "23:10",
+     "n": "Billie Eilish: Hit Me Hard and Soft",
+     "u": null
+    },
+    "5db55c7": {
+     "d": 1,
+     "v": "echo",
+     "s": "23:30",
+     "e": "00:45",
+     "n": "Fantastic Planet",
+     "u": null
+    },
+    "06ff763": {
+     "d": 1,
+     "v": "echo",
+     "s": "01:05",
+     "e": "02:50",
+     "n": "Teenage Sex and Death at Camp Miasma",
+     "u": null
+    },
+    "848909c": {
+     "d": 2,
+     "v": "echo",
+     "s": "12:30",
+     "e": "13:30",
+     "n": "We moeten het hebben over: De rechtsstaat",
+     "u": null
+    },
+    "d9bb284": {
+     "d": 2,
+     "v": "echo",
+     "s": "14:00",
+     "e": "14:45",
+     "n": "VPRO Tegenlicht: Het zal mij een zorg zijn!",
+     "u": null
+    },
+    "9744176": {
+     "d": 2,
+     "v": "echo",
+     "s": "15:15",
+     "e": "16:15",
+     "n": "Hoe ziek is de geopolitiek: Iran",
+     "u": null
+    },
+    "10e6993": {
+     "d": 2,
+     "v": "echo",
+     "s": "16:45",
+     "e": "17:30",
+     "n": "New Scientist Live: De po\u00ebzie van Gotu Jim",
+     "u": null
+    },
+    "24c570b": {
+     "d": 2,
+     "v": "echo",
+     "s": "18:00",
+     "e": "18:30",
+     "n": "De Nationale Wetenschapsquiz",
+     "u": null
+    },
+    "4792c81": {
+     "d": 2,
+     "v": "echo",
+     "s": "19:00",
+     "e": "19:45",
+     "n": "Fantastic Shorts",
+     "u": null
+    },
+    "93d6ab9": {
+     "d": 2,
+     "v": "echo",
+     "s": "20:30",
+     "e": "22:10",
+     "n": "The Rocky Horror Picture Show Sing-Along",
+     "u": null
+    },
+    "966372b": {
+     "d": 2,
+     "v": "echo",
+     "s": "22:45",
+     "e": "00:30",
+     "n": "The Drama",
+     "u": null
+    },
+    "5172ca5": {
+     "d": 2,
+     "v": "echo",
+     "s": "00:50",
+     "e": "02:55",
+     "n": "Akira",
+     "u": null
+    },
+    "0eae2d2": {
+     "d": 3,
+     "v": "echo",
+     "s": "12:30",
+     "e": "13:30",
+     "n": "We moeten het hebben over: Generatie Gaza",
+     "u": null
+    },
+    "f1eb02f": {
+     "d": 3,
+     "v": "echo",
+     "s": "14:00",
+     "e": "14:45",
+     "n": "VPRO Tegenlicht: Spoedvergadering!",
+     "u": null
+    },
+    "6e2139e": {
+     "d": 3,
+     "v": "echo",
+     "s": "15:15",
+     "e": "16:15",
+     "n": "Hoe ziek is de geopolitiek: Europa",
+     "u": null
+    },
+    "a62bd8b": {
+     "d": 3,
+     "v": "echo",
+     "s": "16:45",
+     "e": "17:30",
+     "n": "New Scientist Live: AI! AI! AI!",
+     "u": null
+    },
+    "1e6078b": {
+     "d": 3,
+     "v": "echo",
+     "s": "18:00",
+     "e": "18:30",
+     "n": "De Nationale Wetenschapsquiz",
+     "u": null
+    },
+    "6f747b8": {
+     "d": 3,
+     "v": "echo",
+     "s": "19:00",
+     "e": "20:50",
+     "n": "Sugar + Q&A",
+     "u": null
+    },
+    "e51a6cd": {
+     "d": 3,
+     "v": "echo",
+     "s": "21:10",
+     "e": "23:00",
+     "n": "Hundreds of Beavers",
+     "u": null
+    },
+    "3099be1": {
+     "d": 3,
+     "v": "echo",
+     "s": "23:15",
+     "e": "00:55",
+     "n": "Truly Naked",
+     "u": null
+    },
+    "714eac1": {
+     "d": 3,
+     "v": "echo",
+     "s": "01:10",
+     "e": "03:00",
+     "n": "Obsession",
+     "u": null
+    },
+    "8861918": {
+     "d": 1,
+     "v": "adonis",
+     "s": "10:15",
+     "e": "10:45",
+     "n": "Literaire Darkroom",
+     "u": null
+    },
+    "3c0a956": {
+     "d": 1,
+     "v": "adonis",
+     "s": "10:45",
+     "e": "11:15",
+     "n": "Bakkie Llit",
+     "u": null
+    },
+    "4b38c0a": {
+     "d": 1,
+     "v": "adonis",
+     "s": "12:00",
+     "e": "12:45",
+     "n": "Flip The Script!",
+     "u": null
+    },
+    "2fbd148": {
+     "d": 1,
+     "v": "adonis",
+     "s": "13:30",
+     "e": "14:15",
+     "n": "Wat Nu? Verzet!",
+     "u": null
+    },
+    "fa29b3e": {
+     "d": 1,
+     "v": "adonis",
+     "s": "15:00",
+     "e": "15:45",
+     "n": "Mensen Zeggen Dingen",
+     "u": null
+    },
+    "03e4c95": {
+     "d": 1,
+     "v": "adonis",
+     "s": "16:30",
+     "e": "17:00",
+     "n": "Ayoub Kharkhach",
+     "u": null
+    },
+    "8aad40c": {
+     "d": 1,
+     "v": "adonis",
+     "s": "17:30",
+     "e": "18:00",
+     "n": "Janneke de Bijl",
+     "u": null
+    },
+    "de36e12": {
+     "d": 1,
+     "v": "adonis",
+     "s": "18:30",
+     "e": "19:00",
+     "n": "Mark Waumans",
+     "u": null
+    },
+    "5a225dc": {
+     "d": 1,
+     "v": "adonis",
+     "s": "19:30",
+     "e": "20:00",
+     "n": "Marie Koet",
+     "u": null
+    },
+    "47d98bd": {
+     "d": 1,
+     "v": "adonis",
+     "s": "22:00",
+     "e": "04:30",
+     "n": "Adonis",
+     "u": null
+    },
+    "b1d236c": {
+     "d": 2,
+     "v": "adonis",
+     "s": "10:15",
+     "e": "10:45",
+     "n": "Literaire Darkroom",
+     "u": null
+    },
+    "2953e1c": {
+     "d": 2,
+     "v": "adonis",
+     "s": "10:45",
+     "e": "11:20",
+     "n": "Bakkie Llit",
+     "u": null
+    },
+    "956cbcf": {
+     "d": 2,
+     "v": "adonis",
+     "s": "12:00",
+     "e": "12:45",
+     "n": "Rocking Books: Giphart & Goldbach",
+     "u": null
+    },
+    "614eecc": {
+     "d": 2,
+     "v": "adonis",
+     "s": "13:30",
+     "e": "14:15",
+     "n": "Wat Nu? Mystiek!",
+     "u": null
+    },
+    "5640475": {
+     "d": 2,
+     "v": "adonis",
+     "s": "15:00",
+     "e": "15:45",
+     "n": "VPRO Club Lees",
+     "u": null
+    },
+    "0796698": {
+     "d": 2,
+     "v": "adonis",
+     "s": "16:30",
+     "e": "17:00",
+     "n": "Alina Sharipova",
+     "u": null
+    },
+    "8a0b8ff": {
+     "d": 2,
+     "v": "adonis",
+     "s": "17:30",
+     "e": "18:00",
+     "n": "Teun de Vries",
+     "u": null
+    },
+    "1eca2bc": {
+     "d": 2,
+     "v": "adonis",
+     "s": "18:35",
+     "e": "19:05",
+     "n": "Kees van Amstel",
+     "u": null
+    },
+    "4f8782e": {
+     "d": 2,
+     "v": "adonis",
+     "s": "19:30",
+     "e": "20:00",
+     "n": "Chicks in Dialogue",
+     "u": null
+    },
+    "991074f": {
+     "d": 2,
+     "v": "adonis",
+     "s": "22:00",
+     "e": "04:30",
+     "n": "Adonis",
+     "u": null
+    },
+    "f11a19e": {
+     "d": 3,
+     "v": "adonis",
+     "s": "10:15",
+     "e": "10:45",
+     "n": "Literaire Darkroom",
+     "u": null
+    },
+    "fe88e0b": {
+     "d": 3,
+     "v": "adonis",
+     "s": "10:45",
+     "e": "11:15",
+     "n": "Bakkie Llit",
+     "u": null
+    },
+    "d64515a": {
+     "d": 3,
+     "v": "adonis",
+     "s": "12:00",
+     "e": "12:45",
+     "n": "Darling, Dearest, Dead",
+     "u": null
+    },
+    "0099847": {
+     "d": 3,
+     "v": "adonis",
+     "s": "13:30",
+     "e": "14:15",
+     "n": "Wat Nu? Fantasy!",
+     "u": null
+    },
+    "c5eedef": {
+     "d": 3,
+     "v": "adonis",
+     "s": "15:00",
+     "e": "15:45",
+     "n": "Eindeloos Vertier",
+     "u": null
+    },
+    "9a2ab30": {
+     "d": 3,
+     "v": "adonis",
+     "s": "16:30",
+     "e": "17:00",
+     "n": "David van Rosmalen",
+     "u": null
+    },
+    "02a0290": {
+     "d": 3,
+     "v": "adonis",
+     "s": "17:30",
+     "e": "18:00",
+     "n": "Martijn Crins",
+     "u": null
+    },
+    "50fd1f9": {
+     "d": 3,
+     "v": "adonis",
+     "s": "18:30",
+     "e": "19:00",
+     "n": "Davine Perik",
+     "u": null
+    },
+    "8d127d8": {
+     "d": 3,
+     "v": "adonis",
+     "s": "19:30",
+     "e": "20:00",
+     "n": "Jasper van der Veen",
+     "u": null
+    },
+    "9e84657": {
+     "d": 3,
+     "v": "adonis",
+     "s": "22:00",
+     "e": "04:30",
+     "n": "Adonis",
+     "u": null
+    },
+    "e538c7c": {
+     "d": 1,
+     "v": "hacienda",
+     "s": "12:30",
+     "e": "16:30",
+     "n": "Kim Josefine",
+     "u": "https://open.spotify.com/search/Kim%20Josefine"
+    },
+    "81d0b71": {
+     "d": 1,
+     "v": "hacienda",
+     "s": "16:30",
+     "e": "18:30",
+     "n": "Charmaine",
+     "u": "https://open.spotify.com/search/Charmaine"
+    },
+    "99c51c7": {
+     "d": 1,
+     "v": "hacienda",
+     "s": "18:30",
+     "e": "20:30",
+     "n": "Lashanti",
+     "u": "https://open.spotify.com/search/Lashanti"
+    },
+    "913991b": {
+     "d": 1,
+     "v": "hacienda",
+     "s": "20:30",
+     "e": "22:00",
+     "n": "Jea",
+     "u": "https://open.spotify.com/search/Jea"
+    },
+    "a8efd99": {
+     "d": 1,
+     "v": "hacienda",
+     "s": "22:00",
+     "e": "23:30",
+     "n": "Tins",
+     "u": "https://open.spotify.com/search/Tins"
+    },
+    "2b2d51e": {
+     "d": 1,
+     "v": "hacienda",
+     "s": "23:30",
+     "e": "01:00",
+     "n": "Tienson",
+     "u": "https://open.spotify.com/search/Tienson"
+    },
+    "c2b3c4e": {
+     "d": 1,
+     "v": "hacienda",
+     "s": "01:00",
+     "e": "03:00",
+     "n": "Dam Swindle",
+     "u": "https://open.spotify.com/search/Dam%20Swindle"
+    },
+    "73851cc": {
+     "d": 1,
+     "v": "hacienda",
+     "s": "03:00",
+     "e": "04:30",
+     "n": "Laura Meester",
+     "u": "https://open.spotify.com/search/Laura%20Meester"
+    },
+    "646da28": {
+     "d": 2,
+     "v": "hacienda",
+     "s": "12:30",
+     "e": "16:30",
+     "n": "Ketama Man",
+     "u": "https://open.spotify.com/search/Ketama%20Man"
+    },
+    "30684f0": {
+     "d": 2,
+     "v": "hacienda",
+     "s": "16:30",
+     "e": "18:30",
+     "n": "Folake",
+     "u": "https://open.spotify.com/search/Folake"
+    },
+    "0ac200a": {
+     "d": 2,
+     "v": "hacienda",
+     "s": "18:30",
+     "e": "21:00",
+     "n": "Y\u016fsu",
+     "u": "https://open.spotify.com/search/Y%C5%AFsu"
+    },
+    "3482935": {
+     "d": 2,
+     "v": "hacienda",
+     "s": "21:00",
+     "e": "23:30",
+     "n": "Fiesta Macumba Soundsystem",
+     "u": "https://open.spotify.com/search/Fiesta%20Macumba%20Soundsystem"
+    },
+    "0396a6c": {
+     "d": 2,
+     "v": "hacienda",
+     "s": "23:30",
+     "e": "01:30",
+     "n": "Rockefellababe",
+     "u": "https://open.spotify.com/search/Rockefellababe"
+    },
+    "0fab632": {
+     "d": 2,
+     "v": "hacienda",
+     "s": "01:30",
+     "e": "03:00",
+     "n": "Tera K\u00f2r\u00e1",
+     "u": "https://open.spotify.com/search/Tera%20K%C3%B2r%C3%A1"
+    },
+    "a35634f": {
+     "d": 2,
+     "v": "hacienda",
+     "s": "03:00",
+     "e": "04:30",
+     "n": "Lamsi",
+     "u": "https://open.spotify.com/search/Lamsi"
+    },
+    "58f7684": {
      "d": 3,
      "v": "hacienda",
      "s": "12:30",
@@ -2051,7 +2267,7 @@
      "n": "Abiba Sokoto b2b Pelanoir",
      "u": "https://open.spotify.com/search/Abiba%20Sokoto%20b2b%20Pelanoir"
     },
-    "a204": {
+    "6a80776": {
      "d": 3,
      "v": "hacienda",
      "s": "16:30",
@@ -2059,7 +2275,7 @@
      "n": "Eileen",
      "u": "https://open.spotify.com/search/Eileen"
     },
-    "a205": {
+    "46ffb78": {
      "d": 3,
      "v": "hacienda",
      "s": "18:30",
@@ -2067,7 +2283,7 @@
      "n": "Shady Lady",
      "u": "https://open.spotify.com/search/Shady%20Lady"
     },
-    "a206": {
+    "8cfc7dd": {
      "d": 3,
      "v": "hacienda",
      "s": "20:30",
@@ -2075,7 +2291,7 @@
      "n": "Kingdom Sound",
      "u": "https://open.spotify.com/search/Kingdom%20Sound"
     },
-    "a207": {
+    "3000c6b": {
      "d": 3,
      "v": "hacienda",
      "s": "22:30",
@@ -2083,7 +2299,7 @@
      "n": "AK Soundsystem",
      "u": "https://open.spotify.com/search/AK%20Soundsystem"
     },
-    "a208": {
+    "77c67b0": {
      "d": 3,
      "v": "hacienda",
      "s": "00:30",
@@ -2091,212 +2307,22 @@
      "n": "Deejay Abstract",
      "u": "https://open.spotify.com/search/Deejay%20Abstract"
     },
-    "a209": {
+    "a938bfd": {
      "d": 3,
      "v": "hacienda",
      "s": "02:30",
      "e": "04:30",
      "n": "Yucky",
      "u": "https://open.spotify.com/search/Yucky"
-    },
-    "a210": {
-     "d": 3,
-     "v": "juliet",
-     "s": "14:30",
-     "e": "17:00",
-     "n": "Sarah Janneh, NITE, Theater Utrecht, Musicalmakers",
-     "u": null
-    },
-    "a211": {
-     "d": 3,
-     "v": "juliet",
-     "s": "17:00",
-     "e": "19:00",
-     "n": "Ita, June Yanez, Leila Sahir, Zephyr Br\u00fcggen",
-     "u": null
-    },
-    "a212": {
-     "d": 3,
-     "v": "juliet",
-     "s": "19:00",
-     "e": "21:00",
-     "n": "Circumstances",
-     "u": null
-    },
-    "a213": {
-     "d": 3,
-     "v": "juliet",
-     "s": "21:00",
-     "e": "22:45",
-     "n": "Daan van der Hoeven",
-     "u": null
-    },
-    "a214": {
-     "d": 3,
-     "v": "juliet",
-     "s": "22:45",
-     "e": "00:30",
-     "n": "De Nationale Avond van de Woordgrap",
-     "u": null
-    },
-    "a215": {
-     "d": 3,
-     "v": "juliet",
-     "s": "00:30",
-     "e": "02:00",
-     "n": "De Lowlands Grote* Talentenshow",
-     "u": null
-    },
-    "a216": {
-     "d": 3,
-     "v": "echo",
-     "s": "12:30",
-     "e": "14:00",
-     "n": "We moeten het hebben over: Generatie Gaza",
-     "u": null
-    },
-    "a217": {
-     "d": 3,
-     "v": "echo",
-     "s": "14:00",
-     "e": "15:15",
-     "n": "VPRO Tegenlicht",
-     "u": null
-    },
-    "a218": {
-     "d": 3,
-     "v": "echo",
-     "s": "15:15",
-     "e": "16:45",
-     "n": "Hoe ziek is de geopolitiek: Europa",
-     "u": null
-    },
-    "a219": {
-     "d": 3,
-     "v": "echo",
-     "s": "16:45",
-     "e": "18:00",
-     "n": "New Scientist Live",
-     "u": null
-    },
-    "a220": {
-     "d": 3,
-     "v": "echo",
-     "s": "18:00",
-     "e": "19:00",
-     "n": "NWQ",
-     "u": null
-    },
-    "a221": {
-     "d": 3,
-     "v": "echo",
-     "s": "19:00",
-     "e": "21:10",
-     "n": "Sugar + Q&A",
-     "u": null
-    },
-    "a222": {
-     "d": 3,
-     "v": "echo",
-     "s": "21:10",
-     "e": "23:15",
-     "n": "Hundreds of Beavers",
-     "u": null
-    },
-    "a223": {
-     "d": 3,
-     "v": "echo",
-     "s": "23:15",
-     "e": "01:10",
-     "n": "Truly Naked",
-     "u": null
-    },
-    "a224": {
-     "d": 3,
-     "v": "echo",
-     "s": "01:10",
-     "e": "02:40",
-     "n": "Obsession",
-     "u": null
-    },
-    "a225": {
-     "d": 3,
-     "v": "adonis",
-     "s": "10:45",
-     "e": "12:00",
-     "n": "Bakkie Llit",
-     "u": null
-    },
-    "a226": {
-     "d": 3,
-     "v": "adonis",
-     "s": "12:00",
-     "e": "13:30",
-     "n": "Darling, Dearest, Dead",
-     "u": null
-    },
-    "a227": {
-     "d": 3,
-     "v": "adonis",
-     "s": "13:30",
-     "e": "15:00",
-     "n": "Wat Nu? Fantasy!",
-     "u": null
-    },
-    "a228": {
-     "d": 3,
-     "v": "adonis",
-     "s": "15:00",
-     "e": "16:30",
-     "n": "Eindeloos Vertier",
-     "u": null
-    },
-    "a229": {
-     "d": 3,
-     "v": "adonis",
-     "s": "16:30",
-     "e": "17:30",
-     "n": "David van Rosmalen",
-     "u": null
-    },
-    "a230": {
-     "d": 3,
-     "v": "adonis",
-     "s": "17:30",
-     "e": "18:30",
-     "n": "Martijn Crins",
-     "u": null
-    },
-    "a231": {
-     "d": 3,
-     "v": "adonis",
-     "s": "18:30",
-     "e": "19:30",
-     "n": "Davine Perik",
-     "u": null
-    },
-    "a232": {
-     "d": 3,
-     "v": "adonis",
-     "s": "19:30",
-     "e": "22:00",
-     "n": "Jasper van der Veen",
-     "u": null
-    },
-    "a233": {
-     "d": 3,
-     "v": "adonis",
-     "s": "22:00",
-     "e": "23:30",
-     "n": "Adonis",
-     "u": null
     }
    },
    "map": {
     "img": "map.png",
     "w": 1000,
     "h": 936
-   }
+   },
+   "source": "clashfinder.com/lowlands2026",
+   "updatedAt": 1786352164020
   }
  },
  "library_index": {
@@ -2306,8 +2332,9 @@
    "place": "Walibi Holland, Biddinghuizen",
    "days": 4,
    "stages": 11,
-   "acts": 233,
-   "official": true
+   "acts": 236,
+   "official": true,
+   "updatedAt": 1786352164020
   }
  }
 }

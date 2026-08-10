@@ -357,3 +357,9 @@ body.gridpage{padding:0}
 .pcell:hover .plab,.pcell.taken .plab{color:#fff}
 .pfaces{display:flex;flex-wrap:wrap;gap:1px;justify-content:center;align-items:center}
 .pmore{font-size:9px;font-weight:700;color:var(--edge)}
+
+/* ---- timetable update prompt ---- */
+.updbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  background:var(--green);border-bottom:1px solid var(--edge);
+  padding:10px 14px;font-size:13px}
+.updbar span{flex:1;min-width:150px}

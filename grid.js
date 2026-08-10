@@ -96,6 +96,7 @@ window.addEventListener('error', e => {
   $('app').hidden = false;
   $('dock').hidden = false;
   drawTop();
+  checkForUpdate();
   drawTabs();
   draw();
   drawCI();
@@ -246,6 +247,49 @@ function pickers(actId) {
     out.unshift({ uid, name: nm, note: pickNote(myPicks[actId]) });
   }
   return out;
+}
+
+/* ---------- keeping an existing crew up to date ----------
+   A crew takes its own copy of the timetable, which is what stops one crew's
+   edits disturbing another. The cost is that corrections never arrive. So we
+   compare against the library's version stamp — a few bytes — and offer the
+   update. Stages the crew added themselves are carried across, and act ids are
+   derived from the act itself, so tagged sets survive the swap. */
+async function checkForUpdate() {
+  if (!meta || !meta.slug) return;
+  let entry = null;
+  try { entry = (await C.ref('library_index/' + meta.slug).get()).val(); } catch (e) { return; }
+  if (!entry || !entry.updatedAt) return;
+  if (fest.updatedAt && fest.updatedAt >= entry.updatedAt) return;
+
+  const bar = document.createElement('div');
+  bar.className = 'updbar';
+  bar.innerHTML = `<span>An updated timetable is available for ${esc(fest.name)}.</span>`
+    + (isAdmin() ? '<button class="btn sm primary" id="updGo">Update</button>' : '')
+    + '<button class="btn sm" id="updNo">Dismiss</button>';
+  document.querySelector('.topbar').after(bar);
+  bar.querySelector('#updNo').onclick = () => bar.remove();
+  const go = bar.querySelector('#updGo');
+  if (go) go.onclick = async () => {
+    go.disabled = true; go.textContent = 'Updating…';
+    try {
+      const lib = (await C.ref('library/' + meta.slug).get()).val();
+      if (!lib) throw new Error('not found');
+      const fresh = F.normalise(lib);
+      /* keep anything this crew added itself */
+      const mine = fest.venues.filter(v => v.added);
+      for (const v of mine) if (!fresh.venues.some(x => x.id === v.id)) fresh.venues.push(v);
+      for (const [id, a] of Object.entries(fest.acts))
+        if (mine.some(v => v.id === a.v) && !fresh.acts[id]) fresh.acts[id] = a;
+      fresh.updatedAt = entry.updatedAt;
+      await F.save(crew.gid, fresh);
+      C.toast('Timetable updated');
+      location.reload();
+    } catch (e) {
+      go.disabled = false; go.textContent = 'Update';
+      C.toast("Couldn't update — " + (e.message || ''));
+    }
+  };
 }
 
 /* ---------- top bar ---------- */

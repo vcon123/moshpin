@@ -207,7 +207,9 @@ $('createGo').onclick = async () => {
       try {
         const s = await C.ref('library/' + pick).get();
         if (s.val()) {
-          await C.ref('groups/' + gid + '/festival').set(s.val());
+          const doc = s.val();
+          doc.updatedAt = fromLib.updatedAt || Date.now();
+          await C.ref('groups/' + gid + '/festival').set(doc);
           await C.ref('groups/' + gid + '/festv').set(Date.now());
         }
       } catch (e) { /* they can still set it up by hand */ }
