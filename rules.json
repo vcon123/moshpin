@@ -116,6 +116,18 @@
         "$id": {
           ".write": "auth != null"
         }
+      },
+      "feedback": {
+        ".read": false,
+        "$id": {
+          ".write": "auth != null"
+        }
+      },
+      "stats": {
+        ".read": true,
+        "$key": {
+          ".write": "auth != null"
+        }
       }
     },
     "$other": {

@@ -13,6 +13,12 @@ const clearErr = id => $(id).classList.remove('on');
 let busy = false;
 let myPhoto = null;
 
+/* Plain running totals — no personal data, just how much this is being used.
+   A transaction so two people signing up at once don't overwrite each other. */
+function bump(key) {
+  try { C.ref('stats/' + key).transaction(n => (n || 0) + 1); } catch (e) {}
+}
+
 /* shrink on the phone before it ever goes near the network */
 function shrink(file, px, q) {
   return new Promise(res => {
@@ -215,6 +221,8 @@ $('createGo').onclick = async () => {
       } catch (e) { /* they can still set it up by hand */ }
     }
 
+    bump('crews'); bump('members');
+
     C.setCurrentGroup({ gid, name: gname, token });
     C.setMyProfile({ name: me, photo: null });
     showInvite(gid, pin, gname, fest, year);
@@ -299,6 +307,7 @@ $('joinGo').onclick = async () => {
       .set({ name: me, joined: Date.now(), t: token });
     try { await C.ref('groups/' + gid + '/photos/' + uid).set(myPhoto); } catch (e) {}
 
+    bump('members');
     C.setCurrentGroup({ gid, name: previewed.name, token });
     C.setMyProfile({ name: me, photo: null });
     location.href = 'grid.html';

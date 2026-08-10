@@ -672,6 +672,7 @@ $('menuBtn').onclick = () => {
       <button class="btn" id="mMine">★ My lineup</button>
       <button class="btn" id="mTransport">🚗 Getting there</button>
       <button class="btn" id="mInvite">✉ Invite someone</button>
+      <button class="btn" id="mFeedback">💡 Feedback</button>
       ${F.hasStarted(fest) ? '<button class="btn" id="mBoard">🏆 Best sets</button>' : ''}
       ${F.isOver(fest) ? '<button class="btn" id="mWrap">🎁 The wrap</button>' : ''}
     </div>
@@ -686,6 +687,7 @@ $('menuBtn').onclick = () => {
   $('mMine').onclick = () => { closeSheet('menuSheet'); showMine(); };
   $('mTransport').onclick = () => { closeSheet('menuSheet'); showTransport(); };
   $('mInvite').onclick = () => { closeSheet('menuSheet'); showCrew(true); };
+  $('mFeedback').onclick = () => { closeSheet('menuSheet'); showFeedback(); };
   const bb = $('mBoard'); if (bb) bb.onclick = () => { closeSheet('menuSheet'); showBoard(); };
   const wb = $('mWrap'); if (wb) wb.onclick = () => { closeSheet('menuSheet'); showWrap(); };
   $('mNew').onclick = () => { location.href = 'index.html?add=1'; };
@@ -866,6 +868,33 @@ function shrink(file, px, q) {
     img.onerror = () => res(null);
     img.src = URL.createObjectURL(file);
   });
+}
+
+/* ---------- feedback ----------
+   One global node, so it is a single place to look rather than one per crew. */
+function showFeedback() {
+  $('profBody').innerHTML = `
+    <div class="phead"><b>💡 Feedback</b><button class="btn sm" id="fbX">✕</button></div>
+    <p class="hint">Found a bug, or want something added? This goes straight to us.</p>
+    <textarea id="fbText" rows="5" maxlength="1000" placeholder="What's on your mind?" style="margin-top:12px"></textarea>
+    <button class="btn primary wide" id="fbSend" style="margin-top:12px">Send</button>`;
+  $('profSheet').classList.add('on');
+  $('fbX').onclick = () => closeSheet('profSheet');
+  $('fbSend').onclick = async () => {
+    const t = $('fbText').value.trim();
+    if (!t) return C.toast('Write something first');
+    $('fbSend').disabled = true;
+    try {
+      await C.ref('feedback').push({
+        text: t.slice(0, 1000),
+        who: (members[uid] || {}).name || '?',
+        crew: (meta && meta.name) || '', fest: fest ? fest.name : '',
+        uid, ts: Date.now(), ua: navigator.userAgent.slice(0, 120)
+      });
+      closeSheet('profSheet');
+      C.toast('Thanks — that reached us');
+    } catch (e) { $('fbSend').disabled = false; C.toast("Couldn't send it"); }
+  };
 }
 
 /* ---------- transport ---------- */
