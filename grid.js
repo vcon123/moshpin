@@ -866,7 +866,7 @@ function showInvite() {
   if (lk) lk.onclick = async () => {
     const on = !cfg.lock;
     try {
-      await C.ref('groups/' + crew.gid + '/config/lock').set(on || null);
+      await C.ref('groups/' + crew.gid + '/config/lock').set(on ? true : null);
       cfg.lock = on;
       C.toast(on ? 'Locked — only admins can see the passcode' : 'Unlocked');
       showInvite();
