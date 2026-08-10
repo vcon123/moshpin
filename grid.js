@@ -74,10 +74,29 @@ window.addEventListener('error', e => {
   C.ref('groups/' + crew.gid + '/admins').on('child_added', s => { admins[s.key] = true; drawTop(); });
   C.ref('groups/' + crew.gid + '/admins').on('child_removed', s => { delete admins[s.key]; drawTop(); });
 
+  /* Picks, ratings and notes live apart from the member record. Tagging a set
+     used to rebroadcast your name, join token, every rating and every note to
+     the whole crew; now it sends just the picks string. */
   const mref = C.ref('groups/' + crew.gid + '/members');
   mref.on('child_added',   s => { takeMember(s.key, s.val()); draw(); });
   mref.on('child_changed', s => { takeMember(s.key, s.val()); draw(); });
-  mref.on('child_removed', s => { delete members[s.key]; draw(); });
+  mref.on('child_removed', s => { delete members[s.key]; delete picksOf[s.key]; draw(); });
+
+  for (const [node, bag] of [['pk', picksOf], ['rt', ratesOf], ['nt', notesOf]]) {
+    const r = C.ref('groups/' + crew.gid + '/' + node);
+    const set = (k, v) => { if (v == null) delete bag[k]; else bag[k] = v;
+                            if (k === uid) syncMine(); draw(); };
+    r.on('child_added',   s => set(s.key, s.val()));
+    r.on('child_changed', s => set(s.key, s.val()));
+    r.on('child_removed', s => set(s.key, null));
+  }
+
+  /* a join token only proves the passcode once — drop it so it stops riding
+     along on every broadcast */
+  try {
+    const meRec = C.ref('groups/' + crew.gid + '/members/' + uid);
+    if (((await meRec.get()).val() || {}).t) await meRec.child('t').remove();
+  } catch (e) {}
   C.ref('groups/' + crew.gid + '/admins')
     .on('child_added', s => { admins[s.key] = true; });
 
@@ -89,6 +108,7 @@ window.addEventListener('error', e => {
     members: () => members, photos: () => photos,
     onChange: () => { drawCI(); draw(); }
   });
+  S.useRatings(() => ratesOf);
   S.init({
     gid: crew.gid, uid, fest,
     members: () => members, photos: () => photos,
@@ -215,13 +235,23 @@ document.addEventListener('click', e => {
   if (p.classList.contains('open') && !p.contains(e.target) && !(e.target.dataset && e.target.dataset.add)) closeRx();
 }, true);
 
+let picksOf = {}, ratesOf = {}, notesOf = {};
 function takeMember(u, v) {
   members[u] = v || {};
-  if (u === uid) {
-    myPicks = decPicks(v && v.picks);
-    myRatings = S.decRatings(v && v.ratings);
-  }
+  /* older records kept everything inline — keep reading those */
+  if (v && v.picks && picksOf[u] === undefined) picksOf[u] = v.picks;
+  if (v && v.ratings && ratesOf[u] === undefined) ratesOf[u] = v.ratings;
+  if (v && v.notes && notesOf[u] === undefined) notesOf[u] = v.notes;
+  if (u === uid) syncMine();
 }
+function syncMine() {
+  myPicks = decPicks(picksOf[uid]);
+  myRatings = S.decRatings(ratesOf[uid]);
+  const n = notesOf[uid] || {};
+  for (const k of Object.keys(n)) if (myPicks[k]) myPicks[k] = { note: n[k] };
+}
+const picksFor = u => decPicks(picksOf[u]);
+const notesFor = u => notesOf[u] || {};
 
 /* ---------- saving picks ----------
    Coalesced: tagging five sets in a row is one write, not five. */
@@ -234,8 +264,8 @@ async function savePicks() {
   const notes = {};
   for (const k of Object.keys(myPicks)) { const t = pickNote(myPicks[k]); if (t) notes[k] = t; }
   try {
-    await C.ref('groups/' + crew.gid + '/members/' + uid)
-      .update({ picks: encPicks(myPicks), notes: Object.keys(notes).length ? notes : null });
+    await C.ref('groups/' + crew.gid + '/pk/' + uid).set(encPicks(myPicks));
+    await C.ref('groups/' + crew.gid + '/nt/' + uid).set(Object.keys(notes).length ? notes : null);
   } catch (e) { C.toast("Couldn't save that — " + (e.message || '')); }
 }
 window.addEventListener('pagehide', () => { if (saveTimer) savePicks(); });
@@ -245,10 +275,10 @@ window.addEventListener('pagehide', () => { if (saveTimer) savePicks(); });
    waiting for the round trip. */
 function pickers(actId) {
   const out = [];
-  for (const [u, m] of Object.entries(members)) {
+  for (const u of Object.keys(members)) {
     if (u === uid) continue;
-    const p = decPicks(m.picks);
-    if (p[actId]) out.push({ uid: u, name: m.name || '?', note: (m.notes || {})[actId] || '' });
+    if (picksFor(u)[actId]) out.push({ uid: u, name: members[u].name || '?',
+                                       note: notesFor(u)[actId] || '' });
   }
   out.sort((a, b) => String(a.name).localeCompare(String(b.name)));
   if (myPicks[actId]) {
@@ -562,7 +592,7 @@ function saveRatings() {
   if (rTimer) clearTimeout(rTimer);
   rTimer = setTimeout(async () => {
     rTimer = null;
-    try { await C.ref('groups/' + crew.gid + '/members/' + uid).update({ ratings: S.encRatings(myRatings) }); }
+    try { await C.ref('groups/' + crew.gid + '/rt/' + uid).set(S.encRatings(myRatings)); }
     catch (e) { C.toast("Couldn't save that rating"); }
   }, 500);
 }
@@ -843,8 +873,8 @@ function avatarFor(u, size) {
    page costs nothing extra. */
 function showPerson(who) {
   const m = members[who] || {};
-  const picks = decPicks(m.picks);
-  const rts = S.decRatings(m.ratings);
+  const picks = picksFor(who);
+  const rts = S.decRatings(ratesOf[who]);
   const list = Object.keys(picks).map(actInfo).filter(a => a && a.n)
     .sort((x, y) => x.d - y.d || F.offset(fest, x) - F.offset(fest, y));
   const rated = Object.entries(rts).map(([id, r]) => ({ a: actInfo(id), r }))
@@ -898,7 +928,7 @@ function showProfile() {
   $('pfFile').onchange = e => {
     const f = e.target.files && e.target.files[0]; e.target.value = '';
     if (!f) return;
-    shrink(f, 96, 0.7).then(dd => {
+    shrink(f, 64, 0.62).then(dd => {
       if (!dd) return C.toast("Couldn't read that image");
       pendingPhoto = dd;
       $('pfPrev').innerHTML = `<img class="av" src="${dd}" alt="" style="width:76px;height:76px">`;

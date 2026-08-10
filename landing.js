@@ -55,7 +55,7 @@ function wirePhoto(inputId, prevId) {
     const f = e.target.files && e.target.files[0];
     e.target.value = '';
     if (!f) return;
-    shrink(f, 96, 0.7).then(d => {
+    shrink(f, 64, 0.62).then(d => {
       if (!d) return C.toast("Couldn't read that photo");
       myPhoto = d;
       $(prevId).innerHTML = `<img src="${d}" alt="">`;

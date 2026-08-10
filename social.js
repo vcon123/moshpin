@@ -144,10 +144,14 @@ export function halfwayAt(actId) {
   const mid = Math.round((F.offset(fest, a) + F.endOffset(fest, a)) / 2);
   return C.minToHhmm(fest.days[a.d].start * 60 + mid);
 }
+let ratesOf = () => ({});
+export const useRatings = fn => { ratesOf = fn; };
+const ratingsFor = u => decRatings(ratesOf()[u] !== undefined ? ratesOf()[u] : (members()[u] || {}).ratings);
+
 export function scoreOf(actId) {
   let sum = 0, votes = 0;
-  for (const m of Object.values(members())) {
-    const r = decRatings(m.ratings)[actId];
+  for (const u of Object.keys(members())) {
+    const r = ratingsFor(u)[actId];
     if (r) { sum += r; votes++; }
   }
   /* deliberately NOT called `n`: acts use `n` for their name, and these objects
@@ -156,9 +160,9 @@ export function scoreOf(actId) {
 }
 export function ratersOf(actId) {
   const out = [];
-  for (const [u, m] of Object.entries(members())) {
-    const r = decRatings(m.ratings)[actId];
-    if (r) out.push({ uid: u, name: m.name || '?', r });
+  for (const u of Object.keys(members())) {
+    const r = ratingsFor(u)[actId];
+    if (r) out.push({ uid: u, name: (members()[u] || {}).name || '?', r });
   }
   return out.sort((a, b) => b.r - a.r);
 }
@@ -192,8 +196,8 @@ export function wrapData(tallies) {
   const top = ranked().slice(0, 10).map(x => x.id);
 
   const rows = people.map(p => {
-    const picks = Object.keys(decP(p.m.picks));
-    const rs = Object.values(decRatings(p.m.ratings));
+    const picks = Object.keys(decP(p.m.picks !== undefined ? p.m.picks : ''));
+    const rs = Object.values(ratingsFor(p.uid));
     const t = T[p.uid] || {};
     const seenActs = String(t.a || '').split(' ').filter(Boolean);
     const venueCount = {};

@@ -115,6 +115,24 @@
               ".write": "auth != null && $uid === auth.uid && root.child('moshpin/groups/'+$gid+'/join/'+newData.child('t').val()).exists()",
               ".validate": "newData.hasChildren(['k','t'])"
             }
+          },
+          "pk": {
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
+            "$k": {
+              ".write": "auth != null && ($k === root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val() || root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists())"
+            }
+          },
+          "rt": {
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
+            "$k": {
+              ".write": "auth != null && ($k === root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val() || root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists())"
+            }
+          },
+          "nt": {
+            ".read": "auth != null && root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid).exists()",
+            "$k": {
+              ".write": "auth != null && ($k === root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val() || root.child('moshpin/groups/'+$gid+'/admins/'+root.child('moshpin/groups/'+$gid+'/uidmap/'+auth.uid+'/k').val()).exists())"
+            }
           }
         }
       },
