@@ -137,22 +137,22 @@
           }
         }
       },
-      "requests": {
-        ".read": false,
-        "$id": {
-          ".write": "auth != null"
-        }
-      },
-      "feedback": {
-        ".read": false,
-        "$id": {
-          ".write": "auth != null"
-        }
-      },
       "stats": {
         ".read": true,
-        "$key": {
-          ".write": "auth != null"
+        "counts": {
+          "$key": {
+            ".write": "auth != null"
+          }
+        },
+        "feedback": {
+          "$id": {
+            ".write": "auth != null && !data.exists()"
+          }
+        },
+        "requests": {
+          "$id": {
+            ".write": "auth != null && !data.exists()"
+          }
         }
       }
     },

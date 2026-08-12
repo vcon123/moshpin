@@ -1107,12 +1107,21 @@ function showFeedback() {
     if (!t) return C.toast('Write something first');
     $('fbSend').disabled = true;
     try {
-      await C.ref('feedback').push({
+      /* Everything lands under stats so there is one node to check, and the
+         entry key sorts by date — newest at the bottom of the list. */
+      const when = new Date();
+      const key = when.toISOString().slice(0, 19).replace(/[:T]/g, '-')
+                + '_' + ((members[uid] || {}).name || 'someone').replace(/[^A-Za-z0-9]/g, '').slice(0, 12);
+      await C.ref('stats/feedback/' + key).set({
         text: t.slice(0, 1000),
-        who: (members[uid] || {}).name || '?',
-        crew: (meta && meta.name) || '', fest: fest ? fest.name : '',
-        uid, ts: Date.now(), ua: navigator.userAgent.slice(0, 120)
+        from: (members[uid] || {}).name || '?',
+        crew: (meta && meta.name) || '',
+        festival: fest ? `${fest.name} ${fest.year}` : '',
+        when: when.toISOString().slice(0, 16).replace('T', ' '),
+        ts: when.getTime(),
+        device: navigator.userAgent.slice(0, 120)
       });
+      C.ref('stats/counts/feedback').transaction(n => (n || 0) + 1);
       closeSheet('profSheet');
       C.toast('Thanks — that reached us');
     } catch (e) { $('fbSend').disabled = false; C.toast("Couldn't send it"); }

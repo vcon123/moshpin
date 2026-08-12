@@ -16,7 +16,7 @@ let myPhoto = null;
 /* Plain running totals — no personal data, just how much this is being used.
    A transaction so two people signing up at once don't overwrite each other. */
 function bump(key) {
-  try { C.ref('stats/' + key).transaction(n => (n || 0) + 1); } catch (e) {}
+  try { C.ref('stats/counts/' + key).transaction(n => (n || 0) + 1); } catch (e) {}
 }
 
 /* shrink on the phone before it ever goes near the network */
@@ -173,12 +173,17 @@ $('rqSend') && ($('rqSend').onclick = async () => {
   const btn = $('rqSend');
   btn.disabled = true; btn.textContent = 'Sending…';
   try {
-    await C.ref('requests').push({
+    const when = new Date();
+    const key = when.toISOString().slice(0, 19).replace(/[:T]/g, '-')
+              + '_' + what.replace(/[^A-Za-z0-9]/g, '').slice(0, 16);
+    await C.ref('stats/requests/' + key).set({
       festival: what.slice(0, 80),
       note: $('rqNote').value.trim().slice(0, 400),
-      uid: C.myUid(), ts: Date.now(),
-      ua: navigator.userAgent.slice(0, 120)
+      when: when.toISOString().slice(0, 16).replace('T', ' '),
+      ts: when.getTime(),
+      device: navigator.userAgent.slice(0, 120)
     });
+    C.ref('stats/counts/requests').transaction(n => (n || 0) + 1);
     $('cRequest').innerHTML = '<p class="hint">Thanks — that reached us. '
       + "We'll add it once the official timetable is out.</p>";
   } catch (e) {
