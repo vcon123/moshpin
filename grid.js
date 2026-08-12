@@ -89,6 +89,26 @@ window.addEventListener('error', e => {
   /* Picks, ratings and notes live apart from the member record. Tagging a set
      used to rebroadcast your name, join token, every rating and every note to
      the whole crew; now it sends just the picks string. */
+  /* Photos are only ever cached locally, so a face taken on someone else's
+     phone never arrived. Fetch each one exactly once, then keep it — they never
+     change, so this costs nothing after the first visit. */
+  const fetching = {};
+  function fetchPhotos() {
+    for (const u of Object.keys(members)) {
+      if (photos[u] !== undefined || fetching[u]) continue;
+      fetching[u] = 1;
+      C.ref('groups/' + crew.gid + '/photos/' + u).get()
+        .then(s => {
+          photos[u] = s.val() || null;
+          try { localStorage.setItem('mp_photos_' + crew.gid, JSON.stringify(photos)); } catch (e) {}
+          draw();
+          if ($('crewSheet').classList.contains('on')) showCrew();
+        })
+        .catch(() => { delete fetching[u]; });
+    }
+  }
+  window.__photos = fetchPhotos;
+
   const mref = C.ref('groups/' + crew.gid + '/members');
   /* A denied read used to fail silently, which is exactly what made a full crew
      look empty. Say so instead. */
@@ -104,8 +124,8 @@ window.addEventListener('error', e => {
     bar.querySelector('#reGo').onclick = () =>
       location.href = 'index.html?g=' + encodeURIComponent(crew.gid) + '&again=1';
   };
-  mref.on('child_added',   s => { takeMember(s.key, s.val()); draw(); }, denied);
-  mref.on('child_changed', s => { takeMember(s.key, s.val()); draw(); }, denied);
+  mref.on('child_added',   s => { takeMember(s.key, s.val()); fetchPhotos(); draw(); }, denied);
+  mref.on('child_changed', s => { takeMember(s.key, s.val()); fetchPhotos(); draw(); }, denied);
   mref.on('child_removed', s => { delete members[s.key]; delete picksOf[s.key]; draw(); });
 
   for (const [node, bag] of [['pk', picksOf], ['rt', ratesOf], ['nt', notesOf]]) {
@@ -1042,6 +1062,7 @@ function showProfile() {
       if (pendingPhoto) {
         await C.ref('groups/' + crew.gid + '/photos/' + uid).set(pendingPhoto);
         photos[uid] = pendingPhoto;
+        delete fetching[uid];
         try { localStorage.setItem('mp_photos_' + crew.gid, JSON.stringify(photos)); } catch (e) {}
         pendingPhoto = null;
       }
