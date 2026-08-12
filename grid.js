@@ -357,10 +357,43 @@ async function checkForUpdate() {
   };
 }
 
+/* Admins can rename the crew and the line under it. The subtitle defaults to
+   the festival name, but a crew doing two weekends may want something else. */
+async function renameCrew() {
+  const cur = (meta && meta.name) || '';
+  const nu = (prompt('Name of this crew', cur) || '').trim();
+  if (nu && nu !== cur) {
+    try {
+      await C.ref('groups/' + crew.gid + '/meta/name').set(nu.slice(0, 40));
+      meta.name = nu.slice(0, 40);
+      crew.name = meta.name; C.setCurrentGroup(crew);
+      drawTop();
+    } catch (e) {
+      return C.toast(String(e.message || '').includes('PERMISSION')
+        ? 'Only admins can rename this crew.' : "Couldn't rename it.");
+    }
+  }
+  const def = `${fest.name} ${fest.year}`;
+  const curSub = (meta && meta.sub) || def;
+  const sub = (prompt('Line underneath', curSub) || '').trim();
+  if (sub === curSub) return;
+  try {
+    const keep = sub && sub !== def ? sub.slice(0, 60) : null;
+    await C.ref('groups/' + crew.gid + '/meta/sub').set(keep);
+    meta.sub = keep;
+    drawTop();
+    C.toast('Saved');
+  } catch (e) { C.toast("Couldn't save that."); }
+}
+
 /* ---------- top bar ---------- */
 function drawTop() {
   $('evTitle').textContent = (meta && meta.name) || (crew && crew.name) || 'My crew';
-  $('evSub').textContent = `${fest.name} ${fest.year}`;
+  $('evSub').textContent = (meta && meta.sub) || `${fest.name} ${fest.year}`;
+  const box = document.querySelector('.evname');
+  box.classList.toggle('editable', isAdmin());
+  box.title = isAdmin() ? 'Tap to rename' : '';
+  box.onclick = isAdmin() ? renameCrew : null;
   $('crewN').textContent = Object.keys(members).length;
 }
 
