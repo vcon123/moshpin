@@ -71,11 +71,36 @@ $('go').onclick = async () => {
     const seed = await res.json();
 
     let n = 0;
+    const write = async (path, val) => {
+      try { await C.ref(path).set(val); }
+      catch (e) {
+        if (!String(e.message || '').includes('PERMISSION_DENIED'))
+          throw new Error(`Writing moshpin/${path} failed: ${e.message}`);
+
+        /* Name the likely cause rather than just the symptom. */
+        let live = null;
+        try { live = (await C.ref(path + '/updatedAt').get()).val(); } catch (x) {}
+        if (live != null && val && val.updatedAt != null && val.updatedAt <= live)
+          throw new Error(`moshpin/${path} already holds a newer version `
+            + `(${new Date(live).toLocaleString()}). Nothing to do — the rules block `
+            + `overwriting newer data with older.`);
+
+        throw new Error(`Not allowed to write moshpin/${path}. `
+          + `Republish rules.json in the Firebase console — the library section must read `
+          + `".write": "auth != null && (!data.exists() || newData.child('updatedAt').val() > data.child('updatedAt').val())"`);
+      }
+    };
     for (const [slug, fest] of Object.entries(seed.library || {})) {
-      await C.ref('library/' + slug).set(fest); n++;
+      let live = null;
+      try { live = (await C.ref('library/' + slug + '/updatedAt').get()).val(); } catch (e) {}
+      if (live != null && fest.updatedAt != null && fest.updatedAt <= live) {
+        say('status', `Skipping ${slug} — already up to date.`);
+        continue;                        // unchanged, so don't fight the rule
+      }
+      await write('library/' + slug, fest); n++;
     }
     for (const [slug, entry] of Object.entries(seed.library_index || {})) {
-      await C.ref('library_index/' + slug).set(entry);
+      await write('library_index/' + slug, entry);
     }
     say('status', `Done — ${n} festival(s) loaded. Go and create a crew.`);
     await refresh();
