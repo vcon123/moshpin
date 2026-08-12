@@ -2425,6 +2425,917 @@
    },
    "source": "clashfinder.com/lowlands2026",
    "updatedAt": 1786364009764
+  },
+  "dekmantel-selectors-2026": {
+   "name": "Dekmantel Selectors",
+   "year": 2026,
+   "place": "Tisno, Croatia",
+   "tz": "Europe/Zagreb",
+   "days": [
+    {
+     "date": "2026-08-20",
+     "start": 12,
+     "hours": 18
+    },
+    {
+     "date": "2026-08-21",
+     "start": 12,
+     "hours": 18
+    },
+    {
+     "date": "2026-08-22",
+     "start": 12,
+     "hours": 18
+    },
+    {
+     "date": "2026-08-23",
+     "start": 12,
+     "hours": 18
+    },
+    {
+     "date": "2026-08-24",
+     "start": 12,
+     "hours": 18
+    }
+   ],
+   "venues": [
+    {
+     "id": "beachbar",
+     "name": "Beach Bar",
+     "type": "stage"
+    },
+    {
+     "id": "magnolia",
+     "name": "Magnolia",
+     "type": "stage"
+    },
+    {
+     "id": "beachmain",
+     "name": "Beach Main",
+     "type": "stage"
+    },
+    {
+     "id": "voodoo",
+     "name": "Voodoo",
+     "type": "stage"
+    },
+    {
+     "id": "nest",
+     "name": "The Nest",
+     "type": "stage"
+    },
+    {
+     "id": "barbarellas",
+     "name": "Barbarellas",
+     "type": "stage"
+    },
+    {
+     "id": "boat1",
+     "name": "Boat 1",
+     "type": "stage"
+    },
+    {
+     "id": "boat2",
+     "name": "Boat 2",
+     "type": "stage"
+    },
+    {
+     "id": "vortex",
+     "name": "Vortex \ud83d\udc80",
+     "type": "stage",
+     "open": true
+    }
+   ],
+   "acts": {
+    "62a98": {
+     "d": 0,
+     "v": "beachbar",
+     "s": "12:30",
+     "e": "16:00",
+     "n": "Tai Lokun",
+     "u": "https://open.spotify.com/search/Tai%20Lokun"
+    },
+    "e98ba": {
+     "d": 0,
+     "v": "beachbar",
+     "s": "16:00",
+     "e": "19:00",
+     "n": "Victor",
+     "u": "https://open.spotify.com/search/Victor"
+    },
+    "f3200": {
+     "d": 0,
+     "v": "magnolia",
+     "s": "15:00",
+     "e": "20:30",
+     "n": "Loradeniz",
+     "u": "https://open.spotify.com/search/Loradeniz"
+    },
+    "579fc": {
+     "d": 0,
+     "v": "magnolia",
+     "s": "20:30",
+     "e": "23:00",
+     "n": "Hamstersland",
+     "u": "https://open.spotify.com/search/Hamstersland"
+    },
+    "849c7": {
+     "d": 0,
+     "v": "beachmain",
+     "s": "19:00",
+     "e": "22:00",
+     "n": "Suze Ij\u00f3",
+     "u": "https://open.spotify.com/search/Suze%20Ij%C3%B3"
+    },
+    "4488b": {
+     "d": 0,
+     "v": "beachmain",
+     "s": "22:00",
+     "e": "00:00",
+     "n": "Sterac Electronics",
+     "u": "https://open.spotify.com/search/Sterac%20Electronics"
+    },
+    "05420": {
+     "d": 0,
+     "v": "beachmain",
+     "s": "00:00",
+     "e": "03:00",
+     "n": "Hunee & Optimo",
+     "u": "https://open.spotify.com/search/Hunee%20%26%20Optimo"
+    },
+    "90991": {
+     "d": 0,
+     "v": "voodoo",
+     "s": "17:00",
+     "e": "21:00",
+     "n": "Mia Cecille",
+     "u": "https://open.spotify.com/search/Mia%20Cecille"
+    },
+    "8de0f": {
+     "d": 0,
+     "v": "voodoo",
+     "s": "21:00",
+     "e": "00:00",
+     "n": "mad miran",
+     "u": "https://open.spotify.com/search/mad%20miran"
+    },
+    "60fc7": {
+     "d": 0,
+     "v": "voodoo",
+     "s": "00:00",
+     "e": "03:00",
+     "n": "Marcel Dettmann",
+     "u": "https://open.spotify.com/search/Marcel%20Dettmann"
+    },
+    "ddc22": {
+     "d": 0,
+     "v": "nest",
+     "s": "16:00",
+     "e": "19:00",
+     "n": "State OFFF",
+     "u": "https://open.spotify.com/search/State%20OFFF"
+    },
+    "fa333": {
+     "d": 0,
+     "v": "nest",
+     "s": "19:00",
+     "e": "21:00",
+     "n": "Karen Nyame KG",
+     "u": "https://open.spotify.com/search/Karen%20Nyame%20KG"
+    },
+    "62292": {
+     "d": 0,
+     "v": "nest",
+     "s": "21:00",
+     "e": "23:00",
+     "n": "Rozaly",
+     "u": "https://open.spotify.com/search/Rozaly"
+    },
+    "362cb": {
+     "d": 0,
+     "v": "nest",
+     "s": "23:00",
+     "e": "02:00",
+     "n": "Benji B",
+     "u": "https://open.spotify.com/search/Benji%20B"
+    },
+    "fc5d9": {
+     "d": 0,
+     "v": "boat1",
+     "s": "12:30",
+     "e": "15:00",
+     "n": "Private Hearts",
+     "u": "https://open.spotify.com/search/Private%20Hearts",
+     "d_": "Elias Mazian, Sandrien"
+    },
+    "1e774": {
+     "d": 0,
+     "v": "boat1",
+     "s": "16:00",
+     "e": "19:00",
+     "n": "20/44",
+     "u": "https://open.spotify.com/search/20/44",
+     "d_": "LUTON & SCEPA, Steve Rachmad"
+    },
+    "73a51": {
+     "d": 0,
+     "v": "boat1",
+     "s": "20:00",
+     "e": "23:00",
+     "n": "Radio TNP",
+     "u": "https://open.spotify.com/search/Radio%20TNP",
+     "d_": "Alfred Anders, Maki, Mia Cecille"
+    },
+    "d376e": {
+     "d": 0,
+     "v": "boat2",
+     "s": "13:30",
+     "e": "17:00",
+     "n": "Brighter Days",
+     "u": "https://open.spotify.com/search/Brighter%20Days",
+     "d_": "Kamma & Masalo, Young Marco"
+    },
+    "46ad7": {
+     "d": 0,
+     "v": "boat2",
+     "s": "17:00",
+     "e": "20:00",
+     "n": "PIP",
+     "u": "https://open.spotify.com/search/PIP",
+     "d_": "Nienquepasa, Optimo"
+    },
+    "3cd16": {
+     "d": 0,
+     "v": "boat2",
+     "s": "21:00",
+     "e": "00:00",
+     "n": "Metz Attack",
+     "u": "https://open.spotify.com/search/Metz%20Attack",
+     "d_": "Jesse G, Metz Attack, upsammy"
+    },
+    "44ef7": {
+     "d": 0,
+     "v": "barbarellas",
+     "s": "03:00",
+     "e": "04:30",
+     "n": "Naone",
+     "u": "https://open.spotify.com/search/Naone"
+    },
+    "1be51": {
+     "d": 0,
+     "v": "barbarellas",
+     "s": "04:30",
+     "e": "06:00",
+     "n": "Young Marco",
+     "u": "https://open.spotify.com/search/Young%20Marco"
+    },
+    "b94f5": {
+     "d": 1,
+     "v": "beachbar",
+     "s": "12:30",
+     "e": "16:00",
+     "n": "Dekmantel Soundsystem & Friends",
+     "u": "https://open.spotify.com/search/Dekmantel%20Soundsystem%20%26%20Friends"
+    },
+    "3078b": {
+     "d": 1,
+     "v": "magnolia",
+     "s": "15:00",
+     "e": "17:30",
+     "n": "Nina Welch",
+     "u": "https://open.spotify.com/search/Nina%20Welch",
+     "d_": "Crevette Records"
+    },
+    "7d4c1": {
+     "d": 1,
+     "v": "magnolia",
+     "s": "17:30",
+     "e": "20:00",
+     "n": "Noar & Vitesse",
+     "u": "https://open.spotify.com/search/Noar%20%26%20Vitesse",
+     "d_": "Crevette Records"
+    },
+    "1cef0": {
+     "d": 1,
+     "v": "magnolia",
+     "s": "20:00",
+     "e": "23:00",
+     "n": "Alfred Anders",
+     "u": "https://open.spotify.com/search/Alfred%20Anders",
+     "d_": "Crevette Records"
+    },
+    "ddbcb": {
+     "d": 1,
+     "v": "beachmain",
+     "s": "19:00",
+     "e": "22:00",
+     "n": "Kamma",
+     "u": "https://open.spotify.com/search/Kamma"
+    },
+    "33f07": {
+     "d": 1,
+     "v": "beachmain",
+     "s": "22:00",
+     "e": "00:00",
+     "n": "Ron Trent",
+     "u": "https://open.spotify.com/search/Ron%20Trent"
+    },
+    "56bc8": {
+     "d": 1,
+     "v": "beachmain",
+     "s": "00:00",
+     "e": "03:00",
+     "n": "Sandrien",
+     "u": "https://open.spotify.com/search/Sandrien",
+     "d_": "house set"
+    },
+    "ce2b1": {
+     "d": 1,
+     "v": "voodoo",
+     "s": "19:00",
+     "e": "22:00",
+     "n": "Jesse G",
+     "u": "https://open.spotify.com/search/Jesse%20G"
+    },
+    "382ce": {
+     "d": 1,
+     "v": "voodoo",
+     "s": "22:00",
+     "e": "00:00",
+     "n": "Deetron pres. SOULMATE",
+     "u": "https://open.spotify.com/search/Deetron%20pres.%20SOULMATE"
+    },
+    "ffa29": {
+     "d": 1,
+     "v": "voodoo",
+     "s": "00:00",
+     "e": "03:00",
+     "n": "Zenker Brothers",
+     "u": "https://open.spotify.com/search/Zenker%20Brothers"
+    },
+    "d64cc": {
+     "d": 1,
+     "v": "nest",
+     "s": "19:30",
+     "e": "22:00",
+     "n": "upsammy",
+     "u": "https://open.spotify.com/search/upsammy"
+    },
+    "bde63": {
+     "d": 1,
+     "v": "nest",
+     "s": "22:00",
+     "e": "23:30",
+     "n": "Dwarde & Tim Reaper",
+     "u": "https://open.spotify.com/search/Dwarde%20%26%20Tim%20Reaper"
+    },
+    "1a300": {
+     "d": 1,
+     "v": "nest",
+     "s": "23:30",
+     "e": "02:00",
+     "n": "Mia Koden",
+     "u": "https://open.spotify.com/search/Mia%20Koden"
+    },
+    "047f3": {
+     "d": 1,
+     "v": "boat1",
+     "s": "13:00",
+     "e": "16:00",
+     "n": "COLORS x Studio Strip",
+     "u": "https://open.spotify.com/search/COLORS%20x%20Studio%20Strip",
+     "d_": "An\u00e9l, Benji B, Karen Nyame KG"
+    },
+    "def79": {
+     "d": 1,
+     "v": "boat1",
+     "s": "16:30",
+     "e": "19:30",
+     "n": "Ilian Tape",
+     "u": "https://open.spotify.com/search/Ilian%20Tape",
+     "d_": "Deetron, Mia Koden, Zenker Brothers"
+    },
+    "2446e": {
+     "d": 1,
+     "v": "boat1",
+     "s": "20:00",
+     "e": "23:00",
+     "n": "Dekmantel",
+     "u": "https://open.spotify.com/search/Dekmantel",
+     "d_": "Interstellar Funk, NIKS & Victor"
+    },
+    "a74f6": {
+     "d": 1,
+     "v": "boat2",
+     "s": "14:00",
+     "e": "17:30",
+     "n": "La Cassette",
+     "u": "https://open.spotify.com/search/La%20Cassette",
+     "d_": "dirtydms, DJ Godfather, MediaMart"
+    },
+    "06149": {
+     "d": 1,
+     "v": "boat2",
+     "s": "17:30",
+     "e": "20:30",
+     "n": "Opium Club",
+     "u": "https://open.spotify.com/search/Opium%20Club",
+     "d_": "Clicklounge, Naone, Orpheu The Wizard"
+    },
+    "06ac7": {
+     "d": 1,
+     "v": "boat2",
+     "s": "21:00",
+     "e": "00:00",
+     "n": "PULP",
+     "u": "https://open.spotify.com/search/PULP",
+     "d_": "El Commando, mad miran, Sepher"
+    },
+    "6f807": {
+     "d": 1,
+     "v": "barbarellas",
+     "s": "03:00",
+     "e": "06:00",
+     "n": "Francesco Del Garda & Paquita Gordon",
+     "u": "https://open.spotify.com/search/Francesco%20Del%20Garda%20%26%20Paquita%20Gordon"
+    },
+    "03622": {
+     "d": 2,
+     "v": "beachbar",
+     "s": "12:30",
+     "e": "16:00",
+     "n": "Courtney Bailey",
+     "u": "https://open.spotify.com/search/Courtney%20Bailey"
+    },
+    "18993": {
+     "d": 2,
+     "v": "beachbar",
+     "s": "16:00",
+     "e": "19:00",
+     "n": "Orpheu The Wizard",
+     "u": "https://open.spotify.com/search/Orpheu%20The%20Wizard"
+    },
+    "b91ed": {
+     "d": 2,
+     "v": "magnolia",
+     "s": "15:00",
+     "e": "17:30",
+     "n": "Satoshi",
+     "u": "https://open.spotify.com/search/Satoshi",
+     "d_": "Rush Hour"
+    },
+    "d6ea4": {
+     "d": 2,
+     "v": "magnolia",
+     "s": "17:30",
+     "e": "20:30",
+     "n": "Robert Bergman",
+     "u": "https://open.spotify.com/search/Robert%20Bergman",
+     "d_": "Rush Hour"
+    },
+    "3519f": {
+     "d": 2,
+     "v": "magnolia",
+     "s": "20:30",
+     "e": "23:00",
+     "n": "Kl\u00e9o",
+     "u": "https://open.spotify.com/search/Kl%C3%A9o",
+     "d_": "Rush Hour"
+    },
+    "da73a": {
+     "d": 2,
+     "v": "beachmain",
+     "s": "19:00",
+     "e": "22:00",
+     "n": "NIKS",
+     "u": "https://open.spotify.com/search/NIKS"
+    },
+    "b59af": {
+     "d": 2,
+     "v": "beachmain",
+     "s": "22:00",
+     "e": "00:00",
+     "n": "L.B. Dub Corp & Sedef Adasi",
+     "u": "https://open.spotify.com/search/L.B.%20Dub%20Corp%20%26%20Sedef%20Adasi"
+    },
+    "49e8d": {
+     "d": 2,
+     "v": "beachmain",
+     "s": "00:00",
+     "e": "03:00",
+     "n": "Doudou MD",
+     "u": "https://open.spotify.com/search/Doudou%20MD"
+    },
+    "c191d": {
+     "d": 2,
+     "v": "voodoo",
+     "s": "19:00",
+     "e": "22:00",
+     "n": "Sepehr",
+     "u": "https://open.spotify.com/search/Sepehr"
+    },
+    "1a2c4": {
+     "d": 2,
+     "v": "voodoo",
+     "s": "22:00",
+     "e": "00:00",
+     "n": "Vlada",
+     "u": "https://open.spotify.com/search/Vlada"
+    },
+    "2391e": {
+     "d": 2,
+     "v": "voodoo",
+     "s": "00:00",
+     "e": "03:00",
+     "n": "Binh & Vladimir Ivkovic",
+     "u": "https://open.spotify.com/search/Binh%20%26%20Vladimir%20Ivkovic"
+    },
+    "fc9a7": {
+     "d": 2,
+     "v": "nest",
+     "s": "19:30",
+     "e": "21:30",
+     "n": "dirtydms",
+     "u": "https://open.spotify.com/search/dirtydms"
+    },
+    "d5c58": {
+     "d": 2,
+     "v": "nest",
+     "s": "21:30",
+     "e": "23:00",
+     "n": "Peverelist",
+     "u": "https://open.spotify.com/search/Peverelist"
+    },
+    "9d0e9": {
+     "d": 2,
+     "v": "nest",
+     "s": "23:00",
+     "e": "00:30",
+     "n": "CCL",
+     "u": "https://open.spotify.com/search/CCL"
+    },
+    "97920": {
+     "d": 2,
+     "v": "nest",
+     "s": "00:30",
+     "e": "02:30",
+     "n": "Identified Patient",
+     "u": "https://open.spotify.com/search/Identified%20Patient"
+    },
+    "2b491": {
+     "d": 2,
+     "v": "boat1",
+     "s": "13:00",
+     "e": "16:00",
+     "n": "Post Bar",
+     "u": "https://open.spotify.com/search/Post%20Bar",
+     "d_": "Post Bar Posse, Vlada, Vladimir Ivkovic"
+    },
+    "29387": {
+     "d": 2,
+     "v": "boat1",
+     "s": "16:30",
+     "e": "19:30",
+     "n": "HAMAM Nights",
+     "u": "https://open.spotify.com/search/HAMAM%20Nights",
+     "d_": "Rachel Noon, Sedef Adasi"
+    },
+    "14691": {
+     "d": 2,
+     "v": "boat1",
+     "s": "20:00",
+     "e": "23:00",
+     "n": "nachbar",
+     "u": "https://open.spotify.com/search/nachbar",
+     "d_": "Danielle, Festen, Tai Lokun"
+    },
+    "372d8": {
+     "d": 2,
+     "v": "boat2",
+     "s": "14:00",
+     "e": "17:30",
+     "n": "Bassiani",
+     "u": "https://open.spotify.com/search/Bassiani",
+     "d_": "Dito, Fadi Mohem, Hamatsuki & Skyra"
+    },
+    "15809": {
+     "d": 2,
+     "v": "boat2",
+     "s": "17:30",
+     "e": "20:30",
+     "n": "TraTraTrax",
+     "u": "https://open.spotify.com/search/TraTraTrax",
+     "d_": "Nick Le\u00f3n, TraTraTrax Soundsistema"
+    },
+    "ff0db": {
+     "d": 2,
+     "v": "boat2",
+     "s": "21:00",
+     "e": "00:00",
+     "n": "pos",
+     "u": "https://open.spotify.com/search/pos",
+     "d_": "Andy & mu.lIANNA, Nina Welch, Introspekt"
+    },
+    "4b29d": {
+     "d": 2,
+     "v": "barbarellas",
+     "s": "03:00",
+     "e": "04:30",
+     "n": "Danielle",
+     "u": "https://open.spotify.com/search/Danielle"
+    },
+    "16f8a": {
+     "d": 2,
+     "v": "barbarellas",
+     "s": "04:30",
+     "e": "06:00",
+     "n": "Fadi Mohem & Ogaz\u00f3n",
+     "u": "https://open.spotify.com/search/Fadi%20Mohem%20%26%20Ogaz%C3%B3n"
+    },
+    "e60b8": {
+     "d": 3,
+     "v": "beachbar",
+     "s": "12:30",
+     "e": "16:00",
+     "n": "Mr. Scruff",
+     "u": "https://open.spotify.com/search/Mr.%20Scruff"
+    },
+    "86fc3": {
+     "d": 3,
+     "v": "magnolia",
+     "s": "15:00",
+     "e": "18:30",
+     "n": "Charlie Bones",
+     "u": "https://open.spotify.com/search/Charlie%20Bones",
+     "d_": "Private Hearts Club"
+    },
+    "4e853": {
+     "d": 3,
+     "v": "magnolia",
+     "s": "18:30",
+     "e": "22:00",
+     "n": "Elias Mazian",
+     "u": "https://open.spotify.com/search/Elias%20Mazian",
+     "d_": "Private Hearts Club"
+    },
+    "3a958": {
+     "d": 3,
+     "v": "beachmain",
+     "s": "19:00",
+     "e": "22:00",
+     "n": "Ploy",
+     "u": "https://open.spotify.com/search/Ploy"
+    },
+    "fac96": {
+     "d": 3,
+     "v": "beachmain",
+     "s": "22:00",
+     "e": "00:00",
+     "n": "Virginia",
+     "u": "https://open.spotify.com/search/Virginia"
+    },
+    "9f55c": {
+     "d": 3,
+     "v": "beachmain",
+     "s": "00:00",
+     "e": "03:00",
+     "n": "Roi Perez",
+     "u": "https://open.spotify.com/search/Roi%20Perez"
+    },
+    "82355": {
+     "d": 3,
+     "v": "voodoo",
+     "s": "19:00",
+     "e": "22:00",
+     "n": "Metz Attack",
+     "u": "https://open.spotify.com/search/Metz%20Attack"
+    },
+    "22498": {
+     "d": 3,
+     "v": "voodoo",
+     "s": "22:00",
+     "e": "23:00",
+     "n": "Hamatsuki & Skyra",
+     "u": "https://open.spotify.com/search/Hamatsuki%20%26%20Skyra",
+     "d_": "live"
+    },
+    "fd5d1": {
+     "d": 3,
+     "v": "voodoo",
+     "s": "23:00",
+     "e": "01:00",
+     "n": "Kia & Verraco",
+     "u": "https://open.spotify.com/search/Kia%20%26%20Verraco"
+    },
+    "6bfbc": {
+     "d": 3,
+     "v": "voodoo",
+     "s": "01:00",
+     "e": "03:00",
+     "n": "Efdemin",
+     "u": "https://open.spotify.com/search/Efdemin"
+    },
+    "7adad": {
+     "d": 3,
+     "v": "nest",
+     "s": "19:30",
+     "e": "22:00",
+     "n": "T.NO",
+     "u": "https://open.spotify.com/search/T.NO"
+    },
+    "3bfcd": {
+     "d": 3,
+     "v": "nest",
+     "s": "22:00",
+     "e": "00:00",
+     "n": "Nick Le\u00f3n",
+     "u": "https://open.spotify.com/search/Nick%20Le%C3%B3n"
+    },
+    "a6f0b": {
+     "d": 3,
+     "v": "nest",
+     "s": "00:00",
+     "e": "01:30",
+     "n": "Introspekt",
+     "u": "https://open.spotify.com/search/Introspekt"
+    },
+    "b5e30": {
+     "d": 3,
+     "v": "nest",
+     "s": "01:30",
+     "e": "02:30",
+     "n": "DJ Godfather",
+     "u": "https://open.spotify.com/search/DJ%20Godfather"
+    },
+    "22c74": {
+     "d": 3,
+     "v": "boat1",
+     "s": "12:30",
+     "e": "16:00",
+     "n": "Adriatic Coasting",
+     "u": "https://open.spotify.com/search/Adriatic%20Coasting",
+     "d_": "Antonio Zuza & Pepi Jogarde, Casabianca, Courtney Bailey"
+    },
+    "13b5b": {
+     "d": 3,
+     "v": "boat1",
+     "s": "16:30",
+     "e": "19:30",
+     "n": "Dekmantel",
+     "u": "https://open.spotify.com/search/Dekmantel",
+     "d_": "AMORAL, Ploy, Quest"
+    },
+    "c1ded": {
+     "d": 3,
+     "v": "boat1",
+     "s": "20:00",
+     "e": "23:00",
+     "n": "Spielraum",
+     "u": "https://open.spotify.com/search/Spielraum",
+     "d_": "BASHKKA, Blasha & Allatt"
+    },
+    "8bd53": {
+     "d": 3,
+     "v": "boat2",
+     "s": "14:00",
+     "e": "17:30",
+     "n": "Rush Hour",
+     "u": "https://open.spotify.com/search/Rush%20Hour",
+     "d_": "Antal, Kl\u00e9o, Robert Bergman, Satoshi"
+    },
+    "eca22": {
+     "d": 3,
+     "v": "boat2",
+     "s": "17:30",
+     "e": "20:30",
+     "n": "Homegrown",
+     "u": "https://open.spotify.com/search/Homegrown",
+     "d_": "BADSISTA, Jyoty, T.NO"
+    },
+    "c90dc": {
+     "d": 3,
+     "v": "boat2",
+     "s": "21:00",
+     "e": "00:00",
+     "n": "Radio Radio",
+     "u": "https://open.spotify.com/search/Radio%20Radio",
+     "d_": "Doudou MD, Roi Perez, RR Soundsystem"
+    },
+    "6c12d": {
+     "d": 3,
+     "v": "barbarellas",
+     "s": "03:00",
+     "e": "06:00",
+     "n": "DJ Koolt & Quest",
+     "u": "https://open.spotify.com/search/DJ%20Koolt%20%26%20Quest"
+    },
+    "e2021": {
+     "d": 4,
+     "v": "beachbar",
+     "s": "12:30",
+     "e": "16:00",
+     "n": "Job Jobse & Peach & Shanti Celeste",
+     "u": "https://open.spotify.com/search/Job%20Jobse%20%26%20Peach%20%26%20Shanti%20Celeste"
+    },
+    "c2c2b": {
+     "d": 4,
+     "v": "magnolia",
+     "s": "15:00",
+     "e": "20:00",
+     "n": "Roel de Boer",
+     "u": "https://open.spotify.com/search/Roel%20de%20Boer"
+    },
+    "aa3c3": {
+     "d": 4,
+     "v": "beachmain",
+     "s": "19:00",
+     "e": "22:00",
+     "n": "Alex Kassian",
+     "u": "https://open.spotify.com/search/Alex%20Kassian"
+    },
+    "68cfc": {
+     "d": 4,
+     "v": "beachmain",
+     "s": "22:00",
+     "e": "00:00",
+     "n": "BASHKKA",
+     "u": "https://open.spotify.com/search/BASHKKA"
+    },
+    "4ff17": {
+     "d": 4,
+     "v": "beachmain",
+     "s": "00:00",
+     "e": "02:30",
+     "n": "Palms Trax",
+     "u": "https://open.spotify.com/search/Palms%20Trax"
+    },
+    "68659": {
+     "d": 4,
+     "v": "voodoo",
+     "s": "19:00",
+     "e": "21:30",
+     "n": "AMORAL",
+     "u": "https://open.spotify.com/search/AMORAL"
+    },
+    "6fe40": {
+     "d": 4,
+     "v": "voodoo",
+     "s": "21:30",
+     "e": "00:00",
+     "n": "Blasha & Allatt",
+     "u": "https://open.spotify.com/search/Blasha%20%26%20Allatt"
+    },
+    "a072c": {
+     "d": 4,
+     "v": "voodoo",
+     "s": "00:00",
+     "e": "02:00",
+     "n": "Antal",
+     "u": "https://open.spotify.com/search/Antal",
+     "d_": "techno set"
+    },
+    "f43c0": {
+     "d": 4,
+     "v": "voodoo",
+     "s": "02:00",
+     "e": "04:00",
+     "n": "Jeff Mills",
+     "u": "https://open.spotify.com/search/Jeff%20Mills"
+    },
+    "cb495": {
+     "d": 4,
+     "v": "nest",
+     "s": "19:30",
+     "e": "22:00",
+     "n": "Coffintexts",
+     "u": "https://open.spotify.com/search/Coffintexts"
+    },
+    "08d59": {
+     "d": 4,
+     "v": "nest",
+     "s": "22:00",
+     "e": "23:30",
+     "n": "Simo Cell",
+     "u": "https://open.spotify.com/search/Simo%20Cell"
+    },
+    "e5b56": {
+     "d": 4,
+     "v": "nest",
+     "s": "23:30",
+     "e": "01:00",
+     "n": "BADSISTA",
+     "u": "https://open.spotify.com/search/BADSISTA"
+    },
+    "6a3fd": {
+     "d": 4,
+     "v": "nest",
+     "s": "01:00",
+     "e": "03:00",
+     "n": "Cinnaman & Jyoty",
+     "u": "https://open.spotify.com/search/Cinnaman%20%26%20Jyoty"
+    }
+   },
+   "updatedAt": 1786532844767
   }
  },
  "library_index": {
@@ -2437,6 +3348,16 @@
    "acts": 236,
    "official": true,
    "updatedAt": 1786364009764
+  },
+  "dekmantel-selectors-2026": {
+   "name": "Dekmantel Selectors",
+   "year": 2026,
+   "place": "Tisno, Croatia",
+   "days": 5,
+   "stages": 9,
+   "acts": 99,
+   "official": true,
+   "updatedAt": 1786532844767
   }
  }
 }
