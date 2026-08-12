@@ -94,23 +94,31 @@ label{display:block;font-size:12.5px;color:var(--dim);margin:14px 0 6px}
 .err div{margin:3px 0}
 
 /* ---- timetable ---- */
-body.gridpage{padding:0}
+body.gridpage{padding:0;overflow:hidden;height:100dvh;height:100vh;display:flex;flex-direction:column}
 .ghead{display:flex;align-items:center;gap:10px;padding:12px 14px 8px}
 .gtitle{flex:1;min-width:0;text-align:center;font-weight:600;font-size:15px;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .gridpage .tabs{padding:0 14px 10px;margin:0}
-.tt{border-top:1px solid var(--line)}
-.ttop{display:flex;position:-webkit-sticky;position:sticky;z-index:30;background:var(--bg)}
-.tcorner{width:46px;flex:none;border-bottom:2px solid var(--line);border-right:1px solid var(--line)}
+/* One scroller, not two. The grid used to scroll sideways while the page
+   scrolled up and down, so a diagonal swipe started in one and was rejected by
+   the other — which is what made it bounce back. Now a single element handles
+   both axes and the frozen panes are moved to match. */
+.tt{border-top:1px solid var(--line);overflow:auto;-webkit-overflow-scrolling:touch;
+    overscroll-behavior:contain;position:relative}
+.ttop{display:flex}
+.tcorner{width:46px;flex:none;position:sticky;left:0;z-index:31;background:var(--bg);
+  border-bottom:2px solid var(--line);border-right:1px solid var(--line)}
 .theadwrap{flex:1;min-width:0;overflow:hidden}
+.ttop{position:sticky;top:0;z-index:30;background:var(--bg);width:max-content;min-width:100%}
 .thead{display:grid;gap:0 6px}
 .sh{position:relative;font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--edge);
   text-align:center;padding:8px 3px;border-bottom:2px solid var(--line);
   display:flex;align-items:flex-end;justify-content:center;min-height:34px;line-height:1.25}
-.tbody{display:flex}
-.tcol{width:46px;flex:none;position:relative;border-right:1px solid var(--line)}
+.tbody{display:flex;width:max-content;min-width:100%}
+.tcol{width:46px;flex:none;position:sticky;left:0;z-index:20;background:var(--bg);
+  border-right:1px solid var(--line)}
 .tl{position:absolute;right:6px;font-size:10.5px;color:var(--dim);line-height:1}
-.twrap{flex:1;min-width:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.twrap{flex:1;min-width:0}
 .tgrid{display:grid;gap:0 6px;position:relative;padding-bottom:40px}
 .hl{position:absolute;left:0;right:0;border-top:1px dashed #333734}
 .act{position:relative;z-index:1;background:var(--panel);border:1px solid var(--line);
@@ -385,3 +393,6 @@ body.gridpage{padding:0}
 .evname.editable{cursor:pointer;border-radius:8px;padding:2px 6px;margin:-2px 0}
 .evname.editable:hover{background:var(--panel-2)}
 .evname.editable b::after{content:' ✎';font-size:11px;color:var(--dim);font-weight:400}
+
+body.gridpage #app{flex:1;min-height:0;display:flex;flex-direction:column}
+body.gridpage .topbar{position:static;flex:0 0 auto}

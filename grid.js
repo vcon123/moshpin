@@ -438,13 +438,14 @@ function draw() {
   /* Pin both panes to one identical pixel width. Left to `1fr` they resolve
      differently — the header has no blocks in it — and the header ends up with
      no scroll range, so it sits still while the grid moves underneath. */
+  const tt = document.querySelector('.tt');
+  const top = tt.getBoundingClientRect().top;
+  tt.style.height = Math.max(240, window.innerHeight - top) + 'px';
   const avail = Math.max(240, $('gWrap').clientWidth || 320);
   const colW = Math.max(118, Math.floor((avail - (cols - 1) * GAP) / cols));
   const totalW = cols * colW + (cols - 1) * GAP;
   const track = `repeat(${cols}, ${colW}px)`;
 
-  const tb = document.querySelector('.topbar');
-  document.querySelector('.ttop').style.top = ((tb ? tb.offsetHeight : 0) - 1) + 'px';
   $('gHead').style.gridTemplateColumns = track;
   $('gHead').style.width = totalW + 'px';
   $('gHead').innerHTML = stages.map(v =>
@@ -590,14 +591,19 @@ function drawNow() {
 }
 
 /* header follows the grid sideways; nothing is position:sticky */
-$('gWrap').addEventListener('scroll', () => {
-  $('gHeadWrap').scrollLeft = $('gWrap').scrollLeft;
-}, { passive: true });
+/* The stage row and the time column are sticky inside the one scroller now, so
+   the browser keeps them in place — no JS syncing, and no fighting the gesture. */
 let rz = null;
 window.addEventListener('resize', () => {
   clearTimeout(rz);
   rz = setTimeout(() => { if (fest) draw(); }, 150);
 });
+/* the visual viewport changes when the keyboard opens or the URL bar hides */
+if (window.visualViewport)
+  window.visualViewport.addEventListener('resize', () => {
+    clearTimeout(rz);
+    rz = setTimeout(() => { if (fest) draw(); }, 200);
+  });
 
 /* ---------- one set ---------- */
 let openId = null;
