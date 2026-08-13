@@ -14,17 +14,17 @@
     {
      "date": "2026-08-21",
      "start": 9,
-     "hours": 20
+     "hours": 24
     },
     {
      "date": "2026-08-22",
      "start": 9,
-     "hours": 20
+     "hours": 24
     },
     {
      "date": "2026-08-23",
      "start": 9,
-     "hours": 20
+     "hours": 25
     }
    ],
    "venues": [
@@ -393,7 +393,6 @@
      "id": "armadillow",
      "name": "Armadillow",
      "type": "stage",
-     "open": true,
      "x": 33.7,
      "y": 69.4,
      "plan": {
@@ -2416,6 +2415,305 @@
      "e": "04:30",
      "n": "Yucky",
      "u": "https://soundcloud.com/search?q=Yucky"
+    },
+    "40ea3": {
+     "d": 0,
+     "v": "armadillow",
+     "s": "16:00",
+     "e": "19:00",
+     "n": "Pinguin Radio",
+     "u": "https://soundcloud.com/search?q=Pinguin%20Radio",
+     "d_": "The Dutch rock station takes over the tent to open the festival."
+    },
+    "029fc": {
+     "d": 0,
+     "v": "armadillow",
+     "s": "19:00",
+     "e": "21:00",
+     "n": "Julia Zahra",
+     "u": "https://soundcloud.com/search?q=Julia%20Zahra",
+     "d_": "Dutch singer and DJ with a warm, soulful approach."
+    },
+    "e40ba": {
+     "d": 0,
+     "v": "armadillow",
+     "s": "21:00",
+     "e": "00:00",
+     "n": "Hans Worst b2b Mo Filefo",
+     "u": "https://soundcloud.com/search?q=Hans%20Worst%20b2b%20Mo%20Filefo"
+    },
+    "d714e": {
+     "d": 0,
+     "v": "armadillow",
+     "s": "00:00",
+     "e": "01:30",
+     "n": "36Framez",
+     "u": "https://soundcloud.com/search?q=36Framez"
+    },
+    "04ae0": {
+     "d": 0,
+     "v": "armadillow",
+     "s": "01:30",
+     "e": "03:30",
+     "n": "Boris Coelman",
+     "u": "https://soundcloud.com/search?q=Boris%20Coelman"
+    },
+    "45ad3": {
+     "d": 0,
+     "v": "armadillow",
+     "s": "03:30",
+     "e": "05:00",
+     "n": "Juliana X",
+     "u": "https://soundcloud.com/search?q=Juliana%20X"
+    },
+    "bcbd0": {
+     "d": 1,
+     "v": "armadillow",
+     "s": "10:00",
+     "e": "12:00",
+     "n": "Ivana \u0110uki\u0107",
+     "u": "https://soundcloud.com/search?q=Ivana%20%C4%90uki%C4%87",
+     "d_": "PIP Radio"
+    },
+    "ab784": {
+     "d": 1,
+     "v": "armadillow",
+     "s": "12:00",
+     "e": "14:00",
+     "n": "Buba the Freak",
+     "u": "https://soundcloud.com/search?q=Buba%20the%20Freak",
+     "d_": "PIP Radio"
+    },
+    "adb3b": {
+     "d": 1,
+     "v": "armadillow",
+     "s": "14:00",
+     "e": "16:00",
+     "n": "Jetti",
+     "u": "https://soundcloud.com/search?q=Jetti",
+     "d_": "PIP Radio"
+    },
+    "3ae55": {
+     "d": 1,
+     "v": "armadillow",
+     "s": "16:00",
+     "e": "18:00",
+     "n": "The Fluid Druid",
+     "u": "https://soundcloud.com/search?q=The%20Fluid%20Druid",
+     "d_": "PIP Radio"
+    },
+    "3f802": {
+     "d": 1,
+     "v": "armadillow",
+     "s": "18:00",
+     "e": "21:00",
+     "n": "The Ocean Men",
+     "u": "https://soundcloud.com/search?q=The%20Ocean%20Men"
+    },
+    "7d52a": {
+     "d": 1,
+     "v": "armadillow",
+     "s": "21:00",
+     "e": "00:00",
+     "n": "Ararat Taxi Service",
+     "u": "https://soundcloud.com/search?q=Ararat%20Taxi%20Service"
+    },
+    "2a7cf": {
+     "d": 1,
+     "v": "armadillow",
+     "s": "00:00",
+     "e": "02:00",
+     "n": "Katja Isabella",
+     "u": "https://soundcloud.com/search?q=Katja%20Isabella"
+    },
+    "db811": {
+     "d": 1,
+     "v": "armadillow",
+     "s": "02:00",
+     "e": "04:30",
+     "n": "Riptide",
+     "u": "https://soundcloud.com/search?q=Riptide"
+    },
+    "2cb0a": {
+     "d": 1,
+     "v": "armadillow",
+     "s": "04:30",
+     "e": "07:00",
+     "n": "D Stone",
+     "u": "https://soundcloud.com/search?q=D%20Stone"
+    },
+    "896a2": {
+     "d": 1,
+     "v": "armadillow",
+     "s": "07:00",
+     "e": "09:00",
+     "n": "Phia",
+     "u": "https://soundcloud.com/search?q=Phia"
+    },
+    "de8d8": {
+     "d": 2,
+     "v": "armadillow",
+     "s": "10:00",
+     "e": "12:00",
+     "n": "Chalice Is A Witch",
+     "u": "https://soundcloud.com/search?q=Chalice%20Is%20A%20Witch",
+     "d_": "Echobox"
+    },
+    "09da1": {
+     "d": 2,
+     "v": "armadillow",
+     "s": "12:00",
+     "e": "14:00",
+     "n": "TIZI",
+     "u": "https://soundcloud.com/search?q=TIZI",
+     "d_": "Echobox"
+    },
+    "194ce": {
+     "d": 2,
+     "v": "armadillow",
+     "s": "14:00",
+     "e": "16:00",
+     "n": "Carmela Collective",
+     "u": "https://soundcloud.com/search?q=Carmela%20Collective",
+     "d_": "Echobox"
+    },
+    "b2f6b": {
+     "d": 2,
+     "v": "armadillow",
+     "s": "16:00",
+     "e": "18:00",
+     "n": "5RVZ",
+     "u": "https://soundcloud.com/search?q=5RVZ",
+     "d_": "Echobox"
+    },
+    "4aba9": {
+     "d": 2,
+     "v": "armadillow",
+     "s": "18:00",
+     "e": "21:00",
+     "n": "MF Andrade",
+     "u": "https://soundcloud.com/search?q=MF%20Andrade"
+    },
+    "dfff0": {
+     "d": 2,
+     "v": "armadillow",
+     "s": "21:00",
+     "e": "00:00",
+     "n": "Black Currant",
+     "u": "https://soundcloud.com/search?q=Black%20Currant"
+    },
+    "7be34": {
+     "d": 2,
+     "v": "armadillow",
+     "s": "00:00",
+     "e": "02:00",
+     "n": "Wap Shoo Wap",
+     "u": "https://soundcloud.com/search?q=Wap%20Shoo%20Wap"
+    },
+    "68e41": {
+     "d": 2,
+     "v": "armadillow",
+     "s": "02:00",
+     "e": "04:30",
+     "n": "Indie Gloria",
+     "u": "https://soundcloud.com/search?q=Indie%20Gloria"
+    },
+    "211ae": {
+     "d": 2,
+     "v": "armadillow",
+     "s": "04:30",
+     "e": "07:00",
+     "n": "Cinnaman",
+     "u": "https://soundcloud.com/search?q=Cinnaman",
+     "d_": "Amsterdam mainstay with impeccable taste and a very deep record bag."
+    },
+    "20e1e": {
+     "d": 2,
+     "v": "armadillow",
+     "s": "07:00",
+     "e": "09:00",
+     "n": "Naone",
+     "u": "https://soundcloud.com/search?q=Naone",
+     "d_": "Belgian DJ known for adventurous, high-energy sets."
+    },
+    "7c3f2": {
+     "d": 3,
+     "v": "armadillow",
+     "s": "10:00",
+     "e": "12:00",
+     "n": "AOTP & Vinylkite",
+     "u": "https://soundcloud.com/search?q=AOTP%20%26%20Vinylkite",
+     "d_": "Relate Radio"
+    },
+    "a804d": {
+     "d": 3,
+     "v": "armadillow",
+     "s": "12:00",
+     "e": "14:00",
+     "n": "Famke Helsema & Trouvano",
+     "u": "https://soundcloud.com/search?q=Famke%20Helsema%20%26%20Trouvano",
+     "d_": "Relate Radio"
+    },
+    "68826": {
+     "d": 3,
+     "v": "armadillow",
+     "s": "14:00",
+     "e": "16:00",
+     "n": "Isabelle Atala",
+     "u": "https://soundcloud.com/search?q=Isabelle%20Atala",
+     "d_": "Relate Radio"
+    },
+    "c5fe7": {
+     "d": 3,
+     "v": "armadillow",
+     "s": "16:00",
+     "e": "18:00",
+     "n": "Bob Kliphuis",
+     "u": "https://soundcloud.com/search?q=Bob%20Kliphuis",
+     "d_": "Relate Radio"
+    },
+    "dd6aa": {
+     "d": 3,
+     "v": "armadillow",
+     "s": "18:00",
+     "e": "21:00",
+     "n": "Youri Member & Gary van Niks",
+     "u": "https://soundcloud.com/search?q=Youri%20Member%20%26%20Gary%20van%20Niks"
+    },
+    "d7849": {
+     "d": 3,
+     "v": "armadillow",
+     "s": "21:00",
+     "e": "00:00",
+     "n": "Katayoun",
+     "u": "https://soundcloud.com/search?q=Katayoun",
+     "d_": "Amsterdam selector with a taste for the hypnotic and the driving."
+    },
+    "f5cf5": {
+     "d": 3,
+     "v": "armadillow",
+     "s": "00:00",
+     "e": "02:00",
+     "n": "Harde Smart",
+     "u": "https://soundcloud.com/search?q=Harde%20Smart"
+    },
+    "a96b7": {
+     "d": 3,
+     "v": "armadillow",
+     "s": "02:00",
+     "e": "04:30",
+     "n": "Bordello Soundsystem",
+     "u": "https://soundcloud.com/search?q=Bordello%20Soundsystem",
+     "d_": "Amsterdam party crew bringing the sound system with them."
+    },
+    "b9348": {
+     "d": 3,
+     "v": "armadillow",
+     "s": "04:30",
+     "e": "09:30",
+     "n": "Sandrien",
+     "u": "https://soundcloud.com/search?q=Sandrien",
+     "d_": "Amsterdam DJ moving between propulsive techno and deep house \u2014 closing the whole festival."
     }
    },
    "map": {
@@ -2424,7 +2722,7 @@
     "h": 936
    },
    "source": "clashfinder.com/lowlands2026",
-   "updatedAt": 1786533927862
+   "updatedAt": 1786621531483
   },
   "dekmantel-selectors-2026": {
    "name": "Dekmantel Selectors",
@@ -3409,9 +3707,9 @@
    "place": "Walibi Holland, Biddinghuizen",
    "days": 4,
    "stages": 11,
-   "acts": 236,
+   "acts": 271,
    "official": true,
-   "updatedAt": 1786533927862
+   "updatedAt": 1786621531483
   },
   "dekmantel-selectors-2026": {
    "name": "Dekmantel Selectors",
