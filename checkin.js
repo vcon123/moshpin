@@ -230,6 +230,9 @@ const NEUTRAL_R = { 3: ['top', 'middle', 'bottom'], 4: ['top', 'upper', 'lower',
 
 export function planKey(r, c) { return 'p' + r + c; }
 export function planLabel(plan, r, c) {
+  /* a stage can name its own squares — Alpha does, because the areas outside
+     the tent don't fit a simple row-and-column scheme */
+  if (plan.names && plan.names['' + r + c]) return plan.names['' + r + c];
   const cols = COLS[plan.cols] || COLS[3];
   const rows = (plan.stage ? ROWS[plan.rows] : NEUTRAL_R[plan.rows]) || ROWS[3];
   return `${rows[r] || ''} ${cols[c] || ''}`.trim();
@@ -251,7 +254,8 @@ function renderPlan(head, body, foot, v, a, w, own) {
       const k = planKey(r, c);
       const pp = at[k] || [];
       const isMine = own && own.v === v.id && own.z === k;
-      cells += `<button class="pcell${pp.length ? ' taken' : ''}${isMine ? ' mine' : ''}${w.open ? '' : ' shut'}"
+      const outside = /outside/i.test(planLabel(plan, r, c));
+      cells += `<button class="pcell${outside ? ' outside' : ''}${pp.length ? ' taken' : ''}${isMine ? ' mine' : ''}${w.open ? '' : ' shut'}"
         data-z="${k}" title="${esc(planLabel(plan, r, c))}"
         style="left:${B[0] + B[2] * c / plan.cols}%;top:${B[1] + B[3] * r / plan.rows}%;
                width:${B[2] / plan.cols}%;height:${B[3] / plan.rows}%">

@@ -36,16 +36,16 @@
      "y": 46.6,
      "plan": {
       "img": "stage-alpha.png",
-      "w": 560,
-      "h": 795,
-      "cols": 5,
-      "rows": 6,
+      "w": 806,
+      "h": 969,
+      "cols": 7,
+      "rows": 8,
       "stage": "top",
       "box": [
-       3.93,
-       26.79,
-       91.96,
-       70.31
+       5.21,
+       23.53,
+       89.45,
+       76.91
       ],
       "cells": [
        "00",
@@ -53,32 +53,116 @@
        "02",
        "03",
        "04",
+       "05",
+       "06",
        "10",
        "11",
        "12",
        "13",
        "14",
+       "15",
+       "16",
        "20",
        "21",
        "22",
        "23",
        "24",
+       "25",
+       "26",
        "30",
        "31",
        "32",
        "33",
        "34",
+       "35",
+       "36",
        "40",
        "41",
        "42",
        "43",
        "44",
+       "45",
+       "46",
        "50",
        "51",
        "52",
        "53",
-       "54"
-      ]
+       "54",
+       "55",
+       "56",
+       "60",
+       "61",
+       "62",
+       "63",
+       "64",
+       "65",
+       "66",
+       "70",
+       "71",
+       "72",
+       "73",
+       "74",
+       "75",
+       "76"
+      ],
+      "names": {
+       "00": "outside left \u2014 front",
+       "01": "front far left",
+       "02": "front left",
+       "03": "front centre",
+       "04": "front right",
+       "05": "front far right",
+       "06": "outside right \u2014 front",
+       "10": "outside left \u2014 front middle",
+       "11": "front middle far left",
+       "12": "front middle left",
+       "13": "front middle centre",
+       "14": "front middle right",
+       "15": "front middle far right",
+       "16": "outside right \u2014 front middle",
+       "20": "outside left \u2014 middle",
+       "21": "middle far left",
+       "22": "middle left",
+       "23": "middle centre",
+       "24": "middle right",
+       "25": "middle far right",
+       "26": "outside right \u2014 middle",
+       "30": "outside left \u2014 back middle",
+       "31": "back middle far left",
+       "32": "back middle left",
+       "33": "back middle centre",
+       "34": "back middle right",
+       "35": "back middle far right",
+       "36": "outside right \u2014 back middle",
+       "40": "outside left \u2014 back",
+       "41": "back far left",
+       "42": "back left",
+       "43": "back centre",
+       "44": "back right",
+       "45": "back far right",
+       "46": "outside right \u2014 back",
+       "50": "outside left \u2014 far back",
+       "51": "far back far left",
+       "52": "far back left",
+       "53": "far back centre",
+       "54": "far back right",
+       "55": "far back far right",
+       "56": "outside right \u2014 far back",
+       "60": "outside back left",
+       "61": "outside, behind the tent",
+       "62": "outside, behind the tent",
+       "63": "outside, behind the tent",
+       "64": "outside, behind the tent",
+       "65": "outside, behind the tent",
+       "66": "outside back right",
+       "70": "outside back left",
+       "71": "outside, behind the tent",
+       "72": "outside, behind the tent",
+       "73": "outside, behind the tent",
+       "74": "outside, behind the tent",
+       "75": "outside, behind the tent",
+       "76": "outside back right"
+      }
      }
     },
     {
@@ -1408,7 +1492,7 @@
      "s": "12:30",
      "e": "13:30",
      "n": "Chalk",
-     "u": "https://soundcloud.com/search?q=Chalk"
+     "u": "https://duckduckgo.com/?q=Chalk%20soundcloud"
     },
     "f98cf": {
      "d": 1,
@@ -1416,7 +1500,7 @@
      "s": "14:30",
      "e": "15:20",
      "n": "Radio Z",
-     "u": "https://soundcloud.com/search?q=Radio%20Z"
+     "u": "https://duckduckgo.com/?q=Radio%20Z%20soundcloud"
     },
     "a7e77": {
      "d": 1,
@@ -1424,7 +1508,7 @@
      "s": "16:15",
      "e": "17:15",
      "n": "Rose Gray",
-     "u": "https://soundcloud.com/search?q=Rose%20Gray"
+     "u": "https://duckduckgo.com/?q=Rose%20Gray%20soundcloud"
     },
     "ea193": {
      "d": 1,
@@ -1432,7 +1516,7 @@
      "s": "18:00",
      "e": "19:00",
      "n": "Sons",
-     "u": "https://soundcloud.com/search?q=Sons",
+     "u": "https://duckduckgo.com/?q=Sons%20soundcloud",
      "d_": "Belgian noise-rock trio who play louder than seems structurally advisable."
     },
     "bbea4": {
@@ -1441,7 +1525,7 @@
      "s": "19:50",
      "e": "20:50",
      "n": "Gurriers",
-     "u": "https://soundcloud.com/search?q=Gurriers"
+     "u": "https://duckduckgo.com/?q=Gurriers%20soundcloud"
     },
     "3eac3": {
      "d": 1,
@@ -1449,7 +1533,7 @@
      "s": "21:45",
      "e": "22:35",
      "n": "James K",
-     "u": "https://soundcloud.com/search?q=James%20K"
+     "u": "https://duckduckgo.com/?q=James%20K%20soundcloud"
     },
     "8174b": {
      "d": 1,
@@ -1457,7 +1541,7 @@
      "s": "23:00",
      "e": "00:00",
      "n": "Bassvictim",
-     "u": "https://soundcloud.com/search?q=Bassvictim"
+     "u": "https://duckduckgo.com/?q=Bassvictim%20soundcloud"
     },
     "823ca": {
      "d": 1,
@@ -1465,7 +1549,7 @@
      "s": "00:30",
      "e": "01:30",
      "n": "Violent Magic Orchestra",
-     "u": "https://soundcloud.com/search?q=Violent%20Magic%20Orchestra"
+     "u": "https://duckduckgo.com/?q=Violent%20Magic%20Orchestra%20soundcloud"
     },
     "c672f": {
      "d": 1,
@@ -1473,7 +1557,7 @@
      "s": "02:00",
      "e": "03:00",
      "n": "Kaboutertje Putlucht",
-     "u": "https://soundcloud.com/search?q=Kaboutertje%20Putlucht"
+     "u": "https://duckduckgo.com/?q=Kaboutertje%20Putlucht%20soundcloud"
     },
     "0a5fd": {
      "d": 1,
@@ -1481,7 +1565,7 @@
      "s": "03:00",
      "e": "04:30",
      "n": "Gys\u00e8le",
-     "u": "https://soundcloud.com/search?q=Gys%C3%A8le"
+     "u": "https://duckduckgo.com/?q=Gys%C3%A8le%20soundcloud"
     },
     "46576": {
      "d": 2,
@@ -1489,7 +1573,7 @@
      "s": "14:00",
      "e": "14:50",
      "n": "Terzij de Horde",
-     "u": "https://soundcloud.com/search?q=Terzij%20de%20Horde"
+     "u": "https://duckduckgo.com/?q=Terzij%20de%20Horde%20soundcloud"
     },
     "1ccb7": {
      "d": 2,
@@ -1497,7 +1581,7 @@
      "s": "15:40",
      "e": "16:30",
      "n": "Guilt Trip",
-     "u": "https://soundcloud.com/search?q=Guilt%20Trip",
+     "u": "https://duckduckgo.com/?q=Guilt%20Trip%20soundcloud",
      "d_": "UK metallic hardcore. Heavy in the traditional sense."
     },
     "2d34e": {
@@ -1506,7 +1590,7 @@
      "s": "17:10",
      "e": "18:00",
      "n": "Sophia Stel",
-     "u": "https://soundcloud.com/search?q=Sophia%20Stel"
+     "u": "https://duckduckgo.com/?q=Sophia%20Stel%20soundcloud"
     },
     "bce50": {
      "d": 2,
@@ -1514,7 +1598,7 @@
      "s": "18:45",
      "e": "19:30",
      "n": "Tracey",
-     "u": "https://soundcloud.com/search?q=Tracey"
+     "u": "https://duckduckgo.com/?q=Tracey%20soundcloud"
     },
     "85c81": {
      "d": 2,
@@ -1522,7 +1606,7 @@
      "s": "20:30",
      "e": "21:10",
      "n": "Speed",
-     "u": "https://soundcloud.com/search?q=Speed",
+     "u": "https://soundcloud.com/speedhc",
      "d_": "Sydney hardcore. Short, fast, and extremely direct."
     },
     "f453e": {
@@ -1531,7 +1615,7 @@
      "s": "22:00",
      "e": "23:30",
      "n": "Voices From The Lake",
-     "u": "https://soundcloud.com/search?q=Voices%20From%20The%20Lake",
+     "u": "https://soundcloud.com/voicesfromthelake",
      "d_": "Donato Dozzy and Neel. Deep, patient, hypnotic techno as an unbroken piece."
     },
     "59c80": {
@@ -1540,7 +1624,7 @@
      "s": "23:30",
      "e": "01:30",
      "n": "Skee Mask",
-     "u": "https://soundcloud.com/search?q=Skee%20Mask",
+     "u": "https://soundcloud.com/skeemask",
      "d_": "Munich producer treating breakbeats, dub techno and ambient as one continuous idea."
     },
     "45805": {
@@ -1549,7 +1633,7 @@
      "s": "01:30",
      "e": "03:00",
      "n": "DJRUM",
-     "u": "https://soundcloud.com/search?q=DJRUM",
+     "u": "https://soundcloud.com/djrum",
      "d_": "Felix Manuel \u2014 jazz, breaks and classical piano folded together with unusual care."
     },
     "8e6ad": {
@@ -1558,7 +1642,7 @@
      "s": "03:00",
      "e": "04:45",
      "n": "upsammy",
-     "u": "https://soundcloud.com/search?q=upsammy",
+     "u": "https://soundcloud.com/upsammy",
      "d_": "Dutch producer making bright, alien electro with an eye for texture."
     },
     "177bd": {
@@ -1567,7 +1651,7 @@
      "s": "12:45",
      "e": "13:30",
      "n": "Teen Mortgage",
-     "u": "https://soundcloud.com/search?q=Teen%20Mortgage"
+     "u": "https://duckduckgo.com/?q=Teen%20Mortgage%20soundcloud"
     },
     "b419b": {
      "d": 3,
@@ -1575,7 +1659,7 @@
      "s": "14:45",
      "e": "15:15",
      "n": "Worldpeace DMT",
-     "u": "https://soundcloud.com/search?q=Worldpeace%20DMT"
+     "u": "https://duckduckgo.com/?q=Worldpeace%20DMT%20soundcloud"
     },
     "4b31c": {
      "d": 3,
@@ -1583,7 +1667,7 @@
      "s": "15:20",
      "e": "15:50",
      "n": "The Femcels",
-     "u": "https://soundcloud.com/search?q=The%20Femcels"
+     "u": "https://duckduckgo.com/?q=The%20Femcels%20soundcloud"
     },
     "c27fe": {
      "d": 3,
@@ -1591,7 +1675,7 @@
      "s": "16:45",
      "e": "17:40",
      "n": "Jane Remover",
-     "u": "https://soundcloud.com/search?q=Jane%20Remover",
+     "u": "https://soundcloud.com/janeremover",
      "d_": "Shapeshifter \u2014 hyperpop, shoegaze, digicore, sometimes in one song."
     },
     "8c18a": {
@@ -1600,7 +1684,7 @@
      "s": "18:30",
      "e": "19:15",
      "n": "Teen Jesus and the Jean Teasers",
-     "u": "https://soundcloud.com/search?q=Teen%20Jesus%20and%20the%20Jean%20Teasers"
+     "u": "https://duckduckgo.com/?q=Teen%20Jesus%20and%20the%20Jean%20Teasers%20soundcloud"
     },
     "d9b31": {
      "d": 3,
@@ -1608,7 +1692,7 @@
      "s": "20:15",
      "e": "21:10",
      "n": "Ninajirachi",
-     "u": "https://soundcloud.com/search?q=Ninajirachi",
+     "u": "https://soundcloud.com/ninajirachi",
      "d_": "Australian producer making bright, hyperactive club music."
     },
     "f7988": {
@@ -1617,7 +1701,7 @@
      "s": "22:00",
      "e": "23:00",
      "n": "Geordie Greep",
-     "u": "https://soundcloud.com/search?q=Geordie%20Greep",
+     "u": "https://soundcloud.com/geordiegreep",
      "d_": "Former black midi frontman, now doing lounge-lizard maximalism with a huge band."
     },
     "574e4": {
@@ -1626,7 +1710,7 @@
      "s": "23:15",
      "e": "04:45",
      "n": "This Must Be The Pace with Theo Parrish",
-     "u": "https://soundcloud.com/search?q=This%20Must%20Be%20The%20Pace%20with%20Theo%20Parrish",
+     "u": "https://duckduckgo.com/?q=This%20Must%20Be%20The%20Pace%20with%20Theo%20Parrish%20soundcloud",
      "d_": "Detroit's most singular selector, given a very long slot. Strange edits, absolute conviction."
     },
     "c9d7d": {
@@ -2243,7 +2327,7 @@
      "s": "12:30",
      "e": "16:30",
      "n": "Kim Josefine",
-     "u": "https://soundcloud.com/search?q=Kim%20Josefine"
+     "u": "https://duckduckgo.com/?q=Kim%20Josefine%20soundcloud"
     },
     "81d0b": {
      "d": 1,
@@ -2251,7 +2335,7 @@
      "s": "16:30",
      "e": "18:30",
      "n": "Charmaine",
-     "u": "https://soundcloud.com/search?q=Charmaine"
+     "u": "https://duckduckgo.com/?q=Charmaine%20soundcloud"
     },
     "99c51": {
      "d": 1,
@@ -2259,7 +2343,7 @@
      "s": "18:30",
      "e": "20:30",
      "n": "Lashanti",
-     "u": "https://soundcloud.com/search?q=Lashanti"
+     "u": "https://duckduckgo.com/?q=Lashanti%20soundcloud"
     },
     "91399": {
      "d": 1,
@@ -2267,7 +2351,7 @@
      "s": "20:30",
      "e": "22:00",
      "n": "Jea",
-     "u": "https://soundcloud.com/search?q=Jea"
+     "u": "https://duckduckgo.com/?q=Jea%20soundcloud"
     },
     "a8efd": {
      "d": 1,
@@ -2275,7 +2359,7 @@
      "s": "22:00",
      "e": "23:30",
      "n": "Tins",
-     "u": "https://soundcloud.com/search?q=Tins"
+     "u": "https://duckduckgo.com/?q=Tins%20soundcloud"
     },
     "2b2d5": {
      "d": 1,
@@ -2283,7 +2367,7 @@
      "s": "23:30",
      "e": "01:00",
      "n": "Tienson",
-     "u": "https://soundcloud.com/search?q=Tienson"
+     "u": "https://duckduckgo.com/?q=Tienson%20soundcloud"
     },
     "c2b3c": {
      "d": 1,
@@ -2291,7 +2375,7 @@
      "s": "01:00",
      "e": "03:00",
      "n": "Dam Swindle",
-     "u": "https://soundcloud.com/search?q=Dam%20Swindle",
+     "u": "https://soundcloud.com/damswindle",
      "d_": "Amsterdam duo making warm, sample-led house."
     },
     "73851": {
@@ -2300,7 +2384,7 @@
      "s": "03:00",
      "e": "04:30",
      "n": "Laura Meester",
-     "u": "https://soundcloud.com/search?q=Laura%20Meester"
+     "u": "https://duckduckgo.com/?q=Laura%20Meester%20soundcloud"
     },
     "646da": {
      "d": 2,
@@ -2308,7 +2392,7 @@
      "s": "12:30",
      "e": "16:30",
      "n": "Ketama Man",
-     "u": "https://soundcloud.com/search?q=Ketama%20Man"
+     "u": "https://duckduckgo.com/?q=Ketama%20Man%20soundcloud"
     },
     "30684": {
      "d": 2,
@@ -2316,7 +2400,7 @@
      "s": "16:30",
      "e": "18:30",
      "n": "Folake",
-     "u": "https://soundcloud.com/search?q=Folake"
+     "u": "https://duckduckgo.com/?q=Folake%20soundcloud"
     },
     "0ac20": {
      "d": 2,
@@ -2324,7 +2408,7 @@
      "s": "18:30",
      "e": "21:00",
      "n": "Y\u016fsu",
-     "u": "https://soundcloud.com/search?q=Y%C5%AFsu"
+     "u": "https://duckduckgo.com/?q=Y%C5%AFsu%20soundcloud"
     },
     "34829": {
      "d": 2,
@@ -2332,7 +2416,7 @@
      "s": "21:00",
      "e": "23:30",
      "n": "Fiesta Macumba Soundsystem",
-     "u": "https://soundcloud.com/search?q=Fiesta%20Macumba%20Soundsystem",
+     "u": "https://duckduckgo.com/?q=Fiesta%20Macumba%20Soundsystem%20soundcloud",
      "d_": "Amsterdam collective throwing a Latin and Afro-diasporic party."
     },
     "0396a": {
@@ -2341,7 +2425,7 @@
      "s": "23:30",
      "e": "01:30",
      "n": "Rockefellababe",
-     "u": "https://soundcloud.com/search?q=Rockefellababe"
+     "u": "https://duckduckgo.com/?q=Rockefellababe%20soundcloud"
     },
     "0fab6": {
      "d": 2,
@@ -2349,7 +2433,7 @@
      "s": "01:30",
      "e": "03:00",
      "n": "Tera K\u00f2r\u00e1",
-     "u": "https://soundcloud.com/search?q=Tera%20K%C3%B2r%C3%A1",
+     "u": "https://duckduckgo.com/?q=Tera%20K%C3%B2r%C3%A1%20soundcloud",
      "d_": "Rotterdam DJ pulling from Caribbean and West African club sounds."
     },
     "a3563": {
@@ -2358,7 +2442,7 @@
      "s": "03:00",
      "e": "04:30",
      "n": "Lamsi",
-     "u": "https://soundcloud.com/search?q=Lamsi"
+     "u": "https://duckduckgo.com/?q=Lamsi%20soundcloud"
     },
     "58f76": {
      "d": 3,
@@ -2366,7 +2450,7 @@
      "s": "12:30",
      "e": "16:30",
      "n": "Abiba Sokoto b2b Pelanoir",
-     "u": "https://soundcloud.com/search?q=Abiba%20Sokoto%20b2b%20Pelanoir"
+     "u": "https://duckduckgo.com/?q=Abiba%20Sokoto%20b2b%20Pelanoir%20soundcloud"
     },
     "6a807": {
      "d": 3,
@@ -2374,7 +2458,7 @@
      "s": "16:30",
      "e": "18:30",
      "n": "Eileen",
-     "u": "https://soundcloud.com/search?q=Eileen"
+     "u": "https://duckduckgo.com/?q=Eileen%20soundcloud"
     },
     "46ffb": {
      "d": 3,
@@ -2382,7 +2466,7 @@
      "s": "18:30",
      "e": "20:30",
      "n": "Shady Lady",
-     "u": "https://soundcloud.com/search?q=Shady%20Lady"
+     "u": "https://duckduckgo.com/?q=Shady%20Lady%20soundcloud"
     },
     "8cfc7": {
      "d": 3,
@@ -2390,7 +2474,7 @@
      "s": "20:30",
      "e": "22:30",
      "n": "Kingdom Sound",
-     "u": "https://soundcloud.com/search?q=Kingdom%20Sound"
+     "u": "https://duckduckgo.com/?q=Kingdom%20Sound%20soundcloud"
     },
     "3000c": {
      "d": 3,
@@ -2398,7 +2482,7 @@
      "s": "22:30",
      "e": "00:30",
      "n": "AK Soundsystem",
-     "u": "https://soundcloud.com/search?q=AK%20Soundsystem"
+     "u": "https://duckduckgo.com/?q=AK%20Soundsystem%20soundcloud"
     },
     "77c67": {
      "d": 3,
@@ -2406,7 +2490,7 @@
      "s": "00:30",
      "e": "02:30",
      "n": "Deejay Abstract",
-     "u": "https://soundcloud.com/search?q=Deejay%20Abstract"
+     "u": "https://duckduckgo.com/?q=Deejay%20Abstract%20soundcloud"
     },
     "a938b": {
      "d": 3,
@@ -2414,7 +2498,7 @@
      "s": "02:30",
      "e": "04:30",
      "n": "Yucky",
-     "u": "https://soundcloud.com/search?q=Yucky"
+     "u": "https://duckduckgo.com/?q=Yucky%20soundcloud"
     },
     "40ea3": {
      "d": 0,
@@ -2422,7 +2506,7 @@
      "s": "16:00",
      "e": "19:00",
      "n": "Pinguin Radio",
-     "u": "https://soundcloud.com/search?q=Pinguin%20Radio",
+     "u": "https://duckduckgo.com/?q=Pinguin%20Radio%20soundcloud",
      "d_": "The Dutch rock station takes over the tent to open the festival."
     },
     "029fc": {
@@ -2431,7 +2515,7 @@
      "s": "19:00",
      "e": "21:00",
      "n": "Julia Zahra",
-     "u": "https://soundcloud.com/search?q=Julia%20Zahra",
+     "u": "https://duckduckgo.com/?q=Julia%20Zahra%20soundcloud",
      "d_": "Dutch singer and DJ with a warm, soulful approach."
     },
     "e40ba": {
@@ -2440,7 +2524,7 @@
      "s": "21:00",
      "e": "00:00",
      "n": "Hans Worst b2b Mo Filefo",
-     "u": "https://soundcloud.com/search?q=Hans%20Worst%20b2b%20Mo%20Filefo"
+     "u": "https://duckduckgo.com/?q=Hans%20Worst%20b2b%20Mo%20Filefo%20soundcloud"
     },
     "d714e": {
      "d": 0,
@@ -2448,7 +2532,7 @@
      "s": "00:00",
      "e": "01:30",
      "n": "36Framez",
-     "u": "https://soundcloud.com/search?q=36Framez"
+     "u": "https://duckduckgo.com/?q=36Framez%20soundcloud"
     },
     "04ae0": {
      "d": 0,
@@ -2456,7 +2540,7 @@
      "s": "01:30",
      "e": "03:30",
      "n": "Boris Coelman",
-     "u": "https://soundcloud.com/search?q=Boris%20Coelman"
+     "u": "https://duckduckgo.com/?q=Boris%20Coelman%20soundcloud"
     },
     "45ad3": {
      "d": 0,
@@ -2464,7 +2548,7 @@
      "s": "03:30",
      "e": "05:00",
      "n": "Juliana X",
-     "u": "https://soundcloud.com/search?q=Juliana%20X"
+     "u": "https://duckduckgo.com/?q=Juliana%20X%20soundcloud"
     },
     "bcbd0": {
      "d": 1,
@@ -2472,7 +2556,7 @@
      "s": "10:00",
      "e": "12:00",
      "n": "Ivana \u0110uki\u0107",
-     "u": "https://soundcloud.com/search?q=Ivana%20%C4%90uki%C4%87",
+     "u": "https://duckduckgo.com/?q=Ivana%20%C4%90uki%C4%87%20soundcloud",
      "d_": "PIP Radio"
     },
     "ab784": {
@@ -2481,7 +2565,7 @@
      "s": "12:00",
      "e": "14:00",
      "n": "Buba the Freak",
-     "u": "https://soundcloud.com/search?q=Buba%20the%20Freak",
+     "u": "https://duckduckgo.com/?q=Buba%20the%20Freak%20soundcloud",
      "d_": "PIP Radio"
     },
     "adb3b": {
@@ -2490,7 +2574,7 @@
      "s": "14:00",
      "e": "16:00",
      "n": "Jetti",
-     "u": "https://soundcloud.com/search?q=Jetti",
+     "u": "https://duckduckgo.com/?q=Jetti%20soundcloud",
      "d_": "PIP Radio"
     },
     "3ae55": {
@@ -2499,7 +2583,7 @@
      "s": "16:00",
      "e": "18:00",
      "n": "The Fluid Druid",
-     "u": "https://soundcloud.com/search?q=The%20Fluid%20Druid",
+     "u": "https://duckduckgo.com/?q=The%20Fluid%20Druid%20soundcloud",
      "d_": "PIP Radio"
     },
     "3f802": {
@@ -2508,7 +2592,7 @@
      "s": "18:00",
      "e": "21:00",
      "n": "The Ocean Men",
-     "u": "https://soundcloud.com/search?q=The%20Ocean%20Men"
+     "u": "https://duckduckgo.com/?q=The%20Ocean%20Men%20soundcloud"
     },
     "7d52a": {
      "d": 1,
@@ -2516,7 +2600,7 @@
      "s": "21:00",
      "e": "00:00",
      "n": "Ararat Taxi Service",
-     "u": "https://soundcloud.com/search?q=Ararat%20Taxi%20Service"
+     "u": "https://duckduckgo.com/?q=Ararat%20Taxi%20Service%20soundcloud"
     },
     "2a7cf": {
      "d": 1,
@@ -2524,7 +2608,7 @@
      "s": "00:00",
      "e": "02:00",
      "n": "Katja Isabella",
-     "u": "https://soundcloud.com/search?q=Katja%20Isabella"
+     "u": "https://duckduckgo.com/?q=Katja%20Isabella%20soundcloud"
     },
     "db811": {
      "d": 1,
@@ -2532,7 +2616,7 @@
      "s": "02:00",
      "e": "04:30",
      "n": "Riptide",
-     "u": "https://soundcloud.com/search?q=Riptide"
+     "u": "https://duckduckgo.com/?q=Riptide%20soundcloud"
     },
     "2cb0a": {
      "d": 1,
@@ -2540,7 +2624,7 @@
      "s": "04:30",
      "e": "07:00",
      "n": "D Stone",
-     "u": "https://soundcloud.com/search?q=D%20Stone"
+     "u": "https://duckduckgo.com/?q=D%20Stone%20soundcloud"
     },
     "896a2": {
      "d": 1,
@@ -2548,7 +2632,7 @@
      "s": "07:00",
      "e": "09:00",
      "n": "Phia",
-     "u": "https://soundcloud.com/search?q=Phia"
+     "u": "https://duckduckgo.com/?q=Phia%20soundcloud"
     },
     "de8d8": {
      "d": 2,
@@ -2556,7 +2640,7 @@
      "s": "10:00",
      "e": "12:00",
      "n": "Chalice Is A Witch",
-     "u": "https://soundcloud.com/search?q=Chalice%20Is%20A%20Witch",
+     "u": "https://duckduckgo.com/?q=Chalice%20Is%20A%20Witch%20soundcloud",
      "d_": "Echobox"
     },
     "09da1": {
@@ -2565,7 +2649,7 @@
      "s": "12:00",
      "e": "14:00",
      "n": "TIZI",
-     "u": "https://soundcloud.com/search?q=TIZI",
+     "u": "https://duckduckgo.com/?q=TIZI%20soundcloud",
      "d_": "Echobox"
     },
     "194ce": {
@@ -2574,7 +2658,7 @@
      "s": "14:00",
      "e": "16:00",
      "n": "Carmela Collective",
-     "u": "https://soundcloud.com/search?q=Carmela%20Collective",
+     "u": "https://duckduckgo.com/?q=Carmela%20Collective%20soundcloud",
      "d_": "Echobox"
     },
     "b2f6b": {
@@ -2583,7 +2667,7 @@
      "s": "16:00",
      "e": "18:00",
      "n": "5RVZ",
-     "u": "https://soundcloud.com/search?q=5RVZ",
+     "u": "https://duckduckgo.com/?q=5RVZ%20soundcloud",
      "d_": "Echobox"
     },
     "4aba9": {
@@ -2592,7 +2676,7 @@
      "s": "18:00",
      "e": "21:00",
      "n": "MF Andrade",
-     "u": "https://soundcloud.com/search?q=MF%20Andrade"
+     "u": "https://duckduckgo.com/?q=MF%20Andrade%20soundcloud"
     },
     "dfff0": {
      "d": 2,
@@ -2600,7 +2684,7 @@
      "s": "21:00",
      "e": "00:00",
      "n": "Black Currant",
-     "u": "https://soundcloud.com/search?q=Black%20Currant"
+     "u": "https://duckduckgo.com/?q=Black%20Currant%20soundcloud"
     },
     "7be34": {
      "d": 2,
@@ -2608,7 +2692,7 @@
      "s": "00:00",
      "e": "02:00",
      "n": "Wap Shoo Wap",
-     "u": "https://soundcloud.com/search?q=Wap%20Shoo%20Wap"
+     "u": "https://duckduckgo.com/?q=Wap%20Shoo%20Wap%20soundcloud"
     },
     "68e41": {
      "d": 2,
@@ -2616,7 +2700,7 @@
      "s": "02:00",
      "e": "04:30",
      "n": "Indie Gloria",
-     "u": "https://soundcloud.com/search?q=Indie%20Gloria"
+     "u": "https://duckduckgo.com/?q=Indie%20Gloria%20soundcloud"
     },
     "211ae": {
      "d": 2,
@@ -2624,7 +2708,7 @@
      "s": "04:30",
      "e": "07:00",
      "n": "Cinnaman",
-     "u": "https://soundcloud.com/search?q=Cinnaman",
+     "u": "https://soundcloud.com/cinnaman",
      "d_": "Amsterdam mainstay with impeccable taste and a very deep record bag."
     },
     "20e1e": {
@@ -2633,7 +2717,7 @@
      "s": "07:00",
      "e": "09:00",
      "n": "Naone",
-     "u": "https://soundcloud.com/search?q=Naone",
+     "u": "https://soundcloud.com/naone",
      "d_": "Belgian DJ known for adventurous, high-energy sets."
     },
     "7c3f2": {
@@ -2642,7 +2726,7 @@
      "s": "10:00",
      "e": "12:00",
      "n": "AOTP & Vinylkite",
-     "u": "https://soundcloud.com/search?q=AOTP%20%26%20Vinylkite",
+     "u": "https://duckduckgo.com/?q=AOTP%20%26%20Vinylkite%20soundcloud",
      "d_": "Relate Radio"
     },
     "a804d": {
@@ -2651,7 +2735,7 @@
      "s": "12:00",
      "e": "14:00",
      "n": "Famke Helsema & Trouvano",
-     "u": "https://soundcloud.com/search?q=Famke%20Helsema%20%26%20Trouvano",
+     "u": "https://duckduckgo.com/?q=Famke%20Helsema%20%26%20Trouvano%20soundcloud",
      "d_": "Relate Radio"
     },
     "68826": {
@@ -2660,7 +2744,7 @@
      "s": "14:00",
      "e": "16:00",
      "n": "Isabelle Atala",
-     "u": "https://soundcloud.com/search?q=Isabelle%20Atala",
+     "u": "https://duckduckgo.com/?q=Isabelle%20Atala%20soundcloud",
      "d_": "Relate Radio"
     },
     "c5fe7": {
@@ -2669,7 +2753,7 @@
      "s": "16:00",
      "e": "18:00",
      "n": "Bob Kliphuis",
-     "u": "https://soundcloud.com/search?q=Bob%20Kliphuis",
+     "u": "https://duckduckgo.com/?q=Bob%20Kliphuis%20soundcloud",
      "d_": "Relate Radio"
     },
     "dd6aa": {
@@ -2678,7 +2762,7 @@
      "s": "18:00",
      "e": "21:00",
      "n": "Youri Member & Gary van Niks",
-     "u": "https://soundcloud.com/search?q=Youri%20Member%20%26%20Gary%20van%20Niks"
+     "u": "https://duckduckgo.com/?q=Youri%20Member%20%26%20Gary%20van%20Niks%20soundcloud"
     },
     "d7849": {
      "d": 3,
@@ -2686,7 +2770,7 @@
      "s": "21:00",
      "e": "00:00",
      "n": "Katayoun",
-     "u": "https://soundcloud.com/search?q=Katayoun",
+     "u": "https://duckduckgo.com/?q=Katayoun%20soundcloud",
      "d_": "Amsterdam selector with a taste for the hypnotic and the driving."
     },
     "f5cf5": {
@@ -2695,7 +2779,7 @@
      "s": "00:00",
      "e": "02:00",
      "n": "Harde Smart",
-     "u": "https://soundcloud.com/search?q=Harde%20Smart"
+     "u": "https://duckduckgo.com/?q=Harde%20Smart%20soundcloud"
     },
     "a96b7": {
      "d": 3,
@@ -2703,7 +2787,7 @@
      "s": "02:00",
      "e": "04:30",
      "n": "Bordello Soundsystem",
-     "u": "https://soundcloud.com/search?q=Bordello%20Soundsystem",
+     "u": "https://duckduckgo.com/?q=Bordello%20Soundsystem%20soundcloud",
      "d_": "Amsterdam party crew bringing the sound system with them."
     },
     "b9348": {
@@ -2712,7 +2796,7 @@
      "s": "04:30",
      "e": "09:30",
      "n": "Sandrien",
-     "u": "https://soundcloud.com/search?q=Sandrien",
+     "u": "https://soundcloud.com/sandrien",
      "d_": "Amsterdam DJ moving between propulsive techno and deep house \u2014 closing the whole festival."
     }
    },
@@ -2722,7 +2806,7 @@
     "h": 936
    },
    "source": "clashfinder.com/lowlands2026",
-   "updatedAt": 1786621531483
+   "updatedAt": 1786795273511
   },
   "dekmantel-selectors-2026": {
    "name": "Dekmantel Selectors",
@@ -2811,7 +2895,7 @@
      "s": "12:30",
      "e": "16:00",
      "n": "Tai Lokun",
-     "u": "https://soundcloud.com/search?q=Tai%20Lokun",
+     "u": "https://duckduckgo.com/?q=Tai%20Lokun%20soundcloud",
      "d_": "Berlin selector with a taste for the percussive and the odd."
     },
     "e98ba": {
@@ -2820,7 +2904,7 @@
      "s": "16:00",
      "e": "19:00",
      "n": "Victor",
-     "u": "https://soundcloud.com/search?q=Victor",
+     "u": "https://duckduckgo.com/?q=Victor%20soundcloud",
      "d_": "Dutch selector with a broad, house-leaning bag."
     },
     "f3200": {
@@ -2829,7 +2913,7 @@
      "s": "15:00",
      "e": "20:30",
      "n": "Loradeniz",
-     "u": "https://soundcloud.com/search?q=Loradeniz",
+     "u": "https://duckduckgo.com/?q=Loradeniz%20soundcloud",
      "d_": "Producer and DJ moving between ambient, downtempo and the dancefloor."
     },
     "579fc": {
@@ -2838,7 +2922,7 @@
      "s": "20:30",
      "e": "23:00",
      "n": "Hamstersland",
-     "u": "https://soundcloud.com/search?q=Hamstersland",
+     "u": "https://duckduckgo.com/?q=Hamstersland%20soundcloud",
      "d_": "Playful selector with a taste for the leftfield."
     },
     "849c7": {
@@ -2847,7 +2931,7 @@
      "s": "19:00",
      "e": "22:00",
      "n": "Suze Ij\u00f3",
-     "u": "https://soundcloud.com/search?q=Suze%20Ij%C3%B3",
+     "u": "https://duckduckgo.com/?q=Suze%20Ij%C3%B3%20soundcloud",
      "d_": "Amsterdam selector with a deep, groove-first record bag."
     },
     "4488b": {
@@ -2856,7 +2940,7 @@
      "s": "22:00",
      "e": "00:00",
      "n": "Sterac Electronics",
-     "u": "https://soundcloud.com/search?q=Sterac%20Electronics",
+     "u": "https://duckduckgo.com/?q=Sterac%20Electronics%20soundcloud",
      "d_": "Steve Rachmad's electro guise. Dutch techno history, still built by hand."
     },
     "05420": {
@@ -2865,7 +2949,7 @@
      "s": "00:00",
      "e": "03:00",
      "n": "Hunee & Optimo",
-     "u": "https://soundcloud.com/search?q=Hunee%20%26%20Optimo",
+     "u": "https://duckduckgo.com/?q=Hunee%20%26%20Optimo%20soundcloud",
      "d_": "Hunee's boundless digging meets Optimo's Glasgow anarchy. Anything could happen."
     },
     "90991": {
@@ -2874,7 +2958,7 @@
      "s": "17:00",
      "e": "21:00",
      "n": "Mia Cecille",
-     "u": "https://soundcloud.com/search?q=Mia%20Cecille",
+     "u": "https://duckduckgo.com/?q=Mia%20Cecille%20soundcloud",
      "d_": "Rotterdam DJ digging through breaks, electro and rave."
     },
     "8de0f": {
@@ -2883,7 +2967,7 @@
      "s": "21:00",
      "e": "00:00",
      "n": "mad miran",
-     "u": "https://soundcloud.com/search?q=mad%20miran",
+     "u": "https://soundcloud.com/madmiran",
      "d_": "Amsterdam DJ with a fearless, high-tempo approach."
     },
     "60fc7": {
@@ -2892,7 +2976,7 @@
      "s": "00:00",
      "e": "03:00",
      "n": "Marcel Dettmann",
-     "u": "https://soundcloud.com/search?q=Marcel%20Dettmann",
+     "u": "https://soundcloud.com/marceldettmann",
      "d_": "Berghain resident since the beginning. Hard, spacious, rigorously built techno."
     },
     "ddc22": {
@@ -2901,7 +2985,7 @@
      "s": "16:00",
      "e": "19:00",
      "n": "State OFFF",
-     "u": "https://soundcloud.com/search?q=State%20OFFF",
+     "u": "https://duckduckgo.com/?q=State%20OFFF%20soundcloud",
      "d_": "Dutch DJ known for high-energy, genre-hopping sets."
     },
     "fa333": {
@@ -2910,7 +2994,7 @@
      "s": "19:00",
      "e": "21:00",
      "n": "Karen Nyame KG",
-     "u": "https://soundcloud.com/search?q=Karen%20Nyame%20KG",
+     "u": "https://soundcloud.com/karennyamekg",
      "d_": "London producer folding afrobeats and grime into UK club music."
     },
     "62292": {
@@ -2919,7 +3003,7 @@
      "s": "21:00",
      "e": "23:00",
      "n": "Rozaly",
-     "u": "https://soundcloud.com/search?q=Rozaly",
+     "u": "https://soundcloud.com/rozaly",
      "d_": "Rotterdam DJ with a taste for hard, fast, propulsive club sounds."
     },
     "362cb": {
@@ -2928,7 +3012,7 @@
      "s": "23:00",
      "e": "02:00",
      "n": "Benji B",
-     "u": "https://soundcloud.com/search?q=Benji%20B",
+     "u": "https://soundcloud.com/benjib",
      "d_": "BBC's late-night authority. Deep, generous selections across everything with soul in it."
     },
     "fc5d9": {
@@ -2937,7 +3021,7 @@
      "s": "12:30",
      "e": "15:00",
      "n": "Private Hearts",
-     "u": "https://soundcloud.com/search?q=Private%20Hearts",
+     "u": "https://duckduckgo.com/?q=Private%20Hearts%20soundcloud",
      "d_": "Elias Mazian, Sandrien \u2014 Elias Mazian's Amsterdam party \u2014 romantic, driving, always packed."
     },
     "1e774": {
@@ -2946,7 +3030,7 @@
      "s": "16:00",
      "e": "19:00",
      "n": "20/44",
-     "u": "https://soundcloud.com/search?q=20/44",
+     "u": "https://duckduckgo.com/?q=20/44%20soundcloud",
      "d_": "LUTON & SCEPA, Steve Rachmad \u2014 Belgrade's floating club, appropriately, on a boat."
     },
     "73a51": {
@@ -2955,7 +3039,7 @@
      "s": "20:00",
      "e": "23:00",
      "n": "Radio TNP",
-     "u": "https://soundcloud.com/search?q=Radio%20TNP",
+     "u": "https://duckduckgo.com/?q=Radio%20TNP%20soundcloud",
      "d_": "Alfred Anders, Maki, Mia Cecille \u2014 The Rotterdam station's crew, out on the boat."
     },
     "d376e": {
@@ -2964,7 +3048,7 @@
      "s": "13:30",
      "e": "17:00",
      "n": "Brighter Days",
-     "u": "https://soundcloud.com/search?q=Brighter%20Days",
+     "u": "https://duckduckgo.com/?q=Brighter%20Days%20soundcloud",
      "d_": "Kamma & Masalo, Young Marco \u2014 Amsterdam's long-running celebration of disco, soul and house."
     },
     "46ad7": {
@@ -2973,7 +3057,7 @@
      "s": "17:00",
      "e": "20:00",
      "n": "PIP",
-     "u": "https://soundcloud.com/search?q=PIP",
+     "u": "https://duckduckgo.com/?q=PIP%20soundcloud",
      "d_": "Nienquepasa, Optimo \u2014 Den Haag's venue takes over the boat."
     },
     "3cd16": {
@@ -2982,7 +3066,7 @@
      "s": "21:00",
      "e": "00:00",
      "n": "Metz Attack",
-     "u": "https://soundcloud.com/search?q=Metz%20Attack",
+     "u": "https://duckduckgo.com/?q=Metz%20Attack%20soundcloud",
      "d_": "Jesse G, Metz Attack, upsammy \u2014 Amsterdam DJ with a taste for the fast and the ferrous."
     },
     "44ef7": {
@@ -2991,7 +3075,7 @@
      "s": "03:00",
      "e": "04:30",
      "n": "Naone",
-     "u": "https://soundcloud.com/search?q=Naone",
+     "u": "https://soundcloud.com/naone",
      "d_": "Belgian DJ known for adventurous, high-energy sets."
     },
     "1be51": {
@@ -3000,7 +3084,7 @@
      "s": "04:30",
      "e": "06:00",
      "n": "Young Marco",
-     "u": "https://soundcloud.com/search?q=Young%20Marco",
+     "u": "https://soundcloud.com/youngmarco",
      "d_": "Amsterdam's most playful digger. Balearic, weird, and always slightly ahead."
     },
     "b94f5": {
@@ -3009,7 +3093,7 @@
      "s": "12:30",
      "e": "16:00",
      "n": "Dekmantel Soundsystem & Friends",
-     "u": "https://soundcloud.com/search?q=Dekmantel%20Soundsystem%20%26%20Friends",
+     "u": "https://duckduckgo.com/?q=Dekmantel%20Soundsystem%20%26%20Friends%20soundcloud",
      "d_": "The Dekmantel crew and whoever they've brought along, opening the festival."
     },
     "3078b": {
@@ -3018,7 +3102,7 @@
      "s": "15:00",
      "e": "17:30",
      "n": "Nina Welch",
-     "u": "https://soundcloud.com/search?q=Nina%20Welch",
+     "u": "https://duckduckgo.com/?q=Nina%20Welch%20soundcloud",
      "d_": "Crevette Records \u2014 Belgian DJ with a wide-ranging, records-first approach."
     },
     "7d4c1": {
@@ -3027,7 +3111,7 @@
      "s": "17:30",
      "e": "20:00",
      "n": "Noar & Vitesse",
-     "u": "https://soundcloud.com/search?q=Noar%20%26%20Vitesse",
+     "u": "https://duckduckgo.com/?q=Noar%20%26%20Vitesse%20soundcloud",
      "d_": "Crevette Records \u2014 Crevette Records pair digging through leftfield house and disco."
     },
     "1cef0": {
@@ -3036,7 +3120,7 @@
      "s": "20:00",
      "e": "23:00",
      "n": "Alfred Anders",
-     "u": "https://soundcloud.com/search?q=Alfred%20Anders",
+     "u": "https://duckduckgo.com/?q=Alfred%20Anders%20soundcloud",
      "d_": "Crevette Records \u2014 Brussels selector, Crevette Records regular. Oddball and warm."
     },
     "ddbcb": {
@@ -3045,7 +3129,7 @@
      "s": "19:00",
      "e": "22:00",
      "n": "Kamma",
-     "u": "https://soundcloud.com/search?q=Kamma",
+     "u": "https://duckduckgo.com/?q=Kamma%20soundcloud",
      "d_": "Half of Kamma & Masalo \u2014 Amsterdam digger with a global record bag."
     },
     "33f07": {
@@ -3054,7 +3138,7 @@
      "s": "22:00",
      "e": "00:00",
      "n": "Ron Trent",
-     "u": "https://soundcloud.com/search?q=Ron%20Trent",
+     "u": "https://soundcloud.com/rontrent",
      "d_": "Chicago deep house royalty. Warm, spiritual, and never in a hurry."
     },
     "56bc8": {
@@ -3063,7 +3147,7 @@
      "s": "00:00",
      "e": "03:00",
      "n": "Sandrien",
-     "u": "https://soundcloud.com/search?q=Sandrien",
+     "u": "https://soundcloud.com/sandrien",
      "d_": "house set \u2014 Amsterdam DJ moving between propulsive techno and \u2014 here \u2014 a house set."
     },
     "ce2b1": {
@@ -3072,7 +3156,7 @@
      "s": "19:00",
      "e": "22:00",
      "n": "Jesse G",
-     "u": "https://soundcloud.com/search?q=Jesse%20G",
+     "u": "https://duckduckgo.com/?q=Jesse%20G%20soundcloud",
      "d_": "Dutch DJ with a taste for driving, hypnotic house and techno."
     },
     "382ce": {
@@ -3081,7 +3165,7 @@
      "s": "22:00",
      "e": "00:00",
      "n": "Deetron pres. SOULMATE",
-     "u": "https://soundcloud.com/search?q=Deetron%20pres.%20SOULMATE",
+     "u": "https://duckduckgo.com/?q=Deetron%20pres.%20SOULMATE%20soundcloud",
      "d_": "Deetron's house-leaning alias \u2014 warmer and more vocal than his techno work."
     },
     "ffa29": {
@@ -3090,7 +3174,7 @@
      "s": "00:00",
      "e": "03:00",
      "n": "Zenker Brothers",
-     "u": "https://soundcloud.com/search?q=Zenker%20Brothers",
+     "u": "https://soundcloud.com/zenkerbrothers",
      "d_": "Ilian Tape's founders. Munich techno with breakbeat bones."
     },
     "d64cc": {
@@ -3099,7 +3183,7 @@
      "s": "19:30",
      "e": "22:00",
      "n": "upsammy",
-     "u": "https://soundcloud.com/search?q=upsammy",
+     "u": "https://soundcloud.com/upsammy",
      "d_": "Dutch producer with a gift for bright, alien electro and unusual texture."
     },
     "bde63": {
@@ -3108,7 +3192,7 @@
      "s": "22:00",
      "e": "23:30",
      "n": "Dwarde & Tim Reaper",
-     "u": "https://soundcloud.com/search?q=Dwarde%20%26%20Tim%20Reaper",
+     "u": "https://duckduckgo.com/?q=Dwarde%20%26%20Tim%20Reaper%20soundcloud",
      "d_": "London's jungle revivalists, together. Breakbeats at full tilt."
     },
     "1a300": {
@@ -3117,7 +3201,7 @@
      "s": "23:30",
      "e": "02:00",
      "n": "Mia Koden",
-     "u": "https://soundcloud.com/search?q=Mia%20Koden",
+     "u": "https://soundcloud.com/miakoden",
      "d_": "UK DJ moving between jungle, techno and electro with real dexterity."
     },
     "047f3": {
@@ -3126,7 +3210,7 @@
      "s": "13:00",
      "e": "16:00",
      "n": "COLORS x Studio Strip",
-     "u": "https://soundcloud.com/search?q=COLORS%20x%20Studio%20Strip",
+     "u": "https://duckduckgo.com/?q=COLORS%20x%20Studio%20Strip%20soundcloud",
      "d_": "An\u00e9l, Benji B, Karen Nyame KG \u2014 Two parties joining forces for an afternoon at sea."
     },
     "def79": {
@@ -3135,7 +3219,7 @@
      "s": "16:30",
      "e": "19:30",
      "n": "Ilian Tape",
-     "u": "https://soundcloud.com/search?q=Ilian%20Tape",
+     "u": "https://duckduckgo.com/?q=Ilian%20Tape%20soundcloud",
      "d_": "Deetron, Mia Koden, Zenker Brothers \u2014 The Zenker Brothers' Munich label \u2014 breakbeat techno with a distinct grain."
     },
     "2446e": {
@@ -3144,7 +3228,7 @@
      "s": "20:00",
      "e": "23:00",
      "n": "Dekmantel",
-     "u": "https://soundcloud.com/search?q=Dekmantel",
+     "u": "https://duckduckgo.com/?q=Dekmantel%20soundcloud",
      "d_": "Interstellar Funk, NIKS & Victor \u2014 The Amsterdam institution behind all of this, on a boat."
     },
     "a74f6": {
@@ -3153,7 +3237,7 @@
      "s": "14:00",
      "e": "17:30",
      "n": "La Cassette",
-     "u": "https://soundcloud.com/search?q=La%20Cassette",
+     "u": "https://duckduckgo.com/?q=La%20Cassette%20soundcloud",
      "d_": "dirtydms, DJ Godfather, MediaMart \u2014 Detroit-facing party built on ghettotech and speed."
     },
     "06149": {
@@ -3162,7 +3246,7 @@
      "s": "17:30",
      "e": "20:30",
      "n": "Opium Club",
-     "u": "https://soundcloud.com/search?q=Opium%20Club",
+     "u": "https://duckduckgo.com/?q=Opium%20Club%20soundcloud",
      "d_": "Clicklounge, Naone, Orpheu The Wizard \u2014 Leftfield party with a taste for the unexpected."
     },
     "06ac7": {
@@ -3171,7 +3255,7 @@
      "s": "21:00",
      "e": "00:00",
      "n": "PULP",
-     "u": "https://soundcloud.com/search?q=PULP",
+     "u": "https://duckduckgo.com/?q=PULP%20soundcloud",
      "d_": "El Commando, mad miran, Sepher \u2014 A party for the harder, faster end of the afternoon."
     },
     "6f807": {
@@ -3180,7 +3264,7 @@
      "s": "03:00",
      "e": "06:00",
      "n": "Francesco Del Garda & Paquita Gordon",
-     "u": "https://soundcloud.com/search?q=Francesco%20Del%20Garda%20%26%20Paquita%20Gordon",
+     "u": "https://duckduckgo.com/?q=Francesco%20Del%20Garda%20%26%20Paquita%20Gordon%20soundcloud",
      "d_": "Minimal's most patient selector beside Paquita Gordon's Balearic ear. A three-hour sunrise."
     },
     "03622": {
@@ -3189,7 +3273,7 @@
      "s": "12:30",
      "e": "16:00",
      "n": "Courtney Bailey",
-     "u": "https://soundcloud.com/search?q=Courtney%20Bailey",
+     "u": "https://duckduckgo.com/?q=Courtney%20Bailey%20soundcloud",
      "d_": "Amsterdam selector with a taste for soulful, off-centre grooves."
     },
     "18993": {
@@ -3198,7 +3282,7 @@
      "s": "16:00",
      "e": "19:00",
      "n": "Orpheu The Wizard",
-     "u": "https://soundcloud.com/search?q=Orpheu%20The%20Wizard",
+     "u": "https://soundcloud.com/orpheuthewizard",
      "d_": "Red Light Radio co-founder. Deep digging with a broad grin."
     },
     "b91ed": {
@@ -3207,7 +3291,7 @@
      "s": "15:00",
      "e": "17:30",
      "n": "Satoshi",
-     "u": "https://soundcloud.com/search?q=Satoshi",
+     "u": "https://soundcloud.com/satoshiyamamura",
      "d_": "Rush Hour \u2014 Rush Hour affiliate with a deep, jazz-inflected record bag."
     },
     "d6ea4": {
@@ -3216,7 +3300,7 @@
      "s": "17:30",
      "e": "20:30",
      "n": "Robert Bergman",
-     "u": "https://soundcloud.com/search?q=Robert%20Bergman",
+     "u": "https://soundcloud.com/robertbergman",
      "d_": "Rush Hour \u2014 Dutch producer and live performer with a taste for raw, emotive techno."
     },
     "3519f": {
@@ -3225,7 +3309,7 @@
      "s": "20:30",
      "e": "23:00",
      "n": "Kl\u00e9o",
-     "u": "https://soundcloud.com/search?q=Kl%C3%A9o",
+     "u": "https://soundcloud.com/kleo",
      "d_": "Rush Hour \u2014 Amsterdam DJ, Rush Hour regular, equally at home in house and breaks."
     },
     "da73a": {
@@ -3234,7 +3318,7 @@
      "s": "19:00",
      "e": "22:00",
      "n": "NIKS",
-     "u": "https://soundcloud.com/search?q=NIKS",
+     "u": "https://duckduckgo.com/?q=NIKS%20soundcloud",
      "d_": "Amsterdam DJ and producer, Dekmantel affiliate, hard and precise."
     },
     "b59af": {
@@ -3243,7 +3327,7 @@
      "s": "22:00",
      "e": "00:00",
      "n": "L.B. Dub Corp & Sedef Adasi",
-     "u": "https://soundcloud.com/search?q=L.B.%20Dub%20Corp%20%26%20Sedef%20Adasi",
+     "u": "https://duckduckgo.com/?q=L.B.%20Dub%20Corp%20%26%20Sedef%20Adasi%20soundcloud",
      "d_": "Luke Slater's dub techno alongside Sedef Adasi's fearless digging."
     },
     "49e8d": {
@@ -3252,7 +3336,7 @@
      "s": "00:00",
      "e": "03:00",
      "n": "Doudou MD",
-     "u": "https://soundcloud.com/search?q=Doudou%20MD",
+     "u": "https://duckduckgo.com/?q=Doudou%20MD%20soundcloud",
      "d_": "Radio Radio regular with a broad, percussive, very danceable ear."
     },
     "c191d": {
@@ -3261,7 +3345,7 @@
      "s": "19:00",
      "e": "22:00",
      "n": "Sepehr",
-     "u": "https://soundcloud.com/search?q=Sepehr",
+     "u": "https://soundcloud.com/sepehr",
      "d_": "San Francisco producer working an acid-tinged, Iranian-inflected electro."
     },
     "1a2c4": {
@@ -3270,7 +3354,7 @@
      "s": "22:00",
      "e": "00:00",
      "n": "Vlada",
-     "u": "https://soundcloud.com/search?q=Vlada",
+     "u": "https://duckduckgo.com/?q=Vlada%20soundcloud",
      "d_": "Berlin DJ with a taste for the hard and the hypnotic."
     },
     "2391e": {
@@ -3279,7 +3363,7 @@
      "s": "00:00",
      "e": "03:00",
      "n": "Binh & Vladimir Ivkovic",
-     "u": "https://soundcloud.com/search?q=Binh%20%26%20Vladimir%20Ivkovic",
+     "u": "https://duckduckgo.com/?q=Binh%20%26%20Vladimir%20Ivkovic%20soundcloud",
      "d_": "Minimal's patient master beside Offen's arch-eccentric. Slow, strange, superb."
     },
     "fc9a7": {
@@ -3288,7 +3372,7 @@
      "s": "19:30",
      "e": "21:30",
      "n": "dirtydms",
-     "u": "https://soundcloud.com/search?q=dirtydms",
+     "u": "https://duckduckgo.com/?q=dirtydms%20soundcloud",
      "d_": "Detroit selector carrying ghettotech and juke into the present."
     },
     "d5c58": {
@@ -3297,7 +3381,7 @@
      "s": "21:30",
      "e": "23:00",
      "n": "Peverelist",
-     "u": "https://soundcloud.com/search?q=Peverelist",
+     "u": "https://soundcloud.com/peverelist",
      "d_": "Bristol's Livity Sound boss. Rhythm-first, dubwise, endlessly patient."
     },
     "9d0e9": {
@@ -3306,7 +3390,7 @@
      "s": "23:00",
      "e": "00:30",
      "n": "CCL",
-     "u": "https://soundcloud.com/search?q=CCL",
+     "u": "https://soundcloud.com/ccl",
      "d_": "Seattle-via-Berlin DJ with a taste for the slippery and unresolved."
     },
     "97920": {
@@ -3315,7 +3399,7 @@
      "s": "00:30",
      "e": "02:30",
      "n": "Identified Patient",
-     "u": "https://soundcloud.com/search?q=Identified%20Patient",
+     "u": "https://soundcloud.com/identifiedpatient",
      "d_": "Dutch producer at the harder, wonkier end of electro. A proper late-night proposition."
     },
     "2b491": {
@@ -3324,7 +3408,7 @@
      "s": "13:00",
      "e": "16:00",
      "n": "Post Bar",
-     "u": "https://soundcloud.com/search?q=Post%20Bar",
+     "u": "https://duckduckgo.com/?q=Post%20Bar%20soundcloud",
      "d_": "Post Bar Posse, Vlada, Vladimir Ivkovic \u2014 Rotterdam's beloved bar-cum-club takes to the sea."
     },
     "29387": {
@@ -3333,7 +3417,7 @@
      "s": "16:30",
      "e": "19:30",
      "n": "HAMAM Nights",
-     "u": "https://soundcloud.com/search?q=HAMAM%20Nights",
+     "u": "https://duckduckgo.com/?q=HAMAM%20Nights%20soundcloud",
      "d_": "Rachel Noon, Sedef Adasi \u2014 The Turkish-diaspora party bringing Anatolian psych to the boat."
     },
     "14691": {
@@ -3342,7 +3426,7 @@
      "s": "20:00",
      "e": "23:00",
      "n": "nachbar",
-     "u": "https://soundcloud.com/search?q=nachbar",
+     "u": "https://duckduckgo.com/?q=nachbar%20soundcloud",
      "d_": "Danielle, Festen, Tai Lokun \u2014 Intimate party energy, relocated to the Adriatic."
     },
     "372d8": {
@@ -3351,7 +3435,7 @@
      "s": "14:00",
      "e": "17:30",
      "n": "Bassiani",
-     "u": "https://soundcloud.com/search?q=Bassiani",
+     "u": "https://duckduckgo.com/?q=Bassiani%20soundcloud",
      "d_": "Dito, Fadi Mohem, Hamatsuki & Skyra \u2014 Tbilisi's famous club, exporting its hard, political techno for an afternoon."
     },
     "15809": {
@@ -3360,7 +3444,7 @@
      "s": "17:30",
      "e": "20:30",
      "n": "TraTraTrax",
-     "u": "https://soundcloud.com/search?q=TraTraTrax",
+     "u": "https://duckduckgo.com/?q=TraTraTrax%20soundcloud",
      "d_": "Nick Le\u00f3n, TraTraTrax Soundsistema \u2014 Medell\u00edn label turning guaracha and Latin club into an international language."
     },
     "ff0db": {
@@ -3369,7 +3453,7 @@
      "s": "21:00",
      "e": "00:00",
      "n": "pos",
-     "u": "https://soundcloud.com/search?q=pos",
+     "u": "https://duckduckgo.com/?q=pos%20soundcloud",
      "d_": "Andy & mu.lIANNA, Nina Welch, Introspekt \u2014 Party with a taste for the leftfield and the fast."
     },
     "4b29d": {
@@ -3378,7 +3462,7 @@
      "s": "03:00",
      "e": "04:30",
      "n": "Danielle",
-     "u": "https://soundcloud.com/search?q=Danielle",
+     "u": "https://soundcloud.com/danielledj",
      "d_": "Berlin-based DJ with a taste for fast, hypnotic techno."
     },
     "16f8a": {
@@ -3387,7 +3471,7 @@
      "s": "04:30",
      "e": "06:00",
      "n": "Fadi Mohem & Ogaz\u00f3n",
-     "u": "https://soundcloud.com/search?q=Fadi%20Mohem%20%26%20Ogaz%C3%B3n",
+     "u": "https://duckduckgo.com/?q=Fadi%20Mohem%20%26%20Ogaz%C3%B3n%20soundcloud",
      "d_": "Two of the harder end's most reliable pairs of hands, closing the night."
     },
     "e60b8": {
@@ -3396,7 +3480,7 @@
      "s": "12:30",
      "e": "16:00",
      "n": "Mr. Scruff",
-     "u": "https://soundcloud.com/search?q=Mr.%20Scruff",
+     "u": "https://soundcloud.com/mrscruff",
      "d_": "Manchester's own \u2014 hours-long sets, absurd digging, tea. A festival institution."
     },
     "86fc3": {
@@ -3405,7 +3489,7 @@
      "s": "15:00",
      "e": "18:30",
      "n": "Charlie Bones",
-     "u": "https://soundcloud.com/search?q=Charlie%20Bones",
+     "u": "https://soundcloud.com/charliebones",
      "d_": "Private Hearts Club \u2014 Do!! You!!! Radio's morning voice. Utterly unpredictable and often beautiful."
     },
     "4e853": {
@@ -3414,7 +3498,7 @@
      "s": "18:30",
      "e": "22:00",
      "n": "Elias Mazian",
-     "u": "https://soundcloud.com/search?q=Elias%20Mazian",
+     "u": "https://soundcloud.com/eliasmazian",
      "d_": "Private Hearts Club \u2014 Amsterdam's Private Hearts founder \u2014 romantic, driving, unmistakably his own."
     },
     "3a958": {
@@ -3423,7 +3507,7 @@
      "s": "19:00",
      "e": "22:00",
      "n": "Ploy",
-     "u": "https://soundcloud.com/search?q=Ploy",
+     "u": "https://soundcloud.com/ploy",
      "d_": "Bristol producer whose tracks bend the grid without ever losing the room."
     },
     "fac96": {
@@ -3432,7 +3516,7 @@
      "s": "22:00",
      "e": "00:00",
      "n": "Virginia",
-     "u": "https://soundcloud.com/search?q=Virginia",
+     "u": "https://duckduckgo.com/?q=Virginia%20soundcloud",
      "d_": "Ostgut vocalist and DJ. House with real soul behind it."
     },
     "9f55c": {
@@ -3441,7 +3525,7 @@
      "s": "00:00",
      "e": "03:00",
      "n": "Roi Perez",
-     "u": "https://soundcloud.com/search?q=Roi%20Perez",
+     "u": "https://soundcloud.com/roiperez",
      "d_": "Former Panorama Bar resident. Long, deep, unhurried house sets."
     },
     "82355": {
@@ -3450,7 +3534,7 @@
      "s": "19:00",
      "e": "22:00",
      "n": "Metz Attack",
-     "u": "https://soundcloud.com/search?q=Metz%20Attack",
+     "u": "https://duckduckgo.com/?q=Metz%20Attack%20soundcloud",
      "d_": "Amsterdam DJ with a taste for the fast and the ferrous."
     },
     "22498": {
@@ -3459,7 +3543,7 @@
      "s": "22:00",
      "e": "23:00",
      "n": "Hamatsuki & Skyra",
-     "u": "https://soundcloud.com/search?q=Hamatsuki%20%26%20Skyra",
+     "u": "https://duckduckgo.com/?q=Hamatsuki%20%26%20Skyra%20soundcloud",
      "d_": "live \u2014 Live duo bringing hardware energy to the tent."
     },
     "fd5d1": {
@@ -3468,7 +3552,7 @@
      "s": "23:00",
      "e": "01:00",
      "n": "Kia & Verraco",
-     "u": "https://soundcloud.com/search?q=Kia%20%26%20Verraco",
+     "u": "https://duckduckgo.com/?q=Kia%20%26%20Verraco%20soundcloud",
      "d_": "Melbourne's Kia and Medell\u00edn's Verraco \u2014 two restless selectors with a shared taste for the odd."
     },
     "6bfbc": {
@@ -3477,7 +3561,7 @@
      "s": "01:00",
      "e": "03:00",
      "n": "Efdemin",
-     "u": "https://soundcloud.com/search?q=Efdemin",
+     "u": "https://soundcloud.com/efdemin",
      "d_": "Phillip Sollmann \u2014 hypnotic, minimal techno with a composer's patience."
     },
     "7adad": {
@@ -3486,7 +3570,7 @@
      "s": "19:30",
      "e": "22:00",
      "n": "T.NO",
-     "u": "https://soundcloud.com/search?q=T.NO",
+     "u": "https://soundcloud.com/tno",
      "d_": "Dutch DJ working a breaks- and bass-informed strain of club music."
     },
     "3bfcd": {
@@ -3495,7 +3579,7 @@
      "s": "22:00",
      "e": "00:00",
      "n": "Nick Le\u00f3n",
-     "u": "https://soundcloud.com/search?q=Nick%20Le%C3%B3n",
+     "u": "https://soundcloud.com/nickleon",
      "d_": "Miami producer turning dembow, guaracha and club into something entirely his own."
     },
     "a6f0b": {
@@ -3504,7 +3588,7 @@
      "s": "00:00",
      "e": "01:30",
      "n": "Introspekt",
-     "u": "https://soundcloud.com/search?q=Introspekt",
+     "u": "https://soundcloud.com/introspekt",
      "d_": "UK producer working a garage-informed, swung strain of club music."
     },
     "b5e30": {
@@ -3513,7 +3597,7 @@
      "s": "01:30",
      "e": "02:30",
      "n": "DJ Godfather",
-     "u": "https://soundcloud.com/search?q=DJ%20Godfather",
+     "u": "https://soundcloud.com/djgodfather",
      "d_": "Detroit's ghettotech architect. Impossibly fast, impossibly technical."
     },
     "22c74": {
@@ -3522,7 +3606,7 @@
      "s": "12:30",
      "e": "16:00",
      "n": "Adriatic Coasting",
-     "u": "https://soundcloud.com/search?q=Adriatic%20Coasting",
+     "u": "https://duckduckgo.com/?q=Adriatic%20Coasting%20soundcloud",
      "d_": "Antonio Zuza & Pepi Jogarde, Casabianca, Courtney Bailey \u2014 A local-facing afternoon on the water."
     },
     "13b5b": {
@@ -3531,7 +3615,7 @@
      "s": "16:30",
      "e": "19:30",
      "n": "Dekmantel",
-     "u": "https://soundcloud.com/search?q=Dekmantel",
+     "u": "https://duckduckgo.com/?q=Dekmantel%20soundcloud",
      "d_": "AMORAL, Ploy, Quest \u2014 The Amsterdam institution behind all of this, on a boat."
     },
     "c1ded": {
@@ -3540,7 +3624,7 @@
      "s": "20:00",
      "e": "23:00",
      "n": "Spielraum",
-     "u": "https://soundcloud.com/search?q=Spielraum",
+     "u": "https://duckduckgo.com/?q=Spielraum%20soundcloud",
      "d_": "BASHKKA, Blasha & Allatt \u2014 BASHKKA's Berlin party \u2014 queer, fast and unapologetic."
     },
     "8bd53": {
@@ -3549,7 +3633,7 @@
      "s": "14:00",
      "e": "17:30",
      "n": "Rush Hour",
-     "u": "https://soundcloud.com/search?q=Rush%20Hour",
+     "u": "https://duckduckgo.com/?q=Rush%20Hour%20soundcloud",
      "d_": "Antal, Kl\u00e9o, Robert Bergman, Satoshi \u2014 Amsterdam's essential record shop and label, out on the water."
     },
     "eca22": {
@@ -3558,7 +3642,7 @@
      "s": "17:30",
      "e": "20:30",
      "n": "Homegrown",
-     "u": "https://soundcloud.com/search?q=Homegrown",
+     "u": "https://duckduckgo.com/?q=Homegrown%20soundcloud",
      "d_": "BADSISTA, Jyoty, T.NO \u2014 A celebration of local and diaspora sounds."
     },
     "c90dc": {
@@ -3567,7 +3651,7 @@
      "s": "21:00",
      "e": "00:00",
      "n": "Radio Radio",
-     "u": "https://soundcloud.com/search?q=Radio%20Radio",
+     "u": "https://duckduckgo.com/?q=Radio%20Radio%20soundcloud",
      "d_": "Doudou MD, Roi Perez, RR Soundsystem \u2014 Rotterdam's station crew, playing to the water."
     },
     "6c12d": {
@@ -3576,7 +3660,7 @@
      "s": "03:00",
      "e": "06:00",
      "n": "DJ Koolt & Quest",
-     "u": "https://soundcloud.com/search?q=DJ%20Koolt%20%26%20Quest",
+     "u": "https://duckduckgo.com/?q=DJ%20Koolt%20%26%20Quest%20soundcloud",
      "d_": "Two broad selectors closing out the Sunday sunrise."
     },
     "e2021": {
@@ -3585,7 +3669,7 @@
      "s": "12:30",
      "e": "16:00",
      "n": "Job Jobse & Peach & Shanti Celeste",
-     "u": "https://soundcloud.com/search?q=Job%20Jobse%20%26%20Peach%20%26%20Shanti%20Celeste",
+     "u": "https://duckduckgo.com/?q=Job%20Jobse%20%26%20Peach%20%26%20Shanti%20Celeste%20soundcloud",
      "d_": "Three of the warmest selectors around, sharing a booth for the afternoon."
     },
     "c2c2b": {
@@ -3594,7 +3678,7 @@
      "s": "15:00",
      "e": "20:00",
      "n": "Roel de Boer",
-     "u": "https://soundcloud.com/search?q=Roel%20de%20Boer",
+     "u": "https://duckduckgo.com/?q=Roel%20de%20Boer%20soundcloud",
      "d_": "Rotterdam DJ with a broad, unhurried and deeply pleasant record bag."
     },
     "aa3c3": {
@@ -3603,7 +3687,7 @@
      "s": "19:00",
      "e": "22:00",
      "n": "Alex Kassian",
-     "u": "https://soundcloud.com/search?q=Alex%20Kassian",
+     "u": "https://soundcloud.com/alexkassian",
      "d_": "Berlin-based producer making sun-warmed, new-age-tinged dance music."
     },
     "68cfc": {
@@ -3612,7 +3696,7 @@
      "s": "22:00",
      "e": "00:00",
      "n": "BASHKKA",
-     "u": "https://soundcloud.com/search?q=BASHKKA",
+     "u": "https://soundcloud.com/bashkka",
      "d_": "Berlin's Spielraum founder. Fast, queer, joyfully hard club music."
     },
     "4ff17": {
@@ -3621,7 +3705,7 @@
      "s": "00:00",
      "e": "02:30",
      "n": "Palms Trax",
-     "u": "https://soundcloud.com/search?q=Palms%20Trax",
+     "u": "https://soundcloud.com/palmstrax",
      "d_": "Berlin-based Brit with a taste for sun-bleached house and the odd curveball."
     },
     "68659": {
@@ -3630,7 +3714,7 @@
      "s": "19:00",
      "e": "21:30",
      "n": "AMORAL",
-     "u": "https://soundcloud.com/search?q=AMORAL",
+     "u": "https://duckduckgo.com/?q=AMORAL%20soundcloud",
      "d_": "Dutch DJ working the harder, more industrial edge."
     },
     "6fe40": {
@@ -3639,7 +3723,7 @@
      "s": "21:30",
      "e": "00:00",
      "n": "Blasha & Allatt",
-     "u": "https://soundcloud.com/search?q=Blasha%20%26%20Allatt",
+     "u": "https://soundcloud.com/blashaandallatt",
      "d_": "Manchester duo, Meat Free founders. Uncompromising and very fast."
     },
     "a072c": {
@@ -3648,7 +3732,7 @@
      "s": "00:00",
      "e": "02:00",
      "n": "Antal",
-     "u": "https://soundcloud.com/search?q=Antal",
+     "u": "https://soundcloud.com/antal",
      "d_": "techno set \u2014 Rush Hour founder and Dekmantel co-conspirator. A record collection with no floor and no ceiling."
     },
     "f43c0": {
@@ -3657,7 +3741,7 @@
      "s": "02:00",
      "e": "04:00",
      "n": "Jeff Mills",
-     "u": "https://soundcloud.com/search?q=Jeff%20Mills",
+     "u": "https://soundcloud.com/jeffmills",
      "d_": "The Wizard. Detroit techno's most uncompromising figure \u2014 three decks, 909, and no concessions in forty years."
     },
     "cb495": {
@@ -3666,7 +3750,7 @@
      "s": "19:30",
      "e": "22:00",
      "n": "Coffintexts",
-     "u": "https://soundcloud.com/search?q=Coffintexts",
+     "u": "https://soundcloud.com/coffintexts",
      "d_": "Miami producer bridging electro, techno and something more haunted."
     },
     "08d59": {
@@ -3675,7 +3759,7 @@
      "s": "22:00",
      "e": "23:30",
      "n": "Simo Cell",
-     "u": "https://soundcloud.com/search?q=Simo%20Cell",
+     "u": "https://soundcloud.com/simocell",
      "d_": "French producer making club music that feels slightly unstable in the best way."
     },
     "e5b56": {
@@ -3684,7 +3768,7 @@
      "s": "23:30",
      "e": "01:00",
      "n": "BADSISTA",
-     "u": "https://soundcloud.com/search?q=BADSISTA",
+     "u": "https://soundcloud.com/badsista",
      "d_": "S\u00e3o Paulo DJ and producer. Baile funk energy poured into club music."
     },
     "6a3fd": {
@@ -3693,11 +3777,11 @@
      "s": "01:00",
      "e": "03:00",
      "n": "Cinnaman & Jyoty",
-     "u": "https://soundcloud.com/search?q=Cinnaman%20%26%20Jyoty",
+     "u": "https://duckduckgo.com/?q=Cinnaman%20%26%20Jyoty%20soundcloud",
      "d_": "Two Amsterdam mainstays with impeccable, very different taste."
     }
    },
-   "updatedAt": 1786533908826
+   "updatedAt": 1786795273511
   }
  },
  "library_index": {
@@ -3709,7 +3793,7 @@
    "stages": 11,
    "acts": 271,
    "official": true,
-   "updatedAt": 1786621531483
+   "updatedAt": 1786795273511
   },
   "dekmantel-selectors-2026": {
    "name": "Dekmantel Selectors",
@@ -3719,7 +3803,7 @@
    "stages": 9,
    "acts": 99,
    "official": true,
-   "updatedAt": 1786533908826
+   "updatedAt": 1786795273511
   }
  }
 }
