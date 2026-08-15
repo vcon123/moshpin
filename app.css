@@ -396,3 +396,9 @@ body.gridpage{padding:0;overflow:hidden;height:100dvh;height:100vh;display:flex;
 
 body.gridpage #app{flex:1;min-height:0;display:flex;flex-direction:column}
 body.gridpage .topbar{position:static;flex:0 0 auto}
+
+/* people waiting to be let in */
+.pendbox{background:var(--panel-2);border:1px solid var(--edge);border-radius:10px;
+  padding:10px 12px;margin:10px 0 4px}
+.iconbtn.nudge{border-color:var(--edge);box-shadow:0 0 0 2px rgba(143,217,119,.25)}
+.iconbtn.nudge .n{color:var(--edge)}

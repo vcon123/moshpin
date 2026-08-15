@@ -20,18 +20,26 @@ function bump(key) {
 }
 
 /* shrink on the phone before it ever goes near the network */
-function shrink(file, px, q) {
+/* Aim for `px` at `q`, but step down until it fits the ceiling — a dark, busy
+   photo compresses far worse than a plain one, and every phone downloads this. */
+function shrink(file, px, q, cap) {
   return new Promise(res => {
     const img = new Image();
     img.onload = () => {
       const s = Math.min(img.width, img.height);
       const c = document.createElement('canvas');
-      c.width = c.height = px;
+      let out = null;
       try {
-        c.getContext('2d').drawImage(img, (img.width - s) / 2, (img.height - s) / 2, s, s, 0, 0, px, px);
-        res(c.toDataURL('image/jpeg', q));
-      } catch (e) { res(null); }
+        for (const [w, qq] of [[px, q], [px, q - 0.12], [Math.round(px * 0.8), q - 0.08],
+                               [Math.round(px * 0.66), q - 0.1], [Math.round(px * 0.5), 0.55]]) {
+          c.width = c.height = w;
+          c.getContext('2d').drawImage(img, (img.width - s) / 2, (img.height - s) / 2, s, s, 0, 0, w, w);
+          out = c.toDataURL('image/jpeg', Math.max(0.4, qq));
+          if (!cap || out.length <= cap) break;
+        }
+      } catch (e) { out = null; }
       URL.revokeObjectURL(img.src);
+      res(out);
     };
     img.onerror = () => res(null);
     img.src = URL.createObjectURL(file);
@@ -39,6 +47,33 @@ function shrink(file, px, q) {
 }
 /* Report which step failed. A bare "permission denied" tells nobody anything;
    naming the step points straight at the rule that needs publishing. */
+/* Sit on the pending screen until an admin admits you, then walk in. */
+async function waitForAdmission(gid, mkey, me, myPin, crewName) {
+  show('waitScreen');
+  $('waitCrew').textContent = crewName || 'the crew';
+  let stop = false;
+  $('waitCancel').onclick = async () => {
+    stop = true;
+    try { await C.ref('groups/' + gid + '/pending/' + mkey).remove(); } catch (e) {}
+    show('startScreen');
+  };
+  const tick = async () => {
+    if (stop) return;
+    try {
+      /* the entry disappears the moment an admin acts on it */
+      const still = (await C.ref('groups/' + gid + '/pending/' + mkey).get()).val();
+      if (!still) {
+        await C.ref('groups/' + gid + '/uidmap/' + C.myUid()).set({ k: mkey });
+        C.setCurrentGroup({ gid, name: crewName, key: mkey });
+        location.href = 'grid.html';
+        return;
+      }
+    } catch (e) { /* not admitted yet */ }
+    setTimeout(tick, 5000);
+  };
+  setTimeout(tick, 4000);
+}
+
 async function step(what, fn) {
   try { return await fn(); }
   catch (e) {
@@ -55,7 +90,7 @@ function wirePhoto(inputId, prevId) {
     const f = e.target.files && e.target.files[0];
     e.target.value = '';
     if (!f) return;
-    shrink(f, 64, 0.62).then(d => {
+    shrink(f, 150, 0.68, 12 * 1024).then(d => {
       if (!d) return C.toast("Couldn't read that photo");
       myPhoto = d;
       $(prevId).innerHTML = `<img src="${d}" alt="">`;
@@ -124,9 +159,9 @@ window.addEventListener('error', ev => {
         + 'your picks, ratings and photo are still there.';
     show('joinScreen');
     if (inv.pin) $('joinName').focus();
-  } else if (cur && cur.key) {     // already signed in to something
-    $('backName').textContent = cur.name || 'your crew';
-    show('backScreen');
+  } else if (cur && cur.key && !new URLSearchParams(location.search).get('add')) {
+    location.replace('grid.html');   // already in — no reason to show this page
+    return;
   } else if (cur) {                // known crew, but this device isn't signed in
     $('joinGid').value = cur.gid;
     await previewGroup(cur.gid);
@@ -322,7 +357,6 @@ $('joinGo').onclick = async () => {
   const me  = $('joinName').value.trim();
   const myPin = ($('joinPin2').value || '').replace(/\D/g, '');
   if (!gid) return fail('joinErr', 'Paste the invite link or code.');
-  if (!pin) return fail('joinErr', 'Enter the crew passcode.');
   if (!me)  return fail('joinErr', 'Enter your name.');
   if (!/^\d{3}$/.test(myPin)) return fail('joinErr', 'Enter your own 3-number pin.');
 
@@ -343,8 +377,29 @@ $('joinGo').onclick = async () => {
       try { count = (await C.ref('groups/' + gid + '/members').get()).numChildren(); } catch (e) {}
       if (count >= 50) throw new Error('crew full');
     }
-    const token = await C.joinToken(gid, pin);
+    const token = pin ? await C.joinToken(gid, pin) : null;
     const mkey = mkeyPre;
+
+    /* An open crew lets the link speak for itself. A locked one needs either
+       the passcode or an admin to let you in. */
+    let locked = false;
+    try { locked = !!(await C.ref('groups/' + gid + '/config/lock').get()).val(); } catch (e) {}
+
+    if (locked && !already) {
+      let tokenOk = false;
+      if (token) {
+        try { tokenOk = !!(await C.ref('groups/' + gid + '/join/' + token).get()).val(); } catch (e) {}
+        if (!tokenOk) { working(btn, false, 'Join the crew');
+          return fail('joinErr', "That crew passcode doesn't match. Leave it blank to ask an admin instead."); }
+      }
+      if (!tokenOk) {                       // no passcode — queue for admittance
+        await step('asking to join', () => C.ref('groups/' + gid + '/pending/' + mkey)
+          .set({ n: me, photo: myPhoto || null, ts: Date.now() }));
+        C.setMyProfile({ name: me, photo: null });
+        waitForAdmission(gid, mkey, me, myPin, previewed.name);
+        return;
+      }
+    }
 
     /* Same name and pin gives the same key on any device, so a returning member
        lands on the record they already have — picks, ratings, photo and all. */
@@ -355,15 +410,21 @@ $('joinGo').onclick = async () => {
     }
     /* claim this device for that person — the passcode proves you may be here,
        the key itself proves which member you are */
-    await step('registering this device', () =>
-      C.ref('groups/' + gid + '/uidmap/' + C.myUid()).set({ k: mkey, t: token }));
+    await step('registering this device', () => {
+      const rec = { k: mkey };
+      if (token) rec.t = token;
+      return C.ref('groups/' + gid + '/uidmap/' + C.myUid()).set(rec);
+    });
 
     if (existing) {
       await step('signing you back in', () =>
-        C.ref('groups/' + gid + '/members/' + mkey).update({ t: token, seen: Date.now() }));
+        C.ref('groups/' + gid + '/members/' + mkey).update({ seen: Date.now() }));
     } else {
-      await step('joining the crew', () => C.ref('groups/' + gid + '/members/' + mkey)
-        .set({ name: me, joined: Date.now(), t: token }));
+      await step('joining the crew', () => {
+        const rec = { name: me, joined: Date.now() };
+        if (token) rec.t = token;
+        return C.ref('groups/' + gid + '/members/' + mkey).set(rec);
+      });
       try { await C.ref('groups/' + gid + '/photos/' + mkey).set(myPhoto); } catch (e) {}
       bump('members');
     }

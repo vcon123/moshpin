@@ -23,6 +23,7 @@ let dayIdx = 0;
 let saveTimer = null;
 let meta = null;
 let cfg = {};                       // crew settings — currently just the lock
+let pending = {};                   // people waiting to be let in
 const isAdmin = () => !!admins[uid];
 
 const pickNote = v => (v && typeof v === 'object' && v.note) ? v.note : '';
@@ -83,6 +84,10 @@ window.addEventListener('error', e => {
 
   try { meta = (await C.ref('groups/' + crew.gid + '/meta').get()).val(); } catch (e) {}
   C.ref('groups/' + crew.gid + '/config').on('value', s => { cfg = s.val() || {}; }, () => {});
+  /* only admins can read this, so the listener simply stays empty for everyone else */
+  C.ref('groups/' + crew.gid + '/pending').on('value', s => {
+    pending = s.val() || {}; drawTop();
+  }, () => {});
   C.ref('groups/' + crew.gid + '/admins').on('child_added', s => { admins[s.key] = true; drawTop(); });
   C.ref('groups/' + crew.gid + '/admins').on('child_removed', s => { delete admins[s.key]; drawTop(); });
 
@@ -393,28 +398,20 @@ async function renameCrew() {
         ? 'Only admins can rename this crew.' : "Couldn't rename it.");
     }
   }
-  const def = `${fest.name} ${fest.year}`;
-  const curSub = (meta && meta.sub) || def;
-  const sub = (prompt('Line underneath', curSub) || '').trim();
-  if (sub === curSub) return;
-  try {
-    const keep = sub && sub !== def ? sub.slice(0, 60) : null;
-    await C.ref('groups/' + crew.gid + '/meta/sub').set(keep);
-    meta.sub = keep;
-    drawTop();
-    C.toast('Saved');
-  } catch (e) { C.toast("Couldn't save that."); }
 }
 
 /* ---------- top bar ---------- */
 function drawTop() {
   $('evTitle').textContent = (meta && meta.name) || (crew && crew.name) || 'My crew';
-  $('evSub').textContent = (meta && meta.sub) || `${fest.name} ${fest.year}`;
+  $('evSub').textContent = `${fest.name} ${fest.year}`;   // fixed — it is the festival
   const box = document.querySelector('.evname');
   box.classList.toggle('editable', isAdmin());
   box.title = isAdmin() ? 'Tap to rename' : '';
   box.onclick = isAdmin() ? renameCrew : null;
   $('crewN').textContent = Object.keys(members).length;
+  const waiting = isAdmin() ? Object.keys(pending).length : 0;
+  $('crewBtn').classList.toggle('nudge', waiting > 0);
+  $('crewBtn').title = waiting ? `${waiting} waiting to be let in` : 'The crew';
 }
 
 /* ---------- day tabs ---------- */
@@ -868,6 +865,15 @@ function showCrew() {
     <div class="phead"><b>👥 ${esc((meta && meta.name) || 'The crew')}</b>
       <span class="hint">${order.length} of 50${cfg.lock ? ' · 🔒 locked' : ''}</span>
       <button class="btn sm" id="cwClose" style="margin-left:auto">✕</button></div>
+    ${isAdmin() && Object.keys(pending).length ? `<div class="pendbox">
+      <div class="psec" style="margin-top:0">Asking to join</div>
+      ${Object.entries(pending).map(([k, p]) => `<div class="mrow">
+        ${p.photo ? `<img class="av" src="${p.photo}" alt="" style="width:32px;height:32px">`
+                  : `<span class="av fb" style="width:32px;height:32px;background:${C.colorFor(p.n || '?')}">${esc(C.initials(p.n || '?'))}</span>`}
+        <div class="mname">${esc(p.n || '?')}</div>
+        <button class="mini" data-admit="${k}">Let in</button>
+        <button class="mini danger" data-deny="${k}">No</button>
+      </div>`).join('')}</div>` : ''}
     <p class="hint">Tap someone to see where they are, how they're travelling and what they've tagged.</p>
     <div class="mlist" style="margin-top:8px">${order.map(u => `
       <div class="mrow" data-who="${u}" style="cursor:pointer">${avatarFor(u)}
@@ -883,6 +889,20 @@ function showCrew() {
   $('crewSheet').classList.add('on');
   $('cwClose').onclick = () => closeSheet('crewSheet');
   $('cwToShare').onclick = () => { closeSheet('crewSheet'); showInvite(); };
+  $('crewBody').querySelectorAll('[data-admit]').forEach(b => b.onclick = async () => {
+    const k = b.dataset.admit, p = pending[k] || {};
+    b.disabled = true;
+    try {
+      await C.ref('groups/' + crew.gid + '/members/' + k).set({ name: p.n || '?', joined: Date.now() });
+      if (p.photo) await C.ref('groups/' + crew.gid + '/photos/' + k).set(p.photo);
+      await C.ref('groups/' + crew.gid + '/pending/' + k).remove();
+      C.toast((p.n || 'They') + ' are in');
+    } catch (e) { b.disabled = false; C.toast("Couldn't let them in"); }
+  });
+  $('crewBody').querySelectorAll('[data-deny]').forEach(b => b.onclick = async () => {
+    if (!confirm('Turn down this request?')) return;
+    try { await C.ref('groups/' + crew.gid + '/pending/' + b.dataset.deny).remove(); } catch (e) {}
+  });
   $('crewBody').querySelectorAll('[data-who]').forEach(row => row.onclick = e => {
     if (e.target.closest('button')) return;
     showPerson(row.dataset.who);
@@ -908,22 +928,18 @@ function showCrew() {
   });
 }
 
-/* ---------- inviting people ---------- */
+/* ---------- inviting people ----------
+   The link is the invitation. A locked crew adds a gate: an admin lets people
+   in, or hands out the passcode to skip the queue. */
 function showInvite() {
   const link = location.origin + location.pathname.replace(/[^/]*$/, '') + 'index.html?g=' + crew.gid;
   $('invBody').innerHTML = `
     <div class="phead"><b>✉ Invite someone</b><button class="btn sm" id="ivClose">✕</button></div>
-    <p class="hint">They need both the link and the passcode.</p>
+    <p class="hint">${cfg.lock
+      ? 'This crew is locked — whoever you send it to waits for an admin to let them in.'
+      : 'Anyone with this link can join. No passcode needed.'}</p>
 
-    <label>Passcode</label>
-    <div class="codebox"><span id="ivCode">…</span><button class="btn sm" id="ivCodeCopy">Copy</button></div>
-    <p class="hint" id="ivCodeNote" style="margin-top:6px"></p>
-    ${isAdmin() ? `<div class="row" style="margin-top:8px">
-        <button class="btn sm" id="ivSetCode">Change passcode</button>
-        <button class="btn sm" id="ivLock">${cfg.lock ? '🔓 Unlock crew' : '🔒 Lock crew'}</button>
-      </div>` : ''}
-
-    <label style="margin-top:18px">Scan this</label>
+    <label style="margin-top:14px">Scan this</label>
     <div class="qrbox" style="margin:6px auto 0">${qrSvg(link, 200)}</div>
 
     <label for="ivLink">Or send the link</label>
@@ -931,37 +947,43 @@ function showInvite() {
     <div class="row" style="margin-top:10px">
       <button class="btn" id="ivCopy">Copy link</button>
       <button class="btn primary" id="ivShare">Share</button>
-    </div>`;
+    </div>
+
+    ${isAdmin() ? `
+      <div class="psec">Admin only</div>
+      <div class="row">
+        <button class="btn sm" id="ivLock">${cfg.lock ? '🔓 Unlock' : '🔒 Lock crew'}</button>
+        <button class="btn sm" id="ivSetCode">New passcode</button>
+      </div>
+      <p class="hint" style="margin-top:8px">${cfg.lock
+        ? 'Give someone this passcode and they skip the queue.'
+        : 'Lock the crew and new joiners wait for you — or use the passcode to skip that.'}</p>
+      <div class="codebox" style="margin-top:8px"><span id="ivCode">…</span>
+        <button class="btn sm" id="ivCodeCopy">Copy</button></div>` : ''}`;
+
   $('inviteSheet').classList.add('on');
   $('ivClose').onclick = () => closeSheet('inviteSheet');
-  const locked = !!cfg.lock;
-  loadCode().then(code => {
-    if (locked && !isAdmin()) {
-      $('ivCode').textContent = '••••';
-      $('ivCodeNote').textContent = 'An admin has locked this crew — ask them to let someone in.';
-      return;
-    }
-    $('ivCode').textContent = code || '—';
-    $('ivCodeNote').textContent = code
-      ? (locked ? 'Locked: only admins can see this. Anyone you give it to can still join.'
-                : 'Send this along with the link — it is asked for when they join.')
-      : codeErr.includes('PERMISSION')
-        ? 'Reload the page once — this device is still being registered with the crew.'
-        : (isAdmin() ? 'Made before passcodes were shown here. Set a new one to share it.'
-                     : 'Ask an admin for the passcode.');
-  });
+  $('ivCopy').onclick = async () => {
+    try { await navigator.clipboard.writeText(link); C.toast('Link copied'); } catch (e) { $('ivLink').select(); }
+  };
+  $('ivShare').onclick = async () => {
+    const t = `Join ${(meta && meta.name) || 'my crew'} on MoshPin\n${link}`;
+    if (navigator.share) { try { await navigator.share({ text: t }); } catch (e) {} }
+    else { try { await navigator.clipboard.writeText(t); C.toast('Copied'); } catch (e) {} }
+  };
+
+  if (!isAdmin()) return;
+  loadCode().then(code => { $('ivCode').textContent = code || 'none set'; });
   $('ivCodeCopy').onclick = async () => {
     try { await navigator.clipboard.writeText($('ivCode').textContent); C.toast('Passcode copied'); } catch (e) {}
   };
-  const sc = $('ivSetCode'); if (sc) sc.onclick = changeCode;
-  const lk = $('ivLock');
-  if (lk) lk.onclick = async () => {
+  $('ivSetCode').onclick = changeCode;
+  $('ivLock').onclick = async () => {
     const on = !cfg.lock;
-    if (on && !confirm('Lock the crew?\n\nThe passcode changes to a new one and only '
-        + 'admins can see it, so any code already passed around stops working.')) return;
+    if (on && !confirm('Lock the crew?\n\nNew joiners will wait for an admin to let them in. '
+        + 'The passcode is replaced, so any code already passed around stops working.')) return;
     try {
       if (on) {
-        /* a code that has spread cannot be un-spread — replace it */
         const nu = String(Math.floor(Math.random() * 9000) + 1000);
         const token = await C.joinToken(crew.gid, nu);
         await C.ref('groups/' + crew.gid + '/join').set({ [token]: true });
@@ -971,27 +993,10 @@ function showInvite() {
       }
       await C.ref('groups/' + crew.gid + '/config/lock').set(on ? true : null);
       cfg.lock = on;
-      C.toast(on ? 'Locked — new passcode set, admins only' : 'Unlocked');
+      C.toast(on ? 'Locked — you let people in from the crew list' : 'Unlocked — the link is enough again');
       showInvite();
     } catch (e) { C.toast("Couldn't change that — " + (e.message || '')); }
   };
-  $('ivCopy').onclick = async () => {
-    try { await navigator.clipboard.writeText(link); C.toast('Link copied'); } catch (e) { $('ivLink').select(); }
-  };
-  $('ivShare').onclick = async () => {
-    const code = await loadCode();
-    const t = `Join ${(meta && meta.name) || 'my crew'} on MoshPin\n${link}`
-      + (code ? `\nPasscode: ${code}` : '');
-    if (navigator.share) { try { await navigator.share({ text: t }); } catch (e) {} }
-    else { try { await navigator.clipboard.writeText(t); C.toast('Copied'); } catch (e) {} }
-  };
-}
-
-function avatarFor(u, size) {
-  const s = size || 32, nm = (members[u] || {}).name || '?';
-  return photos[u]
-    ? `<img class="av" src="${photos[u]}" alt="" style="width:${s}px;height:${s}px">`
-    : `<span class="av fb" style="width:${s}px;height:${s}px;background:${C.colorFor(nm)};font-size:${Math.round(s / 2.6)}px">${esc(C.initials(nm))}</span>`;
 }
 
 /* ---------- one person ----------
@@ -1054,7 +1059,7 @@ function showProfile() {
   $('pfFile').onchange = e => {
     const f = e.target.files && e.target.files[0]; e.target.value = '';
     if (!f) return;
-    shrink(f, 64, 0.62).then(dd => {
+    shrink(f, 150, 0.68, 12 * 1024).then(dd => {
       if (!dd) return C.toast("Couldn't read that image");
       pendingPhoto = dd;
       $('pfPrev').innerHTML = `<img class="av" src="${dd}" alt="" style="width:76px;height:76px">`;
@@ -1077,15 +1082,24 @@ function showProfile() {
     } catch (e) { C.toast("Couldn't save — " + (e.message || '')); }
   };
 }
-function shrink(file, px, q) {
+function shrink(file, px, q, cap) {
   return new Promise(res => {
     const img = new Image();
     img.onload = () => {
       const s = Math.min(img.width, img.height);
-      const c = document.createElement('canvas'); c.width = c.height = px;
-      try { c.getContext('2d').drawImage(img, (img.width - s) / 2, (img.height - s) / 2, s, s, 0, 0, px, px);
-            res(c.toDataURL('image/jpeg', q)); } catch (e) { res(null); }
+      const c = document.createElement('canvas');
+      let out = null;
+      try {
+        for (const [w, qq] of [[px, q], [px, q - 0.12], [Math.round(px * 0.8), q - 0.08],
+                               [Math.round(px * 0.66), q - 0.1], [Math.round(px * 0.5), 0.55]]) {
+          c.width = c.height = w;
+          c.getContext('2d').drawImage(img, (img.width - s) / 2, (img.height - s) / 2, s, s, 0, 0, w, w);
+          out = c.toDataURL('image/jpeg', Math.max(0.4, qq));
+          if (!cap || out.length <= cap) break;
+        }
+      } catch (e) { out = null; }
       URL.revokeObjectURL(img.src);
+      res(out);
     };
     img.onerror = () => res(null);
     img.src = URL.createObjectURL(file);

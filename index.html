@@ -131,6 +131,19 @@
     </div>
   </section>
 
+  <!-- waiting to be let in -->
+  <section class="screen" id="waitScreen" hidden>
+    <div class="card">
+      <h2>Asking to join…</h2>
+      <p class="hint">An admin of <b id="waitCrew">the crew</b> needs to let you in.
+        Leave this open — it'll go through on its own once they do.</p>
+      <div style="text-align:center;margin:22px 0"><span class="spin"></span></div>
+      <p class="hint">In a hurry? Ask them for the passcode and go back — that gets you
+        straight in.</p>
+      <div style="margin-top:16px"><button class="btn wide" id="waitCancel">Cancel</button></div>
+    </div>
+  </section>
+
   <!-- join -->
   <section class="screen" id="joinScreen" hidden>
     <div class="card">
@@ -144,8 +157,8 @@
       <label for="joinGid">Invite link or code</label>
       <input type="text" id="joinGid" placeholder="paste the whole link" autocomplete="off" spellcheck="false">
 
-      <label for="joinPin">Passcode</label>
-      <input type="text" id="joinPin" class="code" maxlength="4" placeholder="0000"
+      <label for="joinPin">Crew passcode <span class="hint">· only if they gave you one</span></label>
+      <input type="text" id="joinPin" class="code" maxlength="4" placeholder="----"
              inputmode="numeric" pattern="[0-9]*" autocomplete="off" spellcheck="false">
 
       <label id="photoLbl">Your photo <span style="color:var(--edge)">· required</span></label>
