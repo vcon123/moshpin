@@ -407,3 +407,10 @@ body.gridpage .topbar{position:static;flex:0 0 auto}
 .pcell.outside{border-style:dashed;border-color:rgba(143,217,119,.18);background:rgba(20,24,20,.08)}
 .pcell.outside .plab{color:rgba(232,234,230,.38);font-size:8px}
 .pcell.outside.taken{background:rgba(46,93,67,.5);border-style:solid}
+
+/* a pin over a stage the map already names: a tap target, not a label */
+.mappin.bare{min-width:66px;min-height:38px;background:rgba(20,24,20,.20);
+  border-color:rgba(143,217,119,.55);border-radius:12px}
+.mappin.bare:hover,.mappin.bare:active{background:rgba(46,93,67,.55);border-color:var(--edge)}
+.mappin.bare.busy{background:rgba(46,93,67,.42)}
+@media (max-width:700px){.mappin.bare{min-width:52px;min-height:32px}}

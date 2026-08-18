@@ -766,9 +766,13 @@ function showMap() {
       ${pinned.map(v => {
         const n = CI.active().filter(c => c.v === v.id).length;
         const live = F.nowOn(fest, v.id);
-        return `<button class="mappin${n ? ' busy' : ''}" data-v="${v.id}"
+        /* Most maps already print the stage name, so the pin stays out of the
+           way. Anything the map doesn't name — the boats share one pier icon —
+           carries its own label. */
+        const named = !!v.label;
+        return `<button class="mappin${named ? '' : ' bare'}${n ? ' busy' : ''}" data-v="${v.id}"
           style="left:${v.x}%;top:${v.y}%" title="${esc(v.name)}">
-          <span class="mpn">${esc(v.name)}</span>
+          ${named ? `<span class="mpn">${esc(v.name)}</span>` : ''}
           ${n ? `<span class="mpc">${n}</span>` : ''}
           ${live ? `<span class="mpl">${esc(live.n.length > 18 ? live.n.slice(0, 17) + '…' : live.n)}</span>` : ''}
         </button>`;

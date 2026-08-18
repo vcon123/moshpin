@@ -2876,27 +2876,37 @@
     {
      "id": "beachbar",
      "name": "Beach Bar",
-     "type": "stage"
+     "type": "stage",
+     "x": 73.1,
+     "y": 65.5
     },
     {
      "id": "magnolia",
      "name": "Magnolia",
-     "type": "stage"
+     "type": "stage",
+     "x": 12.7,
+     "y": 29.9
     },
     {
      "id": "beachmain",
      "name": "Beach Main",
-     "type": "stage"
+     "type": "stage",
+     "x": 56.1,
+     "y": 77.1
     },
     {
      "id": "voodoo",
      "name": "Voodoo",
-     "type": "stage"
+     "type": "stage",
+     "x": 43.6,
+     "y": 20.3
     },
     {
      "id": "nest",
      "name": "The Nest",
-     "type": "stage"
+     "type": "stage",
+     "x": 88.6,
+     "y": 48.9
     },
     {
      "id": "barbarellas",
@@ -2906,12 +2916,18 @@
     {
      "id": "boat1",
      "name": "Boat 1",
-     "type": "stage"
+     "type": "stage",
+     "x": 88.9,
+     "y": 86.3,
+     "label": true
     },
     {
      "id": "boat2",
      "name": "Boat 2",
-     "type": "stage"
+     "type": "stage",
+     "x": 88.9,
+     "y": 92.1,
+     "label": true
     },
     {
      "id": "vortex",
@@ -3813,7 +3829,12 @@
      "d_": "Two Amsterdam mainstays with impeccable, very different taste."
     }
    },
-   "updatedAt": 1786795273511
+   "updatedAt": 1787059154115,
+   "map": {
+    "img": "map-selectors.png",
+    "w": 900,
+    "h": 695
+   }
   }
  },
  "library_index": {
@@ -3835,7 +3856,7 @@
    "stages": 9,
    "acts": 99,
    "official": true,
-   "updatedAt": 1786795273511
+   "updatedAt": 1787059154115
   }
  }
 }
