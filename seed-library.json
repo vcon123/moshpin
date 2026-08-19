@@ -32,8 +32,8 @@
      "id": "alpha",
      "name": "Alpha",
      "type": "stage",
-     "x": 79.3,
-     "y": 46.6,
+     "x": 80.0,
+     "y": 43.5,
      "plan": {
       "img": "stage-alpha.png",
       "w": 1010,
@@ -195,14 +195,16 @@
        "77": "outside just right, behind",
        "78": "outside far right, behind"
       }
-     }
+     },
+     "w": 10.5,
+     "h": 4.5
     },
     {
      "id": "bravo",
      "name": "Bravo",
      "type": "stage",
-     "x": 34.1,
-     "y": 89.7,
+     "x": 34.0,
+     "y": 86.5,
      "plan": {
       "img": "stage-bravo.png",
       "w": 560,
@@ -239,14 +241,16 @@
        "42",
        "43"
       ]
-     }
+     },
+     "w": 10.5,
+     "h": 4.5
     },
     {
      "id": "heineken",
      "name": "Heineken",
      "type": "stage",
-     "x": 9.2,
-     "y": 19.0,
+     "x": 10.0,
+     "y": 15.5,
      "plan": {
       "img": "stage-heineken.png",
       "w": 560,
@@ -282,14 +286,16 @@
        "42",
        "43"
       ]
-     }
+     },
+     "w": 14.0,
+     "h": 4.0
     },
     {
      "id": "lima",
      "name": "Lima",
      "type": "stage",
-     "x": 40.0,
-     "y": 8.5,
+     "x": 40.5,
+     "y": 5.5,
      "plan": {
       "img": "stage-lima.png",
       "w": 560,
@@ -325,14 +331,16 @@
        "42",
        "43"
       ]
-     }
+     },
+     "w": 10.0,
+     "h": 4.0
     },
     {
      "id": "india",
      "name": "India",
      "type": "stage",
-     "x": 45.2,
-     "y": 71.8,
+     "x": 45.0,
+     "y": 68.5,
      "plan": {
       "img": "stage-india.png",
       "w": 560,
@@ -368,14 +376,16 @@
        "42",
        "43"
       ]
-     }
+     },
+     "w": 10.0,
+     "h": 4.5
     },
     {
      "id": "xray",
      "name": "X-Ray",
      "type": "stage",
-     "x": 42.4,
-     "y": 54.1,
+     "x": 42.5,
+     "y": 51.5,
      "plan": {
       "img": "stage-x-ray.png",
       "w": 560,
@@ -411,14 +421,16 @@
        "42",
        "43"
       ]
-     }
+     },
+     "w": 10.0,
+     "h": 4.0
     },
     {
      "id": "hacienda",
      "name": "Hacienda",
      "type": "stage",
      "x": 25.5,
-     "y": 55.6,
+     "y": 53.5,
      "plan": {
       "img": "stage-hacienda.png",
       "w": 560,
@@ -454,28 +466,34 @@
        "42",
        "43"
       ]
-     }
+     },
+     "w": 12.0,
+     "h": 5.5
     },
     {
      "id": "juliet",
      "name": "Juliet",
      "type": "stage",
-     "x": 53.1,
-     "y": 31.6
+     "x": 53.0,
+     "y": 28.5,
+     "w": 10.5,
+     "h": 4.0
     },
     {
      "id": "echo",
      "name": "Echo",
      "type": "stage",
      "x": 43.0,
-     "y": 28.8
+     "y": 26.0,
+     "w": 9.5,
+     "h": 4.0
     },
     {
      "id": "adonis",
      "name": "Adonis",
      "type": "stage",
-     "x": 46.6,
-     "y": 79.9,
+     "x": 46.5,
+     "y": 77.5,
      "plan": {
       "img": "stage-adonis.png",
       "w": 560,
@@ -503,14 +521,16 @@
        "31",
        "32"
       ]
-     }
+     },
+     "w": 8.0,
+     "h": 4.5
     },
     {
      "id": "armadillow",
      "name": "Armadillow",
      "type": "stage",
-     "x": 33.7,
-     "y": 69.4,
+     "x": 33.5,
+     "y": 66.5,
      "plan": {
       "img": "stage-armadillow.png",
       "w": 560,
@@ -538,7 +558,9 @@
        "32",
        "33"
       ]
-     }
+     },
+     "w": 17.0,
+     "h": 4.5
     }
    ],
    "acts": {
@@ -2838,7 +2860,7 @@
     "h": 936
    },
    "source": "clashfinder.com/lowlands2026",
-   "updatedAt": 1786806196432
+   "updatedAt": 1787158210018
   },
   "dekmantel-selectors-2026": {
    "name": "Dekmantel Selectors",
@@ -2878,35 +2900,45 @@
      "name": "Beach Bar",
      "type": "stage",
      "x": 73.1,
-     "y": 65.5
+     "y": 65.5,
+     "w": 14.0,
+     "h": 11.0
     },
     {
      "id": "magnolia",
      "name": "Magnolia",
      "type": "stage",
      "x": 12.7,
-     "y": 29.9
+     "y": 29.9,
+     "w": 21.0,
+     "h": 6.5
     },
     {
      "id": "beachmain",
      "name": "Beach Main",
      "type": "stage",
      "x": 56.1,
-     "y": 77.1
+     "y": 77.1,
+     "w": 15.0,
+     "h": 11.0
     },
     {
      "id": "voodoo",
      "name": "Voodoo",
      "type": "stage",
      "x": 43.6,
-     "y": 20.3
+     "y": 20.3,
+     "w": 18.0,
+     "h": 6.5
     },
     {
      "id": "nest",
      "name": "The Nest",
      "type": "stage",
      "x": 88.6,
-     "y": 48.9
+     "y": 48.9,
+     "w": 12.0,
+     "h": 11.0
     },
     {
      "id": "barbarellas",
@@ -2919,7 +2951,9 @@
      "type": "stage",
      "x": 88.9,
      "y": 86.3,
-     "label": true
+     "label": true,
+     "w": 13.0,
+     "h": 5.6
     },
     {
      "id": "boat2",
@@ -2927,7 +2961,9 @@
      "type": "stage",
      "x": 88.9,
      "y": 92.1,
-     "label": true
+     "label": true,
+     "w": 13.0,
+     "h": 5.6
     },
     {
      "id": "vortex",
@@ -3829,7 +3865,7 @@
      "d_": "Two Amsterdam mainstays with impeccable, very different taste."
     }
    },
-   "updatedAt": 1787059154115,
+   "updatedAt": 1787077214615,
    "map": {
     "img": "map-selectors.png",
     "w": 900,
@@ -3846,7 +3882,7 @@
    "stages": 11,
    "acts": 271,
    "official": true,
-   "updatedAt": 1786806196432
+   "updatedAt": 1787158210018
   },
   "dekmantel-selectors-2026": {
    "name": "Dekmantel Selectors",
@@ -3856,7 +3892,7 @@
    "stages": 9,
    "acts": 99,
    "official": true,
-   "updatedAt": 1787059154115
+   "updatedAt": 1787077214615
   }
  }
 }
