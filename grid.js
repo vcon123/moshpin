@@ -151,31 +151,43 @@ C.ref(‘groups/’ + crew.gid + ‘/admins’)
 const cur = F.currentDay(fest);
 dayIdx = cur ? cur.idx : 0;
 
+try {
 CI.init({
 gid: crew.gid, uid, fest,
 members: () => members, photos: () => photos,
 onChange: () => { drawCI(); draw(); }
 });
-S.useRatings(() => ratesOf);
+} catch (e) { console.warn(‘check-ins unavailable’, e); }
+if (typeof S.useRatings === ‘function’) S.useRatings(() => ratesOf);
+try {
 S.init({
 gid: crew.gid, uid, fest,
 members: () => members, photos: () => photos,
 onChange: () => drawChat()
 });
+} catch (e) { console.warn(‘chat unavailable’, e); }
+try {
 T.init({
 gid: crew.gid, uid,
 members: () => members, photos: () => photos,
 onChange: () => { if ($(‘trSheet’).classList.contains(‘on’)) showTransport(); }
 });
+} catch (e) { console.warn(‘transport unavailable’, e); }
 if (‘serviceWorker’ in navigator)
 navigator.serviceWorker.register(‘sw.js’).catch(() => {});
 
 $(‘app’).hidden = false;
 $(‘dock’).hidden = false;
+try {
 drawTop();
-checkForUpdate();
 drawTabs();
 draw();
+} catch (e) {
+return boom(‘The timetable could not be drawn.’,
+(e && e.message ? e.message : ‘’) +
+’ — one of the app files is probably an older version than the others. Re-upload them all together.’);
+}
+checkForUpdate();
 drawCI();
 setInterval(() => { if (!document.hidden) { drawNow(); drawCI(); } }, 60000);
 })();
